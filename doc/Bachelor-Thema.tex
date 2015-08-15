@@ -127,7 +127,7 @@ Die Grundidee ist das eine Applikation mittels geringsten Aufwand in der Lage is
 Der Mail Service soll nur die angelegten Mail Jobs verarbeiten und soll auch davon ausgehen können dass von der Applikation über die Mail Jobs alle nötigen Ressourcen zur Verfügung gestellt wurden.\\
 Diese Ressourcen könnten z.B.: die E-Mail Nachrichten sein, die über Schlüssel adressiert werden, und mit Parametern, die über ein Json Objekt repräsentiert werden, befüllt werden.\\
 Also die Applikation stellt lediglich den Schlüssel und die Parameter, repräsentiert über ein Json Objekt, zur Verfügung. Dieses Json Objekt kann wiederum in Java als POJO gemapped werden (Jackson Json), was das Handling vereinfacht.\\\\ 
-Der Mail Service sollte mit den Anhängen mindestens wie folgt umgehen können.\\
+Der Mail Service sollte mit den Anhängen mindestens wie folgt umgehen können:
 \begin{enumerate}
 	\item Mail Attachmets aus sollen aus verschiedenen Quellen unterstützt werden\begin{enumerate}
 		\item Local FileSystem
@@ -135,7 +135,7 @@ Der Mail Service sollte mit den Anhängen mindestens wie folgt umgehen können.\
 	\end{enumerate}
 	\item Mail Attachment Bundles (zip)
 \end{enumerate}
-Folgende Grundfunktionalität sollte der Mail Service zur Verfügung stellen:\\
+Folgende Grundfunktionalität sollte der Mail Service zur Verfügung stellen:
 \begin{enumerate}
 	\item Mail Jobs sollen verteilt verarbeitet werden können
 	\item Mail Job Versand soll steuerbar sein 
@@ -147,7 +147,7 @@ Folgende Grundfunktionalität sollte der Mail Service zur Verfügung stellen:\\
 \subsection{Inhalt}
 Es würde sich hierbei über eine Bottom-Up Entwicklung handeln wobei hier eine bestehende Implementierung durch eine Neuimplementierung ersetzt werden soll.\\
 Dieser bestehende Mail Service ist mittlerweile 10 Jahre alt und ist daher auch dementsprechend implementiert.\\
-Ich würde hierbei in der Arbeit die Konzeption dieser Applikation behandeln wie z.B.:\\
+Ich würde hierbei in der Arbeit die Konzeption dieser Applikation behandeln wie z.B.:
 \begin{enumerate}
 	\item Datenmodel
 	\item Kommunikation zwischen Applikation und Mail Service (Datenbank, Json)
