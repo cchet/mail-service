@@ -1,0 +1,77 @@
+\documentclass[11pt, a4paper, twoside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\usepackage{pdfpages}
+\usepackage{caption}
+\usepackage{minted}
+\usepackage[german]{babel}			% this end the next are needed for german umlaute
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+% http://www.artofproblemsolving.com/wiki/index.php/LaTeX:Symbols#Operators
+% =============================================
+% Layout & Colors
+% =============================================
+\geometry{
+   a4paper,
+   total={210mm,297mm},
+   left=20mm,
+   right=20mm,
+   top=20mm,
+   bottom=30mm
+ }	
+
+\definecolor{myred}{rgb}{0.5,0,0}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\setcounter{secnumdepth}{4}
+
+
+% the default java directory structure and the main packages
+% =============================================
+% Page Style, Footers & Headers, Title
+% =============================================
+\title{Übung 3}
+\author{Thomas Herzog}
+
+\lhead{Theoretische Bachelorarbeit (Nachtrag)}
+\chead{}
+\rhead{\includegraphics[scale=0.10]{FHO_Logo_Students.jpg}}
+
+\lfoot{Herzog Thomas (S1310307011)}
+\cfoot{}
+\rfoot{ \thepage / \pageref{LastPage} }
+\renewcommand{\footrulewidth}{0.4pt}
+% =============================================
+% D O C U M E N T     C O N T E N T
+% =================em ============================
+\pagestyle{fancy}
+\begin{document}
+\setlength{\headheight}{15mm}
+{\color{myred}
+	\section
+		{Konzeption eines Mail Service}
+}
+Folgendes Dokument behandelt die Anforderungen für die theoretische Bachelorarbeit.\\
+Als Einleitung wird im Folgenden die zugrundeliegende Applikation, welche neu konzipiert werden soll,  erklärt.\\\\
+Bei dieser Applikation handelt es sich um einen Mail Service, welcher mittlerweile gut 10 Jahre in Betrieb ist und immer wieder erweitert wurde ohne jedoch einmal eine technologische Evolution vorzunehmen, wie z.B.: EJB3, JPA, ... zu verwenden\\
+Dieser Mail Service wird über die Datenbank mit MailJobs (Tabelle MailJob) gefüttert, arbeitet die E-Mail Nachrichten auf und versendet diese anschließend. Hierbei wird der Mail Service über die CommandLine (CronJob) alle 10 - 15 Min gestartet.\\\\
+Die theoretische Bachelorarbeit dient als Grundlage für eine Re-Implementierung, die in der praktischen Bachelorarbeit und dem Praktikum erfolgen wird.\\ 
+
+\subsection{Thema Beschreibung}
+In der theoretischen Bachelorarbeit soll die Konzeption der Re-Implementierung dieses Mail Service dokumentiert werden, wobei folgende Aspekte abgedeckt werden sollen:
+\begin{enumerate}
+	\item Systeminfrastruktur (Systemspezifikation, Systemteilnehmer, Systemumgebung, ...)
+	\item Zu verwendende Technologien (EJB3, CDI, DB2, ...) mit Begründung 
+	\item Datenmodel (Schema-Konzeption, Begründung des Modells)
+\end{enumerate}
+In dieser Arbeit soll immer eine Referenz auf bestehende Aspekte genommen werden und diese dem neuen Konzept gegenübergestellt werden. Da die bestehende Implementierung inklusive dem Datenmodel, meiner Meinung nach, sehr viel Angriffsfläche bietet, wird es hier genug Stoff für Diskussionen geben.\\\\
+Es soll sich in dieser Arbeit auf Schnittstellen, Datenmodell Schema und Grafiken (Systemaufbau) beschränkt werden. Es sollen keine Implementierungsdetails diskutiert werden.\\
+Wenn Diskussionen bezüglich dem Sourcecode aufkommen sollten, müssen diese in Zusammenhang mit einem Aspekt des Konzepts gebracht werden können, wie z.B.: verwendete Pattern oder Softwaredesignentscheidungen, die in Kontrast mit einem Aspekt des neuen Konzepts gebracht werden können. Es soll auf keine Implementierungsdetails eingegangen werden. 
+\end{document}  

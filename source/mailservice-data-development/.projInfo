@@ -1,0 +1,7 @@
+#Wed Sep 23 14:35:17 GMT+02:00 2015
+generateSchema=false
+ConnectionName=CLC01_A
+useridCurrentSchema=false
+currentPath=SYSIBM,SYSFUN,SYSPROC,SYSIBMADM,CLCADMIN
+currentSchema=CLCADMIN
+ProjectAnnotation=CLC01_A\:jdbc\:db2\://188.21.2.137\:50001/CLC01_A\:retrieveMessagesFromServerOnGetMessage\=true;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>mailservice-data-design</name>
+	<comment></comment>
+	<projects>
+		<project>mailservice-development</project>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+		<nature>com.ibm.datatools.core.ui.DatabaseDesignNature</nature>
+	</natures>
+</projectDescription>

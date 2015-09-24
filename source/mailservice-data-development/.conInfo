@@ -1,0 +1,12 @@
+#Wed Sep 23 14:35:17 GMT+02:00 2015
+url=jdbc\:db2\://188.21.2.137\:50001/CLC01_A\:retrieveMessagesFromServerOnGetMessage\=true;
+driverName=com.ibm.db2.jcc.DB2Driver
+profileProviderID=org.eclipse.datatools.enablement.ibm.db2.luw.connectionProfile
+jarList=C\:\\Program Files\\IBM\\SDPShared\\plugins\\com.ibm.datatools.db2_2.2.100.v20140708_0755\\driver\\db2jcc4.jar;C\:\\Program Files\\IBM\\SDPShared\\plugins\\com.ibm.datatools.db2_2.2.100.v20140708_0755\\driver\\db2jcc_license_cisuz.jar
+userid=clcadmin
+version=V10.5
+databaseName=CLC01_A
+conName=CLC01_A
+driverDefinitionType=com.ibm.datatools.db2.luw.jdbc4.driverTemplate
+driverDefinitionID=DriverDefn.com.ibm.datatools.db2.luw.jdbc4.driverTemplate.IBM Data Server Driver for JDBC and SQLJ (JDBC 4.0) Default
+product=DB2 UDB

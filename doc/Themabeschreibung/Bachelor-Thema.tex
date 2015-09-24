@@ -1,0 +1,159 @@
+\documentclass[11pt, a4paper, twoside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\usepackage{pdfpages}
+\usepackage{caption}
+\usepackage{minted}
+\usepackage[german]{babel}			% this end the next are needed for german umlaute
+\usepackage[utf8]{inputenc}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+% http://www.artofproblemsolving.com/wiki/index.php/LaTeX:Symbols#Operators
+% =============================================
+% Layout & Colors
+% =============================================
+\geometry{
+   a4paper,
+   total={210mm,297mm},
+   left=20mm,
+   right=20mm,
+   top=20mm,
+   bottom=30mm
+ }	
+
+\definecolor{myred}{rgb}{0.5,0,0}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\setcounter{secnumdepth}{4}
+
+
+% the default java directory structure and the main packages
+\newcommand{\srcDir}{../src/main/java}
+\newcommand{\srcTestDir}{../src/test/java}
+\newcommand{\resourcesTestDir}{../src/test/resources}
+\newcommand{\mainPackageDir}{\srcDir/at/fh/ooe/swe4/fx/campina}
+\newcommand{\viewDir}{\mainPackageDir/view}
+\newcommand{\viewApiDir}{\viewDir/api}
+\newcommand{\viewBuilderDir}{\mainPackageDir/component/builder}
+\newcommand{\viewAnnotationDir}{\mainPackageDir/view/annotation}
+\newcommand{\viewLoginDir}{\viewDir/admin/login}
+\newcommand{\viewUserDir}{\viewDir/admin/user}
+\newcommand{\viewMenuDir}{\viewDir/admin/menu}
+\newcommand{\viewOrderDir}{\viewDir/admin/order}
+\newcommand{\jpaDir}{\mainPackageDir/jpa}
+\newcommand{\imagesDir}{images}
+% the default subsection headers
+\newcommand{\ideaSection}{Lösungsidee}
+\newcommand{\sourceSection}{Source-Code}
+\newcommand{\testSection}{Tests}
+
+% =============================================
+% Code Settings
+% =============================================
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\newmintedfile[javaSourceFile]{java}{
+	linenos=true, 
+	frame=single, 
+	breaklines=true, 
+	tabsize=2,
+	numbersep=5pt,
+	xleftmargin=10pt,
+	baselinestretch=1,
+	fontsize=\footnotesize
+}
+\newmintinline[inlineJava]{java}{}
+\newminted[javaSource]{java}{
+	breaklines=true, 
+	tabsize=2,
+	autogobble=true,
+	breakautoindent=false
+}
+\newmintedfile[xmlSourceFile]{xml}{
+	linenos=true, 
+	frame=single, 
+	breaklines=true, 
+	tabsize=2,
+	numbersep=5pt,
+	xleftmargin=10pt,
+	baselinestretch=1,
+	fontsize=\footnotesize
+}
+\newmintedfile[propertiesFile]{properties}{
+	linenos=true, 
+	frame=single, 
+	breaklines=true, 
+	tabsize=2,
+	numbersep=5pt,
+	xleftmargin=10pt,
+	baselinestretch=1,
+	fontsize=\footnotesize
+}
+% =============================================
+% Page Style, Footers & Headers, Title
+% =============================================
+\title{Übung 3}
+\author{Thomas Herzog}
+
+\lhead{Theoretische Bachelorarbeit}
+\chead{}
+\rhead{\includegraphics[scale=0.10]{FHO_Logo_Students.jpg}}
+
+\lfoot{Herzog Thomas (S1310307011)}
+\cfoot{}
+\rfoot{ \thepage / \pageref{LastPage} }
+\renewcommand{\footrulewidth}{0.4pt}
+% =============================================
+% D O C U M E N T     C O N T E N T
+% =================em ============================
+\pagestyle{fancy}
+\begin{document}
+\setlength{\headheight}{15mm}
+{\color{myred}
+	\section
+		{Application Mail Service}
+}
+Folgend wird das Thema für die theoretische Bachelorarbeit diskutiert.\\
+Als Thema wird ein Application Mail Service gewählt, welcher über eine externe Applikation mit Mail Jobs versorgt wird und diese automatisiert mit oder ohne Anhang mittels Java Mail versendet.\\
+
+\subsection{Thema Beschreibung}
+Die Entwicklung wird hierbei in Java erfolgen (Java 8, DB2).
+Die Grundidee ist das eine Applikation mittels geringsten Aufwand in der Lage ist eine E-Mail zu verschicken, wobei hierbei das Anlegen eines Mail Jobs gemeint ist.\\
+Der Mail Service soll nur die angelegten Mail Jobs verarbeiten und soll auch davon ausgehen können dass von der Applikation über die Mail Jobs alle nötigen Ressourcen zur Verfügung gestellt wurden.\\
+Diese Ressourcen könnten z.B.: die E-Mail Nachrichten sein, die über Schlüssel adressiert werden, und mit Parametern, die über ein Json Objekt repräsentiert werden, befüllt werden.\\
+Also die Applikation stellt lediglich den Schlüssel und die Parameter, repräsentiert über ein Json Objekt, zur Verfügung. Dieses Json Objekt kann wiederum in Java als POJO gemapped werden (Jackson Json), was das Handling vereinfacht.\\\\ 
+Der Mail Service sollte mit den Anhängen mindestens wie folgt umgehen können:
+\begin{enumerate}
+	\item Mail Attachmets aus sollen aus verschiedenen Quellen unterstützt werden\begin{enumerate}
+		\item Local FileSystem
+		\item Remote FileSystem (WebService, Base64)
+	\end{enumerate}
+	\item Mail Attachment Bundles (zip)
+\end{enumerate}
+Folgende Grundfunktionalität sollte der Mail Service zur Verfügung stellen:
+\begin{enumerate}
+	\item Mail Jobs sollen verteilt verarbeitet werden können
+	\item Mail Job Versand soll steuerbar sein 
+	\item Multiple Mailserver sollen genutzt werden können
+	\item Eigenes Datenmodel für die Mailverwaltung
+	\item Mail Templates
+\end{enumerate}
+
+\subsection{Inhalt}
+Es würde sich hierbei über eine Bottom-Up Entwicklung handeln wobei hier eine bestehende Implementierung durch eine Neuimplementierung ersetzt werden soll.\\
+Dieser bestehende Mail Service ist mittlerweile 10 Jahre alt und ist daher auch dementsprechend implementiert.\\
+Ich würde hierbei in der Arbeit die Konzeption dieser Applikation behandeln wie z.B.:
+\begin{enumerate}
+	\item Datenmodel
+	\item Kommunikation zwischen Applikation und Mail Service (Datenbank, Json)
+	\item Steuerbarkeit des Mail Service
+	\item ...
+\end{enumerate}
+\newpage
+
+\end{document}  
