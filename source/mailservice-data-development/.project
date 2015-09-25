@@ -3,6 +3,7 @@
 	<name>mailservice-data-development</name>
 	<comment></comment>
 	<projects>
+		<project>mailservice-data-design</project>
 	</projects>
 	<buildSpec>
 	</buildSpec>
