@@ -1,26 +1,44 @@
 package at.herzog.mailservice.json.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(allowGetters = false, allowSetters = false, ignoreUnknown = true)
-@JsonInclude(content = Include.NON_NULL, value = Include.NON_NULL)
-public class RestResponse {
+import at.herzog.mailservice.json.model.api.AbstractJsonModel;
 
-	@JsonProperty("message")
-	private String message;
+public class RestResponse extends AbstractJsonModel {
+
+	@JsonProperty("response")
+	private String response;
+
+	@JsonProperty("errors")
+	private List<Error> errors = new ArrayList<>();
 
 	public RestResponse() {
 		super();
 	}
 
-	public String getMessage() {
-		return message;
+	public void addError(final Error error) {
+		errors.add(error);
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+	// #######################################
+	// Getter and Setter
+	// #######################################
+	public String getResponse() {
+		return response;
+	}
+
+	public void setResponse(String message) {
+		this.response = message;
+	}
+
+	public List<Error> getErrors() {
+		return errors;
+	}
+
+	public void setErrors(List<Error> errors) {
+		this.errors = errors;
 	}
 }

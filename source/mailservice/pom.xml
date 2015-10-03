@@ -54,6 +54,7 @@
 		<version.wildfly>8.2.1.Final</version.wildfly>
 
 		<javax.rs.version>2.0</javax.rs.version>
+		<javax.validation.version>1.1.0.Final</javax.validation.version>
 
 		<!-- other plugin versions -->
 		<version.compiler.plugin>3.1</version.compiler.plugin>
@@ -69,23 +70,11 @@
 
 		<!-- jackson versions -->
 		<fasterxml.version>2.6.2</fasterxml.version>
-
-		<!-- jackson versions -->
-		<fasterxml.version>2.6.2</fasterxml.version>
+		<org.junit.version>4.12</org.junit.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
-
-			<!-- Define the version of the EJB jar so that we don't need to repeat 
-				ourselves in every module -->
-			<dependency>
-				<groupId>at.herzog.mailservice</groupId>
-				<artifactId>mailservice-ejb</artifactId>
-				<version>${project.version}</version>
-				<type>ejb</type>
-			</dependency>
-
 			<!-- Define the version of the WAR so that we don't need to repeat ourselves 
 				in every module -->
 			<dependency>
@@ -110,6 +99,12 @@
 				<version>${version.jboss.bom}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.validation</groupId>
+				<artifactId>validation-api</artifactId>
+				<version>${javax.validation.version}</version>
 			</dependency>
 
 			<dependency>
@@ -141,6 +136,15 @@
 				<artifactId>jackson-jaxrs-json-provider</artifactId>
 				<version>${fasterxml.version}</version>
 			</dependency>
+
+			<!-- TEst dependencies -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${org.junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

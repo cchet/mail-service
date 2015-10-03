@@ -4,10 +4,16 @@
 	<parent>
 		<groupId>at.herzog.mailservice</groupId>
 		<artifactId>mailservice</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+	<version>${project.version}</version>
 	</parent>
-	<groupId>mailservice-mail-impl</groupId>
 	<artifactId>mailservice-mail-impl</artifactId>
-	<version>{project.version}</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>at.herzog.mailservice</groupId>
+			<artifactId>mailservice-mail-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
 
 </project>

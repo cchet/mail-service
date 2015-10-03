@@ -16,7 +16,7 @@
 	<parent>
 		<artifactId>mailservice</artifactId>
 		<groupId>at.herzog.mailservice</groupId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>${project.version}</version>
 	</parent>
 
 	<artifactId>mailservice-ear</artifactId>
@@ -81,7 +81,7 @@
 				<configuration>
 					<filename>${project.artifactId}.ear</filename>
 					<skip>false</skip>
-					
+
 				</configuration>
 			</plugin>
 		</plugins>

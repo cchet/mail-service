@@ -8,7 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import at.herzog.mailservice.json.model.RestResponse;
-import at.herzog.mailservice.json.model.SendMailRequest;
+import at.herzog.mailservice.json.model.SimpleMailRequest;
 
 @Path("/mail")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -18,9 +18,9 @@ public class MailService {
 	@POST
 	@GET
 	@Path("send")
-	public RestResponse send(final SendMailRequest request) {
+	public RestResponse send(final SimpleMailRequest request) {
 		final RestResponse response = new RestResponse();
-		response.setMessage("hello caller");
+		response.setResponse("hello caller");
 		return response;
 	}
 }
