@@ -3,6 +3,7 @@ package at.herzog.web.application.rest;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
@@ -13,7 +14,7 @@ import at.herzog.web.application.rest.filter.SecurityRestFilter;
 import at.herzog.web.mail.webservice.MailService;
 
 // Seems resteasy does not use this annotation
-//@ApplicationPath("rest")
+@ApplicationPath("")
 public class RestApplicationConfig extends Application {
 
 	@Override
