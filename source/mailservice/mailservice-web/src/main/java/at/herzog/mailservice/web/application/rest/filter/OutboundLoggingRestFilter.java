@@ -1,4 +1,4 @@
-package at.herzog.web.application.rest.filter;
+package at.herzog.mailservice.web.application.rest.filter;
 
 import java.io.IOException;
 

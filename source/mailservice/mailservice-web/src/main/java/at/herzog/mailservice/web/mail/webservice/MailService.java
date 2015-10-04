@@ -1,4 +1,4 @@
-package at.herzog.web.mail.webservice;
+package at.herzog.mailservice.web.mail.webservice;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;

@@ -3,6 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
 
+	<!-- ####################################################### -->
+	<!-- Listeners -->
+	<!-- ####################################################### -->
+	<!-- All other listers after here -->
+	<listener>
+		<listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+	</listener>
+	<!-- All other listers before here -->
+	<listener>
+		<display-name>SerlvetContextStarted</display-name>
+		<listener-class>at.herzog.mailservice.web.application.servlet.listener.ServletContextStartedListener</listener-class>
+	</listener>
+
+	<!-- ####################################################### -->
+	<!-- Filters -->
+	<!-- ####################################################### -->
+	<!-- TODO: Add filter for async request/response logging -->
+	<filter>
+		<filter-name>AsyncRestServletLoggingFilter</filter-name>
+		<async-supported>true</async-supported>
+	</filter>
+
+	<!-- ####################################################### -->
+	<!-- Servlets -->
+	<!-- ####################################################### -->
 	<servlet-mapping>
 		<servlet-name>Resteasy</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
@@ -17,13 +42,10 @@
 	</servlet-mapping>
 	<context-param>
 		<param-name>javax.ws.rs.Application</param-name>
-		<param-value>at.herzog.web.application.rest.RestApplicationConfig</param-value>
+		<param-value>at.herzog.mailservice.web.application.config.rest.RestApplicationConfig</param-value>
 	</context-param>
 	<context-param>
 		<param-name>resteasy.servlet.mapping.prefix</param-name>
 		<param-value>/rs</param-value>
 	</context-param>
-	<listener>
-		<listener-class>org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
-	</listener>
 </web-app>

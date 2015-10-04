@@ -1,4 +1,4 @@
-package at.herzog.web.application.rest;
+package at.herzog.mailservice.web.application.config.rest;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -8,10 +8,10 @@ import javax.ws.rs.core.Application;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
-import at.herzog.web.application.rest.filter.InboundLoggingRestFilter;
-import at.herzog.web.application.rest.filter.OutboundLoggingRestFilter;
-import at.herzog.web.application.rest.filter.SecurityRestFilter;
-import at.herzog.web.mail.webservice.MailService;
+import at.herzog.mailservice.web.application.rest.filter.InboundLoggingRestFilter;
+import at.herzog.mailservice.web.application.rest.filter.OutboundLoggingRestFilter;
+import at.herzog.mailservice.web.application.rest.filter.SecurityRestFilter;
+import at.herzog.mailservice.web.mail.webservice.MailService;
 
 // Seems resteasy does not use this annotation
 @ApplicationPath("")
