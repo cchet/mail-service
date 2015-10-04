@@ -10,11 +10,11 @@ import javax.activation.FileDataSource;
 
 import at.herzog.mailservice.json.model.Attachment;
 
-public abstract class AbstractMailFileDataSource extends AbstractAttachmentDataSource {
+public abstract class AbstractAttachmentFileDataSource extends AbstractAttachmentDataSource {
 
 	protected FileDataSource dataSource;
 
-	public AbstractMailFileDataSource(String attachmentType) {
+	public AbstractAttachmentFileDataSource(String attachmentType) {
 		super(attachmentType);
 	}
 

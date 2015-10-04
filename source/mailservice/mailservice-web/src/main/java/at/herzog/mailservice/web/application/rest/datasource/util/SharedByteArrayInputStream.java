@@ -1,4 +1,4 @@
-package at.herzog.mailservice.web.application.rest.datasource.api;
+package at.herzog.mailservice.web.application.rest.datasource.util;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

@@ -29,15 +29,15 @@
 	<!-- Servlets -->
 	<!-- ####################################################### -->
 	<servlet-mapping>
-		<servlet-name>Resteasy</servlet-name>
+		<servlet-name>ResteasyServlet</servlet-name>
 		<url-pattern>/rest/*</url-pattern>
 	</servlet-mapping>
 	<servlet>
-		<servlet-name>Resteasy</servlet-name>
+		<servlet-name>ResteasyServlet</servlet-name>
 		<servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Resteasy</servlet-name>
+		<servlet-name>ResteasyServlet</servlet-name>
 		<url-pattern>/rs/*</url-pattern>
 	</servlet-mapping>
 	<context-param>

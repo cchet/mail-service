@@ -24,31 +24,29 @@ import org.apache.logging.log4j.core.config.LoggerConfig;
 @WebFilter(
 		filterName = "AsyncRestServletLoggingFilter",
 		displayName = "AsyncRestServletLoggingFilter",
-		servletNames = { "Resteasy" },
-		asyncSupported = true,
-		urlPatterns = "/*")
+		servletNames = { "ResteasyServlet" },
+		asyncSupported = true)
 public class AsyncRestServletLoggingFilter implements Filter {
+
+	private static final Logger logger = LogManager.getLogger(AsyncRestServletLoggingFilter.class);
 
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
 
-		final Logger logger = LogManager.getLogger(AsyncRestServletLoggingFilter.class);
-		logger.error("Hello, request! You got logged by log4j");
+		// TODO: Here we need to find an efficient way to log the incoming
+		// requests especially because of the contained json.
+		logger.error("Hello, request! You got logged by asynchronously by log4j");
 
 		chain.doFilter(request, response);
 	}
 
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-
 	}
 
 }

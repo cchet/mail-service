@@ -10,7 +10,7 @@ import org.apache.commons.codec.binary.Base64;
 
 import at.herzog.mailservice.json.model.Attachment;
 import at.herzog.mailservice.web.application.rest.datasource.api.AbstractAttachmentDataSource;
-import at.herzog.mailservice.web.application.rest.datasource.api.SharedByteArrayInputStream;
+import at.herzog.mailservice.web.application.rest.datasource.util.SharedByteArrayInputStream;
 
 public class Base64DataSource extends AbstractAttachmentDataSource {
 

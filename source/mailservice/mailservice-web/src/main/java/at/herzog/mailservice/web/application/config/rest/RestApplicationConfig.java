@@ -8,8 +8,6 @@ import javax.ws.rs.core.Application;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
-import at.herzog.mailservice.web.application.rest.filter.InboundLoggingRestFilter;
-import at.herzog.mailservice.web.application.rest.filter.OutboundLoggingRestFilter;
 import at.herzog.mailservice.web.application.rest.filter.SecurityRestFilter;
 import at.herzog.mailservice.web.mail.webservice.MailService;
 
@@ -23,9 +21,7 @@ public class RestApplicationConfig extends Application {
 		// WebServices
 		services.add(MailService.class);
 		// Filters
-		services.add(InboundLoggingRestFilter.class);
 		services.add(SecurityRestFilter.class);
-		services.add(OutboundLoggingRestFilter.class);
 
 		return services;
 	}
