@@ -5,10 +5,8 @@ import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import org.apache.logging.log4j.core.config.Configurator;
-
-import at.herzog.mailservice.web.application.event.ContainerShutdownEvent;
-import at.herzog.mailservice.web.application.event.ContainerStartupEvent;
+import at.herzog.cdi.api.event.ContainerShutdownEvent;
+import at.herzog.cdi.api.event.ContainerStartupEvent;
 
 public class ServletContextStartedListener implements ServletContextListener {
 
@@ -19,8 +17,6 @@ public class ServletContextStartedListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		// TODO: Logging should be handled first in own listener
-		Configurator.initialize("mailservice-config", "log4j.xml");
 		// TODO: Prepare Context for fired event
 		startupEvt.fire(new ContainerStartupEvent());
 	}

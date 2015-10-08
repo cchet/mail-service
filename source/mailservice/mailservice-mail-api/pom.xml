@@ -10,13 +10,13 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>at.herzog.mailservice</groupId>
 			<artifactId>mailservice-json-model</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>javax.mail-api</artifactId>
 		</dependency>
 	</dependencies>
 </project>

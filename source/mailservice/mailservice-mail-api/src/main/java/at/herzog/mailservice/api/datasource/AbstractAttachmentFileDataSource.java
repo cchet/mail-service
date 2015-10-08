@@ -1,4 +1,4 @@
-package at.herzog.mailservice.web.application.rest.datasource.api;
+package at.herzog.mailservice.api.datasource;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,8 +14,8 @@ public abstract class AbstractAttachmentFileDataSource extends AbstractAttachmen
 
 	protected FileDataSource dataSource;
 
-	public AbstractAttachmentFileDataSource(String attachmentType) {
-		super(attachmentType);
+	public AbstractAttachmentFileDataSource() {
+		super();
 	}
 
 	@Override

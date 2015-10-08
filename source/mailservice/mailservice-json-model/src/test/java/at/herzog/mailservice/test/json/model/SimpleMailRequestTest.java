@@ -33,9 +33,9 @@ public class SimpleMailRequestTest {
 		expected.setAttachments(
 				Arrays.asList(
 						new Attachment[] {
-								new Attachment("file1", AttachmentType.BASE64, "adsfgäsadfg"),
-								new Attachment("file2", AttachmentType.CUSTOM, ""),
-								new Attachment("file3", AttachmentType.FILESYSTEM, "") }));
+								new Attachment("file1", AttachmentType.BASE64.name, "adsfgäsadfg"),
+								new Attachment("file2", AttachmentType.CUSTOM.name, ""),
+								new Attachment("file3", AttachmentType.FILESYSTEM.name, "") }));
 
 		// When
 		final String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(expected);

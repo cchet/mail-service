@@ -2,7 +2,6 @@ package at.herzog.mailservice.web.application.servlet.filter;
 
 import java.io.IOException;
 
-import javax.servlet.AsyncContext;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -13,7 +12,6 @@ import javax.servlet.annotation.WebFilter;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.config.LoggerConfig;
 
 /**
  * This filter logs each request for the resteasy servlet asynchronously.

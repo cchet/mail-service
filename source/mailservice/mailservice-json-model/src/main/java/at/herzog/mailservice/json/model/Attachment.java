@@ -21,7 +21,7 @@ public class Attachment extends AbstractJsonModel {
 	@JsonTypeInfo(
 			include = As.WRAPPER_OBJECT,
 			use = Id.NAME)
-	private AttachmentType type;
+	private String type;
 
 	@JsonProperty("content")
 	private String content;
@@ -30,7 +30,7 @@ public class Attachment extends AbstractJsonModel {
 		super();
 	}
 
-	public Attachment(String name, AttachmentType type, String content) {
+	public Attachment(String name, String type, String content) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -48,11 +48,11 @@ public class Attachment extends AbstractJsonModel {
 		this.name = name;
 	}
 
-	public AttachmentType getType() {
+	public String getType() {
 		return type;
 	}
 
-	public void setType(AttachmentType type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 

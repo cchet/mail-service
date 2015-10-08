@@ -26,7 +26,7 @@ public class AttachmentTest {
 		final Attachment expected = new Attachment();
 		expected.setName("name_or_key");
 		expected.setContent("content");
-		expected.setType(AttachmentType.BASE64);
+		expected.setType(AttachmentType.BASE64.name);
 
 		// When
 		final String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(expected);

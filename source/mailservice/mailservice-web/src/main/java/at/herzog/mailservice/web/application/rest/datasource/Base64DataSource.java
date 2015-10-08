@@ -5,23 +5,32 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import javax.activation.FileTypeMap;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.Dependent;
 
 import org.apache.commons.codec.binary.Base64;
 
+import at.herzog.cdi.api.annotation.AttachmentDataSource;
+import at.herzog.cdi.api.annotation.AttachmentType;
+import at.herzog.mailservice.api.datasource.AbstractAttachmentDataSource;
 import at.herzog.mailservice.json.model.Attachment;
-import at.herzog.mailservice.web.application.rest.datasource.api.AbstractAttachmentDataSource;
 import at.herzog.mailservice.web.application.rest.datasource.util.SharedByteArrayInputStream;
 
+@Dependent
+@AttachmentDataSource
+@AttachmentType("base64")
 public class Base64DataSource extends AbstractAttachmentDataSource {
 
-	private String name;
-	private String contentType;
-	private byte[] data;
-
-	public static final String TYPE = "base64";
+	private String name = "";
+	private String contentType = "";
+	private byte[] data = new byte[0];
 
 	public Base64DataSource() {
-		super(TYPE);
+	}
+
+	@PostConstruct
+	public void postConstruct() {
+
 	}
 
 	@Override
@@ -31,7 +40,7 @@ public class Base64DataSource extends AbstractAttachmentDataSource {
 		this.data = Base64.decodeBase64(attachment.getContent());
 		this.contentType = FileTypeMap.getDefaultFileTypeMap().getContentType(attachment.getName());
 		final String attName = attachment.getName();
-		this.name = attName.substring(attName.indexOf("\\."), attName.length());
+		this.name = attName.substring(0, attName.indexOf("."));
 	}
 
 	@Override

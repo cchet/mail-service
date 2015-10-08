@@ -1,4 +1,4 @@
-package at.herzog.mailservice.web.application.event;
+package at.herzog.cdi.api.event;
 
 import java.io.Serializable;
 

@@ -1,6 +1,6 @@
 package at.herzog.mailservice.web.application.config.rest.event;
 
-import at.herzog.mailservice.web.application.rest.datasource.api.AbstractAttachmentDataSource;
+import at.herzog.mailservice.api.datasource.AbstractAttachmentDataSource;
 
 public class RegisterAttachmentDataSourceEvt extends AbstractDataSourceEvt {
 

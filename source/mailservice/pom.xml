@@ -34,7 +34,8 @@
 		<module>mailservice-service-api</module>
 		<module>mailservice-service-impl</module>
 		<module>mailservice-mail-api</module>
-		<module>mailservice-mail-impl</module>
+		<module>mailservice-mail-cdi-impl</module>
+		<module>ailservice-cdi-api</module>
 	</modules>
 
 	<properties>
@@ -57,6 +58,7 @@
 		<javax.validation.version>1.1.0.Final</javax.validation.version>
 		<javax.mail.version>1.5.4</javax.mail.version>
 		<org.apache.log4j.version>2.4</org.apache.log4j.version>
+		<org.apache.commons.codec.version>1.10</org.apache.commons.codec.version>
 
 		<!-- other plugin versions -->
 		<version.compiler.plugin>3.1</version.compiler.plugin>
@@ -157,6 +159,13 @@
 				<scope>import</scope>
 				<version>${org.apache.log4j.version}</version>
 			</dependency>
+
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${org.apache.commons.codec.version}</version>
+			</dependency>
+
 
 			<!-- Test dependencies -->
 			<dependency>
