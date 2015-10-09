@@ -23,7 +23,6 @@ public class AttachmentDataSourceRegistry implements Serializable {
 	private static final long serialVersionUID = -391222331438249522L;
 
 	@Inject
-	@at.herzog.cdi.api.annotation.AttachmentDataSource
 	private Instance<AttachmentDataSource> dataSources;
 
 	private final Set<Class<? extends AttachmentDataSource>> invalid = new HashSet<>();

@@ -10,14 +10,12 @@ import javax.enterprise.context.Dependent;
 
 import org.apache.commons.codec.binary.Base64;
 
-import at.herzog.cdi.api.annotation.AttachmentDataSource;
 import at.herzog.cdi.api.annotation.AttachmentType;
 import at.herzog.mailservice.api.datasource.AbstractAttachmentDataSource;
 import at.herzog.mailservice.json.model.Attachment;
 import at.herzog.mailservice.web.application.rest.datasource.util.SharedByteArrayInputStream;
 
 @Dependent
-@AttachmentDataSource
 @AttachmentType("base64")
 public class Base64DataSource extends AbstractAttachmentDataSource {
 

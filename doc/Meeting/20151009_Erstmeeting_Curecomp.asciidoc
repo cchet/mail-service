@@ -1,0 +1,34 @@
+### Kickoff meeting Mailing (Curecomp)
+*Datum:* + 
+09.10.2015 +
+
+*Teilnehmer:* + 
+Thomas Herzog + 
+Peter Hackl +
+Patrick Leonhartsberger +
+
+*Zeit:* + 
+09:00 - + 
+
+#### Grobe Anforderungen Mailservice
+- Erneutes Versenden einer bereits versendeten Email
+- ANzeigen aller Mails in der Applikation die an eine Email Adresse versendet wurden. (Abfrage via rest für Email und Profile)
+- Mails sollen gruppierbar sein bezüglich Archivierung, Autoclean, ...
+- Wie sollen Mails gespeichert werden ? (EML, Meta-Daten oder beides)
+- Bündelung der Emails zu einer Email. (Vielleicht nur Client Job)
+- Logs der Emails mit Server Response
+- Konfiguration der Mail Jobs über Profile
+- Client Applicatin für zeitlich getriggerte Jobs. (Eigenes EAR mit scheduler)
+- Konfiguration für nicht ladbare Dateien. (Datei noch nicht erstellt, aber mail wird versucht zu versenden)
+- Kunden sollen Template definieren können (Cooperate design)
+- Konfiguration für Archivierung mit integration in fremde Storage Systemem
+- Signaturen von Emails (Zertifikat optional)
+- Email Kontent via Template (Muss Vererbung unterstützen)
+
+#### Grobe Anforderungen Clevercure
+- Kunden steuern MailJobs für Lieferanten.
+- Lieferant darf Benachrichtigungen aktivieren aber nicht deaktivieren, wenn der Kunde es aktiviert hat.
+- Für Aufgezwungene Emails dürfen zusätzliche Adressen angegeben werden. 
+- Konzernstruktur in CUST_COMP_MTC in abgebildet.
+- Download aller USer EMails im Portal
+
