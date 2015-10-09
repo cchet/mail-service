@@ -8,6 +8,7 @@ import java.io.OutputStream;
 
 import javax.activation.FileDataSource;
 
+import at.herzog.mailservice.api.context.MailBuilderContext;
 import at.herzog.mailservice.json.model.Attachment;
 
 public abstract class AbstractAttachmentFileDataSource extends AbstractAttachmentDataSource {
@@ -54,8 +55,8 @@ public abstract class AbstractAttachmentFileDataSource extends AbstractAttachmen
 	 * @param attachment
 	 *            the attachment with provides information for loading the data
 	 */
-	public void init(final Attachment attachment) {
-		super.init(attachment);
+	public void init(final Attachment attachment, MailBuilderContext context) {
+		super.init(attachment, context);
 
 		try {
 			final File file = this.getFile(attachment.getName());

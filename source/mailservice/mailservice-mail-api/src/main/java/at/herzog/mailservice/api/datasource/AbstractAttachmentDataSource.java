@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.activation.DataSource;
 
+import at.herzog.mailservice.api.context.MailBuilderContext;
 import at.herzog.mailservice.json.model.Attachment;
 
 public abstract class AbstractAttachmentDataSource implements AttachmentDataSource {
@@ -21,7 +22,7 @@ public abstract class AbstractAttachmentDataSource implements AttachmentDataSour
 	 * @param attachment
 	 *            the attachment with provides information for loading the data
 	 */
-	public void init(final Attachment attachment) {
+	public void init(final Attachment attachment, MailBuilderContext context) {
 		Objects.requireNonNull(attachment, "Cannot initialize MailDataSource with null attachment");
 
 		this.attachment = attachment;

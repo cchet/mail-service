@@ -59,6 +59,8 @@
 		<javax.mail.version>1.5.4</javax.mail.version>
 		<org.apache.log4j.version>2.4</org.apache.log4j.version>
 		<org.apache.commons.codec.version>1.10</org.apache.commons.codec.version>
+		<freemarker.version>2.3.23</freemarker.version>
+		<google.gson.version>2.4</google.gson.version>
 
 		<!-- other plugin versions -->
 		<version.compiler.plugin>3.1</version.compiler.plugin>
@@ -165,7 +167,12 @@
 				<artifactId>commons-codec</artifactId>
 				<version>${org.apache.commons.codec.version}</version>
 			</dependency>
-
+			
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>${freemarker.version}</version>
+			</dependency>
 
 			<!-- Test dependencies -->
 			<dependency>

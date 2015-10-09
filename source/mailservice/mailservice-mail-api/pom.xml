@@ -18,5 +18,10 @@
 			<artifactId>mailservice-json-model</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+		</dependency>
+
 	</dependencies>
 </project>

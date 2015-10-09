@@ -46,7 +46,7 @@ public class AttachmentBuilderCdi extends AbstractAttachmentBuilder<AttachmentBu
 						throw new IllegalStateException(
 								"datasource resolved to null for type: '" + attachment.getType() + "'");
 					}
-					datasource.init(attachment);
+					datasource.init(attachment, null);
 					final MimeBodyPart bodyPart = new MimeBodyPart();
 					bodyPart.setDataHandler(new DataHandler(datasource));
 					bodyPart.setFileName(datasource.getName());

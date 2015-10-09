@@ -11,6 +11,7 @@ import javax.enterprise.context.Dependent;
 import org.apache.commons.codec.binary.Base64;
 
 import at.herzog.cdi.api.annotation.AttachmentType;
+import at.herzog.mailservice.api.context.MailBuilderContext;
 import at.herzog.mailservice.api.datasource.AbstractAttachmentDataSource;
 import at.herzog.mailservice.json.model.Attachment;
 import at.herzog.mailservice.web.application.rest.datasource.util.SharedByteArrayInputStream;
@@ -32,8 +33,8 @@ public class Base64DataSource extends AbstractAttachmentDataSource {
 	}
 
 	@Override
-	public void init(Attachment attachment) {
-		super.init(attachment);
+	public void init(Attachment attachment, MailBuilderContext context) {
+		super.init(attachment, context);
 
 		this.data = Base64.decodeBase64(attachment.getContent());
 		this.contentType = FileTypeMap.getDefaultFileTypeMap().getContentType(attachment.getName());
