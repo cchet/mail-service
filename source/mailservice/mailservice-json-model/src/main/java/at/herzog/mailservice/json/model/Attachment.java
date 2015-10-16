@@ -18,9 +18,6 @@ public class Attachment extends AbstractJsonModel {
 
 	@JsonProperty("type")
 	@NotNull
-	@JsonTypeInfo(
-			include = As.WRAPPER_OBJECT,
-			use = Id.NAME)
 	private String type;
 
 	@JsonProperty("content")

@@ -103,7 +103,13 @@
 
 		<dependency>
 			<groupId>at.herzog.mailservice</groupId>
-			<artifactId>mailservice-mail-cdi-impl</artifactId>
+			<artifactId>mailservice-cdi-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>at.herzog.mailservice</groupId>
+			<artifactId>mailservice-mail-impl</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

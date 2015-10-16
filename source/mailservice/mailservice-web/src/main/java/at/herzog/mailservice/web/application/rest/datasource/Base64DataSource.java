@@ -10,7 +10,7 @@ import javax.enterprise.context.Dependent;
 
 import org.apache.commons.codec.binary.Base64;
 
-import at.herzog.cdi.api.annotation.AttachmentType;
+import at.herzog.mailservice.api.annotation.AttachmentType;
 import at.herzog.mailservice.api.context.MailBuilderContext;
 import at.herzog.mailservice.api.datasource.AbstractAttachmentDataSource;
 import at.herzog.mailservice.json.model.Attachment;

@@ -1,0 +1,20 @@
+## Apache James
+The following describes the setup and isntallation of the apache james mail server + 
+
+### Installation
+Unzip the archive in the installation directory. + 
+*Additionally* I had to add the jaxb-2.1-impl.jar since the jdk seems not to have it in its classpath. Otherwise server won't start. +
+
+#### Start/Stop
+1. Add *apache-james-{version}\bin to PATH so that james, james-cli is available from anywhere
+2. Modify the wrapper.conf as intended (added jaxb-2.1-impl.jar)
+3. Register service via *james install*
+4. Start server via *james start*
+5. Stop server via *james stop*
+6. Remove registered service via *james remove*
+
+
+## Apache JamesBond
+The following descsribes the installation and setup of the web configuration tool for the apache james mail server  + 
+Start the application with: + 
+*java -Djames.conf={location_to_apache_james_conf_files} -jar bond-{version}.jar*

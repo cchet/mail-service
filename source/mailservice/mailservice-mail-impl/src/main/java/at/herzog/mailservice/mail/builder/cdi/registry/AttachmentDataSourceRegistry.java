@@ -13,8 +13,8 @@ import javax.enterprise.event.Observes;
 import javax.enterprise.inject.Instance;
 import javax.inject.Inject;
 
-import at.herzog.cdi.api.annotation.AttachmentType;
 import at.herzog.cdi.api.event.ContainerStartupEvent;
+import at.herzog.mailservice.api.annotation.AttachmentType;
 import at.herzog.mailservice.api.datasource.AttachmentDataSource;
 
 @ApplicationScoped

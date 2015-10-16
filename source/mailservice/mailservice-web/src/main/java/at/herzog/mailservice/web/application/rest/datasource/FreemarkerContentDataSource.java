@@ -102,14 +102,14 @@ public class FreemarkerContentDataSource implements ContentDataSource {
 		return null;
 	}
 
-	public static void main(String args[]) {
-		final Map<String, String> map = new HashMap<String, String>();
-		map.put("header", "I am the header");
-		map.put("content", "I am the content");
-		map.put("footer", "I am the footer");
-		FreemarkerContentDataSource bean = new FreemarkerContentDataSource();
-		bean.init();
-		bean.init("mail.ftl", new MailBuilderContext(Locale.FRENCH, "test", null, new ContentDataSourceContext(map)));
-		System.out.println(bean.getContent());
-	}
+//	public static void main(String args[]) {
+//		final Map<String, String> map = new HashMap<String, String>();
+//		map.put("header", "I am the header");
+//		map.put("content", "I am the content");
+//		map.put("footer", "I am the footer");
+//		FreemarkerContentDataSource bean = new FreemarkerContentDataSource();
+//		bean.init();
+//		bean.init("mail.ftl", new MailBuilderContext(Locale.FRENCH, "test", null, new ContentDataSourceContext(map)));
+//		System.out.println(bean.getContent());
+//	}
 }

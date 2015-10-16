@@ -34,6 +34,7 @@
 		<module>mailservice-service-api</module>
 		<module>mailservice-service-impl</module>
 		<module>mailservice-mail-api</module>
+		<module>mailservice-mail-impl</module>
 		<module>mailservice-mail-cdi-impl</module>
 		<module>ailservice-cdi-api</module>
 	</modules>
@@ -61,6 +62,7 @@
 		<org.apache.commons.codec.version>1.10</org.apache.commons.codec.version>
 		<freemarker.version>2.3.23</freemarker.version>
 		<google.gson.version>2.4</google.gson.version>
+		<blaze.utils.version>0.1.12</blaze.utils.version>
 
 		<!-- other plugin versions -->
 		<version.compiler.plugin>3.1</version.compiler.plugin>
@@ -167,7 +169,7 @@
 				<artifactId>commons-codec</artifactId>
 				<version>${org.apache.commons.codec.version}</version>
 			</dependency>
-			
+
 			<dependency>
 				<groupId>org.freemarker</groupId>
 				<artifactId>freemarker</artifactId>
@@ -182,6 +184,19 @@
 				<scope>test</scope>
 			</dependency>
 
+			<dependency>
+				<groupId>com.blazebit</groupId>
+				<artifactId>blaze-utils</artifactId>
+				<version>${blaze.utils.version}</version>
+				<type>pom</type>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.blazebit</groupId>
+				<artifactId>blaze-common-utils</artifactId>
+				<version>${blaze.utils.version}</version>
+			</dependency>
+			
 		</dependencies>
 	</dependencyManagement>
 
