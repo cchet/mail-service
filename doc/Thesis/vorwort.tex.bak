@@ -1,3 +1,11 @@
 \chapter{Vorwort} 	% engl. Preface
+Folgende Arbeit beschäftigt sich mit der Re-Implementierung einer Mail Lösung, welche verwendet wird um Mails, die innerhalb einer Applikation generiert oder angefordert werden, zu verschicken. 
+Da neue Anforderungen definiert wurden, die sich mit der existierenden Lösung nicht mehr realisieren lassen wurde beschlossen dass diese Lösung reimplementiert werden soll. Hierbei wird diese Arbeit den Fokus auf die existierende wie auch mögliche Implementierung bzw. deren Design legen. 
+Die existierende Lösung weißt ein Alter von 10 Jahren auf, wurde mehrmals erweitert und ist auch dementsprechend designt. \\
 
-// TODO: Start writing 
+Diese Maillösung wird von der Firma curecomp GembH verwendet, die eine Cloud basierte SRM-Lösung betreibt (Supplier-RelationShip-Management), deren Prozesse den Versand von E-Mails erfordern wobei diese E-Mails einerseits in verschiedene Bereiche zu unterteilen sind wie z.B.: Systemmails, Lieferverzugsmeldungen, Gutschriften, Bestellbestätigungen usw. und anderseits auch von verschiedenen System der SRM-Lösung erzeugt werden. \\
+Bei diesen System handelt es sich einerseits um ein Datenimport/-export System (IIB - IBM-Message-Broker) und anderseits um eine Web Applikation (Websphere - JSF). Beide Systeme sollen in der Lage sein einfach E-Mail Nachrichten eines bestimmten Typs zu versenden, wobei eine Nachricht dynamisch mit Daten versorgt werden soll und auf Basis einer Vorlage die E-Mail erstellt werden soll. Die Anhänge sollen ebenfalls dynamisch von verschiedenen Ressourcen geladen werden können. Eine versendete E-Mail soll über einen bestimmten Zeitraum hinweg weidervesendbar sein und ebenso sollen Log Daten der Metadaten vorhanden sein, die es erlauben den Lebenszyklus einer E-Mail nachträglich nachzuvollziehen. Z.B.: Wann wurde eine E-Mail and wen wie oft von wem versendet. \\\\
+Beide Systeme sollen mit dem Mail Service System in derselben Art und Weise kommunizieren und interagieren, wobei aber die Systeme eine volle Integration der Client API zur Verfügung gestellt werden soll. Also sollen alle System spezifischen Ressourcen von der Client API nutzbar sein, wodurch ein gewisser Grad der Abstraktion der Implementierung zu gewährleisten ist.
+\newpage
+// TODO: Kurzbeschreibung der Systemarchitektur und Komponenten (halbe Seite)
+// TODO: Zeichnung der System für die Visualisierung mit existierenden Mailservice.

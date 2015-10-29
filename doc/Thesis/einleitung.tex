@@ -2,84 +2,50 @@
 \label{cha:Einleitung}
 
 \section{Zielsetzung}
-Dieses Dokument ist als vorwiegend technische Starthilfe für das
-Erstellen einer Masterarbeit (oder Bachelorarbeit) mit \latex
-gedacht und ist die Weiterentwicklung einer früheren
-Vorlage\footnote{Nicht mehr verfügbar.} für das Arbeiten mit
-Microsoft \emph{Word}. Während ursprünglich daran gedacht war, die
-bestehende Vorlage einfach in \latex zu übernehmen, wurde rasch
-klar, dass allein aufgrund der großen Unterschiede zum Arbeiten
-mit \emph{Word} ein gänzlich anderer Ansatz notwendig wurde. Dazu
-kamen zahlreiche Erfahrungen mit Diplomarbeiten in den
-nachfolgenden Jahren, die zu einigen zusätzlichen Hinweisen Anlass gaben.
+Diese Bachelorarbeit dient als Vorarbeit für die Re-Implementierung einer existierenden Maillösung  der Frima curecomp GembH, wobei in dieser Arbeit der Fokus auf die Re-Implementierung des Designs gelegt wird. Diese Arbeit wird aufzeigen wie das existierende System in seinen Bereichen wie Client API, Datenbank Integration und das Erstellen der E-Mails, in weitere Folge 'E-Mail Vorlagen' genannt, funktioniert und designt wurde. Dieses existierende Design wird analysiert und ein Verbesserungsvorschlag eingebracht wie ein mögliches neues Designs aussehen könnte. Die Konzepte der Implementierung wie die verwendeten Pattern, die Grundlage der Designentscheidung sowie deren Vorteile und Nachteile werden diskutiert. \\\\
+Da meiner Meinung nach die existierende Implementierung einige Mängel und Designfehlentscheidungen beinhaltet und dadurch weder flexibel noch erweiterbar ist, wurde der Fokus dieser Arbeit auf das Design dieser Maillösung und dessen Verbesserung gesetzt, wobei diese Arbeit wiederum als Grundlage für die praktische Bachelorarbeit dienen soll, die die Umsetzung der hier entwickelten und diskutierten Konzepte beinhalten soll. \\\\
+Als Unterstützung wurden folgende beiden literarischen Werke gewählt:
+\begin{enumerate}
+	\item Refactoring to patterns\footnote{Author: Joshua Kerhievsky, ISBN: 0-321-21335-1}
+	\item Refactoring Databases\footnote{Author: Scott W.Ambler/Pramod J.Sadalage, ISBN: 0-321-29353-3} 
+\end{enumerate}
+\section{Ist-System}
+Im folgenden wird das existierende Design der Implementierung in den drei Bereichen
+\begin{enumerate}
+	\item \emph{Client-API}\\
+	      Wie versenden bzw. generieren die Systeme die E-Mails
+	\item \emph{Datenbank Integration}\\
+	      Wie ist das Datenbankdesign und welche Daten werden gespeichert und warum
+	\item \emph{E-Mail Vorlagen}\\
+	      Wie werden die Inhalte der E-Mail generiert bzw. erstellt.
+\end{enumerate}
+Da der Mailversand in Java verhältnismäßig einfach ist wird auf diesen Teil nicht genauer eingegangen sehr wohl aber die Funktionalität im weiteren Verlauf dieser Arbeit diskutiert. \
+Die oben genannten drei Unterteilungen stellen die Hauptteile der Maillösung dar und werden auch in einem neuen Design so benötigt ohne Rücksichtnahme auf die konkrete Art der Implementierung.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.40]{Systemaufbau_alt.jpg} %{CS0031}
+\caption{Diese Abbildung zeigt den konzeptionellen Aufbau der existierenden Maillösung und den jetzigen Kommunikationsweg zwischen den Systemteilnehmern}
+\label{fig:systemaufbau-alt}
+\end{figure}
+\newpage
+In dieser Abbildung können wir sehen dass es nur einen Kommunikationsweg zwischen den Systemteilnehmer gibt und zwar die Kommunikation über die Datenbank. Dies bedeutet es werden sogenannte Mailjobs erstellt, die einen Eintrag in einer Tabelle der Datenbank darstellen, welche alle Daten für die E-Mail zur Verfügung stellen und von der Maillösung ausgelesen und verarbeitet werden.\\
+Hierbei enthält die Maillösung alle Vorlagen für alle implementierten E-Mails und SQL Abfragen, die die Daten aus der Datenbank auslesen und diese ausgelesenen Daten als Parameter and das Vorlagensystem weitergibt damit dieses die tatsächliche E-Mail Nachricht erstellen kann. Hierbei ist die Aktualität der Daten kritisch, da die E-Mail zeitversetzt zum erstellten Mailjob generiert wird und sich dadurch auch die Daten, die aus der Datenbank ausgelesen werden, sich zwischenzeitlich ändern könnten. Ebenso müssen die Daten separat und meistens erneut aus der Datenbank ausgelesen werden, obwohl in den meisten Fällen die Daten beim Erstellen des Mailjobs bereits vorhanden und vor allem zu diesem Zeitpunkt auch aktuell waren. Es gibt zwar Fälle in denen zeitgesteuert E-Mails generiert werden, wie z.B.: einmal täglich Lieferverzugsmeldungen, in denen der aktuelle Status der Datenbank eine Rolle spielt. Dieser Typ der E-Mails stellt jedoch im Verhältnis zu den \emph{'sofort versendeten'} E-Mails nur einen kleinen Prozentanteil dar und hier ist das Problem der Aktualität der verwendeten Daten nicht vorhanden. Bezüglich der Aktualität der Daten sei noch angemerkt dass das erneute Versenden einer E-Mail im bestehenden System nicht mit konsistent Daten möglich ist, da die Daten jedes mal erneut aus der Datenbank ausgelesen werden und der ursprüngliche Zustand der Daten nicht garantiert zur Verfügung steht, da diese sich zwischenzeitlich hätten ändern können, was auch nicht nachvollziehbar wäre.
+\subsection{Client-API}
+Da die Kommunikation ausschließlich über die Datenbank erfolgt ist eine echte Client API nicht vorhanden. Alle Systeme implementieren das Erstellen der Mailjob Einträge selbstständig und es wird keine gemeinsame Client API verwendet, was einen gewissen Grad der Inkonsistenz bei Änderungen der Datenstruktur sowie der Semantik der Daten mit sich bringt. Als Beispiel wird hier die Semantik der einzelnen Spalten angeführt, die zwar technisch sich innerhalb einer Datentyp Domain befinden, sich die semantische Bedeutung der enthaltenen Daten aber unterscheidet. Dies ist zwar Teil der Datenbank Integration aber die Tatsache dass diese Semantik rein innerhalb der Applikation abgebildet werden kann und nicht über die Datenbankfunktionalitäten wie z.B.: Fremdschlüssel wird dieser Teil hier diskutiert. Da die Maillösung über SQL Abfragen die Daten für die E-Mail Nachricht erhält müssen auch Parameter bereitgestellt werden, die in der SQL Abfrage gesetzt werden. Diese Parameter wurden \emph{'generisch'} über eine festgesetzte Anzahl von Tabellenspalten abgebildet, dessen enthaltene Daten je nach E-Mailtyp anders interpretiert werden. Es kann also sein das ein Eintrag einer Tabellen für die Spalte \emph{COL\_1} einen String enthält mit dem Wert \emph{'Thomas Herzog'} und ein anderer Eintrag einen string mit dem Wert \emph{'14'} der in der SQL Abfrage aber als Integer Datentyp behandelt wird. Die Systeme die Mailjobs erzeugen müssen sich also dem Kontext einer E-Mail bewusst sein, sowie müssen berücksichtigen, dass die richten Spalten der Tabelle \emph{MAIL\_JOB} mit den richtigen Daten befüllt werden, wobei auch beachtet werden muss in welchen Datentyp der Datensatz in weiterer Folge durch die Mailösung interpretiert wird.\\
+Dies ist in meinen Augen sehr inkonsistent und fehleranfällig und hat auch schon einige Probleme verursacht.\\\\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.70]{Emailvesand_Client_Api.jpg}
+\caption{Diese Abbildung zeigt das Problem der inkonsistenten Daten beim erneuten E-Mailversand einer bereits versendeten E-Mail, mit dem Beispiel einer angelegten und anschließend geänderten Bestellung, auf}
+\label{fig:systemaufbau-alt}
+\end{figure}
+\newpage
 
-Das vorliegende Dokument dient einem zweifachen Zweck: 
-\emph{erstens} als Erläuterung und Anleitung, \emph{zweitens} als
-direkter Ausgangspunkt für die eigene Arbeit. Angenommen wird,
-dass der Leser bereits über elementare Kenntnisse im Umgang mit
-\latex verfügt. In diesem Fall sollte -- eine einwandfreie
-Installation der Software vorausgesetzt -- der Arbeit nichts mehr
-im Wege stehen. Auch sonst ist der Start mit \latex\ nicht
-schwierig, da viele hilfreiche Informationen auf den zugehörigen
-Webseiten zu finden sind (s.\ Kap.~\ref{cha:ArbeitenMitLatex}).
 
 
-
-
-
-\section{Warum {\latex}?}
-
-Diplomarbeiten, Dissertationen und Bücher im
-technisch-natur\-wissen\-schaft\-lichen Bereich werden
-traditionell mithilfe des Textverarbeitungssystems \latex
-\cite{Lamport94,Lamport95} gesetzt. Das hat gute Gründe, denn
-\latex ist bzgl.\ der Qualität des Druckbilds, des Umgangs mit
-mathematischen Elementen, Literaturverzeichnissen etc.\
-unübertroffen und ist noch dazu frei verfügbar. Wer mit \latex
-bereits vertraut ist, sollte es auch für die Diplomarbeit
-unbedingt in Betracht ziehen, aber auch für den Anfänger sollte
-sich die zusätzliche Mühe am Ende durchaus lohnen.
-
-Für den professionellen elektronischen Buchsatz wurde früher
-häufig \emph{Adobe Framemaker} verwendet, allerdings ist diese
-Software teuer und komplex. Eine modernere Alternative dazu ist
-\emph{Adobe InDesign}, wobei allerdings die Erstellung
-mathematischer Elemente und die Verwaltung von Literaturverweisen
-zur Zeit nur rudimentär unterstützt werden.%
-\footnote{Angeblich werden aber für den (sehr sauberen) Schriftsatz 
-in \emph{InDesign} ähnliche Algorithmen wie in \latex\ verwendet.}
-
-Microsoft \emph{Word} gilt im Unterschied zu \latex, 
-\emph{Framemaker} und \emph{InDesign} übrigens nicht als professionelle
-Textverarbeitungssoftware, obwohl es immer häufiger auch von
-großen Verlagen verwendet wird.%
-\footnote{Siehe auch \url{http://latex.tugraz.at/mythen.php}.}
-Das Schriftbild in \emph{Word}
-lässt -- zumindest für das geschulte Auge -- einiges zu wünschen
-übrig und das Erstellen von Büchern und ähnlich großen Dokumenten
-wird nur unzureichend unterstützt. Allerdings ist \emph{Word} sehr
-verbreitet, flexibel und vielen Benutzern zumindest oberflächlich
-vertraut, sodass das Erlernen eines speziellen Werkzeugs wie
-\latex\ ausschließlich für das Erstellen einer Diplomarbeit
-manchen verständlicherweise zu mühevoll ist. Man sollte es daher
-niemandem übel nehmen, wenn er/sie sich auch bei der Diplomarbeit
-auf \emph{Word} verlässt. Im Endeffekt lässt sich mit etwas
-Sorgfalt (und ein paar Tricks) auch damit ein durchaus akzeptables
-Ergebnis erzielen. 
-Für alle, die so denken, finden sich in
-%Kap.~\ref{chap:Word} einige spezielle Hinweise zum Arbeiten mit
-%\emph{Word}. 
-Ansonsten sollten auch für \emph{Word}-Benutzer 
-einige Teile dieses Dokuments von Interesse sein, insbesondere die
-Abschnitte über Abbildungen und Tabellen
-(Kap.~\ref{chap:Abbildungen}) und mathematische Elemente
-(Kap.~\ref{chap:Mathematik}).
-
-Übrigens, genau hier am Ende des Einleitungskapitels (und nicht
-etwa in der Kurzfassung) ist der richtige Platz, um die
-inhaltliche Gliederung der nachfolgenden Arbeit zu beschreiben.
-Hier soll dargestellt werden, welche Teile (Kapitel) der Arbeit
-welche Funktion haben und wie sie inhaltlich zusammenhängen. Auch
-die Inhalte des \emph{Anhangs} -- sofern vorgesehen -- sollten hier
-kurz beschrieben werden.
-
+\subsection{Datenbank Integration}
+\subsection{E-Mail Vorlagen}
+\section{Soll-System}
+\subsection{Client-API}
+\subsection{Datenbank Integration}
+\subsection{E-Mail Vorlagen}
