@@ -36,7 +36,8 @@
 		<module>mailservice-mail-api</module>
 		<module>mailservice-mail-impl</module>
 		<module>mailservice-mail-cdi-impl</module>
-		<module>ailservice-cdi-api</module>
+		<module>mailservice-cdi-api</module>
+		<module>mailsservice-doc</module>
 	</modules>
 
 	<properties>
