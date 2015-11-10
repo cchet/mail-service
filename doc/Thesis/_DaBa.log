@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.14)  9 NOV 2015 21:53
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.14)  10 NOV 2015 21:07
 entering extended mode
 **_DaBa.tex
 
@@ -1258,13 +1258,16 @@ is\kurzfassung.aux")
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\abstract.aux")
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
-is\einleitung.aux"
+is\einleitung.aux")
+("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
+is\diplomschrift.aux"
+
+LaTeX Warning: Label `fig:systemaufbau-alt' multiply defined.
+
 
 LaTeX Warning: Label `fig:systemaufbau-alt' multiply defined.
 
 )
-("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
-is\diplomschrift.aux")
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\latex.aux")
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
@@ -1391,7 +1394,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 46.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<images/FHOOeIntl2014.pdf, id=464, 269.93045pt x 269.93045pt>
+<images/FHOOeIntl2014.pdf, id=472, 269.93045pt x 269.93045pt>
 File: images/FHOOeIntl2014.pdf Graphic file (type pdf)
 
 <use images/FHOOeIntl2014.pdf>
@@ -1415,7 +1418,8 @@ File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 is\_DaBa.toc" [4
 
 ]
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 97.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 101.
+
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -1473,44 +1477,82 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--9
 
 
 
-] <images/Systemaufbau_alt.jpg, id=656, 530.73282pt x 526.21594pt>
-File: images/Systemaufbau_alt.jpg Graphic file (type jpg)
-
-<use images/Systemaufbau_alt.jpg>
-Package pdftex.def Info: images/Systemaufbau_alt.jpg used on input line 26.
-(pdftex.def)             Requested size: 212.28937pt x 210.48265pt.
- [2 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/T
-hesis/images/Systemaufbau_alt.jpg>]
-<images/Emailvesand_Client_Api.jpg, id=666, 466.74374pt x 373.395pt>
-File: images/Emailvesand_Client_Api.jpg Graphic file (type jpg)
-
-<use images/Emailvesand_Client_Api.jpg>
-Package pdftex.def Info: images/Emailvesand_Client_Api.jpg used on input line 3
-8.
-(pdftex.def)             Requested size: 326.71838pt x 261.37471pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 34--42
+]
+Underfull \hbox (badness 10000) in paragraph at lines 15--19
 
  []
 
-[3] [4 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/do
-c/Thesis/images/Emailvesand_Client_Api.jpg>]) [5]
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 19.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [2]
+<images/Systemaufbau_alt.jpg, id=672, 530.73282pt x 526.21594pt>
+File: images/Systemaufbau_alt.jpg Graphic file (type jpg)
+
+<use images/Systemaufbau_alt.jpg>
+Package pdftex.def Info: images/Systemaufbau_alt.jpg used on input line 33.
+(pdftex.def)             Requested size: 318.44214pt x 315.732pt.
+) [3 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/
+Thesis/images/Systemaufbau_alt.jpg>]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\diplomschrift.tex"
 Kapitel 2.
-[6
+[4
 
 
 
-]
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 95.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)) [7]
+] <images/class_diagram_basic_email.png, id=682, 855.195pt x 992.70876pt>
+File: images/class_diagram_basic_email.png Graphic file (type png)
+
+<use images/class_diagram_basic_email.png>
+Package pdftex.def Info: images/class_diagram_basic_email.png used on input lin
+e 11.
+(pdftex.def)             Requested size: 384.8342pt x 446.71481pt.
+
+Overfull \hbox (24.8342pt too wide) in paragraph at lines 11--12
+ [][] 
+ []
+
+[5 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/Th
+esis/images/class_diagram_basic_email.png (PNG copy)>] [6]
+
+LaTeX Warning: Reference `console-app-class-hierarchie' on page 7 undefined on 
+input line 21.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--25
+
+ []
+
+[7]
+File: images/Systemaufbau_alt.jpg Graphic file (type jpg)
+ <use images/Systemaufbau_alt.jpg>
+Package pdftex.def Info: images/Systemaufbau_alt.jpg used on input line 42.
+(pdftex.def)             Requested size: 212.28937pt x 210.48265pt.
+ [8]
+<images/Emailvesand_Client_Api.jpg, id=705, 466.74374pt x 373.395pt>
+File: images/Emailvesand_Client_Api.jpg Graphic file (type jpg)
+
+<use images/Emailvesand_Client_Api.jpg>
+Package pdftex.def Info: images/Emailvesand_Client_Api.jpg used on input line 5
+4.
+(pdftex.def)             Requested size: 326.71838pt x 261.37471pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--58
+
+ []
+
+[9] [10 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/d
+oc/Thesis/images/Emailvesand_Client_Api.jpg>]) [11]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\latex.tex"
 Kapitel 3.
-[8
+[12
 
 
 
@@ -1520,12 +1562,12 @@ Overfull \hbox (1.06723pt too wide) in paragraph at lines 70--74
 Mik-TeX 2.9 \T1/lmr/m/n/10.95 oder hö-her. Mik-TeX[][][] ent-hält auch
  []
 
-[9]
+[13]
 
-LaTeX Warning: Citation 'Schmidt01' on page 10 undefined on input line 131.
+LaTeX Warning: Citation 'Schmidt01' on page 14 undefined on input line 131.
 
 
-LaTeX Warning: Citation 'Oetiker01' on page 10 undefined on input line 133.
+LaTeX Warning: Citation 'Oetiker01' on page 14 undefined on input line 133.
 
 
 Overfull \hbox (10.49136pt too wide) in paragraph at lines 132--134
@@ -1534,34 +1576,34 @@ von Oe-ti-ker et al. [[]]
  []
 
 
-LaTeX Warning: Citation 'Kopka98' on page 10 undefined on input line 140.
+LaTeX Warning: Citation 'Kopka98' on page 14 undefined on input line 140.
 
 
-LaTeX Warning: Citation 'Pakin01' on page 10 undefined on input line 156.
+LaTeX Warning: Citation 'Pakin01' on page 14 undefined on input line 156.
 
 
-LaTeX Warning: Citation 'Braams2008' on page 10 undefined on input line 160.
+LaTeX Warning: Citation 'Braams2008' on page 14 undefined on input line 160.
 
 
-LaTeX Warning: Citation 'Carlisle99' on page 10 undefined on input line 162.
+LaTeX Warning: Citation 'Carlisle99' on page 14 undefined on input line 162.
 
 
-LaTeX Warning: Citation 'Oostrum97' on page 10 undefined on input line 163.
+LaTeX Warning: Citation 'Oostrum97' on page 14 undefined on input line 163.
 
 
-LaTeX Warning: Citation 'Sommerfeldt07' on page 10 undefined on input line 164.
+LaTeX Warning: Citation 'Sommerfeldt07' on page 14 undefined on input line 164.
 
 
 
-LaTeX Warning: Citation 'Cochran05' on page 10 undefined on input line 165.
+LaTeX Warning: Citation 'Cochran05' on page 14 undefined on input line 165.
 
-[10] [11]
+[14] [15]
 Overfull \hbox (4.20335pt too wide) in paragraph at lines 301--315
 []\T1/lmr/m/n/10.95 Üblicherweise wird durch La-TeX zwi-schen auf-ein-an-der-fo
 l-gen-den Ab-sätzen
  []
 
-[12] [13]
+[16] [17]
 Overfull \hbox (4.57509pt too wide) in paragraph at lines 434--446
 \T1/lmr/m/n/10.95 In-halts-ver-zeich-nis und im Sei-ten-kopf. Der zwei-te (iden
 -ti-sche) Ti-tel \T1/lmtt/m/n/10.95 {Hinweise
@@ -1573,29 +1615,29 @@ Overfull \hbox (3.6309pt too wide) in paragraph at lines 434--446
 ei-te und ent-hält auch den []\T1/lmtt/m/n/10.95 \footnote{}
  []
 
-[14]
+[18]
 Overfull \hbox (15.56985pt too wide) in paragraph at lines 475--482
 [][] 
  []
 
-[15] [16]
+[19] [20]
 LaTeX Font Info:    Try loading font information for TS1+lmtt on input line 642
 .
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmtt.fd"
 File: ts1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-[17] [18] [19] [20] [21]
+[21] [22] [23] [24] [25]
 Overfull \hbox (5.06282pt too wide) in paragraph at lines 954--956
 []\T1/lmtt/m/n/10.95 \languagename \T1/lmr/m/n/10.95 an-zei-gen. An die-ser Ste
 l-le er-gibt das bei-spiels-wei-se \T1/lmtt/m/n/10.95 ngerman\T1/lmr/m/n/10.95
  
  []
 
-[22]) [23]
+[26]) [27]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\abbildungen.tex"
 Kapitel 4.
-<images/cola-public-domain-photo-p.jpg, id=887, 687.56876pt x 470.75874pt>
+<images/cola-public-domain-photo-p.jpg, id=906, 687.56876pt x 470.75874pt>
 File: images/cola-public-domain-photo-p.jpg Graphic file (type jpg)
 
 <use images/cola-public-domain-photo-p.jpg>
@@ -1604,19 +1646,19 @@ ne 14.
 (pdftex.def)             Requested size: 341.9989pt x 234.15765pt.
 
 
-LaTeX Warning: Citation 'CocaCola1940' on page 24 undefined on input line 15.
+LaTeX Warning: Citation 'CocaCola1940' on page 28 undefined on input line 15.
 
 
-LaTeX Warning: Citation 'CocaCola1940' on page 24 undefined on input line 15.
+LaTeX Warning: Citation 'CocaCola1940' on page 28 undefined on input line 15.
 
-[24
+[28
 
 
 
  <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/Thes
 is/images/cola-public-domain-photo-p.jpg>]
 
-LaTeX Warning: Citation 'Oetiker01' on page 25 undefined on input line 45.
+LaTeX Warning: Citation 'Oetiker01' on page 29 undefined on input line 45.
 
 (C:\Users\Thomas\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2014/09/06 1.5e listings language file
@@ -1652,8 +1694,8 @@ Package csquotes Info: Input encoding change on input line 68.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [25]
-<images/ibm-360-color.jpg, id=912, 803.0pt x 579.16376pt>
+) [29]
+<images/ibm-360-color.jpg, id=931, 803.0pt x 579.16376pt>
 File: images/ibm-360-color.jpg Graphic file (type jpg)
 
 <use images/ibm-360-color.jpg>
@@ -1661,13 +1703,13 @@ Package pdftex.def Info: images/ibm-360-color.jpg used on input line 98.
 (pdftex.def)             Requested size: 306.0022pt x 220.71196pt.
 
 
-LaTeX Warning: Citation 'IBM360' on page 26 undefined on input line 108.
+LaTeX Warning: Citation 'IBM360' on page 30 undefined on input line 108.
 
 
-LaTeX Warning: Citation 'IBM360' on page 26 undefined on input line 108.
+LaTeX Warning: Citation 'IBM360' on page 30 undefined on input line 108.
 
 
-LaTeX Warning: Citation 'Carlisle99' on page 26 undefined on input line 119.
+LaTeX Warning: Citation 'Carlisle99' on page 30 undefined on input line 119.
 
 
 Overfull \hbox (14.49811pt too wide) in paragraph at lines 118--126
@@ -1675,54 +1717,54 @@ Overfull \hbox (14.49811pt too wide) in paragraph at lines 118--126
 ten Work-flow (\T1/lmtt/m/n/10.95 pdflatex\T1/lmr/m/n/10.95 )
  []
 
-[26 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/T
+[30 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/T
 hesis/images/ibm-360-color.jpg>]
 Overfull \hbox (10.93047pt too wide) in paragraph at lines 171--172
 [][]\T1/lmtt/m/n/10.95 \FramePic{\includegraphics[height=50mm]{ibm-360-color}} 
 
  []
 
-[27] <images/screenshot-dirty.png, id=927, 140.525pt x 140.525pt>
+[31] <images/screenshot-dirty.png, id=945, 140.525pt x 140.525pt>
 File: images/screenshot-dirty.png Graphic file (type png)
 
 <use images/screenshot-dirty.png>
 Package pdftex.def Info: images/screenshot-dirty.png used on input line 218.
 (pdftex.def)             Requested size: 161.9989pt x 162.00774pt.
 
-<images/screenshot-clean.png, id=928, 140.525pt x 140.525pt>
+<images/screenshot-clean.png, id=946, 140.525pt x 140.525pt>
 File: images/screenshot-clean.png Graphic file (type png)
 
 <use images/screenshot-clean.png>
 Package pdftex.def Info: images/screenshot-clean.png used on input line 219.
 (pdftex.def)             Requested size: 161.9989pt x 162.00774pt.
- [28] [29 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service
+ [32] [33 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service
 /doc/Thesis/images/screenshot-dirty.png> <C:/Users/Thomas/Git Repositories/Gith
 ub/Bachelor-Degree/mail-service/doc/Thesis/images/screenshot-clean.png>]
 
-LaTeX Warning: Citation 'Cochran05' on page 30 undefined on input line 545.
+LaTeX Warning: Citation 'Cochran05' on page 34 undefined on input line 545.
 
-[30] <images/overhang-mounting.png, id=963, 177.0615pt x 146.7081pt>
+[34] <images/overhang-mounting.png, id=982, 177.0615pt x 146.7081pt>
 File: images/overhang-mounting.png Graphic file (type png)
 
 <use images/overhang-mounting.png>
 Package pdftex.def Info: images/overhang-mounting.png used on input line 565.
 (pdftex.def)             Requested size: 161.9989pt x 134.23659pt.
 
-<images/straddle-mounting.png, id=964, 177.0615pt x 146.7081pt>
+<images/straddle-mounting.png, id=983, 177.0615pt x 146.7081pt>
 File: images/straddle-mounting.png Graphic file (type png)
 
 <use images/straddle-mounting.png>
 Package pdftex.def Info: images/straddle-mounting.png used on input line 566.
 (pdftex.def)             Requested size: 161.9989pt x 134.23659pt.
 
-<images/ball-bearing-1.png, id=965, 165.4983pt x 189.3474pt>
+<images/ball-bearing-1.png, id=984, 165.4983pt x 189.3474pt>
 File: images/ball-bearing-1.png Graphic file (type png)
 
 <use images/ball-bearing-1.png>
 Package pdftex.def Info: images/ball-bearing-1.png used on input line 569.
 (pdftex.def)             Requested size: 161.9989pt x 185.35692pt.
 
-<images/ball-bearing-2.png, id=966, 166.9437pt x 189.3474pt>
+<images/ball-bearing-2.png, id=985, 166.9437pt x 189.3474pt>
 File: images/ball-bearing-2.png Graphic file (type png)
 
 <use images/ball-bearing-2.png>
@@ -1730,12 +1772,12 @@ Package pdftex.def Info: images/ball-bearing-2.png used on input line 570.
 (pdftex.def)             Requested size: 161.9989pt x 183.74475pt.
 
 
-LaTeX Warning: Citation 'Faires34' on page 31 undefined on input line 582.
+LaTeX Warning: Citation 'Faires34' on page 35 undefined on input line 582.
 
 
-LaTeX Warning: Citation 'Faires34' on page 31 undefined on input line 582.
+LaTeX Warning: Citation 'Faires34' on page 35 undefined on input line 582.
 
-[31 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/T
+[35 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/T
 hesis/images/overhang-mounting.png> <C:/Users/Thomas/Git Repositories/Github/Ba
 chelor-Degree/mail-service/doc/Thesis/images/straddle-mounting.png> <C:/Users/T
 homas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/Thesis/images/ba
@@ -1792,30 +1834,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 697--698
 []\T1/lmr/m/n/10 SGI high end,
  []
 
-[32] [33]
+[36] [37]
 (C:\Users\Thomas\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
-[34]
+[38]
 Package csquotes Info: Input encoding change on input line 837.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [35]
+) [39]
 Package csquotes Info: Input encoding change on input line 903.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)) [36] [37]
+)) [40] [41]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\mathematik.tex"
 Kapitel 5.
 
-LaTeX Warning: Citation 'Kopka98' on page 38 undefined on input line 12.
+LaTeX Warning: Citation 'Kopka98' on page 42 undefined on input line 12.
 
 
-LaTeX Warning: Citation 'mathmode09' on page 38 undefined on input line 12.
+LaTeX Warning: Citation 'mathmode09' on page 42 undefined on input line 12.
 
-[38
+[42
 
 
 
@@ -1825,15 +1867,15 @@ Package csquotes Info: Input encoding change on input line 44.
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'Mermin89' on page 39 undefined on input line 72.
+LaTeX Warning: Citation 'Mermin89' on page 43 undefined on input line 72.
 
 
-LaTeX Warning: Citation 'Higham98' on page 39 undefined on input line 72.
+LaTeX Warning: Citation 'Higham98' on page 43 undefined on input line 72.
 
 
-LaTeX Warning: Citation 'amsldoc02' on page 39 undefined on input line 80.
+LaTeX Warning: Citation 'amsldoc02' on page 43 undefined on input line 80.
 
-[39]
+[43]
 Package csquotes Info: Input encoding change on input line 90.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
@@ -1847,11 +1889,11 @@ Package csquotes Info: Input encoding change on input line 140.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [40]
+) [44]
 
-LaTeX Warning: Citation 'amsldoc02' on page 41 undefined on input line 161.
+LaTeX Warning: Citation 'amsldoc02' on page 45 undefined on input line 161.
 
-[41] [42]
+[45] [46]
 Overfull \hbox (2.70183pt too wide) in paragraph at lines 335--342
 \T1/lmr/m/n/10.95 Für die Be-schrei-bung von Al-go-rith-men in ma-the-ma-ti-sch
 er Form oder Pseudo-
@@ -1863,18 +1905,18 @@ Overfull \hbox (7.30127pt too wide) in paragraph at lines 335--342
 ithmicx\T1/lmr/m/n/10.95 -Paket aus-ge-führt (Quell-co-de in Prog. []5.1[]). 
  []
 
-[43]
+[47]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
 put line 346.
 
 
-LaTeX Warning: Citation 'BurgerBurge06' on page 44 undefined on input line 376.
+LaTeX Warning: Citation 'BurgerBurge06' on page 48 undefined on input line 376.
 
 
 Package csquotes Info: Input encoding change on input line 379.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-)) [44] [45]
+)) [48] [49]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\literatur.tex"
 Kapitel 6.
@@ -1883,12 +1925,12 @@ Package csquotes Info: Input encoding change on input line 11.
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'Patashnik88' on page 46 undefined on input line 24.
+LaTeX Warning: Citation 'Patashnik88' on page 50 undefined on input line 24.
 
 
-LaTeX Warning: Citation 'Lehman2011' on page 46 undefined on input line 28.
+LaTeX Warning: Citation 'Lehman2011' on page 50 undefined on input line 28.
 
-[46
+[50
 
 
 
@@ -1899,22 +1941,22 @@ te Auf-lis-tung von Quellen-\T1/lmr/m/it/10.95 Schlüsseln
  []
 
 
-LaTeX Warning: Citation 'Kopka98' on page 47 undefined on input line 61.
+LaTeX Warning: Citation 'Kopka98' on page 51 undefined on input line 61.
 
 
-LaTeX Warning: Citation 'Kopka98' on page 47 undefined on input line 63.
+LaTeX Warning: Citation 'Kopka98' on page 51 undefined on input line 63.
 
 
-LaTeX Warning: Citation 'Ears99' on page 47 undefined on input line 65.
+LaTeX Warning: Citation 'Ears99' on page 51 undefined on input line 65.
 
 
-LaTeX Warning: Citation 'Ears99' on page 47 undefined on input line 67.
+LaTeX Warning: Citation 'Ears99' on page 51 undefined on input line 67.
 
 
-LaTeX Warning: Citation 'Patashnik88' on page 47 undefined on input line 67.
+LaTeX Warning: Citation 'Patashnik88' on page 51 undefined on input line 67.
 
 
-LaTeX Warning: Citation 'Duden97' on page 47 undefined on input line 67.
+LaTeX Warning: Citation 'Duden97' on page 51 undefined on input line 67.
 
 
 Overfull \hbox (2.62738pt too wide) in paragraph at lines 76--79
@@ -1923,10 +1965,10 @@ Overfull \hbox (2.62738pt too wide) in paragraph at lines 76--79
  []
 
 
-LaTeX Warning: Citation 'Oetiker01' on page 47 undefined on input line 81.
+LaTeX Warning: Citation 'Oetiker01' on page 51 undefined on input line 81.
 
 
-LaTeX Warning: Citation 'Oetiker01' on page 47 undefined on input line 82.
+LaTeX Warning: Citation 'Oetiker01' on page 51 undefined on input line 82.
 
 
 Overfull \hbox (21.13739pt too wide) in paragraph at lines 80--84
@@ -1934,20 +1976,20 @@ Overfull \hbox (21.13739pt too wide) in paragraph at lines 80--84
  []
 
 
-LaTeX Warning: Citation 'Oetiker01' on page 47 undefined on input line 90.
+LaTeX Warning: Citation 'Oetiker01' on page 51 undefined on input line 90.
 
-[47]
+[51]
 
-LaTeX Warning: Citation 'Kopka98' on page 48 undefined on input line 123.
-
-
-LaTeX Warning: Citation 'Kopka98' on page 48 undefined on input line 126.
+LaTeX Warning: Citation 'Kopka98' on page 52 undefined on input line 123.
 
 
-LaTeX Warning: Citation 'Taylor96' on page 48 undefined on input line 137.
+LaTeX Warning: Citation 'Kopka98' on page 52 undefined on input line 126.
 
 
-LaTeX Warning: Citation 'Patashnik88' on page 48 undefined on input line 137.
+LaTeX Warning: Citation 'Taylor96' on page 52 undefined on input line 137.
+
+
+LaTeX Warning: Citation 'Patashnik88' on page 52 undefined on input line 137.
 
 
 Overfull \hbox (2.74828pt too wide) in paragraph at lines 140--149
@@ -1955,14 +1997,14 @@ Overfull \hbox (2.74828pt too wide) in paragraph at lines 140--149
 TeX-Verzeichnissen,
  []
 
-[48]
+[52]
 Package csquotes Info: Input encoding change on input line 161.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/lmtt/b/n' tried instead on input line 186.
- [49]
+ [53]
 Overfull \hbox (3.0096pt too wide) in paragraph at lines 227--254
  [][] 
  []
@@ -1970,34 +2012,34 @@ Overfull \hbox (3.0096pt too wide) in paragraph at lines 227--254
 Package csquotes Info: Input encoding change on input line 298.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [50]
+) [54]
 
-LaTeX Warning: Citation 'BurgerBurge06' on page 51 undefined on input line 310.
+LaTeX Warning: Citation 'BurgerBurge06' on page 55 undefined on input line 310.
 
 
 Package csquotes Info: Input encoding change on input line 333.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [51]
+) [55]
 
-LaTeX Warning: Citation 'Ears99' on page 52 undefined on input line 347.
+LaTeX Warning: Citation 'Ears99' on page 56 undefined on input line 347.
 
 Package csquotes Info: Input encoding change on input line 366.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'Burger87' on page 52 undefined on input line 381.
+LaTeX Warning: Citation 'Burger87' on page 56 undefined on input line 381.
 
 Package csquotes Info: Input encoding change on input line 401.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [52]
+) [56]
 
-LaTeX Warning: Citation 'Mermin89' on page 53 undefined on input line 413.
+LaTeX Warning: Citation 'Mermin89' on page 57 undefined on input line 413.
 
 
-LaTeX Warning: Citation 'Guttman01' on page 53 undefined on input line 422.
+LaTeX Warning: Citation 'Guttman01' on page 57 undefined on input line 422.
 
 
 Overfull \hbox (8.67976pt too wide) in paragraph at lines 429--432
@@ -2011,7 +2053,7 @@ Package csquotes Info: Input encoding change on input line 437.
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'Eberl87' on page 53 undefined on input line 449.
+LaTeX Warning: Citation 'Eberl87' on page 57 undefined on input line 449.
 
 
 Overfull \hbox (6.11859pt too wide) in paragraph at lines 450--453
@@ -2022,16 +2064,16 @@ Overfull \hbox (6.11859pt too wide) in paragraph at lines 450--453
 Package csquotes Info: Input encoding change on input line 469.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [53]
+) [57]
 
-LaTeX Warning: Citation 'Artner07' on page 54 undefined on input line 482.
+LaTeX Warning: Citation 'Artner07' on page 58 undefined on input line 482.
 
 Package csquotes Info: Input encoding change on input line 500.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'Bacher04' on page 54 undefined on input line 513.
+LaTeX Warning: Citation 'Bacher04' on page 58 undefined on input line 513.
 
 
 Overfull \hbox (2.08316pt too wide) in paragraph at lines 514--518
@@ -2039,23 +2081,23 @@ Overfull \hbox (2.08316pt too wide) in paragraph at lines 514--518
 d-schir-men und groÿ-
  []
 
-[54]
+[58]
 Package csquotes Info: Input encoding change on input line 534.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'Drake48' on page 55 undefined on input line 547.
+LaTeX Warning: Citation 'Drake48' on page 59 undefined on input line 547.
 
 Package csquotes Info: Input encoding change on input line 564.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'amsldoc02' on page 55 undefined on input line 574.
+LaTeX Warning: Citation 'amsldoc02' on page 59 undefined on input line 574.
 
 
-LaTeX Warning: Citation 'Lehman2011' on page 55 undefined on input line 591.
+LaTeX Warning: Citation 'Lehman2011' on page 59 undefined on input line 591.
 
 
 Overfull \hbox (17.55122pt too wide) in paragraph at lines 589--594
@@ -2063,12 +2105,12 @@ Overfull \hbox (17.55122pt too wide) in paragraph at lines 589--594
 0.95 biblatex\T1/lmr/m/n/10.95 -Handbuch [[]]
  []
 
-[55]
+[59]
 
-LaTeX Warning: Citation 'FhStG93' on page 56 undefined on input line 598.
+LaTeX Warning: Citation 'FhStG93' on page 60 undefined on input line 598.
 
 
-LaTeX Warning: Citation 'EuRichtlinie2000' on page 56 undefined on input line 5
+LaTeX Warning: Citation 'EuRichtlinie2000' on page 60 undefined on input line 5
 98.
 
 Package csquotes Info: Input encoding change on input line 602.
@@ -2076,7 +2118,7 @@ Package csquotes Info: Input encoding change on input line 602.
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'OoeRaumordnungsgesetz94' on page 56 undefined on input
+LaTeX Warning: Citation 'OoeRaumordnungsgesetz94' on page 60 undefined on input
  line 610.
 
 
@@ -2089,30 +2131,30 @@ s/m/n/10.95 http : / / www . ris . bka . gv . at / Dokumente / LrOO / LOO400075
 Package csquotes Info: Input encoding change on input line 641.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
-) [56]
+) [60]
 
-LaTeX Warning: Citation 'Zappa95' on page 57 undefined on input line 653.
+LaTeX Warning: Citation 'Zappa95' on page 61 undefined on input line 653.
 
 Package csquotes Info: Input encoding change on input line 668.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'Futurama99' on page 57 undefined on input line 679.
+LaTeX Warning: Citation 'Futurama99' on page 61 undefined on input line 679.
 
 
-LaTeX Warning: Citation 'Psycho' on page 57 undefined on input line 695.
+LaTeX Warning: Citation 'Psycho' on page 61 undefined on input line 695.
 
 Package csquotes Info: Input encoding change on input line 702.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'Nosferatu' on page 57 undefined on input line 711.
+LaTeX Warning: Citation 'Nosferatu' on page 61 undefined on input line 711.
 
-[57]
+[61]
 
-LaTeX Warning: Citation 'LegendOfZelda98' on page 58 undefined on input line 72
+LaTeX Warning: Citation 'LegendOfZelda98' on page 62 undefined on input line 72
 7.
 
 
@@ -2126,22 +2168,22 @@ Package csquotes Info: Input encoding change on input line 731.
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'Psycho' on page 58 undefined on input line 750.
+LaTeX Warning: Citation 'Psycho' on page 62 undefined on input line 750.
 
 
-LaTeX Warning: Citation 'Psycho' on page 58 undefined on input line 754.
+LaTeX Warning: Citation 'Psycho' on page 62 undefined on input line 754.
 
 
-LaTeX Warning: Citation 'WikiReliquienschrein' on page 58 undefined on input li
+LaTeX Warning: Citation 'WikiReliquienschrein' on page 62 undefined on input li
 ne 792.
 
-[58]
+[62]
 Package csquotes Info: Input encoding change on input line 796.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'WikiReliquienschrein' on page 59 undefined on input li
+LaTeX Warning: Citation 'WikiReliquienschrein' on page 63 undefined on input li
 ne 802.
 
 Package csquotes Info: Input encoding change on input line 817.
@@ -2149,7 +2191,7 @@ Package csquotes Info: Input encoding change on input line 817.
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'HistoryOfComputers2008' on page 59 undefined on input 
+LaTeX Warning: Citation 'HistoryOfComputers2008' on page 63 undefined on input 
 line 825.
 
 Package csquotes Info: Input encoding change on input line 845.
@@ -2157,11 +2199,11 @@ Package csquotes Info: Input encoding change on input line 845.
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Citation 'IBM360' on page 59 undefined on input line 850.
+LaTeX Warning: Citation 'IBM360' on page 63 undefined on input line 850.
 
-[59]
+[63]
 
-LaTeX Warning: Citation 'Lehman2011' on page 60 undefined on input line 883.
+LaTeX Warning: Citation 'Lehman2011' on page 64 undefined on input line 883.
 
 
 Overfull \hbox (44.0947pt too wide) in paragraph at lines 881--887
@@ -2183,55 +2225,55 @@ Overfull \hbox (0.63213pt too wide) in paragraph at lines 907--922
 .95 ...}[][][] \T1/lmr/m/n/10.95 ach-ten, so-wie
  []
 
-[60]
+[64]
 Overfull \hbox (0.8308pt too wide) in paragraph at lines 951--953
 []\T1/lmr/m/n/10.95 6.3.2[]) oh-ne Ein-trag ist, wird ei-ne War-nung \T1/lmtt/
 m/n/10.95 Empty bibliography on input
  []
 
-[61]
+[65]
 Overfull \hbox (1.38pt too wide) in paragraph at lines 979--980
 \T1/lmr/m/n/10.95 sa-gen müs-sen mit ent-spre-chen-den Quel-len-an-ga-ben ge-ke
 nn-zeich-net sein! 
  []
 
-) [62]
+) [66]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\drucken.tex"
 Kapitel 7.
-[63
+[67
 
 
 
-] [64]) [65]
+] [68]) [69]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\schluss.tex"
 Kapitel 8.
-) [66
+) [70
 
 
 
-] [67]
+] [71]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\anhang_a.tex"
 Anhang A.
-[68
+[72
 
 
 
-]) [69]
+]) [73]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\anhang_b.tex"
 Anhang B.
-[70
+[74
 
 
 
-]) [71]
+]) [75]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\anhang_c.tex"
 Anhang C.
-[72
+[76
 
 
 
@@ -2241,7 +2283,7 @@ Underfull \hbox (badness 3375) in paragraph at lines 101--105
 /m/n/10.95 ; bei al-len Listing-
  []
 
-[73]
+[77]
 Underfull \hbox (badness 1184) in paragraph at lines 119--126
 []\T1/lmtt/m/n/10.95 hgb.sty\T1/lmr/m/n/10.95 : Op-ti-on \T1/lmtt/m/n/10.95 sp
 aces\T1/lmr/m/n/10.95  zu \T1/lmtt/m/n/10.95 url\T1/lmr/m/n/10.95 -Package er-
@@ -2265,7 +2307,7 @@ Underfull \hbox (badness 1348) in paragraph at lines 147--153
 /m/n/10.95 \strictlicense\T1/lmr/m/n/10.95 ,
  []
 
-[74]
+[78]
 Underfull \hbox (badness 1675) in paragraph at lines 179--198
 \T1/lmr/m/n/10.95 Überflüssige Ma-kros []\T1/lmtt/m/n/10.95 \damonat \T1/lmr/m/
 n/10.95 und []\T1/lmtt/m/n/10.95 \dajahr \T1/lmr/m/n/10.95 end-gül-tig ent-fern
@@ -2309,13 +2351,13 @@ T1/lmr/m/n/10.95 und \T1/lmr/m/it/10.95 bi-bla-tex \T1/lmr/m/n/10.95 wur-den au
 s
  []
 
-[75] [76]
+[79] [80]
 Underfull \hbox (badness 5050) in paragraph at lines 281--297
 \T1/lmtt/m/n/10.95 hyperref\T1/lmr/m/n/10.95 -Einstellungen: Ein-fär-bung der L
 inks wie-der ent-fernt
  []
 
-) [77]
+) [81]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\anhang_d.tex"
 Anhang D.
@@ -2326,27 +2368,27 @@ Overfull \hbox (3.8243pt too wide) in paragraph at lines 7--7
 e{} for no logo[] 
  []
 
-[78
+[82
 
 
 
-]) [79]
-
-LaTeX Warning: Empty bibliography on input line 78.
-
+]) [83]
 
 LaTeX Warning: Empty bibliography on input line 78.
 
 
 LaTeX Warning: Empty bibliography on input line 78.
 
-[80
+
+LaTeX Warning: Empty bibliography on input line 78.
+
+[84
 
 
 
 ]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
-is\messbox.tex") [81
+is\messbox.tex") [85
 
 
 ]
@@ -2390,7 +2432,7 @@ is\messbox.aux"))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 82.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 82.
 Package rerunfilecheck Info: File `_DaBa.out' has not changed.
-(rerunfilecheck)             Checksum: D6BF761983324F541C418AE84E1AF724;17957.
+(rerunfilecheck)             Checksum: D115EE16A53123F05DD58BCDDA2CC03A;18234.
 
 
 LaTeX Warning: There were undefined references.
@@ -2406,13 +2448,13 @@ Package biblatex Warning: Please (re)run Biber on the file:
 Package logreq Info: Writing requests to '_DaBa.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
- 25666 strings out of 493921
- 399116 string characters out of 3144873
- 962000 words of memory out of 3000000
- 27550 multiletter control sequences out of 15000+200000
+ 25677 strings out of 493921
+ 399436 string characters out of 3144873
+ 962145 words of memory out of 3000000
+ 27559 multiletter control sequences out of 15000+200000
  192914 words of font info for 133 fonts, out of 3000000 for 9000
  845 hyphenation exceptions out of 8191
- 67i,14n,125p,1814b,3809s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 67i,14n,125p,1817b,3809s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program Files (x86)/MiKT
 eX 2.9/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Program Files (x86)/MiKTeX 2.9/font
@@ -2448,9 +2490,9 @@ am Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/lm/lmtti10.pfb><C:/Program Files (x86)/MiKTeX 
 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on _DaBa.pdf (92 pages, 1783723 bytes).
+Output written on _DaBa.pdf (96 pages, 1844564 bytes).
 PDF statistics:
- 2011 PDF objects out of 2073 (max. 8388607)
- 687 named destinations out of 1000 (max. 500000)
- 988 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2029 PDF objects out of 2073 (max. 8388607)
+ 688 named destinations out of 1000 (max. 500000)
+ 1009 words of extra memory for PDF output out of 10000 (max. 10000000)
 

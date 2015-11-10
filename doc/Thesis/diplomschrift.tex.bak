@@ -1,104 +1,64 @@
-\chapter{Die Abschlussarbeit}
-\label{cha:Diplomschrift}
+\chapter{Die Konsolen Applikation}
+\label{cha:the-console-app}
+Da in dieser Arbeit das Design der bestehenden Implementierung diskutiert und ein Designvorschlag eingebracht werden soll, muss man zuerst die Struktur und das Design der bestehenden Implementierung verstehen lernen. Da sich die meiste Geschäftslogik in der Konsolen Applikation befindet wird im folgenden dessen Design und Struktur diskutiert.
+\newpage
 
-Jede Abschlussarbeit%
-\footnote{Die meisten der folgenden Bemerkungen gelten gleichsam für Bachelor-, Master- und Diplomarbeiten.} 
-ist anders und dennoch sind sich gute
-Arbeiten in ihrer Struktur meist sehr ähnlich, \va\ bei
-technisch-natur\-wissen\-schaft\-lichen Themen. 
+\section{Klassenhierarchie}
+\label{sec:console-app-class-hierarchie}
+Einleitend betrachten wir die implementierte Klassenhierarchie mit einem Ausschnitt aus der Klassenhierarchie. Dieser Ausschnitt illustriert sehr gut die vorhandene Struktur der Klassenhierarchie.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.45]{class_diagram_basic_email.png} %{CS0031}
+\caption{Die Basisklasse \emph{BasicEmail} mit einigen Implementierungen}
+\label{fig:system-old}
+\end{figure}
+\ \\
+Man hat sich hier für das \emph{Factory Method Muster} entschieden wobei die Basisklasse \emph{BasicEmail} eingeführt wurde, welche die gesamte Logik für den Aufbau und Versand einer E-Mail gekapselt und die einzelnen konkreten Implementierungen in Form von abgeleiteten Klassen, die die einzelnen E-Mail Typen darstellen. Wie im Diagramm bei der Klasse \emph{CCItbCustUser} ersichtlich wurden auch E-Mail Typen implementiert, die ihrerseits wieder als Basisklasse dienen für untergeordnete E-Mail Typen. Aufgrund des vergebenen Namens kann man annehmen dass es sich hier um E-Mail Benachrichtigungen für einen Benutzer eines Kunden des Moduls ITB handelt, die man versucht hat zu gruppieren.\\
+Die Gruppierung wurde hier durch Einführung einer eigenen Vererbungshierarchie auf Basis einer eingeführten Basisklasse \emph{CCItbCustUser}, die ihrerseits die eigentliche Basisklasse \emph{BasicEmail} weg abstrahiert, realisiert. 
+\newpage
 
-\section{Elemente der Abschlussarbeit}
+\section{Implementierung}
+Da wir nun die Klassenhierarchie kennen wenden wir uns deren Implementierung zu. Im folgenden werden die Implementierungen der Klasse \emph{CCItbCustUser} und dessen Ableitungen diskutiert. Im Punkt~\ref{console-app-class-hierarchie} wurde behauptet dass diese Ableitungen eingeführt wurden um E-Mail Typen zu gruppieren
 
-Als Startpunkt bewährt hat sich die folgender
-einfacher Grundaufbau, den man natürlich vari\-ieren und beliebig
-verfeinern kann:
-%
+Im folgenden wird das existierende Design der Implementierung in den drei Bereichen
 \begin{enumerate}
-\item \textbf{Einführung und Motivation}: Was ist die Problem- oder Aufgabenstellung und
-warum sollte man sich dafür interessieren?
-\item \textbf{Präzisierung des Themas}: Hier beschreibt man den aktuellen Stand der Technik
-oder Wissenschaft ("`State-Of-The-Art"'), zeigt bestehende
-Defizite oder offene Fragen auf und entwickelt daraus die
-Stoßrichtung der eigenen Arbeit.
-\item \textbf{Eigener Ansatz}: Das ist natürlich der Kern der Arbeit. Hier
-wird gezeigt, wie man die vorher beschriebene Aufgabenstellung löst und --
-häufig in Form eines Programms%
-\footnote{\emph{Prototyp} ist in diesem Zusammenhang ein gerne benutzter Begriff, der im Deutschen
-allerdings oft unrichtig dekliniert wird. Richtig ist: der \emph{Prototyp}, des \emph{Prototyps}, dem/den \emph{Protototyp} -- falsch hingegen \zB: des \emph{Prototyp\underline{en}}!
-} --
-realisiert, ergänzt durch illustrative Beispiele.
-\item \textbf{Zusammenfassung}: Was wurde erreicht und welche Ziele sind
-noch offen geblieben, wo könnte man weiter arbeiten?
+	\item \emph{Client-API}\\
+	      Wie versenden bzw. generieren die Systeme die E-Mails
+	\item \emph{Datenbank Integration}\\
+	      Wie ist das Datenbankdesign und welche Daten werden gespeichert und warum
+	\item \emph{E-Mail Vorlagen}\\
+	      Wie werden die Inhalte der E-Mail generiert bzw. erstellt.
 \end{enumerate}
-%
-Natürlich ist auch ein gewisser dramaturgischer Aufbau der Arbeit
-wichtig, wobei man bedenken muss, dass der Leser in der Regel nur
-wenig Zeit hat und -- anders als etwa bei einem Roman -- seine
-Geduld nicht auf die lange Folter gespannt werden darf. Erklären
-Sie bereits in der Einführung (und nicht erst im letzten Kapitel),
-wie Sie an die Sache herangehen, welche Lösungen Sie vorschlagen
-und wie erfolgreich Sie damit waren.
+Da der Mailversand in Java verhältnismäßig einfach ist wird auf diesen Teil nicht genauer eingegangen sehr wohl aber die Funktionalität im weiteren Verlauf dieser Arbeit diskutiert. \
+Die oben genannten drei Unterteilungen stellen die Hauptteile der Maillösung dar und werden auch in einem neuen Design so benötigt ohne Rücksichtnahme auf die konkrete Art der Implementierung.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.40]{Systemaufbau_alt.jpg} %{CS0031}
+\caption{Diese Abbildung zeigt den konzeptionellen Aufbau der existierenden Maillösung und den jetzigen Kommunikationsweg zwischen den Systemteilnehmern}
+\label{fig:systemaufbau-alt}
+\end{figure}
+\newpage
+In dieser Abbildung können wir sehen dass es nur einen Kommunikationsweg zwischen den Systemteilnehmer gibt und zwar die Kommunikation über die Datenbank. Dies bedeutet es werden sogenannte Mailjobs erstellt, die einen Eintrag in einer Tabelle der Datenbank darstellen, welche alle Daten für die E-Mail zur Verfügung stellen und von der Maillösung ausgelesen und verarbeitet werden.\\
+Hierbei enthält die Maillösung alle Vorlagen für alle implementierten E-Mails und SQL Abfragen, die die Daten aus der Datenbank auslesen und diese ausgelesenen Daten als Parameter and das Vorlagensystem weitergibt damit dieses die tatsächliche E-Mail Nachricht erstellen kann. Hierbei ist die Aktualität der Daten kritisch, da die E-Mail zeitversetzt zum erstellten Mailjob generiert wird und sich dadurch auch die Daten, die aus der Datenbank ausgelesen werden, sich zwischenzeitlich ändern könnten. Ebenso müssen die Daten separat und meistens erneut aus der Datenbank ausgelesen werden, obwohl in den meisten Fällen die Daten beim Erstellen des Mailjobs bereits vorhanden und vor allem zu diesem Zeitpunkt auch aktuell waren. Es gibt zwar Fälle in denen zeitgesteuert E-Mails generiert werden, wie z.B.: einmal täglich Lieferverzugsmeldungen, in denen der aktuelle Status der Datenbank eine Rolle spielt. Dieser Typ der E-Mails stellt jedoch im Verhältnis zu den \emph{'sofort versendeten'} E-Mails nur einen kleinen Prozentanteil dar und hier ist das Problem der Aktualität der verwendeten Daten nicht vorhanden. Bezüglich der Aktualität der Daten sei noch angemerkt dass das erneute Versenden einer E-Mail im bestehenden System nicht mit konsistent Daten möglich ist, da die Daten jedes mal erneut aus der Datenbank ausgelesen werden und der ursprüngliche Zustand der Daten nicht garantiert zur Verfügung steht, da diese sich zwischenzeitlich hätten ändern können, was auch nicht nachvollziehbar wäre.
+\subsection{Client-API}
+Da die Kommunikation ausschließlich über die Datenbank erfolgt ist eine echte Client API nicht vorhanden. Alle Systeme implementieren das Erstellen der Mailjob Einträge selbstständig und es wird keine gemeinsame Client API verwendet, was einen gewissen Grad der Inkonsistenz bei Änderungen der Datenstruktur sowie der Semantik der Daten mit sich bringt. Als Beispiel wird hier die Semantik der einzelnen Spalten angeführt, die zwar technisch sich innerhalb einer Datentyp Domain befinden, sich die semantische Bedeutung der enthaltenen Daten aber unterscheidet. Dies ist zwar Teil der Datenbank Integration aber die Tatsache dass diese Semantik rein innerhalb der Applikation abgebildet werden kann und nicht über die Datenbankfunktionalitäten wie z.B.: Fremdschlüssel wird dieser Teil hier diskutiert. Da die Maillösung über SQL Abfragen die Daten für die E-Mail Nachricht erhält müssen auch Parameter bereitgestellt werden, die in der SQL Abfrage gesetzt werden. Diese Parameter wurden \emph{'generisch'} über eine festgesetzte Anzahl von Tabellenspalten abgebildet, dessen enthaltene Daten je nach E-Mailtyp anders interpretiert werden. Es kann also sein das ein Eintrag einer Tabellen für die Spalte \emph{COL\_1} einen String enthält mit dem Wert \emph{'Thomas Herzog'} und ein anderer Eintrag einen string mit dem Wert \emph{'14'} der in der SQL Abfrage aber als Integer Datentyp behandelt wird. Die Systeme die Mailjobs erzeugen müssen sich also dem Kontext einer E-Mail bewusst sein, sowie müssen berücksichtigen, dass die richten Spalten der Tabelle \emph{MAIL\_JOB} mit den richtigen Daten befüllt werden, wobei auch beachtet werden muss in welchen Datentyp der Datensatz in weiterer Folge durch die Mailösung interpretiert wird.\\
+Dies ist in meinen Augen sehr inkonsistent und fehleranfällig und hat auch schon einige Probleme verursacht.\\\\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.70]{Emailvesand_Client_Api.jpg}
+\caption{Diese Abbildung zeigt das Problem der inkonsistenten Daten beim erneuten E-Mailversand einer bereits versendeten E-Mail, mit dem Beispiel einer angelegten und anschließend geänderten Bestellung, auf}
+\label{fig:systemaufbau-alt}
+\end{figure}
+\newpage
 
-Übrigens, auch Fehler und Sackgassen darf (und sollte) man
-beschreiben; ihre Kenntnis hilft oft doppelte Experimente und
-weitere Fehler zu vermeiden und ist damit sicher nützlicher als
-jede Schönfärberei.
-Und natürlich ist es auch nicht verboten, seine eigene Meinung 
-in sachlicher Form zu äußern.
 
+
+\subsection{Datenbank Integration}
+\subsection{E-Mail Vorlagen}
+\section{Soll-System}
+\subsection{Client-API}
+\subsection{Datenbank Integration}
+\subsection{E-Mail Vorlagen}
 
 \section{Arbeiten in Englisch}
 \label{sec:englisch}
-
-Diese Vorlage ist zunächst darauf abgestellt, dass die
-Diplomschrift in deutscher Sprache erstellt wird. Vor allem bei
-Diplomarbeiten, die in Zusammenarbeit mit größeren Firmen oder
-internationalen Instituten entstehen, ist es häufig erwünscht,
-dass die Diplomschrift zu besseren Nutzbarkeit in englischer
-Sprache verfasst wird, und viele Hochschulen%
-\footnote{Die FH Hagenberg macht hier keine Ausnahme. 
-Der Begriff "`Fachhochschule"' wird dabei entweder gar nicht
-übersetzt oder -- wie im deutschsprachigen Raum mittlerweile üblich -- 
-mit \emph{University of Applied Sciences}.
-%Die offizielle englische Übersetzung von "`Medientechnik und -design"'
-%ist übrigens \emph{Media Technology and Design}.
-} 
-lassen dies in
-der Regel auch zu.
-
-Beachten sollte man allerdings, dass das Schreiben dadurch nicht
-einfacher wird, auch wenn einem Worte und Sätze im Englischen
-scheinbar leichter "`aus der Feder"' fließen. Gerade im Bereich
-der Informatik erscheint durch die Dominanz englischer
-Fachausdrücke das Schreiben im Deutschen mühsam und das Ausweichen
-ins Englische daher besonders attraktiv. Das ist jedoch
-trügerisch, da man die eigene Fertigkeit in der Fremdsprache
-(trotz der meist langjährigen Schulbildung) häufig überschätzt.
-Prägnanz und Klarheit gehen leicht verloren und bisweilen ist das
-Resultat ein peinliches Gefasel ohne Zusammenhang und soliden
-Inhalt. Sofern man das Englische nicht wirklich gut beherrscht, ist
-es ratsam, zumindest die wichtigsten Teile der Arbeit zunächst in
-Deutsch zu verfassen und erst nachträglich zu übersetzen.
-Besonders vorsichtig sollte man bei der Übersetzung von scheinbar
-vertrauten Fachausdrücken sein. Zusätzlich ist es immer zu
-empfehlen, die fertige Arbeit von einem "`native speaker"'
-korrigieren zu lassen.
-
-
-
-Technisch ist, außer der Spracheinstellung und den
-unterschiedlichen Anführungszeichen (s.\
-Abschn.~\ref{sec:anfuehrungszeichen}), für eine englische Arbeit
-nicht viel zu ändern, allerdings sollte man folgendes beachten:
-%
-\begin{itemize}
-\item  Die Titelseite (mit der Bezeichnung "`Diplomarbeit"' oder "`Masterarbeit"') 
-ist für die einzureichenden Exemplare jedenfalls in \emph{deutsch} zu halten,
-auch wenn der Titel englisch ist. 
-\item Ebenso muss neben dem
-englischen \emph{Abstract} auch eine deutsche \emph{Kurzfassung}
-enthalten sein. %
-\item Akademische Titel von Personen haben im Englischen offenbar
-weniger Bedeutung als im Deutschen und werden daher meist
-weggelassen.
-\end{itemize}
