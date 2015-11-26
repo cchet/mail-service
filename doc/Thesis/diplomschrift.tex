@@ -1,25 +1,52 @@
 \chapter{Die Konsolen Applikation}
 \label{cha:the-console-app}
-Da in dieser Arbeit das Design der bestehenden Implementierung diskutiert und ein Designvorschlag eingebracht werden soll, muss man zuerst die Struktur und das Design der bestehenden Implementierung verstehen lernen. Da sich die meiste Geschäftslogik in der Konsolen Applikation befindet wird im folgenden dessen Design und Struktur diskutiert.
-\newpage
+Da in dieser Arbeit das Design der bestehenden Implementierung diskutiert und ein Designvorschlag eingebracht werden soll, muss man zuerst die Struktur und das Design der bestehenden Implementierung verstehen lernen. Da sich die meiste Geschäftslogik in der Konsolen Applikation befindet wird im folgenden dessen Design und Struktur diskutiert.\\
 
-\section{Klassenhierarchie}
-\label{sec:console-app-class-hierarchie}
-Einleitend betrachten wir die implementierte Klassenhierarchie mit einem Ausschnitt aus der Klassenhierarchie. Dieser Ausschnitt illustriert sehr gut die vorhandene Struktur der Klassenhierarchie.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.45]{class_diagram_basic_email.png} %{CS0031}
+\includegraphics[scale=0.5]{systemaufbau_console_alone.jpg} 
+\caption{Teilsystem Konsolen Applikation und Sendmail}
+\label{fig:class-hierarchie-email}
+\end{figure}
+
+
+\newpage
+\section{Klassenhierarchie}
+\label{sec:console-app-class-hierarchie}
+Um die Struktur der Konsolen Applikation  zu verstehen wenden wir uns den implementierten Klassenhierarchien der einzelnen Softwarekomponenten wie E-Mail Typen und DAOs (Datenzugriffsobjekte) zu. Diese beiden Softwarekomponenten stellen den Hauptteil der Software dar, daher beginnen wir mit der Analyse dieser Komponenten. 
+\subsection{E-Mail Typen}
+Einleitend betrachten wir die implementierte Klassenhierarchie der E-Mail Typen mit einem Ausschnitt aus der Klassenhierarchie. Dieser Ausschnitt illustriert sehr gut die vorhandene Struktur der Klassenhierarchie.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.35]{class_diagram_basic_email.png} 
 \caption{Die Basisklasse \emph{BasicEmail} mit einigen Implementierungen}
-\label{fig:system-old}
+\label{fig:class-hierarchie-email}
+\end{figure}
+
+\newpage
+Man hat sich hier für das \emph{Factory Method Muster} entschieden wobei die Basisklasse \emph{BasicEmail} eingeführt wurde, welche die gesamte Logik für den Aufbau und Versand einer E-Mail gekapselt und die einzelnen konkreten Implementierungen in Form von abgeleiteten Klassen, die die einzelnen E-Mail Typen darstellen. Wie im Diagramm bei der Klasse \emph{CCItbCustUser} ersichtlich wurden auch E-Mail Typen implementiert, die ihrerseits wieder als Basisklasse dienen für untergeordnete E-Mail Typen. Aufgrund des vergebenen Namens kann man annehmen dass es sich hier um E-Mail Benachrichtigungen für einen Benutzer eines Kunden des Moduls ITB handelt, die man versucht hat zu gruppieren.\\
+Die Gruppierung wurde hier durch Einführung einer eigenen Vererbungshierarchie auf Basis einer eingeführten Basisklasse \emph{CCItbCustUser}, die ihrerseits die eigentliche Basisklasse \emph{BasicEmail} weg abstrahiert, realisiert.\\
+
+An sich ist dies kein schlechter Ansatz jedoch erwarte ich mir von einer konkreten Implementierung, dass diese auch ein gewisses Maß an Logik beinhaltet, die das Factory-Method Muster rechtfertigt, jedoch ist dies in den meisten Fällen nicht der Fall, wie im nächsten Punkt beschrieben wird. Solche Klassenhierarchien einzuführen nur um verschiedene Datentypen zu erhalten, welche einen E-Mail Typ definieren, welcher nicht einmal in den angeschlossenen Systemen verwendet wird sondern nur innerhalb dieser Konsolen Applikation finde ich übertrieben. Es gibt weitaus einfachere, weniger aufwendige und Code produzierende Ansätze mit denen E-Mail Typen abgebildet werden können.
+
+\newpage
+\subsection{Datenzugriffsobjekt(e)}
+Nachdem wir die Klassenhierarchie der E-Mail Typen analysiert haben wenden wir uns nun der Datenbankzugriffsschicht zu, die mit einem einzigen DAO (Datenzugriffsobjekt) implementiert wurde.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{cc_mail_dao.jpg} 
+\caption{Die \emph{CCMailingDAOImplDB2} Implementierung mit seinem Interface \emph{CCMailingDAO} mit seiner Factory \emph{CCMailingFactory}}
+\label{fig:class-hierarchie-email}
 \end{figure}
 \ \\
-Man hat sich hier für das \emph{Factory Method Muster} entschieden wobei die Basisklasse \emph{BasicEmail} eingeführt wurde, welche die gesamte Logik für den Aufbau und Versand einer E-Mail gekapselt und die einzelnen konkreten Implementierungen in Form von abgeleiteten Klassen, die die einzelnen E-Mail Typen darstellen. Wie im Diagramm bei der Klasse \emph{CCItbCustUser} ersichtlich wurden auch E-Mail Typen implementiert, die ihrerseits wieder als Basisklasse dienen für untergeordnete E-Mail Typen. Aufgrund des vergebenen Namens kann man annehmen dass es sich hier um E-Mail Benachrichtigungen für einen Benutzer eines Kunden des Moduls ITB handelt, die man versucht hat zu gruppieren.\\
-Die Gruppierung wurde hier durch Einführung einer eigenen Vererbungshierarchie auf Basis einer eingeführten Basisklasse \emph{CCItbCustUser}, die ihrerseits die eigentliche Basisklasse \emph{BasicEmail} weg abstrahiert, realisiert. 
-\newpage
+Obwohl man eine Klassenhierarchie für die E-Mail Typen eingeführt hat, hat man dies bei den DAOs (Datenzugriffsobjekte) nicht getan. Es gibt also eine einzige DAO Implementierung, die alle Datenbankabfragen über alle E-Mail Typen hinweg beinhaltet und diese über eindeutige Methodennamen identifiziert. Des Weiteren wurde zwar eine Factory für dieses DAO eingeführt, aber eine Factory für ein DAO mit \emph{Class.forName("*.DaoImplDb2")} erscheint fast sinnlos, obwohl man hier noch die Begründung finden könnte, dass diese Factory eingeführt wurde um zumindest die konkrete Datenbank zu abstrahieren und die Möglichkeit zu schaffen die DAO Implementierung für DB2 auf z.B.: Oracle zu ändern. Man würde hier erwarten das die DAO Implementierung kontextabhängig - also auf Modulebene - implementiert worden wären und dass die Factory dynamisch mit der zu verwendenden Implementierung initialisiert werden kann, also parametriebar ist. Dann wäre es aber auch erforderlich die Datenbank spezifischen Implementierungen über ein eigenes Artifakt zur Verfügung zu stellen und nicht das alle Ressourcen sich innerhalb ein und desselben Artifakts befinden.
 
+\newpage
 \section{Implementierung}
-Da wir nun die Klassenhierarchie kennen wenden wir uns deren Implementierung zu. Im folgenden werden die Implementierungen der Klasse \emph{CCItbCustUser} und dessen Ableitungen diskutiert. Im Punkt~\ref{console-app-class-hierarchie} wurde behauptet dass diese Ableitungen eingeführt wurden um E-Mail Typen zu gruppieren. Man könnte aber auch davon ausgehen dass diese eigene Vererbungshierarchie eingeführt wurde um Funktionalitäten für die einzelnen E-Mails zu kapseln. Analysieren wir nun diese Implementierungen um zu sehen welche Funktionalitäten in einen E-Mail Typ implementiert wurden.
-\\
+Da wir nun die Klassenhierarchien kennen gelernt haben wenden wir uns deren Implementierung zu. Im folgenden werden die Implementierungen der Klasse \emph{CCItbCustUser} und dessen Ableitungen diskutiert. Im Punkt~\ref{sec:console-app-class-hierarchie} wurde behauptet dass diese Ableitungen eingeführt wurden um E-Mail Typen zu gruppieren. Man könnte aber auch davon ausgehen dass diese eigene Vererbungshierarchie eingeführt wurde um Funktionalitäten für die einzelnen E-Mails zu kapseln. Analysieren wir nun diese Implementierungen um zu sehen welche Funktionalitäten in einen E-Mail Typ implementiert wurden. \\
+
+
+
 // TODO: Add source of 'CCItbCustUser' and its decendants. \\
 // TODO: CCItbCustUser \\\\
 
