@@ -57,26 +57,26 @@
 
 \include{einleitung}
 \include{diplomschrift}
-\include{latex}
-\include{abbildungen}
-\include{mathematik}
-\include{literatur}
-\include{drucken}
-\include{schluss}
+%\include{latex}
+%\include{abbildungen}
+%\include{mathematik}
+%\include{literatur}
+%\include{drucken}
+%\include{schluss}
 
 %%%----------------------------------------------------------
 %%%Anhang
 \appendix
-\include{anhang_a}	% Technische Ergänzungen
-\include{anhang_b}	% Inhalt der CD-ROM/DVD
-\include{anhang_c}	% Chronologische Liste der Änderungen
-\include{anhang_d}	% Quelltext dieses Dokuments
+%\include{anhang_a}	% Technische Ergänzungen
+%\include{anhang_b}	% Inhalt der CD-ROM/DVD
+%\include{anhang_c}	% Chronologische Liste der Änderungen
+%\include{anhang_d}	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
 \MakeBibliography
 %%%----------------------------------------------------------
 
 %%%Messbox zur Druckkontrolle
-\include{messbox}
+%\include{messbox}
 
 \end{document}
