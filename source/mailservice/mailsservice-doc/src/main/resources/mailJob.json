@@ -1,0 +1,117 @@
+{
+	"mailConfig": 
+	{
+		"id": "mailConfigId",
+		"account": "[email|id]",
+		"bounceAccount": "[email|id]",
+		"sendType": "[single|batch] for 'to' address type",
+		"store": "{db|eml}",
+		"failOnInvalidAddress": "[true|false]",
+		"reportInvalidAddress": "[true|false]"
+	},
+
+	"attachmentConfig": 
+	{
+		"id": "attachmentConfigId",
+		"bundle": "[true|false]",
+		"configurations": 
+		[
+			{
+				"id": "configId",
+				"type": "[soap|rest]",
+				"baseUrl": "[http|https]://myurl.com/rest/api",
+				"username": "username",
+				"password": "password",
+				"mimeType": "[application/octet-stream|application/base64]"
+			},
+
+			{
+				"id": "configId",
+				"type": "local",
+				"rootPath": "/home/user/files"
+			},
+
+			{
+				"id": "configId",
+				"type": "storage",
+				"bucket": "bucketId"
+			}
+		],
+
+		"failOnMissing": "[true|false]",
+		"reportMissing": "[true|false]"
+	},
+
+	"mailConfigId": "mailConfigId",
+	"attachmentConfigId": "attachmentConfigId",
+	"recipients": 
+	{
+		"to": 
+		[
+			"herzog.thomas81@gmail.com",
+			"t.herzog@curecomp.com"
+		],
+
+		"bcc": 
+		[
+			"herzog.thomas81@gmail.com"
+		],
+
+		"cc": 
+		[
+			"herzog.thomas81@gmail.com"
+		]
+	},
+
+	"content": "plainContent",
+	"subject": "plainSubject",
+	"contentTemplate": 
+	{
+		"id": "templateId",
+		"params": 
+		{
+			"paramNameOrOrdinal": "paramValue maybe json"
+		},
+
+		"version": "[1.0|latest]",
+		"type": "[freemarker|properties|velocity|...]"
+	},
+
+	"subjectTemplate": 
+	{
+		"id": "templateId",
+		"params": 
+		{
+			"paramNameOrOrdinal": "paramValue maybe json"
+		},
+
+		"version": "[1.0|latest]",
+		"type": "[freemarker|properties|velocity|...]"
+	},
+
+	"attachments": 
+	[
+		{
+			"id": "attachmentId",
+			"name": "attachmentName",
+			"type": "[rest|soap|local|storage]",
+			"configId": "typeSafeConfigId",
+			"uri": "/orders/getOrder/1"
+		},
+
+		{
+			"id": "attachmentId",
+			"name": "attachmentName",
+			"type": "[rest|soap|local|storage]",
+			"configId": "typeSafeConfigId",
+			"uri": "/orders/getOrder/1"
+		},
+
+		{
+			"id": "attachmentId",
+			"name": "attachmentName",
+			"type": "base64",
+			"data": "SDFGKSDFVYSARGK>ASWEG!=="
+		}
+	]
+}

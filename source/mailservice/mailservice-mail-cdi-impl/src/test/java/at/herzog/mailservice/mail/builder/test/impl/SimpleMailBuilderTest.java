@@ -17,6 +17,7 @@ import org.junit.runners.JUnit4;
 
 import at.herzog.mailservice.api.context.ConnectionContext;
 import at.herzog.mailservice.api.context.ConnectionContext.Protocol;
+import at.herzog.mailservice.mail.builder.impl.CacheAwareMailSendHandler;
 import at.herzog.mailservice.mail.builder.impl.SimpleAttachmentBuilder;
 import at.herzog.mailservice.mail.builder.impl.SimpleMailBuilder;
 import at.herzog.mailservice.mail.builder.impl.SimpleRecipientsBuilder;
@@ -32,40 +33,24 @@ public class SimpleMailBuilderTest {
 			final SimpleMailBuilder builder = new SimpleMailBuilder();
 			builder.with(new SimpleAttachmentBuilder<SimpleMailBuilder>())
 			       .with(new SimpleRecipientsBuilder<SimpleMailBuilder>())
-			       .with(new ConnectionContext("smtp3.itandtel.at", 25, Protocol.POP3, (new Authenticator() {
+			       .with(new ConnectionContext("smtp3.itandtel.at", 25, Protocol.SMTP, (new Authenticator() {
 				    	@Override
 				    	protected PasswordAuthentication getPasswordAuthentication() {
 				    		// TODO Auto-generated method stub
-//				    		return new PasswordAuthentication("smtpcure", "n2gUr9b");
-				    		return new PasswordAuthentication("cchet", "b6w38");
+				    		return new PasswordAuthentication("smtpcure", "n2gUr9b");
+//				    		return new PasswordAuthentication("cchet", "b6w38");
 				    	}
 					}), Boolean.FALSE))
 			       .start()
 			       .recipients().addFrom("t.herzog@curecomp.com")
 			                    .addTo("herzog.thomas81@gmail.com")
+			                    .addTo("herzog.thomas81@gmail.com")
+			                    .addTo("herzog.thomas81@gmail.com")
+			                    .addBcc("herzog.thomas81@gmail.com")
+			                    .addBcc("herzog.thomas81@gmail.com")
+			                    .addCc("herzog.thomas81@gmail.com")
+			                    .addCc("herzog.thomas81@gmail.com")
 			                    .end()
-//			       .attachments().addDataSource(new DataSource() {
-//													@Override
-//													public OutputStream getOutputStream() throws IOException {
-//														return null;
-//													}
-//													
-//													@Override
-//													public String getName() {
-//														return "my attachment";
-//													}
-//													
-//													@Override
-//													public InputStream getInputStream() throws IOException {
-//														return null;
-//													}
-//													
-//													@Override
-//													public String getContentType() {
-//														return "text/plain";
-//													}
-//												})
-//			       					.end()
 			       	.send();
 			// @formatter:on
 		} catch (Exception e) {
