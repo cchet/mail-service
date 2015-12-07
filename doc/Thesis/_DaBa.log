@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.14)  30 NOV 2015 21:09
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.14)  7 DEC 2015 20:53
 entering extended mode
 **_DaBa.tex
 
@@ -1262,16 +1262,7 @@ is\einleitung.aux")
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\diplomschrift.aux"
 
-LaTeX Warning: Label `fig:class-hierarchie-email' multiply defined.
-
-
-LaTeX Warning: Label `fig:class-hierarchie-email' multiply defined.
-
-
-LaTeX Warning: Label `fig:systemaufbau-alt' multiply defined.
-
-
-LaTeX Warning: Label `fig:systemaufbau-alt' multiply defined.
+LaTeX Warning: Label `fig:sequence-diagram-mail-send' multiply defined.
 
 ))
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
@@ -1373,7 +1364,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 46.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<images/FHOOeIntl2014.pdf, id=96, 269.93045pt x 269.93045pt>
+<images/FHOOeIntl2014.pdf, id=68, 269.93045pt x 269.93045pt>
 File: images/FHOOeIntl2014.pdf Graphic file (type pdf)
 
 <use images/FHOOeIntl2014.pdf>
@@ -1401,33 +1392,30 @@ is\_DaBa.toc")
 ]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\vorwort.tex"
-Underfull \hbox (badness 10000) in paragraph at lines 2--5
+Underfull \hbox (badness 10000) in paragraph at lines 2--6
 
  []
 
-
-Overfull \hbox (18.44357pt too wide) in paragraph at lines 6--9
-\T1/lmr/m/n/10.95 ei-ne Cloud ba-sier-te SRM-Lösung be-treibt (Supplier-Relatio
-nShip-Management),
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 6--9
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 14.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+Underfull \hbox (badness 10000) in paragraph at lines 19--50
 
  []
 
 [5
 
 
-]) [6]
+]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
-is\kurzfassung.tex") [7
+is\kurzfassung.tex") [6
 
 
 
 ]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
-is\abstract.tex") [8
+is\abstract.tex") [7
 
 
 
@@ -1436,12 +1424,7 @@ is\abstract.tex") [8
 is\einleitung.tex"
 Kapitel 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 5--9
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 5--9
+Underfull \hbox (badness 10000) in paragraph at lines 5--11
 
  []
 
@@ -1450,118 +1433,142 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--9
 
 
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 15--19
-
- []
-
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 19.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-) [2]
-<images/Systemaufbau_alt.jpg, id=187, 530.73282pt x 526.21594pt>
-File: images/Systemaufbau_alt.jpg Graphic file (type jpg)
-
-<use images/Systemaufbau_alt.jpg>
-Package pdftex.def Info: images/Systemaufbau_alt.jpg used on input line 33.
-(pdftex.def)             Requested size: 318.44214pt x 315.732pt.
-) [3 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/
-Thesis/images/Systemaufbau_alt.jpg>]
+]) [2]
 ("C:\Users\Thomas\Git Repositories\Github\Bachelor-Degree\mail-service\doc\Thes
 is\diplomschrift.tex"
 Kapitel 2.
+<images/Systemaufbau_alt.jpg, id=153, 661.87276pt x 411.939pt>
+File: images/Systemaufbau_alt.jpg Graphic file (type jpg)
 
-Underfull \hbox (badness 10000) in paragraph at lines 3--4
+<use images/Systemaufbau_alt.jpg>
+Package pdftex.def Info: images/Systemaufbau_alt.jpg used on input line 8.
+(pdftex.def)             Requested size: 330.93556pt x 205.96898pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 3--16
 
  []
 
-<images/systemaufbau_console_alone.jpg, id=194, 511.9125pt x 171.039pt>
-File: images/systemaufbau_console_alone.jpg Graphic file (type jpg)
-
-<use images/systemaufbau_console_alone.jpg>
-Package pdftex.def Info: images/systemaufbau_console_alone.jpg used on input li
-ne 7.
-(pdftex.def)             Requested size: 255.95563pt x 85.51929pt.
- [4
+[3
 
 
 
  <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/Thes
-is/images/systemaufbau_console_alone.jpg>]
-<images/class_diagram_basic_email.png, id=200, 855.195pt x 992.70876pt>
+is/images/Systemaufbau_alt.jpg>]
+<images/prozess_sequence_emailversand.jpg, id=159, 448.67625pt x 373.395pt>
+File: images/prozess_sequence_emailversand.jpg Graphic file (type jpg)
+
+<use images/prozess_sequence_emailversand.jpg>
+Package pdftex.def Info: images/prozess_sequence_emailversand.jpg used on input
+ line 21.
+(pdftex.def)             Requested size: 358.94148pt x 298.7164pt.
+
+Overfull \hbox (5.9496pt too wide) in paragraph at lines 18--29
+\T1/lmr/m/n/10.95 An-le-gen ei-nes \T1/lmr/m/it/10.95 Mail-Job \T1/lmr/m/n/10.9
+5 bis hin zum Ver-sand der ei-gent-li-chen E-Mail-Nachricht.
+ []
+
+
+Overfull \hbox (10.75644pt too wide) in paragraph at lines 18--29
+\T1/lmr/m/n/10.95 Mail-Versandes. Näm-lich die In-kon-sis-tenz der ver-sen-de-t
+en E-Mail-Nachrichten,
+ []
+
+
+Overfull \hbox (7.37111pt too wide) in paragraph at lines 18--29
+\T1/lmr/m/n/10.95 säch-li-chen Ver-sand der E-Mail-Nachricht wie in fol-gen-dem
+ Sequenz-Diagramm
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--29
+
+ []
+
+[4 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/Th
+esis/images/prozess_sequence_emailversand.jpg>] [5]
+Kapitel 3.
+<images/teilsystem_ccmail.jpg, id=169, 617.9085pt x 84.315pt>
+File: images/teilsystem_ccmail.jpg Graphic file (type jpg)
+
+<use images/teilsystem_ccmail.jpg>
+Package pdftex.def Info: images/teilsystem_ccmail.jpg used on input line 42.
+(pdftex.def)             Requested size: 308.95349pt x 42.15738pt.
+ [6
+
+ <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/Thes
+is/images/teilsystem_ccmail.jpg>]
+<images/class_diagram_basic_email.png, id=179, 437.635pt x 464.73625pt>
 File: images/class_diagram_basic_email.png Graphic file (type png)
 
 <use images/class_diagram_basic_email.png>
 Package pdftex.def Info: images/class_diagram_basic_email.png used on input lin
-e 21.
-(pdftex.def)             Requested size: 299.32274pt x 347.45328pt.
- [5 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/T
-hesis/images/class_diagram_basic_email.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 27--29
-
- []
-
-[6] <images/cc_mail_dao.jpg, id=211, 490.83376pt x 236.885pt>
-File: images/cc_mail_dao.jpg Graphic file (type jpg)
-
-<use images/cc_mail_dao.jpg>
-Package pdftex.def Info: images/cc_mail_dao.jpg used on input line 37.
-(pdftex.def)             Requested size: 245.41628pt x 118.4422pt.
+e 65.
+(pdftex.def)             Requested size: 240.69998pt x 255.60571pt.
  [7 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/T
-hesis/images/cc_mail_dao.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 46--48
+hesis/images/class_diagram_basic_email.png (PNG copy)>]
+<images/class_diagram_mailing_ao.png, id=187, 178.6675pt x 126.4725pt>
+File: images/class_diagram_mailing_ao.png Graphic file (type png)
 
- []
+<use images/class_diagram_mailing_ao.png>
+Package pdftex.def Info: images/class_diagram_mailing_ao.png used on input line
+ 75.
+(pdftex.def)             Requested size: 98.26741pt x 69.56007pt.
+ [8 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/T
+hesis/images/class_diagram_mailing_ao.png (PNG copy)>]
+<images/class_diagram_mailing_dao_factory.png, id=193, 463.7325pt x 112.42pt>
+File: images/class_diagram_mailing_dao_factory.png Graphic file (type png)
 
+<use images/class_diagram_mailing_dao_factory.png>
+Package pdftex.def Info: images/class_diagram_mailing_dao_factory.png used on i
+nput line 84.
+(pdftex.def)             Requested size: 255.05365pt x 61.83118pt.
+ [9 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc/T
+hesis/images/class_diagram_mailing_dao_factory.png (PNG copy)>]
 Package hyperref Info: bookmark level for unknown program defaults to 0 on inpu
-t line 50.
+t line 95.
+
 (C:\Users\Thomas\AppData\Roaming\MiKTeX\2.9\tex\latex\listings\lstlang1.sty
 File: lstlang1.sty 2014/09/06 1.5e listings language file
 )
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 52.
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 97.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Package csquotes Info: Input encoding change on input line 52.
+Package csquotes Info: Input encoding change on input line 97.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
 )
 
-LaTeX Warning: Float too large for page by 42.19974pt on input line 106.
+LaTeX Warning: Float too large for page by 42.19974pt on input line 151.
 
-[8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+[10] [11]
+Underfull \hbox (badness 10000) in paragraph at lines 163--164
 
  []
 
-[10]
-Kapitel 3.
-<images/Emailvesand_Client_Api.jpg, id=286, 466.74374pt x 373.395pt>
+[12]
+Kapitel 4.
+<images/Emailvesand_Client_Api.jpg, id=269, 466.74374pt x 373.395pt>
 File: images/Emailvesand_Client_Api.jpg Graphic file (type jpg)
 
 <use images/Emailvesand_Client_Api.jpg>
 Package pdftex.def Info: images/Emailvesand_Client_Api.jpg used on input line 1
-26.
+71.
 (pdftex.def)             Requested size: 326.71838pt x 261.37471pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 122--130
+Underfull \hbox (badness 10000) in paragraph at lines 167--175
 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[11
+[13
 
-]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 134.
-
-) [12 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/doc
-/Thesis/images/Emailvesand_Client_Api.jpg>]
+]) [14 <C:/Users/Thomas/Git Repositories/Github/Bachelor-Degree/mail-service/do
+c/Thesis/images/Emailvesand_Client_Api.jpg>]
 
 LaTeX Warning: Empty bibliography on input line 78.
 
@@ -1572,7 +1579,7 @@ LaTeX Warning: Empty bibliography on input line 78.
 LaTeX Warning: Empty bibliography on input line 78.
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 82.
-[13
+[15
 
 
 
@@ -1593,15 +1600,9 @@ is\einleitung.aux")
 is\diplomschrift.aux"))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 82.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 82.
+Package rerunfilecheck Info: File `_DaBa.out' has not changed.
+(rerunfilecheck)             Checksum: 53596E035FD09807C486AA28BD42ABED;1770.
 
-
-Package rerunfilecheck Warning: File `_DaBa.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `_DaBa.out':
-(rerunfilecheck)             Before: 86C30AEDC475A06AEF1703AFF2C39D84;2851
-(rerunfilecheck)             After:  15A012DFE568A3AFBFE87A9836601C44;2899.
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -1609,55 +1610,28 @@ Package logreq Info: Writing requests to '_DaBa.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
  22367 strings out of 493921
- 344833 string characters out of 3144873
- 930366 words of memory out of 3000000
- 25052 multiletter control sequences out of 15000+200000
+ 345156 string characters out of 3144873
+ 930675 words of memory out of 3000000
+ 25054 multiletter control sequences out of 15000+200000
  99001 words of font info for 72 fonts, out of 3000000 for 9000
  845 hyphenation exceptions out of 8191
- 67i,11n,96p,1817b,1789s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{appendix*.12} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.2.4} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.3.3} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.3.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.3.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{section.2.3} has been referenced but does not exist
-, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.2.3} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.2.2} has been referenced but does not 
-exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.2.2.1} has been referenced but does not 
-exist, replaced by a fixed one
-
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Fil
-es (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Program Files (x86)/MiKTe
-X 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts
-/type1/public/lm/lmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
-ic/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr1
-0.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files (
-x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)/MiKTeX 2
-.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
-/lmri9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmss10.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmss12.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb>
-Output written on _DaBa.pdf (21 pages, 671497 bytes).
+ 67i,11n,96p,1817b,1793s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}<C:/Program Files (x86)/MiK
+TeX 2.9/fonts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/lm/lmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/lm/lmcsc10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lm
+r10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr6.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)/MiKTeX
+ 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
+pe1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/
+lm/lmri9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmss10.pf
+b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmss12.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb>
+Output written on _DaBa.pdf (22 pages, 725802 bytes).
 PDF statistics:
- 381 PDF objects out of 1000 (max. 8388607)
- 117 named destinations out of 1000 (max. 500000)
- 227 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 353 PDF objects out of 1000 (max. 8388607)
+ 113 named destinations out of 1000 (max. 500000)
+ 181 words of extra memory for PDF output out of 10000 (max. 10000000)
 

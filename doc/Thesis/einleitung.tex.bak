@@ -1,28 +1,26 @@
 \chapter{Einleitung}
-\label{cha:Einleitung}
-
+\label{cha:einleitung}
 \section{Zielsetzung}
-Diese Bachelorarbeit dient als Vorarbeit für die Re-Implementierung einer existierenden Maillösung  der Frima curecomp GembH, wobei in dieser Arbeit der Fokus auf die Re-Implementierung des Designs gelegt wird. Diese Arbeit wird aufzeigen wie das existierende System in seinen Bereichen wie Client-API, Datenbank Integration und das Erstellen der E-Mails, in weitere Folge 'E-Mail Vorlagen' genannt, zurzeit funktioniert und designt wurde. Dieses existierende Design wird analysiert und ein Verbesserungsvorschlag eingebracht wie ein mögliches neues Design aussehen könnte. Die Konzepte der Implementierung wie die verwendeten Software Muster, die Grundlage der Designentscheidung sowie deren Vorteile und Nachteile werden in dieser Arbeit diskutiert. \\\\
-Da meiner Meinung nach die existierende Implementierung einige Mängel und Designfehlentscheidungen beinhaltet und dadurch weder flexibel noch erweiterbar ist, wurde der Fokus dieser Arbeit auf das Design dieser Maillösung und dessen Verbesserung gesetzt, wobei diese Arbeit wiederum als Grundlage für die praktische Bachelorarbeit dienen soll, die die Umsetzung der hier entwickelten und diskutierten Konzepte beinhalten soll. \\\\
-Als Unterstützung wurden folgende beiden literarischen Werke gewählt:
+\label{sec:zielsetzung}
+Das Ziel dieser Arbeit liegt in der Konzeption von \emph{CleverMail}, welche die bestehende Anwendung \emph{CCMail} ablösen soll. Bevor dieses Konzept erstellt wird, wird die bestehende Anwendung \emph{CCMail} insbesondere dessen Design und Implementierung diskutiert damit aufgezeigt werden kann welche \newline
+Designentscheidungen und Implementierungen ein Erweitern von \emph{CCMail} verhindern. Im neuen Konzept sollen die in \emph{CCMail} gemachten Fehler und Fehlentscheidungen berücksichtigt werden damit \emph{CleverMail} auch \newline
+zukünftig neuen Anforderungen gewachsen ist und sich neue Anforderungen ohne größere Probleme integrieren lassen. Zukünftige Anforderungen sind zwar schwer vorauszusagen jedoch kann man sich bei seinen Designentscheidungen, der Wahl der verwendeten Softwaremuster und Anwendungsarchitektur auf neue Anforderungen bzw. Änderungen an der bestehenden Anwendung gut vorbereiten.
+\newline\newline
+Für die Konzipierung von \emph{CleverMail} wurden folgende technischen Grundvoraussetzungen definiert:
+\begin{enumerate}
+	\item Java 1.8
+	\item IBM-DB2 (Datenbank)
+\end{enumerate}
+\ \newline
+Das Konzept von \emph{CleverMail} soll vor allem auf neue Konzepte und Frameworks in Java konzentrieren, da man hier keine Rücksicht auf Rückwärtskompatibilität nehmen muss. 
+\newpage
+Als Unterstützung für diese Arbeit wurden folgende beiden literarischen Werke gewählt:
 \begin{enumerate}
 	\item Refactoring to patterns\footnote{Author: Joshua Kerhievsky, ISBN: 0-321-21335-1}
 	\item Refactoring Databases\footnote{Author: Scott W.Ambler/Pramod J.Sadalage, ISBN: 0-321-29353-3} 
 \end{enumerate}
-\newpage
-
-\section{Anforderungen}
-Über die Zeit haben sich die Anforderungen an das Mailsystem derartig geändert, dass diese nicht mehr mit der existierenden Implementierung umgesetzt werden können. Dies liegt vor allem daran dass die existierende Implementierung aus dem Jahre 2002 stammt und man dessen umgesetztes Design mittlerweile vollständig ausgereizt hat. Andererseits muss man aber auch beachten dass die angeschlossenen Systeme sich über die Zeit evolutioniert, also weiterentwickelt, haben und daher auch neue Anforderungen stellen. Ebenso haben sich auch die Kundenanforderungen geändert.
-\\
-Aufgrund dieser Ausgangssituation wurden folgende technische Anforderungen definiert, die im folgenden aufgelistet sind.\\
-\begin{itemize}
-	\item Persistenz der versendeten E-Mails inklusive Anhänge.
-	\item Integration in andere Systeme in Form von Rest-API (Rest-Service)
-	\item Metadaten sollen für E-Mails definiert werden können (z.B.: Gruppierung)
-	\item Konfigurierbarkeit des Mailversands, Speicherung, Archivierung, ...
-\end{itemize}
-\ \\
-Das Gesamtsystem soll hierbei so flexibel wie möglich sein und muss in der Lage sein zumindest mit dem Systemen der Firma curecomp zu interagieren. 
+\ \newline
+Über die Zeit haben sich die Anforderungen an \emph{CCMail} derartig geändert, dass diese nicht mehr in \emph{CCMail} integriert werden können. Wie im Vorwort bereits erwähnt liegt dies vor allem an dem Design von \emph{CCMail}. \emph{CCMail} wurde im Jahre 2002 implementiert in \emph{Java 1.4} implementiert und hatte daher nicht die technischen Möglichkeiten die uns heute zur Verfügung stehen. Als Erinnerung, Java Generics wurden erst mit der Version \emph{Java 1.5 auch bekannt als Java 5.0} implementiert. Auch sind bis heute alle Erweiterungsmöglichkeiten in \emph{CCMail} ausgeschöpft worden, wobei eine Erweiterung alleine schon wegen dem großen Versionsunterschied zwischen \emph{Java 1.4} und \emph{Java 1.8} sinnlos erscheint. Weiterentwicklungen fanden zwar in \emph{CleverWeb} und \emph{CleverInterface} statt jedoch scheint es so, dass \emph{CCMail} hier vernachlässigt wurde, was dazu geführt hat, dass ein derartig großer technologischer Unterschied eingetreten ist. 
 \newpage
 
 \section{Überblick Ist-System} 

@@ -1,49 +1,95 @@
-\chapter{Die Konsolen Applikation}
-\label{cha:the-console-app}
-Da in dieser Arbeit das Design der bestehenden Implementierung diskutiert und ein Designvorschlag eingebracht werden soll, muss man zuerst die Struktur und das Design der bestehenden Implementierung verstehen lernen. Da sich die meiste Geschäftslogik in der Konsolen Applikation befindet wird im folgenden dessen Design und Struktur diskutiert.\\
-
+\chapter{Gesamtsystem}
+\label{cha:gesamtsystem}
+In diesem Kapitel wird der Systemaufbau und insbesondere die Integration von \emph{CCMail} in dasselbe diskutiert.
+Folgendes Diagramm illustriert den Systemaufbau und die Integration von \emph{CCMail} in das Gesamtsystem. 
+\\
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{systemaufbau_console_alone.jpg} 
-\caption{Teilsystem Konsolen Applikation und Sendmail}
+\includegraphics[scale=0.5]{Systemaufbau_alt.jpg} %{CS0031}
+\caption{Systemaufbau und Integration von \emph{CCMail}}
+\label{fig:ccmail-system-integration}
+\end{figure}
+\ \newline
+Aus diesem Diagramm lässt sich ableiten dass das Kernstück des E-Mail Versandes die Datenbank ist. In der Datenbank werden die zu versendenden E-Mail-Nachrichten als sogenannte \emph{MailJob} in der Datenbank gespeichert und anschließend von \emph{CCMail} ausgelesen und verarbeitet. Ein \emph{MailJob} ist hierbei als eine Entität einer Datenbanktabelle anzusehen.
+\newline\newline
+\emph{CleverWeb} und \emph{CleverInterface} erstellen über ihre Datenbankzugriffsschicht \emph{MailJob} Entitäten in der Datenbank, welche zeitgesteuert von \emph{CCMail} ausgelesen, verarbeitet und versendet werden. \emph{CCMail} ist als eine Konsolen-Anwendung Implementiert und enthält alle Ressourcen, die es benötigt um die \emph{MailJob} Entitäten zu verarbeiten.
+
+\section{Prozessübersicht}
+Im folgenden wird ein Beispiel für den Gesamtprozess diskutiert, also vom Anlegen eines \emph{MailJob} bis hin zum Versand der eigentlichen E-Mail-Nachricht. Als Kernkomponente des E-Mail-Versandes wurde die Datenbank identifiziert, die die \emph{MailJob} Entitäten hält. Dieser Ansatz ist an sich nicht als schlecht anzusehen, jedoch verbirgt sich hier eines der Hauptprobleme des E-Mail-Versandes. Nämlich die Inkonsistenz der versendeten E-Mail-Nachrichten, durch die Zeitdifferenz zwischen dem Anlegen eines \emph{MailJob} und dem tatsächlichen Versand der E-Mail-Nachricht wie in folgendem Sequenz-Diagramm illustriert wird.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{prozess_sequence_emailversand.jpg}
+\caption{Beispiel für den Gesamtprozess eines E-Mail Versandes}
+\label{fig:sequence-diagram-mail-send}
+\end{figure}
+\ \newline
+Eines der Hauptprobleme an diesem Prozess ist die Inkonsistenz, was in der Art und Weise wie die \emph{MailJob} Entitäten verarbeitet werden begründet ist. Ein \emph{MailJob} hält die Informationen für den Versand einer E-Mail wobei hierbei nicht die gesamte E-Mail-Nachricht gespeichert ist sondern lediglich die Parameter, die in einer Datenbankabfrage genutzt werden um die Daten für die E-Mail-Nachricht zu erhalten. Sollten sich die Datenbank Entitäten der involvierten Tabellen ändern, wie in diesem Beispiel eine Bestellung, so ist dieselbe E-Mail-Nachricht, die bereits versendet wurde nicht mehr wieder herstellbar, da sich die zugrundeliegenden Daten geändert haben.
+\newline\newline
+Ein Weiteres Problem liegt in der zeitgesteuerten Abarbeitung der \emph{MailJob} Entitäten von \emph{CCMail}. Es wurde lange Zeit nicht geprüft ob bereits ein \emph{CCMail} Prozess gestartet wurde bevor dieser gestartet wird. Dies hat dazu geführt dass es vorkam das mehrere Prozesse gleichzeitig die \emph{MailJob} Entitäten verarbeiten und daher wurden E-Mail-Nachrichten mehrmals versendet. 
+\chapter{CCMail}
+\label{cha:ccmail}
+Nachdem das Gesamtsystem und ein Beispiel für den Prozess eines E-Mail-Versandes diskutiert wurden wird sich nun mit dem Design und der Implementierung von \emph{CCMail} befasst. \emph{CCMail} wurde als Konsolen-Anwendung implementiert und hält alle implementierten E-Mail-Typen, die zur Verfügung stehen wie:
+\begin{enumerate}
+	\item E-Mail-Vorlagen
+	\item Datenbankabfragen
+	\item E-Mail-Typ spezifische Implementierungen
+\end{enumerate}
+\ \newline
+Es wurde hierbei eine Klasse namens \emph{CCBasicEmail}
+implementiert, die alle nötigen Funktionalitäten für den Versand einer E-Mail-Nachricht enthält, sowie eine Klasse namens \emph{CCMailingDao} die alle Datenbankabfragen über alle E-Mail-Typen hält.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{teilsystem_ccmail.jpg} 
+\caption{Teilsystem \emph{CCMail}}
 \label{fig:class-hierarchie-email}
 \end{figure}
 
 
 \newpage
-\section{Klassenhierarchie}
-\label{sec:console-app-class-hierarchie}
-Um die Struktur der Konsolen Applikation  zu verstehen wenden wir uns den implementierten Klassenhierarchien der einzelnen Softwarekomponenten wie E-Mail Typen und DAOs (Datenzugriffsobjekte) zu. Diese beiden Softwarekomponenten stellen den Hauptteil der Software dar, daher beginnen wir mit der Analyse dieser Komponenten. 
-\subsection{E-Mail Typen}
-Einleitend betrachten wir die implementierte Klassenhierarchie der E-Mail Typen mit einem Ausschnitt aus der Klassenhierarchie. Dieser Ausschnitt illustriert sehr gut die vorhandene Struktur der Klassenhierarchie.
+\section{Klassenhierarchien}
+\label{sec:klassen-hierarchien}
+Um das Design von \emph{CCMail} zu illustrieren wird im Folgenden näher auf die Klassenhierarchien von \emph{CCMail} eingegangen. Im Grunde besteht \emph{CCMail} aus den beiden folgenden Softwarekomponenten:
+\begin{enumerate}
+	\item\emph{CCBasicEmail}\newline
+	Wurzelklasse aller E-Mail-Typen die als abgeleitete Klassen von \emph{CCBasicEmail} implementiert wurden
+	\item\emph{CCMailingDao}\newline
+	Schnittstelle zur Datenbank, welche alle Abfragen auf die Datenbank über alle E-Mail-Typen hinweg spezifiziert. 
+\end{enumerate}
+\ \newline
+Die Klassenhierarchien geben einen guten Einblick in das Design und die Struktur von \emph{CCMail} und werden aufzeigen was der Grundgedanke beim Design von \emph{CCMail} war und warum man sich für das Design entschieden hat. 
+\subsection{CCBasicEmail}
+\label{sec:class-hierarchie-ccbasic-mail}
+Einleitend betrachten wir die Klassenhierarchie der Klasse \emph{CCBasicEmail}, die die Wurzelklasse aller E-Mail-Typen darstellt.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.35]{class_diagram_basic_email.png} 
-\caption{Die Basisklasse \emph{BasicEmail} mit einigen Implementierungen}
-\label{fig:class-hierarchie-email}
+\includegraphics[scale=0.55]{class_diagram_basic_email.png} 
+\caption{Auszug aus der Klassenhierarchie von \emph{CCBasicEmail}}
+\label{fig:klassen-hierarchie-ccbasicemail}
 \end{figure}
-
-\newpage
-Man hat sich hier für das \emph{Factory Method Muster} entschieden wobei die Basisklasse \emph{BasicEmail} eingeführt wurde, welche die gesamte Logik für den Aufbau und Versand einer E-Mail in sich kapselt und die einzelnen konkreten Implementierungen, in Form von abgeleiteten Klassen, die die einzelnen E-Mail Typen darstellen. Wie im Diagramm bei der Klasse \emph{CCItbCustUser} ersichtlich wurden auch E-Mail Typen implementiert, die ihrerseits wieder als Basisklasse dienen für untergeordnete E-Mail Typen. Aufgrund des vergebenen Namens kann man annehmen dass es sich hier um E-Mail Benachrichtigungen für einen Benutzer eines Kunden des Moduls ITB handelt, die man versucht hat zu gruppieren.\\
-Die Gruppierung wurde hier durch Einführung einer eigenen Vererbungshierarchie auf Basis einer eingeführten Basisklasse \emph{CCItbCustUser}, die ihrerseits die eigentliche Basisklasse \emph{BasicEmail} weg abstrahiert, realisiert.\\
-
-An sich ist dies kein schlechter Ansatz jedoch erwarte ich mir von einer konkreten Implementierung, dass diese auch ein gewisses Maß an Logik beinhaltet, die das Factory-Method Muster rechtfertigt, jedoch ist dies in den meisten Fällen nicht der Fall. Solche Klassenhierarchien einzuführen nur um verschiedene Datentypen zu erhalten, welche einen E-Mail Typ definieren, welcher nicht einmal in den angeschlossenen Systemen verwendet wird sondern nur innerhalb dieser Konsolen Applikation finde ich übertrieben. Es gibt weitaus einfachere, weniger aufwendige und Code produzierende Ansätze mit denen E-Mail Typen abgebildet werden können.
-
-\newpage
-\subsection{Datenzugriffsobjekt(e)}
-Nachdem wir die Klassenhierarchie der E-Mail Typen analysiert haben wenden wir uns nun der Datenbankzugriffsschicht zu, die mit einem einzigen DAO (Datenzugriffsobjekt) implementiert wurde.
+\ \newpage
+In diesem Klassendiagramm sieht erkennt man sehr gut dass man sich dazu entschieden hat die einzelnen E-Mail-Typen als eigene Klassen abzubilden. Somit ist jeder E-Mail-Typ auch als eigener Java Typ abgebildet. Am Beispiel der Klasse \emph{CCItbCustUser} ist ersichtlich dass neben dem Abbilden eines E-Mail-Typs als eigene Java Klasse man ebenfalls eine eigene Subklassenhierarchie eingeführt hat um E-Mail-Typen, die in einem gemeinsamen Kontext sich befinden zu gruppieren. Ob dies ein guter Ansatz um Kontextabhängige Ressourcen gruppieren ist zu hinterfragen. Es gäbe hier andere Ansätze wie man eine solche Gruppierung hätte realisieren können, die flexible sind als eine Klassenhierarchie. Eine Klassenhierarchie ist an sich starr und nicht flexibel und Änderungen an der Struktur können sich negativ in der Gesamtstruktur auswirken.
+\subsection{CCMailingDao}
+Im Gegensatz zur Strukturierung der E-Mail-Typen hat man sich bei der Datenzugriffsschicht nicht dazu entschieden diese kontextabhängig zu gruppieren. Hier wurden alle Datenbankabfragen in einer einzigen Schnittstelle spezifiziert ohne Rücksichtnahme auf deren Kontext.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{cc_mail_dao.jpg} 
-\caption{Die \emph{CCMailingDAOImplDB2} Implementierung mit seinem Interface \emph{CCMailingDAO} mit seiner Factory \emph{CCMailingFactory}}
-\label{fig:class-hierarchie-email}
+\includegraphics[scale=0.55]{class_diagram_mailing_ao.png} 
+\caption{Klassenhierarchie von \emph{CCMailingDao}}
+\label{fig:class-hierarchie-ccmailing-dao}
 \end{figure}
-\ \\
-Obwohl man eine Klassenhierarchie für die E-Mail Typen eingeführt hat, hat man dies bei den DAOs (Datenzugriffsobjekte) nicht getan. Es gibt also eine einzige DAO Implementierung, die alle Datenbankabfragen über alle E-Mail Typen hinweg beinhaltet und diese über eindeutige Methodennamen identifiziert. Des Weiteren wurde zwar eine Factory für dieses DAO eingeführt, aber eine Factory für ein DAO mit \emph{Class.forName("*.DaoImplDb2")} erscheint fast sinnlos, obwohl man hier noch die Begründung finden könnte, dass diese Factory eingeführt wurde um zumindest die konkrete Datenbank zu abstrahieren und die Möglichkeit zu schaffen die DAO Implementierung für DB2 auf z.B.: Oracle zu ändern. Man würde hier erwarten das die DAO Implementierungen kontextabhängig - also auf Modulebene - implementiert worden wären und dass die Factory dynamisch mit der zu verwendenden Implementierung initialisiert werden kann, also parametriebar ist. Dann wäre es aber auch erforderlich die Datenbank spezifischen Implementierungen über ein eigenes Artifakt zur Verfügung zu stellen und nicht das alle Ressourcen sich innerhalb ein und desselben Artifaktes befinden, also die Interface Spezifikationen und dessen Implementierungen.
-
+\ \newline
+Diese Klassenhierarchie ist sehr einfach, da man sich nicht für eine Gruppierung entschieden hat. Hier ist zu bemängeln dass sich hier alle Datenbankabfragen über alle E-Mail-Typen hinweg befinden und man es versäumt hat hier Schnittstellen einzuführen, die die kontextabhängigen Datenbankabfragen spezifizieren. Mit einer Aufteilung auf mehrere Schnittstellen hätte man es sich vereinfacht diese die Datenbankabfragen zu warten. Mit diesem Ansatz ist man erstens gezwungen Präfixe für die Methodennamen einzuführen, da Namenskollisionen sehr wahrscheinlich sind und zweitens muss man darauf Acht geben bestehende Implementierungen bei einem Refaktorisieren einer oder mehrerer kontextabhängigen Implementierungen nicht zu verändern. Alle Implementierungen nutzen dieselben Ressourcen und müssen daher auf den kleinsten gemeinsamen Nenner zusammengeführt werden, oder man führt hier wiederum eigene Ressourcen ein, die sich durch ihren Namen unterscheiden.
 \newpage
-\section{Implementierung}
-Da wir nun die Klassenhierarchien kennen gelernt haben wenden wir uns deren Implementierung zu. Im folgenden werden die Implementierungen der Klasse \emph{CCItbCustUser} und dessen Ableitungen diskutiert. Im Punkt~\ref{sec:console-app-class-hierarchie} wurde behauptet dass diese Ableitungen eingeführt wurden um E-Mail Typen zu gruppieren. Man könnte aber auch davon ausgehen dass diese eigene Vererbungshierarchie eingeführt wurde um Funktionalitäten für die einzelnen E-Mails zu kapseln. Analysieren wir nun diese Implementierungen um zu sehen welche Funktionalitäten in einen E-Mail Typ implementiert wurden. \\\\
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.55]{class_diagram_mailing_dao_factory.png} 
+\caption{\emph{CCMailingDaoFactory} für \emph{CCMailingDao}}
+\label{fig:class-hierarchie-ccbasicemail}
+\end{figure}
+\ \newline
+Zu kritisieren ist hier auch die Art und Weise wie eine Instanz von \emph{CCMailingDao} erzeugt wird. Man nutzt hier den Factory-Pattern, jedoch wird hier statisch die zu verwendende Implementierung in der Factory \emph{CCMailingDaoFactory} definiert was das Austauschen der Implementierung unmöglich macht. Zusätzlich befindet sich die Schnittstelle zusammen mit ihrer Implementierung in ein und demselben Artefakt. Dies ist als ein sehr halbherziger Versuch zu werten die Implementierung austauschbar zu machen.  
+\newpage
+\section{Implementierung CCItbCustUser}
+Nachdem die Klassenhierarchien diskutiert wurden wird im folgenden die Implementierung der Klasse \emph{CCItbCustUser} und dessen Ableitungen diskutiert. Diese Implementierung dient als Beispiel für die restlichen E-Mail-Typ Implementierungen, die nach dem selben Prinzip mit ähnlichen Umfang implementiert wurden. Im Punkt~\ref{sec:sec:class-hierarchie-ccbasic-mail} wurde behauptet dass diese Ableitungen eingeführt wurden um E-Mail Typen zu gruppieren. Man könnte aber auch davon ausgehen dass diese eigene Vererbungshierarchie eingeführt wurde um Funktionalitäten für die einzelnen E-Mails zu kapseln. Analysieren wir nun diese Implementierungen um zu sehen welche Funktionalitäten in einen E-Mail Typ implementiert wurden. \\\\
 Die folgende Implementierung dient als Beispiel für eine Implementierung eines E-Mail Typs.   
 
 \begin{program}

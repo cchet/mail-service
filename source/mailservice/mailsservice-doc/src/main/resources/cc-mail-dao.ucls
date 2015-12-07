@@ -5,7 +5,7 @@
     file="/CCMailing/src/main/java/com/clevercure/mailing/dao/CCMailingFactory.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="467" y="-341"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
@@ -13,8 +13,8 @@
   </class>  
   <interface id="2" language="java" name="com.clevercure.mailing.dao.CCMailingDAO" project="CCMailing" 
     file="/CCMailing/src/main/java/com/clevercure/mailing/dao/CCMailingDAO.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="465" y="-172"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="-1" width="-1" x="466" y="-261"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
@@ -23,22 +23,18 @@
   <class id="3" language="java" name="com.clevercure.mailing.dao.CCMailingDAOImplDB2" project="CCMailing" 
     file="/CCMailing/src/main/java/com/clevercure/mailing/dao/CCMailingDAOImplDB2.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="774" y="-171"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    <position height="-1" width="-1" x="755" y="-260"/>    
+    <display autosize="false" stereotype="false" package="false" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="true"/>      
       <operations public="false" package="false" protected="false" private="false" static="true"/>    
     </display>  
   </class>  
-  <dependency id="4">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="2"/>  
-  </dependency>  
-  <realization id="5">    
+  <realization id="4">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </realization>  
-  <dependency id="6">    
+  <dependency id="5">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="2"/>  
   </dependency>  

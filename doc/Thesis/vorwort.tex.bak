@@ -1,11 +1,24 @@
 \chapter{Vorwort} 	% engl. Preface
-Folgende Arbeit beschäftigt sich mit der Re-Implementierung einer Mail Lösung, welche verwendet wird um Mails, die innerhalb einer Applikation generiert oder angefordert werden, zu verschicken. 
-Da neue Anforderungen definiert wurden, die sich mit der existierenden Lösung nicht mehr realisieren lassen wurde beschlossen dass diese Lösung reimplementiert werden soll. Hierbei wird diese Arbeit den Fokus auf die existierende wie auch mögliche Implementierung bzw. deren Design legen. 
-Die existierende Lösung weißt ein Alter von 10 Jahren auf, wurde mehrmals erweitert und ist auch dementsprechend designt. \\
-
-Diese Maillösung wird von der Firma curecomp GembH verwendet, die eine Cloud basierte SRM-Lösung betreibt (Supplier-RelationShip-Management), deren Prozesse den Versand von E-Mails erfordern wobei diese E-Mails einerseits in verschiedene Bereiche zu unterteilen sind wie z.B.: Systemmails, Lieferverzugsmeldungen, Gutschriften, Bestellbestätigungen usw. und anderseits auch von verschiedenen System der SRM-Lösung erzeugt werden. \\
-Bei diesen System handelt es sich einerseits um ein Datenimport/-export System (IIB - IBM-Integration-Bus) und anderseits um eine Web Applikation (Websphere - JSF). Beide Systeme sollen in der Lage sein einfach E-Mail Nachrichten eines bestimmten Typs zu versenden, wobei eine Nachricht dynamisch mit Daten versorgt werden soll und auf Basis einer Vorlage die E-Mail erstellt werden soll. Die Anhänge sollen ebenfalls dynamisch von verschiedenen Ressourcen geladen werden können. Eine versendete E-Mail soll über einen bestimmten Zeitraum hinweg weidervesendbar sein und ebenso sollen Log Daten der Metadaten vorhanden sein, die es erlauben den Lebenszyklus einer E-Mail nachträglich nachzuvollziehen. Z.B.: Wann wurde eine E-Mail and wen wie oft von wem versendet? \\\\
-Beide Systeme sollen mit dem Mail Service System in derselben Art und Weise kommunizieren und interagieren, wobei aber die Systeme eine volle Integration der Client API zur Verfügung gestellt werden soll. Also sollen alle System spezifischen Ressourcen von der Client API nutzbar sein, wodurch ein gewisser Grad der Abstraktion der Implementierung zu gewährleisten ist.
-\newpage
-// TODO: Kurzbeschreibung der Systemarchitektur und Komponenten (halbe Seite)
-// TODO: Zeichnung der System für die Visualisierung mit existierenden Mailservice.
+Folgende Arbeit beschäftigt sich mit der Konzeption einer Mail-Anwendung für die Firma curecomp GembH, welche in weiterer Folge als \emph{CleverMail}\newline
+bezeichnet wird, die eine bestehende Mail-Anwendung, in weiterer Folge\newline
+\emph{CCMail} genannt, ablösen soll. Die  Firma curecomp GembH ist ein Dienstleister im Supplier Relationship Management (SRM) und betreibt eine Softwarelösung, die aus zwei Anwendungen besteht:\newline
+\begin{enumerate}
+	\item\emph{CleverWeb}\newline
+	Eine Web-Anwendung für den webbasierten Zugriff
+	\item\emph{CleverInterface}\newline
+	Eine Schnittstellen-Anwendung für die Anbindung der ERP-Systeme der Kunden und Lieferanten
+\end{enumerate} 
+\ \newline
+Beide Anwendungen erfordern den Versand von E-Mail-Nachrichten um verschiedene Systemzustände den Benutzern mitzuteilen wie z.B.:
+\begin{itemize}
+	\item Fehlermeldungen
+	\item Statusänderungen bei Bestellungen (erstellt, geliefert, storniert, ...)
+	\item Lieferverzugsmeldungen
+	\item ...
+\end{itemize}
+\ \newline
+Es wurden neue Anforderungen für \emph{CCMail}
+definiert, die sich nicht mehr in \emph{CCMail} integrieren lassen. Dies ist begründet in dem Design und der Implementierung von \emph{CCMail}.
+\newline\newline
+Diese Arbeit wird sich einerseits mit der Diskussion des bestehenden Designs und der bestehenden Implementierung von \emph{CCMail} befassen und andererseits ein Konzept für 
+\emph{CleverMail} einbringen. Das eingebrachte Konzept soll als Basis für die praktische Bachelorarbeit dienen, in der das eingebrachte Konzept umgesetzt werden soll.
