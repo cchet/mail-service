@@ -12,7 +12,7 @@ Patrick Leonhartsberger +
 
 #### Grobe Anforderungen Mailservice
 - Erneutes Versenden einer bereits versendeten Email
-- ANzeigen aller Mails in der Applikation die an eine Email Adresse versendet wurden. (Abfrage via rest für Email und Profile)
+- Anzeigen aller Mails in der Applikation die an eine Email Adresse versendet wurden. (Abfrage via rest für Email und Profile)
 - Mails sollen gruppierbar sein bezüglich Archivierung, Autoclean, ...
 - Wie sollen Mails gespeichert werden ? (EML, Meta-Daten oder beides)
 - Bündelung der Emails zu einer Email. (Vielleicht nur Client Job)

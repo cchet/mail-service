@@ -1,0 +1,51 @@
+### Infrastruktur meeting Mailing (Curecomp)
+*Datum:* + 
+21.12.2015 +
+
+*Teilnehmer:* + 
+Thomas Herzog + 
+Peter Hackl +
+Patrick Leonhartsberger +
+
+*Zeit:* + 
+10:15 - + 
+
+#### Infrastruktur
+- Java 8
+- 
+
+#### Mail Templates
+- Verwaltung aller Vorlagen über die Datenbank
+- Definition von verfügbaren Paremter pro E-Mail Kontext.
+- Freemarker Templates wo Expressions aufgebaut werden
+- Template pro Kontext
+- Mailtypenverwaltung über Datenbank
+- Custom attachments und zusätzlichen Kontent, der an die E-Mail angehängt wird.
+
+#### Mailversand
+- Zeitgesteuerter Versand (z.B.: jeden Tag)
+- Ein Mailjob pro versendeter E-Mail !!!!
+- E-Mails werden über scheduler versendet (hohe Frequenz)
+- Support E-Mail-Typen für Benutzertypen (Key-User, Lieferanten-User, Dispoengine) via rest Service.
+
+#### Konsistenz
+- Es gibt Mail-Typen, die keine Daten verwenden außer generierte Dateien.
+- Recipients gehören resilaisiert.
+
+#### E-Mail-Typen
+- E-Mail mit statischen Text und verlinktem Attachment
+- E-Mail mit Templates, die Parameter benötigen und Attachments haben (optional)
+- Gruppierung der E-Mail-Typen, die mehrer E-Mails halten (Parent - Child)
+- E-Mail-Typ für Kunde und/oder Lieferant. Marker wer die E-Mal-typen steuern darf (Lieferaten E-Mail-Typ aber Kunde steuert diesen). Kunde vergibt Rechte an Lieferanten ob diese E-Mail-Typen durch die Lieferanten aktivierbar  oder daktivierbar ist.
+- Zuweisung für alle oder spezifischen Lieferanten.  
+- Zuwesiung der E-Mail-Typen auf einzel Lieferanten oder alle.
+- Konzernsteuerung der E-Mal-Typen, also füpr alle Werke innerhlab eines Konzern
+- Kundensteuerbare E-Mail-Typen dürefen vom Kunden für die Lieferanten freigeben werden.
+- Freidefinierbare E-Mails und Benutzerzuweisung
+- Kunde soll Möglichkeit haben Zeitpunkte, Schedules für einige E-Mail-Typen zu definieren.
+
+#### Web Admin
+- Administration für Templates.
+- Admin für Support um Templates zu verwalten, E-Mail-Tpyen administrieren usw.
+- Admin für Kunde und Lieferant
+
