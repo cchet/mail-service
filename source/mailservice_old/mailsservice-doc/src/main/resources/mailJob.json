@@ -73,7 +73,7 @@
 			"paramNameOrOrdinal": "paramValue maybe json"
 		},
 
-		"version": "[1.0|latest]",
+		"version": "[1|latest]",
 		"type": "[freemarker|properties|velocity|...]"
 	},
 
