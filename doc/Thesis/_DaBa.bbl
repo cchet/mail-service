@@ -1,0 +1,66 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{refactoreToPatterns}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Kerievsky}{K.}%
+     {Joshua}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Addison-Wesley Professional}%
+  }
+  \strng{namehash}{KJ1}
+  \strng{fullhash}{KJ1}
+  \field{sortinit}{K}
+  \field{title}{Refactoring to patterns}
+  \field{langid}{german}
+  \list{location}{1}{%
+    {München}%
+  }
+  \field{year}{2005}
+\endentry
+
+\entry{refactoreDatabase}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Pramond~J.Sadalage}{P.~J.}%
+     {Scott~W.Ambler}{S.~W.}%
+     {und}{u.}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Addison-Wesley Professional}%
+  }
+  \strng{namehash}{PJSWu1}
+  \strng{fullhash}{PJSWu1}
+  \field{sortinit}{P}
+  \field{title}{Refactoring Databases}
+  \field{langid}{german}
+  \list{location}{1}{%
+    {München}%
+  }
+  \field{year}{2006}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput

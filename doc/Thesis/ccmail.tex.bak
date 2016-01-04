@@ -37,9 +37,9 @@ Dies ist begründet in der Art und Weise wie die \emph{MailJob} Einträge aufgeb
 \newline
 Ein Weiteres Problem liegt in der zeitgesteuerten Verarbeitung der \emph{MailJob} durch \emph{CCMail}. Es wurde lange Zeit nicht geprüft ob bereits ein \emph{CCMail} Prozess gestartet wurde bevor dieser gestartet wird. Dies hat dazu geführt dass es vorkam das mehrere Prozesse gleichzeitig die \emph{MailJob} Entitäten verarbeiten und daher die E-Mail-Nachrichten mehrmals versendet wurden. Dieses Problem ist begründet durch die Tatsache dass in Verarbeitung stehende \emph{MailoJob} Entitäten nicht als solche markiert wurden und von dem parallel laufende Prozess ebenfalls ausgelesen und verarbeitet wurden. Zurzeit wird lediglich geprüft ob bereits ein Prozess gestartet wurde, was es unmöglich macht die Arbeit auf mehrere Prozesse aufzuteilen.
 \newpage
-\section{Implementierung}
-\label{sec:ccmail-implementierung}
-Nachdem der Systemaufbau diskutiert wurde wird sich nun mit der Implementierung von \emph{CCMail} befasst. \emph{CCMail} wurde als Konsolen-Anwendung implementiert und hält alle implementierten E-Mail-Typen, die zur Verfügung stehen wie:
+\section{Design}
+\label{sec:ccmail-design}
+Nachdem der Systemaufbau diskutiert wurde wird sich nun mit dem Design von \emph{CCMail} befasst. \emph{CCMail} wurde als Konsolen-Anwendung implementiert und hält alle implementierten E-Mail-Typen, die zur Verfügung stehen wie:
 \begin{enumerate}
 	\item E-Mail-Vorlagen
 	\item Datenbankabfragen
@@ -172,4 +172,29 @@ Diese Klassenhierarchie ist sehr einfach, da man sich nicht für eine Gruppierun
 \label{fig:klassen-hierarchie-ccmailingfactory}
 \end{figure}
 \ \newline
-Zu kritisieren ist hier auch die Art und Weise wie eine Instanz von \emph{CCMailingDao} erzeugt wird. Man nutzt hier den Factory-Pattern, jedoch wird hier statisch die zu verwendende Implementierung in \emph{CCMailingDaoFactory} definiert, was das Austauschen der Implementierung unmöglich macht. Zusätzlich befindet sich die Schnittstelle zusammen mit ihrer Implementierung in ein und demselben Artefakt. Dies ist als ein halbherziger Versuch zu werten die Implementierung von \emph{CCMailingDao} austauschbar zu machen.  
+Zu kritisieren ist hier auch die Art und Weise wie eine Instanz von \emph{CCMailingDao} erzeugt wird. Man nutzt hier den Factory-Pattern, jedoch wird hier statisch die zu verwendende Implementierung in \emph{CCMailingDaoFactory} definiert, was das Austauschen der Implementierung unmöglich macht. 
+\newline
+\newline 
+In dem Buch \emph{Refactoring to patterns} \cite[72]{refactoreToPatterns} wird als Nachteil einer Factory die erhöhte Komplexität des Designs genannt, wenn eine direkte Instanziierung auch genügen würde. Nachdem die Instanziierung in der Basisklasse \emph{CCBasicEmail} erfolgt und die Ableitungen die Instanz über eine Getter-Methode oder die geschützte Member-Variable erreichen hätte man auf diese Factory auch verzichten können, da die Abstraktion bereits über die Basisklasse erreicht wurde. 
+\newline
+\newline
+Zusätzlich befindet sich die Schnittstelle zusammen mit ihrer Implementierung in ein und demselben Artefakt. Dies ist als ein halbherziger Versuch zu werten die Implementierung von \emph{CCMailingDao} austauschbar zu machen.  
+\newpage
+\section{Datenbank}
+\label{sec:ccmail-datanbank}
+Abschließend wird hier der Aufbau des Datenbankschemata betrachtet, welches die Kernkomponente des Systems darstellt aus der Sicht von \emph{CCMail} darstellt.
+Es wurde bei diesem Schemata offensichtlich auf Fremdschlüssel verzichtet. 
+In dem Buch \emph{Refactoring Database} \cite[213]{refactoreDatabase} wird als Argument für nicht verwendete Fremdschlüssel die Performance genannt wobei in diesem Fall diese Begründung nicht standhält. Die beiden Anwendungen \emph{CleverWeb} und \emph{CleverInterface} erstellen lediglich einzelne oder wenige \emph{MailJob} Einträge auf einmal und \emph{CCMail} ist die einzige Anwendung, die diese \emph{MailJob} Einträge einmalig ausliest und verarbeitet. Also sollte in diesem Fall die Performance ohnehin kein Problem sein. Das Problem von nicht verwendeten Fremdschlüsseln wird in \emph{Refactoring Databases} \cite[213]{refactoreDatabase} wie folgt beschrieben.
+\begin{quote}
+\emph{The fundemental tradeoff is performance versus quality: Foreign key constraints ensure the validity of the data at the database level at the cost of the constraint being enforced each time the source data is updated. When you apply Drop Foreign Key, your applications will be at risk of introducing invalid data if they do not validate the data before writing to the database.}
+\end{quote}
+Hier müssen also die Anwendungen selbst die Konsistenz der Daten gewährleisten ansonsten könnten inkonsistente Datenbestände in der Datenbank entstehen, die nachträglich schwer zu identifizieren und zu bereinigen sind. Die Frage ist hierbei ob dieser Ansatz ein guter Ansatz ist?
+\newline
+\newline
+Wie auch ersichtlich ist wurden die Spalten einer Tabelle mit einem Präfix versehen, der eindeutig über das gesamte Datenbankschema ist. Mann sollte annehmen dass es ausreicht das die Spaltennamen eindeutig innerhalb des Kontextes einer Tabelle sind und nicht global über das gesamte Datenbankschema. Die Tabellen die neu eingeführt wurden und mit Fremdschlüsseln miteinander verknüpft sind werden dazu verwendet um Datei Anhänge von E-Mail-Nachrichten zu verwalten, die bereits bei der Erstellung des \emph{MailJob} erstellt wurden. Dies war ein Workaround und sollte so auch nicht mehr angewandt werden, da hier die Dateien in Base64 Kodierung verwaltet werden und die Datenbank unnötig mit Daten belasten. Sie sollten in einem File-Storage verwaltet und lediglich referenziert werden, was aber zum Zeitpunkt der Implementierung noch nciht zur Verfügung stand. 
+\begin{figure}[h]
+\centering
+\includegraphics[angle=-90,scale=0.3]{ccmail_db_schema.jpg} 
+\caption{Datenbankschemata \emph{CCMail}}
+\label{fig:db-schema-ccmail}
+\end{figure}

@@ -1,0 +1,23 @@
+### Infrastruktur meeting Mailing (Curecomp)
+*Datum:* + 
+21.12.2015 +
+
+*Teilnehmer:* + 
+Thomas Herzog + 
+Peter Hackl +
+Patrick Leonhartsberger +
+
+*Zeit:* + 
+10:15 - + 
+
+#### Tempaltes
+- Draft mode for edit
+- HTML must be considered in mailjob
+- 
+#### Mail-Schedule
+- Schedule for specific day on specifc time (each monday at 10:00am)
+
+#### MAiljob
+- Mail-Template reference needed
+- Mail-Type needs localization
+- Emails in DB not JSON or converted from email to json

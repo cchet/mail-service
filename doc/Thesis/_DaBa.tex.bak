@@ -3,10 +3,9 @@
 %   Typ der Arbeit: diplom, master (default), bachelor, praktikum 
 %   Hauptsprache: german (default), english
 %%------------------------------------------------------------
-
 \graphicspath{{images/}}    % name of directory containing the images
 \logofile{FHOOeIntl2014}			% name of PDF, remove or use \logofile{} for no logo
-\bibliography{literatur}  	% name of the BibTeX (.bib) file
+\AddBibFile{literatur.bib}  	% name of the BibTeX (.bib) file
 
 
 %%%----------------------------------------------------------
@@ -19,7 +18,7 @@
 \studiengang{Software Engineering}
 \studienort{Hagenberg}
 \abgabedatum{2016}{02}{01}	% {YYYY}{MM}{DD}
-
+file:///B:/Google Drive/FH-Hagenaberg/Bachelorarbeit/Burger/hgb-thesis-utf-20141105/hgbthesis.cls
 %%% zusätzlich für eine Bachelorarbeit: ---------------------
 \nummer{S1310307011-A}   % XX...X = Stud-ID, z.B. 0310238045-A  
                         % (A = 1. Bachelorarbeit)
@@ -56,7 +55,7 @@
 %%%----------------------------------------------------------
 
 \include{einleitung}
-\include{diplomschrift}
+\include{ccmail}
 %\include{latex}
 %\include{abbildungen}
 %\include{mathematik}
