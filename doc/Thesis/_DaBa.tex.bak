@@ -18,11 +18,10 @@
 \studiengang{Software Engineering}
 \studienort{Hagenberg}
 \abgabedatum{2016}{02}{01}	% {YYYY}{MM}{DD}
-file:///B:/Google Drive/FH-Hagenaberg/Bachelorarbeit/Burger/hgb-thesis-utf-20141105/hgbthesis.cls
 %%% zusätzlich für eine Bachelorarbeit: ---------------------
 \nummer{S1310307011-A}   % XX...X = Stud-ID, z.B. 0310238045-A  
                         % (A = 1. Bachelorarbeit)
-\semester{Sommersemester 2016} 
+\semester{Wintersemester 2015/16} 
 \gegenstand{Software Engineering} 
 \betreuer{FH-Prof. DI Dr. Heinz Dobler} % oder \betreuerin{..}
 
@@ -56,12 +55,7 @@ file:///B:/Google Drive/FH-Hagenaberg/Bachelorarbeit/Burger/hgb-thesis-utf-20141
 
 \include{einleitung}
 \include{ccmail}
-%\include{latex}
-%\include{abbildungen}
-%\include{mathematik}
-%\include{literatur}
-%\include{drucken}
-%\include{schluss}
+\include{clevermail}
 
 %%%----------------------------------------------------------
 %%%Anhang

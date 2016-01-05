@@ -1,12 +1,20 @@
 \chapter{Vorwort} 	% engl. Preface
 Folgende Arbeit beschäftigt sich mit der Konzeption einer Mail-Anwendung für die Firma curecomp GembH, welche in weiterer Folge als \emph{CleverMail}\newline
 bezeichnet wird, die eine bestehende Mail-Anwendung, in weiterer Folge\newline
-\emph{CCMail} genannt, ablösen soll. Die  Firma curecomp GembH ist ein Dienstleister im Supplier Relationship Management (SRM) und betreibt eine Softwarelösung, die aus zwei Anwendungen besteht:\newline
+\emph{CCMail} genannt, ablösen soll. Die  Firma curecomp GembH ist ein Dienstleister im Supplier Relationship Management (SRM) und betreibt eine Softwarelösung namens \emph{clevercure}, die aus folgenden Anwendungen besteht:\newline
 \begin{enumerate}
-	\item\emph{CleverWeb}\newline
+	\item\emph{CleverWeb}
+	\newline
 	Eine Web-Anwendung für den webbasierten Zugriff
-	\item\emph{CleverInterface}\newline
+	\item\emph{CleverInterface}
+	\newline
 	Eine Schnittstellen-Anwendung für die Anbindung der ERP-Systeme der Kunden und Lieferanten
+	\item\emph{CleverSupport}
+	\newline
+	Eine Web-Anwendung, die zur Unterstützung der Support-Abteilung dient.
+	\item\emph{CleverDocument}
+	\newline
+	Ein Dokumentenmanagementsystem für die Dokumentenverwaltung aller anfallenden Dokumente 
 \end{enumerate} 
 \ \newline
 Beide Anwendungen erfordern den Versand von E-Mail-Nachrichten um verschiedene Systemzustände den Benutzern mitzuteilen wie z.B.:

@@ -14,21 +14,11 @@ Für die Konzipierung von \emph{CleverMail} wurden folgende technischen Grundvor
 \ \newline
 Das Konzept von \emph{CleverMail} soll vor allem auf neue Konzepte und Frameworks in Java konzentrieren, da man hier keine Rücksicht auf Rückwärtskompatibilität nehmen muss. 
 \newpage
-Als Unterstützung für diese Arbeit wurden folgende beiden literarischen Werke gewählt:
+Als Unterstützung für diese Arbeit wurden folgende literarischen Werke gewählt:
 \begin{enumerate}
-	\item Refactoring to patterns\footnote{Author: Joshua Kerhievsky, ISBN: 0-321-21335-1}
-	\item Refactoring Databases\footnote{Author: Scott W.Ambler/Pramod J.Sadalage, ISBN: 0-321-29353-3} 
+	\item Refactoring to patterns\cite{refactoreDatabase}
+	\item Refactoring Databases\cite{refactoreToPatterns}
+	\item Patterns of enterprise application architecture\cite{patternsOfEnterprise}
 \end{enumerate}
 \ \newline
 Über die Zeit haben sich die Anforderungen an \emph{CCMail} derartig geändert, dass diese nicht mehr in \emph{CCMail} integriert werden können. Wie im Vorwort bereits erwähnt liegt dies vor allem an dem Design von \emph{CCMail}. \emph{CCMail} wurde im Jahre 2002 implementiert in \emph{Java 1.4} implementiert und hatte daher nicht die technischen Möglichkeiten die uns heute zur Verfügung stehen. Als Erinnerung, Java Generics wurden erst mit der Version \emph{Java 1.5 auch bekannt als Java 5.0} implementiert. Auch sind bis heute alle Erweiterungsmöglichkeiten in \emph{CCMail} ausgeschöpft worden, wobei eine Erweiterung alleine schon wegen dem großen Versionsunterschied zwischen \emph{Java 1.4} und \emph{Java 1.8} sinnlos erscheint. Weiterentwicklungen fanden zwar in \emph{CleverWeb} und \emph{CleverInterface} statt jedoch scheint es so, dass \emph{CCMail} hier vernachlässigt wurde, was dazu geführt hat, dass ein derartig großer technologischer Unterschied eingetreten ist. 
-\newpage
-
-\section{Überblick Ist-System} 
-Der jetzige Mailservice besteht im Grunde nur aus einer Konsolen Applikation, einigen Datenbank Tabellen, und den Implementierungen der DAO \emph{(Data-Access-Object)} der beiden angeschlossenen Systeme. Mann sieht einerseits dass hier die Redundanz in Form der DAO Implementierungen der angeschlossenen Systeme Inkonsistenz mit sich bringt und andererseits dass die Koppelung über die Datenbank unflexibel ist und alle angeschlossenen Systeme mit ihren eigenen Implementierungen darauf zugreifen und es kein übergeordnetes System gibt, welches die allgemeinen Aktionen weg abstrahiert, bündelt und allen Systemen zur Verfügung stellt. 
-\\
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.6]{Systemaufbau_alt.jpg} %{CS0031}
-\caption{Diese Abbildung zeigt den konzeptionellen Aufbau der existierenden Maillösung und den jetzigen Kommunikationsweg zwischen den Systemteilnehmern}
-\label{fig:systemaufbau-alt}
-\end{figure}

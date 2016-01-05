@@ -14,9 +14,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Vorwort}{v}{chapter*.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Kurzfassung}{vi}{chapter*.4}
+\contentsline {chapter}{Kurzfassung}{vii}{chapter*.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Abstract}{vii}{chapter*.5}
+\contentsline {chapter}{Abstract}{viii}{chapter*.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
@@ -40,6 +40,14 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Datenbank}{14}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Quellenverzeichnis}{16}{appendix*.13}
+\contentsline {chapter}{\numberline {3}CleverMail}{16}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Literatur}{16}{section*.14}
+\contentsline {section}{\numberline {3.1}Systemaufbau}{18}{section.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}REST-Client}{19}{subsection.3.1.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}EJB}{21}{subsection.3.1.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Quellenverzeichnis}{22}{appendix*.16}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Literatur}{22}{section*.17}

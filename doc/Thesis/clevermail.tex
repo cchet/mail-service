@@ -1,0 +1,104 @@
+\chapter{CleverMail}
+\label{cha:clevermail}
+In diesem Kapitel wird nun das Konzept von \emph{CleverMail} behandelt, welches die bestehende Anwendung \emph{CCMail} ablösen soll. Nachdem die Betrachtungen und Analysen von \emph{CCMail} abgeschlossen sind und einige Fehlentscheidungen ausgemacht wurden kann man sich jetzt dem Konzept für \emph{CleverMail} zuwenden. Im Gegensatz zu \emph{CCMail} wird aus der Sicht von \emph{CleverMail} das Gesamtsystem aus mehr Anwendungen bestehen, die in der Lage sein müssen E-Mail-Nachrichten zu versenden. Über die Zeit ist das GEsatmsystem \emph{clevercure} angewachsen und es wurden neue Anwendungen hinzugefügt, die Aufgrund der Architektur von \emph{CCMyail} nicht eingebunden werden konnten bzw. man sich dazu entschieden hat die Einbindung zu unterlassen.
+\newline
+\newline
+Folgende Auflistung zeigt alle Anwendungen, die \emph{CleverMail} nutzen werden:
+\begin{enumerate}
+	\item\emph{CleverWeb}
+	\newline
+	Die Web-Anwendung für den webbasierten Zugriff auf das System
+	\item\emph{CleverInterface}
+	\newline
+	Die Schnittstellen Anwendung für den Datenimport/-export
+	\item\emph{CleverSupport (neu)}
+	\newline
+	Die Web-Anwendung für die Support Abteilung
+	\item\emph{CleverDocument (neu)}
+	\newline
+	 Das Dokumentenmanagementsystem welches von allen Anwendungen genutzt wird
+\end{enumerate}
+Im Gegensatz zu \emph{CCMail} soll \emph{CleverMail} nicht als Konsolenanwendung implementiert werden sondern soll als Enterprise-Anwendung implementiert, welche als eigenständige Anwendung in einem JEE7-Applikationsserver betrieben wird.
+\newpage
+Mit dieser Art von Anwendung stehen \emph{CleverMail} eine Vielzahl von Features und Frameworks zur Verfügung wie z.B.: 
+\begin{enumerate}
+	\item JAX-RS 2.0 (Java API for RESTful Webservices)
+	\item EJB 3.1 (Enterprise-Java-Bean)
+	\item JPA 2.1 (Java-Persistence-API)
+	\item JTA 1.2 (Java-Transaction-API)
+	\item JSF 2.2 (Java-Server-Faces)
+	\item uvm.
+\end{enumerate}
+Dies Features werden es erlauben die Anwendung \emph{CleverMail} so flexibel wie möglich zu gestalten, bringen aber auch ein erhöhtes Maß an Komplexität beim Design mit sich. Martin Fowler führt in seinem Buch \emph{Patterns of Enterprise Application Architecture}\cite[5-6]{patternsOfEnterprise} einige Beispiel für Enterprise-Anwendungen an um zu illustrieren dass jede dieser Anwendungen seine eigenen Probleme und Komplexität mit sich bringt und sich daher die Architektur einer Enterprise-Anwendung nicht einordnen und quantifizieren lässt. Daher ist beim Erstellen einer Architektur einer Enterprise-Anwendung der konkrete Nutzung zu berücksichtigen. Der Prozess der Konzeption einer Architektur ist ein kreativer Prozess wobei Konzepte, Best-Practise usw. nur als Unterstützung anzusehen sind und es keinen echten Leitfaden gibt an den man sich orientieren kann. Die Architektur wird stark von der konkreten Anwendung beeinflusst. Daher kann sich die Architektur je nach Anwendung stark unterschieden.
+\newpage
+\section{Systemaufbau}
+Im Gegensatz zum Systemaufbau aus der Sicht von \emph{CCMail}, beschrieben in \ref{sec:ccmail-systemaufbau}, soll die Datenbank nicht mehr als Schnittstelle zwischen den Anwendungen und \emph{CleverMail} fungieren. Die Datenbank soll weiterhin ein zentraler Bestandteil von \emph{CleverMail} sein jedoch soll diese von den Anwendungen abstrahiert werden. Damit erreicht man dass die Anwendungen eine einheitliche Schnittstelle nutzen und nicht ihrerseits eigene Implementierungen warten müssen.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.58]{clevermail_systemaufbau.jpg} %{CS0031}
+\caption{Systemaufbau und Integration von \emph{CleverMail}}
+\label{fig:clevermail-system-und-integration}
+\end{figure}
+\ \newline
+Wie in der Abbildung \ref{fig:clevermail-system-und-integration} illustriert soll als zentrale Schnittstelle \emph{CleverMail} bzw. dessen implementierte Client-API fungieren wobei diese CLient-API sich wie folgt ausprägen könnte:
+\begin{enumerate}
+	\item\emph{REST-Client}
+	\newline
+	Eine REST-Schnittstelle zu einen REST-Webservice über den die zur verfügung gestellten Funktionalitäten genutzt werden können.
+	\item\emph{EJB}
+	\newline
+	Ein EJB-Bean welches die zur Verfügung gestellten Funktionalitäten bereitstellt.
+\end{enumerate}
+\ \newline
+\emph{CleverMail} seinerseits ist für die Persistenzschicht und das versenden der E-Mail-Nachrichten verantwortlich und trennt diese Aufgaben vollständig von den Anwendungen. So kann die Wartung nur an einer stelle erfolgen und muss nicht über alle Anwendungen hinweg erfolgen. In den Anwendungen würden nur noch Änderungen an den Schnittstellen Eingriffe erfordern.
+\newpage
+Dieser Ansatz würde das Problem der eigens implementierten Datenbankzugriffe \ref{sec:ccmail-systemaufbau} lösen. Ein Problem könnten hier etwaige technologische Unterschiede darstellen wie z.B.:
+\begin{enumerate}
+	\item REST nicht verfügbar
+	\item EJB nicht verfügbar
+	\item Falscher Source-Level
+\end{enumerate}
+\ \newline
+Obwohl diese Probleme auftreten könnten kann zumindest gewährleistet werden, dass alle Anwendungen dieselbe Schnittstelle und dasselbe Domain-Model verwenden, selbst wenn eigene Implementierungen erforderlich sind. Diese Implementierungen würden eine Softwarekomponente von \emph{CleverMail} darstellen und währen auch Teil dieser Anwendung und dürfen nicht von den Anwendungen selbst bereitgestellt werden.
+Diese technologischen Unterschiede könnten wie folgt gelöst werden.
+\begin{enumerate}
+	\item\emph{REST}
+	\newline
+	Integration von JAX-RS 2.0 
+	\item\emph{EJB}
+	\newline
+	Integration eines EJB-Containers, zur Verfügung stellen eines Wrappers oder eine eigene Implementierung des spezifizierten Interfaces
+\end{enumerate}
+\subsection{REST-Client}
+Eine REST-Client API, welche sich mit JAX-RS 2.0 einfach realisieren lässt, würde ein hohes Maß an Abstraktion bieten, nur eine geringe Kopplung aufweisen und wenig Abhängigkeiten in der Anwendung erfordern. Dies steht aber gegenüber dass REST-Services zustandslos sind und sich daher implizit nicht in Datebank 
+Transaktionen einbinden lassen. Dies könnte aber erforderlich sein wenn eine E-Mail nur dann angelegt und versendet werden darf wenn die Transaktion erfolgreich abgeschlossen wurde (z.B.: Anlegen einer Bestellung). Würde über den REST-Service eine E-Mail Nachricht angelegt werden. Für einen REST-Service startet eine Transaktion mit dessen Aufruf und endet mit dem Übermitteln der Response oder wenn die Aktion abgeschlossen wurde (asynchron).
+\newpage
+Für diese Problem gibt es eine Lösung in Form eines Konzeptes mit der Bezeichnung Try-Confirm-Cancel (TCC).
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{try_confirm_cancel.jpg} %{CS0031}
+\caption{Beispiel einer Transaktion mit TCC}
+\label{fig:clevermail-rest-tcc}
+\end{figure}
+\ \newline
+Mit diesem Konzept müsste der REST-Service den Zustand persistent halten aber als \emph{unconfirmed} markieren, damit dieser in keiner Verarbeitungslogik miteinbezogen wird. Nachdem erfolgreichen Abschluss der Transaktion auf der Client-Seite muss dieser durch den REST-Service persistent gehaltenen Zustand bestätigen und im Falle eines Fehlers abbrechen. Dies würde zwei Aufrufe zu REST-Services verursachen. Ebenfalls sollte die Transaktion über einen Transaktionskoordinator auf der REST-Seite kontrolliert werden, was wieder einen Mehraufwand bedeutet. Dieser Transaktionskoordinator ist dafür verantwortlich die REST-Services, die Teil einer logischen Transaktionen sind,  zu managen. Mit \emph{TCC} besteht auch die Gefahr das eine Heuristic-Exception auftritt. Beim Auftreten einer solchen Exception würden inkonsistente Datenbestände auf der Datenbank entstehen, da es sein könnte das nicht alle REST-Services ein Rollback durchgeführt haben.
+\newline
+\newline
+Diese Probleme bedeuten aber nicht dass REST-Services nicht in Frage kommen. Lediglich für transaktionale Operationen scheinen sie ungeeignet bzw. der Aufwand der betrieben werden muss zu hoch. Ein weiteres Problem könnte die Erreichbarkeit dieser REST-Services sein. Sollte dieser einmal ausfallen oder im Falle eines Deployments nicht erreichbar sein so müsste man eine Rückversicherung haben und die zu erstellenden E-Nachrichten anderweitig zwischenspeichern wie z.B.: in Form einer Textdatei, welche die Daten als JSON enthält.
+\newpage
+\subsection{EJB}
+Sollte eine Anwendung über EJB mit \emph{CleverMail} kommunizieren so würde hierbei eine starke Kopplung und starke Abhängigkeiten entstehen, da hier mehr Ressourcen benötigt werden. Ebenso könnte im Gegensatz zu einem REST-Client keine eigene Datenbank genutzt werden, da hier ein Zweiphasen-Commit erfolgen müsste. Natürlich würde diese Möglichkeit bestehen aber auch hier wäre man der Gefahr von Heursitc-Exceptions ausgesetzt.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{clevermail-ejb-transaktion.jpg} %{CS0031}
+\caption{Beispiel einer EJB (JTA) Datenbanktransaktion}
+\label{fig:clevermail-rest-tcc}
+\end{figure}
+\ \newline
+In diesem Fall würde das Anlegen einer E-Mail in derselben Transaktione erfolgen und würde daher auch im Falle eines Roolbacks entfernt werden. Dies ist sicher die angenehmste Art und Weise um E-Mails anzulegen, da hier keine besonderen Mechanismen implementiert werden müssten um die Datenkonsistenz zu gewährleisten. Hierbei währen die E-Mail-Nachrichten auch Teil einer wohl definierten Transaktion.
+\newline
+\newline
+Wie hier \ref{cha:clevermail} angemerkt können technologische Probleme auftreten wenn z.B.: eine Anwendung kein \emph{EJB} und/oder \emph{JPA} unterstützt. Hierbei müsste man eine eigene Implementierung erstellen, die zumindest Teil von \emph{CleverMail} sein sollte.
+\newline
+\newline
+Dieser transaktionale Ansatz unterschiedet sich nicht von dem in \emph{CCMail} bereits implementierten jedoch sollen hier die von \emph{CleveRMail} zur Verfügung gestellten implementierten Ressourcen verwendet werden. Diese Ressourcen sollten auch im Backend der REST-Services von \emph{CleverMail} angewandt werden, da auch hier die Persistenz der E-Mails gewährleistet werden muss. 

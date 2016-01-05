@@ -16,6 +16,29 @@
   {}
 \endgroup
 
+\entry{patternsOfEnterprise}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Fowler}{F.}%
+     {Martin}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Addison-Wesley Professional}%
+  }
+  \strng{namehash}{FM1}
+  \strng{fullhash}{FM1}
+  \field{sortinit}{F}
+  \field{edition}{1}
+  \field{title}{Patterns of Enterprise Application Architecture}
+  \field{langid}{german}
+  \list{location}{1}{%
+    {München}%
+  }
+  \field{year}{2002}
+\endentry
+
 \entry{refactoreToPatterns}{book}{}
   \name{author}{1}{}{%
     {{}%
@@ -30,12 +53,12 @@
   \strng{namehash}{KJ1}
   \strng{fullhash}{KJ1}
   \field{sortinit}{K}
-  \field{title}{Refactoring to patterns}
+  \field{title}{Refactoring to Patterns}
   \field{langid}{german}
   \list{location}{1}{%
     {München}%
   }
-  \field{year}{2005}
+  \field{year}{2004}
 \endentry
 
 \entry{refactoreDatabase}{book}{}

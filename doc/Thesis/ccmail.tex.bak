@@ -2,7 +2,7 @@
 \label{cha:ccmail}
 In diesem Kapitel wird die existierende Anwendung \emph{CCMail} diskutiert und analysiert. Ziel ist es einen Überblick über diese Anwendung und dessen Aspekte zu liefern sowie diese Aspekte genauer zu betrachten und zu analysieren. Die Ergebnisse dieser Analyse sollen als Grundlage für das neue Konzept dienen, das auch das bestehende System bzw. dessen Aufbau und Implementierungen berücksichtigen muss. Dies trifft vor allem auf die Anwendungen \emph{CleverWeb} und \emph{CleverInterface} zu, die die Neuentwicklung \emph{CleverMail} integrieren müssen. Diese Integration soll natürlich mit geringstem Aufwand erfolgen können, da hier Probleme bei der Integration negative Auswirkungen auf den produktiven Betrieb der Firma \emph{curecomp} haben könnten. 
 \section{Systemaufbau}
-\label{sec:systemaufbau}
+\label{sec:ccmail-systemaufbau}
 Im folgenden wird der Systemaufbau aus der Sicht der Anwendung \emph{CCMail} und dessen Integration in dasselbe diskutiert. 
 \begin{figure}[h]
 \centering
@@ -164,18 +164,17 @@ Im Gegensatz zur Strukturierung der E-Mail-Typen hat man sich bei der Datenzugri
 \end{figure}
 \ \newline
 Diese Klassenhierarchie ist sehr einfach, da man sich nicht für eine Gruppierung entschieden hat. Hier ist zu bemängeln dass sich hier alle Datenbankabfragen über alle E-Mail-Typen hinweg befinden und man es versäumt hat hier Schnittstellen einzuführen, die die kontextabhängigen Datenbankabfragen spezifizieren. Mit einer Aufteilung auf mehrere Schnittstellen hätte man es sich vereinfacht die Datenbankabfragen zu warten. Mit diesem Ansatz ist man erstens gezwungen Präfixe für die Methodennamen einzuführen, da Namenskollisionen sehr wahrscheinlich sind und zweitens muss man darauf Acht geben bestehende Implementierungen bei einem Refaktorisieren einer oder mehrerer kontextabhängigen Implementierungen nicht zu verändern. Alle Implementierungen nutzen dieselben Ressourcen und müssen daher auf den kleinsten gemeinsamen Nenner zusammengeführt werden, oder man führt hier wiederum eigene Ressourcen ein, die sich durch ihren Namen unterscheiden.
-\newline
+\newpage
+\subsection{CCMailingDaoFactory}
+Zu kritisieren ist hier auch die Art und Weise wie eine Instanz von \emph{CCMailingDao} erzeugt wird. Man nutzt hier den Factory-Pattern, jedoch wird hier statisch die zu verwendende Implementierung in \emph{CCMailingDaoFactory} definiert, was das Austauschen der Implementierung unmöglich macht.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.55]{class_diagram_mailing_dao_factory.png} 
 \caption{\emph{CCMailingDaoFactory} für \emph{CCMailingDao}}
 \label{fig:klassen-hierarchie-ccmailingfactory}
 \end{figure}
-\ \newline
-Zu kritisieren ist hier auch die Art und Weise wie eine Instanz von \emph{CCMailingDao} erzeugt wird. Man nutzt hier den Factory-Pattern, jedoch wird hier statisch die zu verwendende Implementierung in \emph{CCMailingDaoFactory} definiert, was das Austauschen der Implementierung unmöglich macht. 
-\newline
-\newline 
-In dem Buch \emph{Refactoring to patterns} \cite[72]{refactoreToPatterns} wird als Nachteil einer Factory die erhöhte Komplexität des Designs genannt, wenn eine direkte Instanziierung auch genügen würde. Nachdem die Instanziierung in der Basisklasse \emph{CCBasicEmail} erfolgt und die Ableitungen die Instanz über eine Getter-Methode oder die geschützte Member-Variable erreichen hätte man auf diese Factory auch verzichten können, da die Abstraktion bereits über die Basisklasse erreicht wurde. 
+\ \newline 
+In dem Buch \emph{Refactoring to patterns} \cite[72]{refactoreToPatterns} wird als Nachteil einer Factory die erhöhte Komplexität des Designs genannt, wenn eine direkte Instanziierung auch genügen würde. Nachdem die Instanziierung in der Basisklasse \emph{CCBasicEmail} erfolgt und die Ableitungen die Instanz über eine Getter-Methode oder die geschützte Member-Variable erreichen hätte man auf diese Factory verzichten können, da die Abstraktion bereits über die Basisklasse \emph{CCBasiEmail} erreicht wurde. 
 \newline
 \newline
 Zusätzlich befindet sich die Schnittstelle zusammen mit ihrer Implementierung in ein und demselben Artefakt. Dies ist als ein halbherziger Versuch zu werten die Implementierung von \emph{CCMailingDao} austauschbar zu machen.  
