@@ -51,3 +51,5 @@
 \contentsline {chapter}{Quellenverzeichnis}{22}{appendix*.16}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{Literatur}{22}{section*.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Online-Quellen}{22}{section*.18}

@@ -23,3 +23,10 @@
 	year={2002},
 	hyphenation={german}
 }
+@online{atomikosTcc,
+  author = {Atomikos Corporate Headquarters},
+  title = {{MS Windows NT} Kernel Description},
+  year = 2012,
+  url = {http://www.atomikos.com/Publications/TransactionsForTheRestOfUshttp://www.atomikos.com/pub/Publications/TransactionsForTheRestOfUs/Transactions_as_a_Service_Transactions_for_the_REST_of_us_rest-tcc.pdf?t=1452066468},
+  urldate = {06.01.2016}
+}

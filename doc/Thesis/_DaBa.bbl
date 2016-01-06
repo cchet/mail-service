@@ -39,6 +39,25 @@
   \field{year}{2002}
 \endentry
 
+\entry{atomikosTcc}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Headquarters}{H.}%
+     {Atomikos~Corporate}{A.~C.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HAC1}
+  \strng{fullhash}{HAC1}
+  \field{sortinit}{H}
+  \field{title}{Transactions for the REST of us}
+  \verb{url}
+  \verb http://www.atomikos.com/Publications/TransactionsForTheRestOfUs
+  \endverb
+  \field{year}{2012}
+  \warn{\item Invalid format of field 'urldate'}
+\endentry
+
 \entry{refactoreToPatterns}{book}{}
   \name{author}{1}{}{%
     {{}%
