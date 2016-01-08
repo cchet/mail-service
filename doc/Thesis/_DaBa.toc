@@ -48,8 +48,18 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.2}EJB}{21}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Quellenverzeichnis}{22}{appendix*.16}
+\contentsline {chapter}{\numberline {4}Prozesse}{22}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Literatur}{22}{section*.17}
+\contentsline {subsection}{\numberline {4.0.3}E-Mail-Versand}{23}{subsection.4.0.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Online-Quellen}{22}{section*.18}
+\contentsline {subsubsection}{Daten Aufbereitung}{24}{section*.17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Erstellen der E-Mail-Nachrichten}{24}{section*.18}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{E-Mail versenden}{25}{section*.19}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Quellenverzeichnis}{26}{appendix*.20}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Literatur}{26}{section*.21}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Online-Quellen}{26}{section*.22}

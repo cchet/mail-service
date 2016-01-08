@@ -20,7 +20,7 @@ Die Anwendungen \emph{CleverWeb} und \emph{CleverInterface} erstellen über ihre
 Als Mail-Server wird \emph{Sendmail} verwendet. Es handelt sich hierbei um eine Anwendung, die für Linux Distributionen frei verfügbar ist. \emph{CCMail} versendet über das SMTP-Protokoll die E-Mail-Nachrichten an die \emph{Sendmail} Instanz, die sie ihrerseits den Empfängern zur Verfügung stellt.
 \newpage
 \subsection{Gesamtprozess}
-\label{sec:gesamtprozess}
+\label{sec:ccmail-gesamtprozess}
 Der folgend beschriebene Gesamtprozess soll aufzeigen wie in dem vorherig beschriebenen System der E-Mail-Versand vom Anlegen eines \emph{MailJob} bis hin zum Versand der eigentlichen E-Mail-Nachricht funktioniert. Als Kernkomponente des Systems wurde die Datenbank identifiziert, die die \emph{MailJob} Entitäten hält, die wiederum von \emph{CCMail} verarbeitet werden. Dieser Ansatz ist an sich nicht als schlecht anzusehen, jedoch verbirgt sich hier eines der Hauptprobleme des E-Mail-Versandes. Nämlich die Inkonsistenz der versendeten E-Mail-Nachrichten, durch die Zeitdifferenz zwischen dem Anlegen eines \emph{MailJob} durch die angeschlossenen Anwendungen und dem tatsächlichen Versand der E-Mail-Nachricht durch \emph{CCMail}.
 \begin{figure}[h]
 \centering

@@ -85,7 +85,9 @@ Mit diesem Konzept müsste der REST-Service den Zustand persistent halten aber a
 \newline
 \newline
 Diese Probleme bedeuten aber nicht dass REST-Services nicht in Frage kommen. Lediglich für transaktionale Operationen scheinen sie ungeeignet bzw. der Aufwand der betrieben werden muss zu hoch. Ein weiteres Problem könnte die Erreichbarkeit dieser REST-Services sein. Sollte dieser einmal ausfallen oder im Falle eines Deployments nicht erreichbar sein so müsste man eine Rückversicherung haben und die zu erstellenden E-Nachrichten anderweitig zwischenspeichern wie z.B.: in Form einer Textdatei, welche die Daten als JSON enthält.
-\newpage
+\newline
+\newline
+Diese Onlinepublikation \cite{atomikosTcc} beschreibt den Prozess von \emph{TCC} mit mehreren involvierten REST-Services sehr gut und detailliert.
 \subsection{EJB}
 Sollte eine Anwendung über EJB mit \emph{CleverMail} kommunizieren so würde hierbei eine starke Kopplung und starke Abhängigkeiten entstehen, da hier mehr Ressourcen benötigt werden. Ebenso könnte im Gegensatz zu einem REST-Client keine eigene Datenbank genutzt werden, da hier ein Zweiphasen-Commit erfolgen müsste. Natürlich würde diese Möglichkeit bestehen aber auch hier wäre man der Gefahr von Heursitc-Exceptions ausgesetzt.
 \begin{figure}[h]
@@ -101,4 +103,61 @@ In diesem Fall würde das Anlegen einer E-Mail in derselben Transaktione erfolge
 Wie hier \ref{cha:clevermail} angemerkt können technologische Probleme auftreten wenn z.B.: eine Anwendung kein \emph{EJB} und/oder \emph{JPA} unterstützt. Hierbei müsste man eine eigene Implementierung erstellen, die zumindest Teil von \emph{CleverMail} sein sollte.
 \newline
 \newline
-Dieser transaktionale Ansatz unterschiedet sich nicht von dem in \emph{CCMail} bereits implementierten jedoch sollen hier die von \emph{CleveRMail} zur Verfügung gestellten implementierten Ressourcen verwendet werden. Diese Ressourcen sollten auch im Backend der REST-Services von \emph{CleverMail} angewandt werden, da auch hier die Persistenz der E-Mails gewährleistet werden muss. 
+Dieser transaktionale Ansatz unterschiedet sich nicht von dem in \emph{CCMail} bereits implementierten jedoch sollen hier die von \emph{CleverMail} zur Verfügung gestellten implementierten Ressourcen verwendet werden. Diese Ressourcen sollten auch im Backend der REST-Services von \emph{CleverMail} angewandt werden, da auch hier die Persistenz der E-Mails gewährleistet werden muss. 
+\newpage
+\chapter{Prozesse}
+\label{cha:clevermail-prozesse}
+Diese Kapitel behandelt die Prozessspezifikationen von \emph{CleverMail}. Hierbei wird das Augenmerk auf den Mailversand gelegt. Grundlegend wird sich der E-Mail-Versand dadurch unterschieden, dass hier mehrere Ebenen involviert sind, bevor eine E-Mail-Nachricht bereit zum Versand ist. Vom grundlegenden Konzept wird sich gegenüber \emph{CCMail} nicht viel ändern. Es soll immer noch E-Mail-Typen geben, die aber jetzt nicht nur intern konfigurierbar sein sollen sondern ebenfalls durch die Kunden selbst konfiguriert und gesteuert werden können. Hierbei sollen folgende Konfigurationsmöglichkeiten zur Verfügung stehen.
+\begin{enumerate}
+	\item Definition von Schedules
+	\item Definition eigener E-Mail-Vorlagen
+	\item Konfiguration der Steuerbarkeit von E-Mail-Typen durch Lieferanten (darf aktivieren/de-aktivieren)
+	\item Definition eines Haftungsausschluss 
+	\item Definition von Standard Datei Anhängen
+	\item Steuerbarkeit von E-Mail-Typen für spezifischen Lieferanten
+	\item Konzernübergreifende Konfiguration
+	\item Definition eigener E-Mail-Typen
+	\item Konfiguration der Historie der E-Mail-Nachrichten
+\end{enumerate}
+\ \newline
+Zur Zeit stehen diese Features, wenn vorhanden, nur intern zur Verfügung. Die Kunden haben lediglich die Möglichkeit einzelne E-Mail-Typen zu aktivieren oder zu de-aktivieren. Diese E-Mail-Typen können aber mehrere E-Mail-Nachrichten beinhalten. Das Grundlegende Ziel ist das die Kunden mehr Kontrolle und Konfigurationsmöglichkeiten über die zur Verfügung gestellten E-Mail-Typen erhalten. Es wird hier aber auch solche E-Mail-Typen geben, bei denen diese Konfigurationsmöglichkeiten eingeschränkt werden. Nichts desto trotz soll der Kunde in der Lage sein, den E-Mail-Verkehr seiner E-Mail-Nachrichten besser zu steuern.
+\newpage
+\subsection{E-Mail-Versand}
+\begin{figure}[h]
+\centering
+\includegraphics[angle=90, scale=0.6]{clevermail-email-versand.jpg} %{CS0031}
+\caption{Prozess des E-Mail-Versands}
+\label{fig:clevermail-email-versand}
+\end{figure}
+\ \newpage
+Die Abbildung \ref{fig:clevermail-email-versand} soll den Prozess des E-Mail-Versands veranschaulichen und illustriert die involvierten Komponenten, die involviert sind um eine E-Mail-Nachricht zu erstellen. In diesem Beispiel wird der Prozess über einen REST-Service gestartet, der in diesem Fall den Prozess synchron abarbeitet und anschließend eine Response in Form eines erstellten Reports zurückliefert. Der REST-Service ist hierbei als optional anzusehen, da dieser Prozess auch anderweitig ausgelöst werden könnte. Nachdem sich dieser Prozess nicht in einer Transaktion eines Client befinden muss würde sich hier eine REST-Schnittstelle anbieten.
+\newline
+\newline
+Folgende sei der Prozess in grobe Schritte unterteilt angeführt und beschrieben.
+\subsubsection{Daten Aufbereitung}
+Nachdem der Prozess gestartet wurde sollen die zu verarbeitenden E-Mail-Nachrichten aus der Datenbank ausgelesen und als \emph{Processing} markiert. Im Punkt \ref{sec:ccmail-gesamtprozess} wurde angemerkt, dass das Problem bestand ,dass die in Verarbeitung stehenden \emph{MailJob} Entitäten nicht als solche markiert wurden und daher eine parallele Verarbeitung durch mehrere Prozesse nicht möglich war. Dieses Problem besteht in diesem Fall nun nicht mehr. Nachdem die \emph{MailJob} geladen wurden sollen die zugrunde liegenden E-Mail-Vorlagen geladen werden. Hierbei würde sich ein Cache-Mechanismus auszahlen, da die E-Mail-Vorlagen Versionen definieren und sich innerhalb einer Version nicht ändern dürfen. Anschließend sollen die kundenspezifischen Konfigurationen geladen werden. Aus diesen Daten sollen Modelle erstellt werden, die in weitere Folge dazu verwendet werden sollen die E-Mail-Nachrichten zu erstellen.
+\subsubsection{Erstellen der E-Mail-Nachrichten}
+Aus den Modellen sollen die E-Mail-Nachrichten erstellt werden. Hierbei wird dieser Prozess in drei Schritte unterteilt.
+\begin{enumerate}
+	\item\emph{Erstellen des Betreff}
+	\newline
+	Der Betreff wird aus einer E-Mail-Vorlage erstellt und mit Daten befüllt sollten in der Voralge Parameter definiert worden sein
+	\item\emph{Erstellen der Nachricht}
+	\newline
+	Die Nachricht wird aus einer E-Mail-Vorlage erstellt und mit Daten befüllt sollten in der Voralge Parameter definiert worden sein
+	\item\emph{Erstellen der DataSoruces}
+	\newline
+	Sollten Datei Anhänge definiert worden sein, so werden diese in Form von einer oder mehrerer DataSoruce Instanzen in die E-Mail-Nachricht angefügt.
+\end{enumerate}
+\ \newline
+Die Verarbeitung der E-Mail-Vorlagen soll in einer Komponente mit dem Name \emph{Template-Processor} erfolgen. Nachdem die Werte der verwendeten Vorlagenparameter beim Erstellen eines \emph{MailJob} in der Datenbank gespeichert wurden können diese hier angewandt werden.
+\newline
+\newline
+Die Verarbeitung der Datei Anhänge soll in einer Komponente mit dem Namen \emph{File-Processor} erfolgen, die die verlinkten Datei Anhänge in Form von \emph{DataSource} Instanzen der E-Mail-Nachricht zur Verfügung stellt. Beim Versand würde die E-Mail-Nachricht den Datei Anhang über diese \emph{DataSource} Instanz laden. Hierbei sollen die Dateien in Form von Links aus dem Dokumentenmanagementsystem \emph{CleverDocument} geladen werden. Es soll keine Dateien in Form von Base64-Zeichenketten in der Datenbank mehr geben. Es könnten hierbei verschiedene \emph{DataSource} Implementierungen zur Verfügung gestellt werden, die die Dateien aus verschiedenen Quellen über die verschiedensten Protokolle laden können (z.B.: REST, SOAP, HTTP, usw.).
+\subsubsection{E-Mail versenden}
+Der E-Mail-Versand sowie das Erstellen der E-Mail-Nachricht sollte hierbei asynchron erfolgen, da eine sequenzielle Verarbeitung die Performance negativ beeinflussen würde. Nach dem erfolgreichen oder fehlgeschlagenen Versand einer E-Mail-Nachricht soll dieser Status in Form eines Resultates zurückgeliefert werden. Hierbei ist vor allem die SMTP-Response wichtig, die auf jeden Fall gespeichert werden soll damit der Kunde nachvollziehen kann wie der E-Mail-Versand seiner E-Mail abgearbeitet wurde und warum die E-Mail nicht zugestellt werden konnte. Ein fehlgeschlagener Versand könnte folgende Ursachen haben:
+\begin{enumerate}
+	\item Datei kann nicht geladen werden (nicht vorhanden, Timeout,...)
+	\item Mail-Server des Empfängers nicht erreichbar
+	\item 
+\end{enumerate}

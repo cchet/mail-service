@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.14)  6 JAN 2016 09:01
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.14)  8 JAN 2016 11:04
 entering extended mode
 **_DaBa.tex
 
@@ -1363,7 +1363,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 31.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<images/FHOOeIntl2014.pdf, id=96, 269.93045pt x 269.93045pt>
+<images/FHOOeIntl2014.pdf, id=104, 269.93045pt x 269.93045pt>
 File: images/FHOOeIntl2014.pdf Graphic file (type pdf)
 
 <use images/FHOOeIntl2014.pdf>
@@ -1436,7 +1436,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 5--11
 (C:\Users\Thomas\Git-Repositories\Github\Bachelor-Degree\mail-service\doc\Thesi
 s\ccmail.tex
 Kapitel 2.
-<images/Systemaufbau_alt.jpg, id=194, 661.87276pt x 411.939pt>
+<images/Systemaufbau_alt.jpg, id=204, 661.87276pt x 411.939pt>
 File: images/Systemaufbau_alt.jpg Graphic file (type jpg)
 
 <use images/Systemaufbau_alt.jpg>
@@ -1458,7 +1458,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 14--21
  []
 
 [4]
-<images/prozess_sequence_emailversand.jpg, id=204, 448.67625pt x 260.77425pt>
+<images/prozess_sequence_emailversand.jpg, id=214, 448.67625pt x 260.77425pt>
 File: images/prozess_sequence_emailversand.jpg Graphic file (type jpg)
 
 <use images/prozess_sequence_emailversand.jpg>
@@ -1477,7 +1477,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--39
 
 [5 <C:/Users/Thomas/Git-Repositories/Github/Bachelor-Degree/mail-service/doc/Th
 esis/images/prozess_sequence_emailversand.jpg>] [6]
-<images/teilsystem_ccmail.jpg, id=215, 617.9085pt x 84.315pt>
+<images/teilsystem_ccmail.jpg, id=225, 617.9085pt x 84.315pt>
 File: images/teilsystem_ccmail.jpg Graphic file (type jpg)
 
 <use images/teilsystem_ccmail.jpg>
@@ -1490,7 +1490,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 48--61
 
 [7 <C:/Users/Thomas/Git-Repositories/Github/Bachelor-Degree/mail-service/doc/Th
 esis/images/teilsystem_ccmail.jpg>]
-<images/class_diagram_basic_email.png, id=227, 437.635pt x 464.73625pt>
+<images/class_diagram_basic_email.png, id=237, 437.635pt x 464.73625pt>
 File: images/class_diagram_basic_email.png Graphic file (type png)
 
 <use images/class_diagram_basic_email.png>
@@ -1520,7 +1520,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 84--142
  []
 
 [9] [10] [11]
-<images/class_diagram_mailing_ao.png, id=299, 178.6675pt x 126.4725pt>
+<images/class_diagram_mailing_ao.png, id=309, 178.6675pt x 126.4725pt>
 File: images/class_diagram_mailing_ao.png Graphic file (type png)
 
 <use images/class_diagram_mailing_ao.png>
@@ -1529,7 +1529,7 @@ Package pdftex.def Info: images/class_diagram_mailing_ao.png used on input line
 (pdftex.def)             Requested size: 98.26741pt x 69.56007pt.
  [12 <C:/Users/Thomas/Git-Repositories/Github/Bachelor-Degree/mail-service/doc/
 Thesis/images/class_diagram_mailing_ao.png (PNG copy)>]
-<images/class_diagram_mailing_dao_factory.png, id=305, 463.7325pt x 112.42pt>
+<images/class_diagram_mailing_dao_factory.png, id=315, 463.7325pt x 112.42pt>
 File: images/class_diagram_mailing_dao_factory.png Graphic file (type png)
 
 <use images/class_diagram_mailing_dao_factory.png>
@@ -1543,7 +1543,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 169--181
 
 [13 <C:/Users/Thomas/Git-Repositories/Github/Bachelor-Degree/mail-service/doc/T
 hesis/images/class_diagram_mailing_dao_factory.png (PNG copy)>]
-<images/ccmail_db_schema.jpg, id=314, 2120.92375pt x 1022.82124pt>
+<images/ccmail_db_schema.jpg, id=324, 2120.92375pt x 1022.82124pt>
 File: images/ccmail_db_schema.jpg Graphic file (type jpg)
 
 <use images/ccmail_db_schema.jpg>
@@ -1576,7 +1576,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--8
 
 
 ] [17]
-<images/clevermail_systemaufbau.jpg, id=345, 614.89725pt x 327.02174pt>
+<images/clevermail_systemaufbau.jpg, id=355, 614.89725pt x 327.02174pt>
 File: images/clevermail_systemaufbau.jpg Graphic file (type jpg)
 
 <use images/clevermail_systemaufbau.jpg>
@@ -1585,7 +1585,7 @@ Package pdftex.def Info: images/clevermail_systemaufbau.jpg used on input line
 (pdftex.def)             Requested size: 356.64066pt x 189.67273pt.
  [18 <C:/Users/Thomas/Git-Repositories/Github/Bachelor-Degree/mail-service/doc/
 Thesis/images/clevermail_systemaufbau.jpg>] [19] <images/try_confirm_cancel.jpg
-, id=364, 669.702pt x 370.986pt>
+, id=374, 669.702pt x 370.986pt>
 File: images/try_confirm_cancel.jpg Graphic file (type jpg)
 
 <use images/try_confirm_cancel.jpg>
@@ -1603,25 +1603,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--91
 
 [20 <C:/Users/Thomas/Git-Repositories/Github/Bachelor-Degree/mail-service/doc/T
 hesis/images/try_confirm_cancel.jpg>]
-<images/clevermail-ejb-transaktion.jpg, id=372, 538.4115pt x 271.61475pt>
+<images/clevermail-ejb-transaktion.jpg, id=382, 538.4115pt x 271.61475pt>
 File: images/clevermail-ejb-transaktion.jpg Graphic file (type jpg)
 
 <use images/clevermail-ejb-transaktion.jpg>
 Package pdftex.def Info: images/clevermail-ejb-transaktion.jpg used on input li
 ne 95.
 (pdftex.def)             Requested size: 269.2051pt x 135.80704pt.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 92--45
+
+Underfull \hbox (badness 10000) in paragraph at lines 92--107
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 92--45
+Underfull \hbox (badness 10000) in paragraph at lines 92--107
 
  []
 
 [21 <C:/Users/Thomas/Git-Repositories/Github/Bachelor-Degree/mail-service/doc/T
 hesis/images/clevermail-ejb-transaktion.jpg>]
+Kapitel 4.
+[22
+
+]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 125.
+
+<images/clevermail-email-versand.jpg, id=402, 782.32275pt x 588.39825pt>
+File: images/clevermail-email-versand.jpg Graphic file (type jpg)
+
+<use images/clevermail-email-versand.jpg>
+Package pdftex.def Info: images/clevermail-email-versand.jpg used on input line
+ 128.
+(pdftex.def)             Requested size: 782.32083pt x 588.39682pt.
+ [23 <C:/Users/Thomas/Git-Repositories/Github/Bachelor-Degree/mail-service/doc/
+Thesis/images/clevermail-email-versand.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 133--137
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 152--157
+
+ []
+
+[24]) [25]
 
 LaTeX Warning: Empty bibliography on input line 58.
 
@@ -1633,7 +1660,7 @@ n/10.95 : []$\T1/lmss/m/n/10.95 http : / / www . atomikos . com / Publications
  []
 
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 62.
-[22
+[26
 
 
 
@@ -1657,7 +1684,7 @@ s\clevermail.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 62.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 62.
 Package rerunfilecheck Info: File `_DaBa.out' has not changed.
-(rerunfilecheck)             Checksum: 86ECAF522FB4D97752724139FDD29846;2375.
+(rerunfilecheck)             Checksum: 898D632014F973303AE95612ACCB16F2;2591.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1665,10 +1692,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package logreq Info: Writing requests to '_DaBa.run.xml'.
  ) 
 Here is how much of TeX's memory you used:
- 22081 strings out of 493921
- 337388 string characters out of 3144873
+ 22116 strings out of 493921
+ 337893 string characters out of 3144873
  796050 words of memory out of 3000000
- 24743 multiletter control sequences out of 15000+200000
+ 24751 multiletter control sequences out of 15000+200000
  86080 words of font info for 59 fonts, out of 3000000 for 9000
  845 hyphenation exceptions out of 8191
  67i,11n,96p,1093b,1777s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1683,9 +1710,9 @@ Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files
 eX 2.9/fonts/type1/public/lm/lmss10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/lm/lmss12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
 lic/lm/lmtt9.pfb>
-Output written on _DaBa.pdf (30 pages, 1276978 bytes).
+Output written on _DaBa.pdf (34 pages, 1549718 bytes).
 PDF statistics:
- 460 PDF objects out of 1000 (max. 8388607)
- 150 named destinations out of 1000 (max. 500000)
- 252 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 515 PDF objects out of 1000 (max. 8388607)
+ 176 named destinations out of 1000 (max. 500000)
+ 273 words of extra memory for PDF output out of 10000 (max. 10000000)
 
