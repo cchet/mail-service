@@ -83,7 +83,7 @@
       <file>_DaBa-blx.bib</file>
     </requires>
     <requires type="editable">
-      <file>literatur.bib</file>
+      <file>literatur</file>
     </requires>
     <requires type="static">
       <file>biblatex.bst</file>

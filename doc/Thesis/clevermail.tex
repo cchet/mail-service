@@ -122,7 +122,7 @@ Diese Kapitel behandelt die Prozessspezifikationen von \emph{CleverMail}. Hierbe
 \ \newline
 Zur Zeit stehen diese Features, wenn vorhanden, nur intern zur Verfügung. Die Kunden haben lediglich die Möglichkeit einzelne E-Mail-Typen zu aktivieren oder zu de-aktivieren. Diese E-Mail-Typen können aber mehrere E-Mail-Nachrichten beinhalten. Das Grundlegende Ziel ist das die Kunden mehr Kontrolle und Konfigurationsmöglichkeiten über die zur Verfügung gestellten E-Mail-Typen erhalten. Es wird hier aber auch solche E-Mail-Typen geben, bei denen diese Konfigurationsmöglichkeiten eingeschränkt werden. Nichts desto trotz soll der Kunde in der Lage sein, den E-Mail-Verkehr seiner E-Mail-Nachrichten besser zu steuern.
 \newpage
-\subsection{E-Mail-Versand}
+\section{E-Mail-Versand}
 \begin{figure}[h]
 \centering
 \includegraphics[angle=90, scale=0.6]{clevermail-email-versand.jpg} %{CS0031}
@@ -134,9 +134,9 @@ Die Abbildung \ref{fig:clevermail-email-versand} soll den Prozess des E-Mail-Ver
 \newline
 \newline
 Folgende sei der Prozess in grobe Schritte unterteilt angeführt und beschrieben.
-\subsubsection{Daten Aufbereitung}
+\subsection{Daten Aufbereitung}
 Nachdem der Prozess gestartet wurde sollen die zu verarbeitenden E-Mail-Nachrichten aus der Datenbank ausgelesen und als \emph{Processing} markiert. Im Punkt \ref{sec:ccmail-gesamtprozess} wurde angemerkt, dass das Problem bestand ,dass die in Verarbeitung stehenden \emph{MailJob} Entitäten nicht als solche markiert wurden und daher eine parallele Verarbeitung durch mehrere Prozesse nicht möglich war. Dieses Problem besteht in diesem Fall nun nicht mehr. Nachdem die \emph{MailJob} geladen wurden sollen die zugrunde liegenden E-Mail-Vorlagen geladen werden. Hierbei würde sich ein Cache-Mechanismus auszahlen, da die E-Mail-Vorlagen Versionen definieren und sich innerhalb einer Version nicht ändern dürfen. Anschließend sollen die kundenspezifischen Konfigurationen geladen werden. Aus diesen Daten sollen Modelle erstellt werden, die in weitere Folge dazu verwendet werden sollen die E-Mail-Nachrichten zu erstellen.
-\subsubsection{Erstellen der E-Mail-Nachrichten}
+\subsection{Erstellen der E-Mail-Nachrichten}
 Aus den Modellen sollen die E-Mail-Nachrichten erstellt werden. Hierbei wird dieser Prozess in drei Schritte unterteilt.
 \begin{enumerate}
 	\item\emph{Erstellen des Betreff}
@@ -154,7 +154,7 @@ Die Verarbeitung der E-Mail-Vorlagen soll in einer Komponente mit dem Name \emph
 \newline
 \newline
 Die Verarbeitung der Datei Anhänge soll in einer Komponente mit dem Namen \emph{File-Processor} erfolgen, die die verlinkten Datei Anhänge in Form von \emph{DataSource} Instanzen der E-Mail-Nachricht zur Verfügung stellt. Beim Versand würde die E-Mail-Nachricht den Datei Anhang über diese \emph{DataSource} Instanz laden. Hierbei sollen die Dateien in Form von Links aus dem Dokumentenmanagementsystem \emph{CleverDocument} geladen werden. Es soll keine Dateien in Form von Base64-Zeichenketten in der Datenbank mehr geben. Es könnten hierbei verschiedene \emph{DataSource} Implementierungen zur Verfügung gestellt werden, die die Dateien aus verschiedenen Quellen über die verschiedensten Protokolle laden können (z.B.: REST, SOAP, HTTP, usw.).
-\subsubsection{E-Mail versenden}
+\subsection{E-Mail versenden}
 Der E-Mail-Versand sowie das Erstellen der E-Mail-Nachricht sollte hierbei asynchron erfolgen, da eine sequenzielle Verarbeitung die Performance negativ beeinflussen würde. Nach dem erfolgreichen oder fehlgeschlagenen Versand einer E-Mail-Nachricht soll dieser Status in Form eines Resultates zurückgeliefert werden. Hierbei ist vor allem die SMTP-Response wichtig, die auf jeden Fall gespeichert werden soll damit der Kunde nachvollziehen kann wie der E-Mail-Versand seiner E-Mail abgearbeitet wurde und warum die E-Mail nicht zugestellt werden konnte. Ein fehlgeschlagener Versand könnte folgende Ursachen haben:
 \begin{enumerate}
 	\item Datei kann nicht geladen werden (nicht vorhanden, Timeout,...)
@@ -164,3 +164,26 @@ Der E-Mail-Versand sowie das Erstellen der E-Mail-Nachricht sollte hierbei async
 \end{enumerate}
 \ \newline
 Es kann unzählige Ursachen haben warum eine E-Mail-Nachricht nicht zugestellt werden kann. Die trifft vor allem auf den E-Mail-Servers des Empfängers zu, auf dessen Konfiguration kein Einfluss genommen werden kann.
+\newpage
+\section{E-Mail-Vorlagenparameter}
+Ein weiterer wichtiger Aspekt stellen die Vorlagenparameter und deren Verwaltung dar. Die Bereitstellung von Vorlagenparametern soll den AnwenderInnen die Möglichkeit bieten auf kontextabhängige Daten in einer E-Mail-Vorlage zugreifen zu können. Dadurch soll die Flexibilität erhöht werden und die AnwenderInnen sollen mehr Freiheiten beim Erstellen einer E-Mail-Vorlage bekommen. Diese Parameter müssen hierbei von den EntwicklerInnen innerhalb eines Kontextes zur Verfügung gestellt werden, wobei hier auch ein Entwicklungsaufwand besteht. Diese Parameter müssen beim Verarbeiten einer E-Mail-Vorlage aus dem aktuellen Kontext ausgelesen werden. Dabei können die Daten aus verschiedenen Objekten oder sogar Objektgraphen kommen. Dies bedeutet das diese Parameter über eine spezielle Implementierung ausgelesen werden müssen, die auch zukünftig gewartet werden muss. Ebenso werden diese Parameter in verschiedenen Softwarekomponenten verwendet die sich in verschiedenen Laufzeitumgebungen genutzt werden können. Daher wird es erforderlich sein diese Parameter in einem spezifizierten Model oder über definierte Zuordnungen von einem Model in ein anderes Model zu überführen.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{clevermail_template_parameter.jpg}
+\caption{Verwendung Vorlagenparameter}
+\label{fig:clevermail-template-parameter}
+\end{figure}
+\ \newline
+Wie in der Abbildung \ref{fig:clevermail-template-parameter} illustriert werden die Vorlagenparameter in mehreren Kontexten verwendet. Dadurch stellt sich die Frage wie diese Parameter adressiert werden. Man könnte eine Zuordnung in jedem Verwendungskontext erstellen, also jeder Kontext bekommt sein eigenes Model. Dadurch würde man sich zwar lose and die Vorlagenparameter koppeln jedoch erhält man auch eine Model Klasse je Kontext, die gewartet werden muss. 
+\subsection{Webseite}
+\label{sec:template-parameter-web-view}
+Da diese Parameter in E-Mail-Vorlagen verwendet werden wird es auch eine Webseite geben, über die die AnwenderInnen diese Parameter in Ihren E-Mail-Vorlagen verwenden können. Diese müssen natürlich für die AnwenderInnen einen Name bekommen, der natürlich auch in mehreren Sprachen zur Verfügung stehen muss. Dadurch werden diese Parameter auf einen Schlüssel zugeordnet werden müssen, der wiederum auf einen lokalisierten Spracheintrag zugeordnet ist. Die Zuweisung auf diesen Schlüssel ist erforderlich aber benötigt man hier auch nochmals eine Zuordnung auf den Vorlagenparameter?
+\subsection{Freemarker}
+\label{sec:template-parameter-freemarker}
+Ein weiterer Aspekt ist auch die direkte Verwendung der Parameter in der Vorlage selbst. Als Implementierung einer \emph{Template-Enging} soll für die Erstellung der Nachrichten aus den Vorlagen \emph{Freemarker}\footnote{\label{fn:freemarker}Frei verfügbare Template-Engine in Java für die Erstellung von dynamischen Textdateien} verwendet werden. Dieses Framework ist ein sehr beliebtes und gut gewartetes Framwork, welsche alle benötigten Kontrollstrukturen sowie \emph{Freemarker-Expressions} zur Verfügung stellt. Diese \emph{Freemarker-Expressions} ähneln sehr den Java-EL-Expressions\footnote{Java-Expression-Language ist eine Java Spezifikation für Expressions}. 
+Die Vorlagenparameter werden in den \emph{Freemarker-Expressions} verwendet, die es ermögliche eine flache Adressierung sowie auch eine Adressierung über Objektgraphen zu definieren. Dadurch stellt sich auch hier die Frage ob diese Expressions wieder über eine Zuordnung zu den Parametern erstellt werden sollen oder ob die Parameter selbst verwendet werden?
+\subsection{JSON}
+\label{sec:template-parameter-json}
+Wenn eine E-Mail in Form eines \emph{MailJob} erstellt wird müssen zum jeweiligen Erstellungszeitpunkt alle Parameterwerte ausgelesen und mit dem \emph{MailJob} persistent gehalten werden. Nachdem die Anzahl der Parameter dynamisch ist und diese Daten lediglich in der Vorlagenverarbeitung verwendet werden ist es hier nicht erforderlich eine eigene Datenstruktur auf der Datenbank zu definieren. Dadurch würde sich hier \emph{JSON} anbieten um diese Daten in die Datenbank zu serialisieren. Nachdem \emph{JSON} eine Objektbeschreibung darstellt und auch über ein \emph{JSON-Schema} spezifiziert kann sollte man überlegen ob man nicht das \emph{JSON} als Spezifikation für die Vorlagenparameter heranzieht. Diese Spezifikation kann in allen involvierten Komponenten verwendet werden. 
+\newpage
+\chapter{Datenbank}
