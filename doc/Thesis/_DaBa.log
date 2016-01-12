@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  11 JAN 2016 09:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  12 JAN 2016 09:19
 entering extended mode
 **./_DaBa.tex
 (_DaBa.tex
@@ -1416,7 +1416,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 31.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<images/FHOOeIntl2014.pdf, id=120, 269.93045pt x 269.93045pt>
+<images/FHOOeIntl2014.pdf, id=128, 269.93045pt x 269.93045pt>
 File: images/FHOOeIntl2014.pdf Graphic file (type pdf)
 
 <use images/FHOOeIntl2014.pdf>
@@ -1464,21 +1464,21 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 32.
  [3
 
-] (_DaBa.toc)
+] (_DaBa.toc
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 69.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 69.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 69.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 69.
+[4
+
+])
 \tf@toc=\write5
 \openout5 = `_DaBa.toc'.
 
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 35.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 35.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 35.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 35.
- [4
-
-]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 35.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1623,7 +1623,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 4.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 4.
-<images/Systemaufbau_alt.jpg, id=228, 661.87276pt x 411.939pt>
+<images/Systemaufbau_alt.jpg, id=238, 661.87276pt x 411.939pt>
 File: images/Systemaufbau_alt.jpg Graphic file (type jpg)
 
 <use images/Systemaufbau_alt.jpg>
@@ -1665,7 +1665,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 22.
 
-<images/prozess_sequence_emailversand.jpg, id=239, 448.67625pt x 260.77425pt>
+<images/prozess_sequence_emailversand.jpg, id=249, 448.67625pt x 260.77425pt>
 File: images/prozess_sequence_emailversand.jpg Graphic file (type jpg)
 
 <use images/prozess_sequence_emailversand.jpg>
@@ -1705,7 +1705,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 40.
 
-<images/teilsystem_ccmail.jpg, id=249, 617.9085pt x 84.315pt>
+<images/teilsystem_ccmail.jpg, id=259, 617.9085pt x 84.315pt>
 File: images/teilsystem_ccmail.jpg Graphic file (type jpg)
 
 <use images/teilsystem_ccmail.jpg>
@@ -1730,7 +1730,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 72.
 
-<images/class_diagram_basic_email.png, id=261, 437.635pt x 464.73625pt>
+<images/class_diagram_basic_email.png, id=271, 437.635pt x 464.73625pt>
 File: images/class_diagram_basic_email.png Graphic file (type png)
 
 <use images/class_diagram_basic_email.png>
@@ -1802,7 +1802,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 156.
 
-<images/class_diagram_mailing_ao.png, id=333, 178.6675pt x 126.4725pt>
+<images/class_diagram_mailing_ao.png, id=343, 178.6675pt x 126.4725pt>
 File: images/class_diagram_mailing_ao.png Graphic file (type png)
 
 <use images/class_diagram_mailing_ao.png>
@@ -1823,7 +1823,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 168.
 
-<images/class_diagram_mailing_dao_factory.png, id=339, 463.7325pt x 112.42pt>
+<images/class_diagram_mailing_dao_factory.png, id=349, 463.7325pt x 112.42pt>
 File: images/class_diagram_mailing_dao_factory.png Graphic file (type png)
 
 <use images/class_diagram_mailing_dao_factory.png>
@@ -1849,7 +1849,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 182.
 
-<images/ccmail_db_schema.jpg, id=348, 2120.92375pt x 1022.82124pt>
+<images/ccmail_db_schema.jpg, id=358, 2120.92375pt x 1022.82124pt>
 File: images/ccmail_db_schema.jpg Graphic file (type jpg)
 
 <use images/ccmail_db_schema.jpg>
@@ -1925,7 +1925,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 34.
 
-<images/clevermail_systemaufbau.jpg, id=379, 614.89725pt x 327.02174pt>
+<images/clevermail_systemaufbau.jpg, id=401, 614.89725pt x 327.02174pt>
 File: images/clevermail_systemaufbau.jpg Graphic file (type jpg)
 
 <use images/clevermail_systemaufbau.jpg>
@@ -1953,7 +1953,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 75.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 75.
- [19] <images/try_confirm_cancel.jpg, id=398, 669.702pt x 370.986pt>
+ [19] <images/try_confirm_cancel.jpg, id=420, 669.702pt x 370.986pt>
 File: images/try_confirm_cancel.jpg Graphic file (type jpg)
 
 <use images/try_confirm_cancel.jpg>
@@ -1983,7 +1983,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 91.
 
-<images/clevermail-ejb-transaktion.jpg, id=406, 538.4115pt x 271.61475pt>
+<images/clevermail-ejb-transaktion.jpg, id=428, 538.4115pt x 271.61475pt>
 File: images/clevermail-ejb-transaktion.jpg Graphic file (type jpg)
 
 <use images/clevermail-ejb-transaktion.jpg>
@@ -2029,7 +2029,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 125.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 125.
- <images/clevermail-email-versand.jpg, id=427, 782.32275pt x 588.39825pt>
+ <images/clevermail-email-versand.jpg, id=449, 782.32275pt x 588.39825pt>
 File: images/clevermail-email-versand.jpg Graphic file (type jpg)
 
 <use images/clevermail-email-versand.jpg>
@@ -2089,7 +2089,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 168.
 
-<images/clevermail_template_parameter.jpg, id=450, 432.86719pt x 337.26pt>
+<images/clevermail_template_parameter.jpg, id=472, 432.86719pt x 337.26pt>
 File: images/clevermail_template_parameter.jpg Graphic file (type jpg)
 
 <use images/clevermail_template_parameter.jpg>
@@ -2117,6 +2117,51 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 185.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 185.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 188.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 188.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 188.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 188.
+ [27]
+Kapitel 5.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 189.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 189.
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--194
+
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 194.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 194.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 194.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 194.
+[28
+
+]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 195.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 195.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 195.
+<images/clevermail_db_schema.jpg, id=493, 1282.7925pt x 701.62125pt>
+File: images/clevermail_db_schema.jpg Graphic file (type jpg)
+
+<use images/clevermail_db_schema.jpg>
+Package pdftex.def Info: images/clevermail_db_schema.jpg used on input line 198
+.
+(pdftex.def)             Requested size: 1282.78937pt x 701.61952pt.
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 45.
@@ -2126,15 +2171,15 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 45.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 45.
- [27]
+ [29 <./images/clevermail_db_schema.jpg>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 62.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 62.
- (_DaBa.aux (vorwort.aux) (kurzfassung.aux)
-(abstract.aux) (einleitung.aux) (ccmail.aux) (clevermail.aux))
+(_DaBa.aux (vorwort.aux) (kurzfassung.aux) (abstract.aux) (einleitung.aux)
+(ccmail.aux) (clevermail.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 62.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 62.
 Package rerunfilecheck Info: File `_DaBa.out' has not changed.
-(rerunfilecheck)             Checksum: 5A488A4E891B935BA09E86D5127836B5;3221.
+(rerunfilecheck)             Checksum: 1F47F2D8F45091A4D529CEBEA9C03CD5;3515.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -2144,13 +2189,13 @@ Package logreq Info: Writing requests to '_DaBa.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22294 strings out of 493634
- 337022 string characters out of 3141315
+ 22312 strings out of 493634
+ 337355 string characters out of 3141315
  803929 words of memory out of 3000000
- 24992 multiletter control sequences out of 15000+200000
+ 24999 multiletter control sequences out of 15000+200000
  94738 words of font info for 71 fonts, out of 3000000 for 9000
  1029 hyphenation exceptions out of 8191
- 67i,11n,96p,1234b,1780s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 67i,11n,96p,1234b,1784s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{cite.0@atomikosTcc} has been referenced but does 
 not exist, replaced by a fixed one
 
@@ -2175,9 +2220,9 @@ x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)/MiKTeX 2
 1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
 /lmss10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmss12.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb>
-Output written on _DaBa.pdf (36 pages, 1652761 bytes).
+Output written on _DaBa.pdf (38 pages, 1821089 bytes).
 PDF statistics:
- 548 PDF objects out of 1000 (max. 8388607)
- 182 named destinations out of 1000 (max. 500000)
- 310 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 583 PDF objects out of 1000 (max. 8388607)
+ 192 named destinations out of 1000 (max. 500000)
+ 331 words of extra memory for PDF output out of 10000 (max. 10000000)
 

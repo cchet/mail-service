@@ -65,3 +65,7 @@
 \contentsline {subsection}{\numberline {4.2.2}Freemarker}{27}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2.3}JSON}{27}{subsection.4.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Datenbank}{28}{chapter.5}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.0.1}Datenbankschemata CleverMail}{29}{subsection.5.0.1}

@@ -22,11 +22,11 @@ Im Gegensatz zu \emph{CCMail} soll \emph{CleverMail} nicht als Konsolenanwendung
 \newpage
 Mit dieser Art von Anwendung stehen \emph{CleverMail} eine Vielzahl von Features und Frameworks zur Verfügung wie z.B.: 
 \begin{enumerate}
-	\item JAX-RS 2.0 (Java API for RESTful Webservices)
-	\item EJB 3.1 (Enterprise-Java-Bean)
-	\item JPA 2.1 (Java-Persistence-API)
-	\item JTA 1.2 (Java-Transaction-API)
-	\item JSF 2.2 (Java-Server-Faces)
+	\item JAX-RS 2.0\footnote{Java Api for RESTful Web Services 2.0. Java Api für REST Services}
+	\item EJB 3.1\footnote{Enterprise Java Bean. Standard Komponenten für die Entwicklung in Java Enterprise Containern} 
+	\item JPA 2.1\footnote{Java Persistence Api. Java Schnittstelle für Datenbankzugriffe} 
+	\item JTA 1.2\footnote{Java Transaction Api. Java Schnittstelle für den Support von verteilten Transaktionen}
+	\item JSF 2.2\footnote{Java Server Faces. Java Spezifikation für die Entwicklung von Webanwendungen basierend auf Java Server Pages (JSP)}
 	\item uvm.
 \end{enumerate}
 Dies Features werden es erlauben die Anwendung \emph{CleverMail} so flexibel wie möglich zu gestalten, bringen aber auch ein erhöhtes Maß an Komplexität beim Design mit sich. Martin Fowler führt in seinem Buch \emph{Patterns of Enterprise Application Architecture}\cite[5-6]{patternsOfEnterprise} einige Beispiel für Enterprise-Anwendungen an um zu illustrieren dass jede dieser Anwendungen seine eigenen Probleme und Komplexität mit sich bringt und sich daher die Architektur einer Enterprise-Anwendung nicht einordnen und quantifizieren lässt. Daher ist beim Erstellen einer Architektur einer Enterprise-Anwendung der konkrete Nutzung zu berücksichtigen. Der Prozess der Konzeption einer Architektur ist ein kreativer Prozess wobei Konzepte, Best-Practise usw. nur als Unterstützung anzusehen sind und es keinen echten Leitfaden gibt an den man sich orientieren kann. Die Architektur wird stark von der konkreten Anwendung beeinflusst. Daher kann sich die Architektur je nach Anwendung stark unterschieden.
@@ -187,3 +187,15 @@ Die Vorlagenparameter werden in den \emph{Freemarker-Expressions} verwendet, die
 Wenn eine E-Mail in Form eines \emph{MailJob} erstellt wird müssen zum jeweiligen Erstellungszeitpunkt alle Parameterwerte ausgelesen und mit dem \emph{MailJob} persistent gehalten werden. Nachdem die Anzahl der Parameter dynamisch ist und diese Daten lediglich in der Vorlagenverarbeitung verwendet werden ist es hier nicht erforderlich eine eigene Datenstruktur auf der Datenbank zu definieren. Dadurch würde sich hier \emph{JSON} anbieten um diese Daten in die Datenbank zu serialisieren. Nachdem \emph{JSON} eine Objektbeschreibung darstellt und auch über ein \emph{JSON-Schema} spezifiziert kann sollte man überlegen ob man nicht das \emph{JSON} als Spezifikation für die Vorlagenparameter heranzieht. Diese Spezifikation kann in allen involvierten Komponenten verwendet werden. 
 \newpage
 \chapter{Datenbank}
+Eine Anforderung an \emph{CleverMal} ist die Persistenz der versendeten E-Mail-Nachrichten damit diese einerseits nachvollziehbar sind und andererseits den AnwenderInnen die Möglichkeit geboten wird bereits versendete E-Mail-Nachrichten erneut zu versenden. Daher wird ein Speichermedium benötigt um diese E-Mail-Nachrichten persistent zu halten. Nachdem hier auch relationale Beziehungen vorhanden sein werden bittet sich natürlich eine Datenbank an. Neben den E-Mail-Nachrichten selbst müssen auch die E-Mail-Vorlagen sowie Konfigurationsdaten persistent gehalten werden. Die AnwenderInnen, die EntwicklerInnen und sowie auch die Support MitarbeiterInnen müssen in der Lage sein den E-Mail-Versand zu konfigurieren.
+\newline
+\newline
+Die Datenbanktabellen lassen mittels \emph{JPA} in Java sehr gut ansprechen und man wird nur geringfügig sich direkt auf der Datenbankebene bewegen müssen. Im Gegensatz zu dem beschrieben Datenbankschemata in \ref{sec:ccmail-datanbank} soll hierbei keineswegs auf die referenzielle Integrität verzichtet werden. Man kann davon ausgehen das die Datenmenge und die Zugriffe auf diese Daten so schnell kein Niveau erreichen werden, die einen Verzicht auf die referenzielle Integrität rechtfertigen würde. Auch soll dieses Datenbankschemata ohne Referenzen auf bereits bestehende Tabellen auskommen. Es werden Beziehungen von Nöten sein, die man über n-m Tabellen abgebildet werden können. Damit referenzieren sich die Datenbankschemata in das Datenbankschemata von \emph{CleverMail} und nicht umgekehrt. Dadurch wird soll gewährleistet werden dass \emph{CleverMail} auch in anderen Anwendungen im clevercure Ökosystem eingebunden werden kann. Als Beispiel sei hier \emph{CleverSupport} angeführt, dass seinerseits auch ein eigenes Datenbankschemata hat, welches nicht mit dem Datenbankschemata der Hauptanwendung verbunden ist.
+\newpage
+\subsection{Datenbankschemata CleverMail}
+\begin{figure}[h]
+\centering
+\includegraphics[angle=90, scale=0.4]{clevermail_db_schema.jpg}
+\caption{Datenbankschema CleverMail}
+\label{fig:clevermail-db-schema}
+\end{figure}
