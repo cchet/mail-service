@@ -12,33 +12,31 @@
 \defcounter {refsection}{0}\relax 
 \select@language {ngerman}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Vorwort}{vi}{chapter*.3}
+\contentsline {chapter}{Vorwort}{v}{chapter*.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Kurzfassung}{viii}{chapter*.4}
+\contentsline {chapter}{Kurzfassung}{vii}{chapter*.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Abstract}{ix}{chapter*.5}
+\contentsline {chapter}{Abstract}{viii}{chapter*.5}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}Zielsetzung}{1}{section.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}CCMail}{3}{chapter.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.1}Systemaufbau}{3}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1.1}Gesamtprozess}{5}{subsection.2.1.1}
+\contentsline {section}{\numberline {2.2}E-Mail-Versand}{5}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Design}{7}{section.2.2}
+\contentsline {section}{\numberline {2.3}Software-Design}{7}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.1}CCBasicEmail}{8}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.3.1}CCBasicEmail}{8}{subsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.2}CCItbCustUser}{9}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.3.2}CCItbCustUser}{9}{subsection.2.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.3}CCMailingDao}{12}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.3.3}CCMailingDao}{11}{subsection.2.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.4}CCMailingDaoFactory}{13}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.3.4}CCMailingDaoFactory}{12}{subsection.2.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Datenbank}{14}{section.2.3}
+\contentsline {section}{\numberline {2.4}Datenbank}{14}{section.2.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}CleverMail}{16}{chapter.3}
 \defcounter {refsection}{0}\relax 
@@ -48,24 +46,24 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.2}EJB}{21}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Prozesse}{22}{chapter.4}
+\contentsline {section}{\numberline {3.2}Prozesse}{22}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}E-Mail-Versand}{23}{section.4.1}
+\contentsline {subsection}{\numberline {3.2.1}E-Mail-Versand}{23}{subsection.3.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Daten Aufbereitung}{24}{subsection.4.1.1}
+\contentsline {subsubsection}{Daten Aufbereitung}{24}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Erstellen der E-Mail-Nachrichten}{24}{subsection.4.1.2}
+\contentsline {subsubsection}{Erstellen der E-Mail-Nachrichten}{24}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}E-Mail versenden}{25}{subsection.4.1.3}
+\contentsline {subsubsection}{E-Mail versenden}{25}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}E-Mail-Vorlagenparameter}{26}{section.4.2}
+\contentsline {subsection}{\numberline {3.2.2}E-Mail-Vorlagen(parameter)}{26}{subsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Webseite}{27}{subsection.4.2.1}
+\contentsline {subsubsection}{Webseite}{27}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Freemarker}{27}{subsection.4.2.2}
+\contentsline {subsubsection}{Freemarker}{27}{section*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.3}JSON}{27}{subsection.4.2.3}
+\contentsline {subsubsection}{JSON}{27}{section*.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Datenbank}{28}{chapter.5}
+\contentsline {section}{\numberline {3.3}Datenbank}{28}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.0.1}Datenbankschemata CleverMail}{30}{subsection.5.0.1}
+\contentsline {subsection}{\numberline {3.3.1}Datenbankschemata CleverMail}{30}{subsection.3.3.1}

@@ -1,32 +1,33 @@
 \chapter{Vorwort} 	% engl. Preface
-Folgende Arbeit beschäftigt sich mit der Konzeption einer Mail-Anwendung für die Firma curecomp GembH, welche in weiterer Folge als \emph{CleverMail}\newline
-bezeichnet wird, die eine bestehende Mail-Anwendung, in weiterer Folge\newline
-\emph{CCMail} genannt, ablösen soll. Die  Firma curecomp GembH ist ein Dienstleister im Supplier Relationship Management (SRM) und betreibt eine Softwarelösung namens \emph{clevercure}, die aus folgenden Anwendungen besteht:\newline
+\label{cha:vorwort}
+Folgende Arbeit beschäftigt sich mit der Konzeption einer Mail-Anwendung, welche in weiterer Folge als \emph{CleverMail} bezeichnet wird, die eine bestehende Mail-Anwendung, in weiterer Folge \emph{CCMail} genannt, ersetzen soll. Dieses Konzept wird für die Firma \emph{curecomp GmbH} erstellt, dessen bestehende Mail-Anwendung \emph{CCMail} ersetzt werden soll. Einleitend wird die Firma \emph{curecomp GmbH} und dessen Softwareökosystem vorgestellt. 
+\newline
+\newline
+Die Firma \emph{curecomp GmbH} ist ein Dienstleister im SRM-Bereich (Supplier-Relationship-Management) und betreibt eine Softwarelösung namens \emph{clevercure}, dessen Ökosystem aus den folgenden Anwendungen besteht:
+\newline
 \begin{enumerate}
 	\item\emph{CleverWeb}
 	\newline
-	Eine Web-Anwendung für den webbasierten Zugriff
+	Eine Web-Anwendung für den webbasierten Zugriff auf das System
 	\item\emph{CleverInterface}
 	\newline
-	Eine Schnittstellen-Anwendung für die Anbindung der ERP-Systeme der Kunden und Lieferanten
+	Eine Schnittstellen-Anwendung für die Anbindung der ERP-Systeme der Kunden und Lieferanten, deren Daten mittels XML-Dateien
+	\newline
+	import und exportiert werden können
 	\item\emph{CleverSupport}
 	\newline
-	Eine Web-Anwendung, die zur Unterstützung der Support-Abteilung dient.
+	Eine Web-Anwendung, die zur Unterstützung der Support-Abteilung dient
 	\item\emph{CleverDocument}
 	\newline
-	Ein Dokumentenmanagementsystem für die Dokumentenverwaltung aller anfallenden Dokumente 
+	Ein Dokumentenmanagementsystem für die Dokumentenverwaltung aller anfallenden Dokumente.
 \end{enumerate} 
 \ \newline
-Beide Anwendungen erfordern den Versand von E-Mail-Nachrichten um verschiedene Systemzustände den Benutzern mitzuteilen wie z.B.:
+Alle diese Anwendungen im Ökosystem erfordern den Versand von E-Mail-Nachrichten um verschiedene Systemzustände und Benachrichtigungen den Benutzern mitzuteilen wie z.B.:
 \begin{itemize}
 	\item Fehlermeldungen
 	\item Statusänderungen bei Bestellungen (erstellt, geliefert, storniert, ...)
 	\item Lieferverzugsmeldungen
-	\item ...
+	\item Registrierung eines neuen Lieferanten
 \end{itemize}
-\ \newline
-Es wurden neue Anforderungen für \emph{CCMail}
-definiert, die sich nicht mehr in \emph{CCMail} integrieren lassen. Dies ist begründet in dem Design und der Implementierung von \emph{CCMail}.
-\newline\newline
-Diese Arbeit wird sich einerseits mit der Diskussion des bestehenden Designs und der bestehenden Implementierung von \emph{CCMail} befassen und andererseits ein Konzept für 
-\emph{CleverMail} einbringen. Das eingebrachte Konzept soll als Basis für die praktische Bachelorarbeit dienen, in der das eingebrachte Konzept umgesetzt werden soll.
+\ \newpage
+\parindent0pt{Es} wurden neue Anforderungen an \emph{CCMail} gestellt, die sich nicht mehr in \emph{CCMail} realisieren lassen. Dies ist begründet in dem Design und der Implementierung von \emph{CCMail}. Diese Arbeit wird sich einerseits mit der Diskussion des Designs und der Implementierung von \emph{CCMail} befassen und andererseits ein Konzept für \emph{CleverMail} einbringen.
