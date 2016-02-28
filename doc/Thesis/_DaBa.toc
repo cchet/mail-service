@@ -24,17 +24,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.2}E-Mail-Versand}{6}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Software-Design}{8}{section.2.3}
+\contentsline {section}{\numberline {2.3}Software-Design}{7}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.1}CCBasicEmail}{9}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.1}Klasse \emph {CCBasicEmail}}{9}{subsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.2}CCItbCustUser}{10}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.2}Klasse CCItbCustUser}{10}{subsection.2.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.3}CCMailingDao}{12}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.3}Klasse CCMailingDao}{12}{subsection.2.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.4}CCMailingDaoFactory}{13}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.4}Klasse \emph {CCMailingDaoFactory}}{13}{subsection.2.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Datenbank}{15}{section.2.4}
+\contentsline {section}{\numberline {2.4}Datenbank}{14}{section.2.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}CleverMail}{17}{chapter.3}
 \defcounter {refsection}{0}\relax 
