@@ -1,33 +1,36 @@
-\chapter{CCMail}
+\chapter{Die alte Anwendung}
 \label{cha:ccmail}
-In diesem Kapitel wird die existierende Anwendung \emph{CCMail} analysiert und diskutiert. Ziel ist es einen Überblick über diese Anwendung und dessen Aspekte zu liefern sowie diese Aspekte genauer zu betrachten und zu analysieren. Die Ergebnisse dieser Analyse sollen als Grundlage für das neue Konzept dienen, dass auch die Integration in die bestehenden Anwendungen berücksichtigen muss. Diese Integration soll natürlich mit geringstem Aufwand erfolgen können, da hier Probleme bei der Integration negative Auswirkungen auf den produktiven Betrieb haben könnten. 
+In diesem Kapitel wird die alte Anwendung \emph{CCMail} analysiert und diskutiert. Ziel ist es, einen Überblick über diese Anwendung und deren wesentlichsten Aspekte zu liefern, sowie diese Aspekte genauer zu betrachten. Die Ergebnisse dieser Analyse sollen als Grundlage für das neue Konzept dienen, das auch die Integration in die bestehenden Anwendungen berücksichtigen muss. Diese Integration soll mit geringst möglichen Aufwand erfolgen können, da Probleme bei der Integration negative Auswirkungen auf den produktiven Betrieb haben könnten. 
 
 \section{Systemaufbau}
 \label{sec:ccmail-systemaufbau}
-Im folgenden wird der Systemaufbau aus der Sicht der Anwendung \emph{CCMail} und dessen Integration in das System diskutiert. 
+Im folgenden wird der Systemaufbau aus der Sicht der Anwendung \emph{CCMail} und dessen Integration in das System über \emph{MailJobs} diskutiert. 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.35]{Systemaufbau_alt.jpg} %{CS0031}
+\includegraphics[scale=0.38]{Systemaufbau_alt.jpg} %{CS0031}
 \caption{Systemaufbau und Integration von \emph{CCMail}}
 \label{fig:ccmail-system-und-integration}
 \end{figure}
 \ \newpage
-\parindent0pt{Dieses} Diagramm zeigt das Gesamtsystem aus der Sicht der Anwendung \emph{CCMail}, wobei anzumerken ist, dass das System bis heute angewachsen ist und nunmehr aus mehreren Anwendungen besteht. Es lässt sich hier ableiten dass das Kernstück des Systems die Datenbank ist. In der Datenbank werden die zu versendenden E-Mail-Nachrichten als sogenannte \emph{MailJobs} verwaltet. Ein \emph{MailJob} ist ein Eintrag in einer Datenbanktabelle namens \emph{MAIL\_JOBS}, die alle Informationen einer E-Mail-Nachricht enthält. Hierbei sind die eigens implementierten Datenbankzugriffsschichten zu kritisieren, die zwar den Datenbankzugriff kapseln, jedoch nur für jede Anwendung an sich und nicht über Anwendungsgrenzen hinweg, was durchaus möglich wäre. Scott W.Ambler und Parmod J.Sadalge beschreiben es in Ihrem Buch \cite[27]{refactoreDatabase} treffend:
+\parindent0pt{Abbildung} \ref{fig:ccmail-system-und-integration} zeigt das Gesamtsystem aus der Sicht der Anwendung \emph{CCMail}, wobei anzumerken ist, dass das System bis heute angewachsen ist und nunmehr aus mehreren Anwendungen als wie in Abbildung  \ref{fig:ccmail-system-und-integration} abgebildet besteht. Es lässt sich ableiten, dass das Kernstück des Systems die Datenbank ist. In der Datenbank werden die zu versendenden E-Mail-Nachrichten als sogenannte \emph{MailJobs} verwaltet. Ein \emph{MailJob} ist ein Eintrag in einer Datenbanktabelle namens \emph{MAIL\_JOBS}, die alle Informationen einer \emph{E-Mail} enthält. Es sind dabei die eigens implementierten Datenbankzugriffsschichten der einzelnen Anwendungen zu kritisieren, die zwar den Datenbankzugriff kapseln, jedoch nur für jede Anwendung an sich und nicht über Anwendungsgrenzen hinweg, was durchaus möglich wäre. Scott W.Ambler und Parmod J.Sadalge schreiben in ihrem Buch \cite[27]{refactoreDatabase} treffend:
 \begin{quote}
-\emph{The greather the coupeling, the harder is to refactore something. This is true of code refactoring, and it is certainly true of database refactoring}
+\emph{The greater the coupeling, the harder is to refactore something. This is true of code refactoring, and it is certainly true of database refactoring}
 \end{quote}
-Da jede Anwendung ihre eigene Datenzugriffsschicht hält, muss jede Anwendung bei einer Datenbankänderung ihre Datenzugriffsschicht anpassen. Eine zentrale Datenbankzugriffsschicht würde nur eine Änderung an einer Seite erfordern. Also haben wir hier eine Form der starken Koppelung die sich durch die Code-Duplikate ausprägt.
+Da jede Anwendung ihre eigene Datenzugriffsschicht implementiert, muss jede Anwendung bei einer Datenbankänderung ihre Implementierung anpassen. Eine zentrale Datenbankzugriffsschicht würde nur eine Änderung an einer Stelle erfordern. Also haben wir hier eine Form der starken Koppelung die sich durch die Code-Duplikate ausprägt.
 \newline
 \newline
-Die Anwendungen \emph{CleverWeb} und \emph{CleverInterface} erstellen über ihre eigens implementierte Datenbankzugriffsschicht \emph{MailJob} Entitäten in der Datenbank, welche zeitgesteuert von \emph{CCMail} ausgelesen, verarbeitet und versendet werden. \emph{CCMail} ist als eine Konsolen-Anwendung Implementiert und enthält alle Ressourcen, die es benötigt um die \emph{MailJob} Entitäten zu verarbeiten. Auch hier wirken sich die eigens implementierten Datenbankzugriffsschichten aus, da es hier keine einheitliche Spezifikation für das Erstellen eines \emph{MailJobs} gibt. Validierungen ob ein zu erstellender \emph{MailJob} gültig ist wird hier den einzelnen Anwendungen überlassen und sind nicht an einer zentralen Stelle spezifiziert. Daher muss sich die Implementierungen in \emph{CCMail} darauf verlassen, dass alle Anwendungen die \emph{MailJobs} korrekt anlegen damit diese von \emph{CCMail} korrekt verarbeitet werden können.
+Die Anwendungen \emph{CleverWeb} und \emph{CleverInterface} erstellen über ihre eigens implementierten Datenbankzugriffsschichten \emph{MailJob-Entitäten} in der Datenbank, welche zeitgesteuert von \emph{CCMail} ausgelesen, verarbeitet und in Form von \emph{E-Mails} versendet werden. \emph{CCMail} ist als Konsolen-Anwendung implementiert und enthält alle Ressourcen, die es benötigt, um die \emph{MailJob-Entitäten} zu verarbeiten. Auch hier wirken sich die eigens implementierten Datenbankzugriffsschichten aus, da es keine einheitliche Spezifikation für das Erstellen eines \emph{MailJobs} gibt. Validierungen, ob ein zu erstellender \emph{MailJob} gültig ist, werden den einzelnen Anwendungen überlassen und sind nicht an einer zentralen Stelle umgesetzt. Daher muss sich die Implementierungen in \emph{CCMail} darauf verlassen, dass alle Anwendungen die \emph{MailJobs} korrekt anlegen, damit diese von \emph{CCMail} korrekt verarbeitet werden können.
 \newline
 \newline
-Als Mail-Server wird \emph{Sendmail} verwendet. Es handelt sich hierbei um eine Anwendung, die für Linux Distributionen frei verfügbar ist. \emph{CCMail} versendet über das SMTP-Protokoll die E-Mail-Nachrichten an die \emph{Sendmail} Instanz, die sie ihrerseits an die EmpfängerInnen versendet.
+Als Mail-Server wird \emph{Sendmail} verwendet. Es handelt sich hierbei um eine Anwendung, die für Linux Distributionen frei verfügbar ist. \emph{CCMail} versendet die \emph{E-Mails} über SMTP \emph{(Simple-Mail-Transport-Protocol)} an \emph{Sendmail}, das die \emph{E-Mails} seinerseits an die EmpfängerInnen versendet.
 
 \newpage
 \section{E-Mail-Versand}
 \label{sec:ccmail-email-versand}
-Der folgend beschriebene Prozess des E-Mail-Versandes soll aufzeigen wie in dem vorherig beschriebenen System \ref{sec:ccmail-systemaufbau} der E-Mail-Versand vom Anlegen eines \emph{MailJob} bis hin zum Versand der eigentlichen E-Mail-Nachricht funktioniert. Als Kernkomponente des Systems wurde die Datenbank identifiziert, die die \emph{MailJob} Entitäten hält, die wiederum von \emph{CCMail} aus der Datenbank ausgelesen und verarbeitet werden. Dieser Ansatz ist an sich nicht als schlecht anzusehen, jedoch verbirgt sich hier eines der Hauptprobleme des E-Mail-Versandes. Nämlich die Inkonsistenz der versendeten E-Mail-Nachrichten, durch die Zeitdifferenz zwischen dem Anlegen eines \emph{MailJob} durch die Anwendungen und dem tatsächlichen Versand der E-Mail-Nachricht durch \emph{CCMail}.
+Der im folgenden beschriebene Prozess des E-Mail-Versands zeigt auf wie hinsichtlich des Systemaufbaus beschrieben in \ref{sec:ccmail-systemaufbau} der E-Mail-Versand vom Anlegen eines \emph{MailJobs} bis hin zum Versand der eigentlichen \emph{E-Mail} funktioniert. 
+\newline
+\newline
+Als Kernkomponente des Systems wurde die Datenbank identifiziert, welche die \emph{MailJob-Entitäten} hält, die wiederum von \emph{CCMail} aus der Datenbank gelesen und verarbeitet werden. Dieser Ansatz ist an sich nicht als schlecht anzusehen, jedoch verbirgt sich hier eines der Hauptprobleme des E-Mail-Versandes. Nämlich die Inkonsistenz der versendeten E-Mail-Nachrichten, durch die Zeitdifferenz zwischen dem Anlegen eines \emph{MailJob} durch die Anwendungen und dem tatsächlichen Versand der E-Mail-Nachricht durch \emph{CCMail}.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{prozess_sequence_emailversand.jpg}

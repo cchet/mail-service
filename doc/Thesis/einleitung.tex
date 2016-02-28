@@ -1,24 +1,59 @@
 \chapter{Einleitung}
 \label{cha:einleitung}
-Das Ziel dieser Arbeit liegt in der Konzeption von \emph{CleverMail}, welche die bestehende Anwendung \emph{CCMail} ablösen soll. Bevor dieses Konzept erstellt wird, wird die bestehende Anwendung \emph{CCMail} insbesondere dessen Design und Implementierung diskutiert, damit aufgezeigt werden kann welche Designentscheidungen und Implementierungsdetails ein Erweitern von \emph{CCMail} verhindern. In dem Konzept für \emph{CleverMail} sollen die in \emph{CCMail} gemachten Design- und Implementierungsfehler berücksichtigt werden damit \emph{CleverMail} auch zukünftig neuen Anforderungen gewachsen ist und sich diese neue Anforderungen ohne größere Probleme und Refaktorisierungsaufwand integrieren lassen. Zukünftige Anforderungen sind zwar schwer vorauszusagen jedoch kann man sich bei seinen Designentscheidungen, der Wahl der verwendeten Softwaremuster und Anwendungsarchitektur auf neue Anforderungen bzw. Änderungen an der bestehenden Anwendung sehr gut vorbereiten.
+Die vorliegende Sachlage beschäftigt sich mit der Konzeption einer neuen Mail-Anwendung, welche in weiterer Folge als \emph{CleverMail} bezeichnet wird, die eine bestehende alte Mail-Anwendung, in weiterer Folge \emph{CCMail} genannt, ersetzen soll. Dieses Konzept wird für das Unternehmen \emph{curecomp} erstellt. Einleitend wird das Unternehmen \emph{curecomp} und dessen Anwendungen vorgestellt. 
+\newline
+\newline
+Das Unternehmen \emph{curecomp} ist ein Dienstleister im SRM-Bereich (\emph{Supplier-Relationship-Management}) und betreibt eine Softwarelösung namens \emph{clevercure}, dessen Komponenten aus den folgenden Anwendungen besteht:
+\newline
+\begin{itemize}
+	\item\emph{CleverWeb} ist eine Web-Anwendung für den webbasierten Zugriff auf clevercure.
+	\item\emph{CleverInterface} ist eine Schnittstellen-Anwendung für die Anbindung der ERP-Systeme der Kunden und Lieferanten, deren Daten mittels XML-Dateien	import und exportiert werden können.
+	\item\emph{CleverSupport} ist eine Web-Anwendung, die zur Unterstützung der \emph{Support}-Abteilung dient.
+	\item\emph{CleverDocument} ist ein Dokumentenmanagementsystem für die Verwaltung aller anfallenden Dokumente.
+\end{itemize} 
+\ \newline
+Alle diese Anwendungen erfordern den Versand von \emph{E-Mails}, um verschiedene Systemzustände und Benachrichtigungen den BenutzerInnen mitzuteilen wie z.B.:
+\begin{itemize}
+	\item Fehlermeldungen,
+	\item Statusänderungen bei Bestellungen (erstellt, geliefert, storniert, ...),
+	\item Lieferverzugsmeldungen,
+	\item Registrierung eines neuen Lieferanten.
+\end{itemize}
+\ \newpage
+\parindent0pt{Es} sind durch die Kunden und das Unternehmen \emph{curecomp} neue Anforderungen an \emph{CCMail} gestellt worden, die sich nicht mehr in \emph{CCMail} umsetzen lassen. Dies ist begründet in dem Design und der Implementierung von \emph{CCMail}. Diese Arbeit befasst sich einerseits mit der Diskussion des Designs und der Implementierung von \emph{CCMail} und liefert andererseits ein Konzept für \emph{CleverMail}.
+\newline
+\newline
+Vor der Erstellung dieses Konzepts, wird die bestehende Anwendung \emph{CCMail} , insbesondere deren Design und Implementierung diskutiert, damit aufgezeigt werden kann, welche Designentscheidungen und Implementierungsdetails ein Erweitern von \emph{CCMail} verhindern. In dem Konzept für \emph{CleverMail} sollen die in \emph{CCMail} gemachten Design- und Implementierungsfehler berücksichtigt werden, damit \emph{CleverMail} auch zukünftig neuen Anforderungen gewachsen ist und sich diese neue Anforderungen ohne größere Probleme und Durchführungsaufwand integrieren lassen. Zukünftige Anforderungen sind zwar schwer vorauszusagen, jedoch kann man sich bei seinen Designentscheidungen, der Wahl der verwendeten Softwaremuster und Anwendungsarchitektur auf neue Anforderungen bzw. Änderungen an der bestehenden Anwendung sehr gut vorbereiten.
 \newline
 \newline
 Für die Konzipierung von \emph{CleverMail} wurden folgende technischen Grundvoraussetzungen definiert:
-\begin{enumerate}
-	\item Java-8\footnote{Java Programmiersprache in der Version 1.8}
-	\item JEE-7-Platform\footnote{Java-Enterprise-Edtion Platform in Version 7}
-	\item DB2\footnote{IBM proprietäre relationale Datenbank}
-	\item Wildfly\footnote{RedHat Applikationsserver früher bekannt als JBOSS-AS (JBOSS-Application-Server)}
-\end{enumerate}
-\ \newpage
-\parindent0pt{Als} Unterstützung für diese Arbeit wurden folgende literarischen Werke gewählt:
-\begin{enumerate}
-	\item Refactoring to patterns\cite{refactoreDatabase}
-	\item Refactoring Databases\cite{refactoreToPatterns}
-	\item Patterns of enterprise application architecture\cite{patternsOfEnterprise}
-\end{enumerate}
+\begin{itemize}
+	\item \emph{Java-JDK-8} (Java-Development-Kit in der Version 1.8),
+	\item \emph{JEE-7-Platform} (Java-Enterprise-Edition Plattform in der Version 7),
+	\item \emph{DB2} (Proprietäre relationale Datenbank von IBM),
+	\item \emph{Wildfly} (RedHat-Applikationsserver, früher bekannt als JBoss-Application-Server).
+\end{itemize} 
 \ \newline
-Über die Zeit haben sich die Anforderungen an \emph{CCMail} derartig geändert, dass diese nicht mehr in \emph{CCMail} integriert werden können. Wie im Vorwort \ref{cha:vorwort} bereits erwähnt liegt dies vor allem am Design von \emph{CCMail}. \emph{CCMail} wurde im Jahre 2002 in \emph{Java 1.4} implementiert und hatte daher nicht die technischen Möglichkeiten die heute zur Verfügung stehen. Als Erinnerung, Java Generics stehen erst seit der Version \emph{Java 1.5} zur Verfügung. Ebenso sind bis heute alle Erweiterungsmöglichkeiten in \emph{CCMail} ausgeschöpft worden, wobei eine Erweiterung alleine schon wegen dem großen technologischen Unterschied der Java Versionen \emph{Java 1.4} und \emph{Java 1.8} sinnlos erscheint. Weiterentwicklungen fanden zwar in in den anderen Anwendungen wie \emph{CleverWeb} und \emph{CleverInterface} statt, jedoch scheint es so dass \emph{CCMail} hier vernachlässigt wurde, was dazu geführt hat, dass ein derartig großer technologischer Unterschied entstanden ist. 
+Über die Zeit haben sich die Anforderungen an \emph{CCMail} so drastisch geändert, dass diese nicht mehr in \emph{CCMail} integriert werden können. Wie bereits erwähnt, liegt dies vor allem am Design von \emph{CCMail}. \emph{CCMail} wurde im Jahr 2002 in \emph{Java 1.4} implementiert und hatte daher nicht die technischen Möglichkeiten, die heute zur Verfügung stehen. Zur Erinnerung: \emph{Generics} stehen erst seit der Version \emph{Java 1.5} zur Verfügung. Bis heute wurden Änderungen in \emph{CCMail} vorgenommen, die keine technologischen Weiterentwicklungen von Java berücksichtigten. Aus heutiger Sicht scheint eine Erweiterung von \emph{CCMail} alleine schon wegen dem großen technologischen Unterschied der Java-Versionen 1.4 und 1.8 sinnlos.
 \newline
 \newline
-Daher wurde die Entscheidung getroffen \emph{CCMail} durch \emph{CleverMail} zu ersetzten, wobei diese Arbeit die Grundlage dafür bieten soll.
+Technologische Weiterentwicklungen fanden zwar in in den anderen Anwendungen wie \emph{CleverWeb} und \emph{CleverInterface} statt, jedoch scheint es so, dass \emph{CCMail} hier vernachlässigt wurde, was dazu geführt hat, dass ein großer technologischer Unterschied zwischen den Anwendungen entstanden ist. Daher wurde die Entscheidung getroffen, \emph{CCMail} durch \emph{CleverMail} zu ersetzten, wobei folgender Bachelorarbeit die Grundlage dafür erarbeiten soll.
+\newline
+\newline
+Im Kapitel \ref{cha:ccmail} wird die alte Mail-Anwendung \emph{CCMail} kritisch betrachtet und analysiert. Folgende Aspekte von\emph{CCMail} finden dabei Beachtung:
+\begin{itemize}
+	\item Systemaufbau,
+	\item E-Mail-Versand,
+	\item Software-Design,
+	\item und die Persistenz.
+\end{itemize}
+Die erarbeiteten Ergebnisse werden in weitere Folge dazu verwendet um das Konzept für die neue Mail-Anwendung \emph{ClverMail} zu erstellen. 
+\newline
+\newline
+Das Konzept für \emph{CleverMail} wird im Kapitel \ref{cha:clevermail} auf Grundlage der Betrachtungen, die im Kapitel \ref{cha:ccmail} erarbeitet wurden, erstellt. Dabei werden auch die neuen Anforderungen, die an die Mail-Anwendung gestellt wurden, berücksichtigt. Das erstellte Konzept wird Möglichkeiten für die Implementierung von \emph{CleverMail} aufzeigen. Dabei werden folgende Aspekte behandelt:
+\begin{itemize}
+	\item möglicher Systemaufbau,
+	\item Prozesse, 
+	\item und Persistenz.
+\end{itemize}
+Das erstellte Konzept für die Umsetzung von \emph{CleverMail} vor allem neue Technologien und \emph{Frameworks} verwenden. Dadurch soll \emph{CleverMail} die heute zur Verfügung stehenden Möglichkeiten bestmöglich anwenden.
