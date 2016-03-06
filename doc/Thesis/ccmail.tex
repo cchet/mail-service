@@ -1,4 +1,4 @@
-\chapter{Die alte Anwendung}
+\chapter{Die alte Anwendung \emph{CCMail}}
 \label{cha:ccmail}
 In diesem Kapitel wird die alte Anwendung \emph{CCMail} analysiert und diskutiert. Ziel ist es, einen Überblick über diese Anwendung und deren wesentlichsten Aspekte zu liefern, sowie diese Aspekte genauer zu betrachten. Die Ergebnisse dieser Analyse sollen als Grundlage für das neue Konzept dienen, das auch die Integration in die bestehenden Anwendungen berücksichtigen muss. Diese Integration soll mit geringst möglichen Aufwand erfolgen können, da Probleme bei der Integration negative Auswirkungen auf den produktiven Betrieb haben könnten. 
 
@@ -217,17 +217,60 @@ Zusätzlich befinden sich die Quelltexte der Schnittstellen zusammen mit ihrer I
 
 \section{Datenbank}
 \label{sec:ccmail-datanbank}
-Abschließend wird hier der Aufbau des Datenbankschemata betrachtet, welches die Kernkomponente des Systems aus der Sicht von \emph{CCMail} darstellt. Es wurde bei diesem Schemata offensichtlich auf Fremdschlüssel verzichtet, was grundsätzlich nur in Spezialfällen anzuraten ist. In dem Buch \emph{Refactoring Database} \cite[213]{refactoreDatabase} wird als Argument für nicht verwendete Fremdschlüssel die Performance genannt, wobei in diesem Fall diese Begründung nicht standhält. Die beiden Anwendungen \emph{CleverWeb} und \emph{CleverInterface} erstellen lediglich einzelne oder wenige \emph{MailJob} Einträge auf einmal und \emph{CCMail} ist die einzige Anwendung, die diese \emph{MailJob} Einträge einmalig ausliest und verarbeitet. Also sollte in diesem Fall die Performance ohnehin kein Problem darstellen, da hier eine Vielzahl von Teilnehmer und die dadurch resultierende Konkurrenz nicht geben ist. Das Problem von nicht verwendeten Fremdschlüsseln wird in \emph{Refactoring Databases} \cite[213]{refactoreDatabase} wie folgt beschrieben.
+Abschließend wird der Aufbau des Datenbankschemas betrachtet, welches die Kernkomponente des Systems aus der Sicht von \emph{CCMail} darstellt. Bei diesem Schema wurde auf Fremdschlüssel verzichtet, was grundsätzlich nur in Spezialfällen anzuraten ist.
+\newline
+\newline 
+Im Buch \emph{Refactoring Database} \cite[213]{refactoreDatabase} wird als Argument für nicht verwendete Fremdschlüssel die Performanz genannt, wobei in diesem Fall diese Begründung nicht hält. Die beiden Anwendungen \emph{CleverWeb} und \emph{CleverInterface} erstellen lediglich einzelne oder wenige \emph{MailJob}-Einträge auf einmal, und \emph{CCMail} ist die einzige Anwendung, die diese \emph{MailJob}-Einträge einmalig ausliest und verarbeitet. Also muss die Performance ohnehin kein Problem darstellen, da hier keine Vielzahl von TeilnehmerInnen und die keine Konkurrenz nicht geben ist. Das Problem von nicht verwendeten Fremdschlüsseln wird in \emph{Refactoring Databases} \cite[213]{refactoreDatabase} wie folgt beschrieben.
 \begin{quote}
 \emph{The fundemental tradeoff is performance versus quality: Foreign key constraints ensure the validity of the data at the database level at the cost of the constraint being enforced each time the source data is updated. When you apply Drop Foreign Key, your applications will be at risk of introducing invalid data if they do not validate the data before writing to the database.}
 \end{quote}
-Hier müssen also die Anwendungen selbst die Konsistenz der Daten gewährleisten ansonsten könnten inkonsistente Datenbestände in der Datenbank entstehen, die nachträglich schwer zu identifizieren und zu bereinigen sind. Die Frage ist hierbei ob dieser Ansatz ein guter Ansatz ist?
+Es müssen also die Anwendungen selbst die Konsistenz der Daten gewährleisten, ansonsten könnten inkonsistente Datenbestände in der Datenbank entstehen, die nachträglich schwer zu identifizieren und zu bereinigen sind. Die Frage ist, ob dieser Ansatz ein guter ist?
 \newline
 \newline
-Wie auch ersichtlich ist wurden die Spalten einer Tabelle mit einem Präfix versehen, der eindeutig über das gesamte Datenbankschema ist. Mann sollte annehmen dass es ausreicht dass die Spaltennamen eindeutig innerhalb des Kontextes einer Tabelle sind und nicht global über das gesamte Datenbankschema. Die Tabellen die neu eingeführt wurden und mit Fremdschlüsseln miteinander verknüpft sind werden dazu verwendet um Datei Anhänge von E-Mail-Nachrichten zu verwalten, die bereits bei der Erstellung des \emph{MailJob} erstellt wurden. Dies war ein Workaround und sollte so auch nicht mehr angewandt werden, da hier die Dateien in Base64 Kodierung verwaltet werden und die Datenbank unnötig mit Daten belasten. Sie sollten in einem File-Storage verwaltet und lediglich referenziert werden, was aber zum Zeitpunkt der Implementierung noch nicht zur Verfügung stand. 
-\begin{figure}[h]
+Wie in Abbildung \ref{fig:ccmail-db-schema} ersichtlich, wurden die Spalten der Tabellen mit einem Präfix versehen, der eindeutig über das gesamte Datenbankschema ist. Mann sollte wissen, dass es ausreicht, dass die Spaltennamen eindeutig innerhalb des Kontexts einer Tabelle sind und nicht global über das gesamte Datenbankschema. Ebenso erkennt man, dass folgende Tabellen Fremdschlüssel definieren: 
+\begin{itemize}
+	\item\emph{MAIL\_JOB\_ATTACHMENT\_CONTAINERS}:
+	\newline
+	ist die Tabelle, welche die gebündelten Anhänge (*.zip) für einen \emph{MailJob} repräsentiert.
+	\item\emph{MAIL\_ATTACHMENT\_CONTAINER}:
+	\newline
+	ist die Tabelle, welche ein Bündel von Anhängen für einen \emph{MailJob} repräsentiert.
+	\item\emph{MAIL\_ATTACHMENT\_CONTAINER\_ATTACHMENT}:
+	\newline
+	ist die Tabelle, welche einen Anhang eines \emph{MailJob} repräsentiert.
+	\item\emph{MAIL\_ATTACHMENT\_PARTS}:
+	\newline
+	ist die Tabelle, welche die partitionierten und in \emph{BASE64} kodierten Daten der Anhänge des \emph{MailJob} repräsentiert.
+	\item\emph{MAIL\_ATTACHMENT}:
+	\newline
+	ist die Tabelle, welche einen Anhang eines \emph{MailJob} repräsentiert. 
+	\item\emph{MAIL\_JOB\_ATTACHMENT}:
+	\newline
+	ist die Tabelle, welche die Anhänge eines \emph{MailJob} repräsentiert.
+\end{itemize}
+Diese Tabellen wurden nachträglich hinzugefügt und man hat den Ansatz des Verzichts auf Fremdschlüssel offensichtlich aufgegeben. Diese Tabellen werden dazu verwendet, um Datei- Anhänge von E-Mail-Nachrichten zu verwalten, die bereits bei der Erstellung des \emph{MailJobs} vorhanden sind. Dies war eine Umgehungslösung und darf so auch nicht mehr angewandt werden, da hier die Dateien kodiert in Base64 (\emph{Codepage} unabhängige ASCII- Zeichenfolge) gehalten werden und die Datenbank unnötig mit Daten belasten. Sie sollten in einem Dateisystem oder Dokumentenverwaltungssystem verwaltet und lediglich referenziert werden, was aber zum Zeitpunkt der Implementierung noch nicht zur Verfügung stand. 
+\ \newpage
+\begin{figure}[H]
 \centering
-\includegraphics[angle=90,scale=0.3]{ccmail_db_schema.jpg} 
-\caption{Datenbankschemata \emph{CCMail}}
+\includegraphics[angle=90,scale=0.48]{ccmail_db_schema.jpg} 
+\caption{Datenbankschema \emph{CCMail}}
 \label{fig:ccmail-db-schema}
 \end{figure}
+Mit Ende diese Kapitels ist die Analyse der alten Anwendung \emph{CCMail} angeschlossen. Bei der Analyse wurden einige Probleme und Fehlentscheidungen von \emph{CCMail} identifiziert wie z.B.:
+\begin{itemize}
+	\item Vererbungshierarchie der \emph{Mail}-Typen.
+	\item Statische \emph{Mail}-Vorlagen.
+	\item Verzicht auf Datenbank-Fremdschlüssel.
+	\item Global eindeutige Tabellenspaltennamen.
+\end{itemize}
+Diese Ergebnisse werden bei der Konzipierung von \emph{CleverMail} mit einfließen. Durch die Berücksichtigung der Analyseergebnisse, wird die Erstellung des Konzepts von \emph{CleverMail} erleichtert, da in diesen Analyseergebnissen jahrelange Erfahrungswerte mit einflossen. 
+\newline
+\newline
+Neben den Analyseergebnissen werden auch die Anforderungen, die für die neue Anwendung \emph{CleverMail} definiert wurden, mit einbezogen wie z.B.:
+\begin{itemize}
+	\item Benutzerdefinierte \emph{E-Mail}-Vorlagen
+	\item Benutzerdefinierte Zeitpläne für den \emph{E-Mail}-Versand
+	\item Benutzerdefinierte \emph{E-Mail}-Typen
+	\item Persistenz der versendeten \emph{E-Mails}
+\end{itemize} 
+Im Gegensatz zu \emph{CCMail} werden bei \emph{CleverMail} die BenutzerInnen mehr Kontrolle über die \emph{E-Mails} und deren Versand haben. Dies ist auch der Kern der an \emph{CleverMail} gestellten Anforderungen.

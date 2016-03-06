@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  28 FEB 2016 19:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  6 MAR 2016 12:13
 entering extended mode
 **./_DaBa.tex
 (_DaBa.tex
@@ -1624,7 +1624,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 5.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 5.
-<images/Systemaufbau_alt.jpg, id=178, 661.72218pt x 411.78844pt>
+<images/Systemaufbau_alt.jpg, id=179, 661.72218pt x 411.78844pt>
 File: images/Systemaufbau_alt.jpg Graphic file (type jpg)
 
 <use images/Systemaufbau_alt.jpg>
@@ -1652,6 +1652,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--26
 
  []
 
+LaTeX Font Info:    Font shape `T1/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `T1/lmss/m/sl' tried instead on input line 27.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 27.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1666,7 +1668,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 28.
 
-<images/prozess_sequence_emailversand.jpg, id=193, 448.67625pt x 242.40562pt>
+<images/prozess_sequence_emailversand.jpg, id=195, 448.67625pt x 242.40562pt>
 File: images/prozess_sequence_emailversand.jpg Graphic file (type jpg)
 
 <use images/prozess_sequence_emailversand.jpg>
@@ -1695,7 +1697,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 48.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 48.
-<images/teilsystem_ccmail.jpg, id=201, 621.82312pt x 84.315pt>
+<images/teilsystem_ccmail.jpg, id=203, 621.82312pt x 84.315pt>
 File: images/teilsystem_ccmail.jpg Graphic file (type jpg)
 
 <use images/teilsystem_ccmail.jpg>
@@ -1729,13 +1731,13 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 76.
 
-<images/class_diagram_basic_email.png, id=218, 437.635pt x 464.73625pt>
+<images/class_diagram_basic_email.png, id=220, 579.16376pt x 507.8975pt>
 File: images/class_diagram_basic_email.png Graphic file (type png)
 
 <use images/class_diagram_basic_email.png>
 Package pdftex.def Info: images/class_diagram_basic_email.png used on input lin
 e 81.
-(pdftex.def)             Requested size: 240.69998pt x 255.60571pt.
+(pdftex.def)             Requested size: 318.54105pt x 279.3445pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 78--93
 
@@ -1808,7 +1810,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 183.
 
-<images/class_diagram_mailing_ao.png, id=297, 178.6675pt x 126.4725pt>
+<images/class_diagram_mailing_ao.png, id=298, 178.6675pt x 126.4725pt>
 File: images/class_diagram_mailing_ao.png Graphic file (type png)
 
 <use images/class_diagram_mailing_ao.png>
@@ -1844,7 +1846,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 204.
 
-<images/class_diagram_mailing_dao_factory.png, id=307, 463.7325pt x 112.42pt>
+<images/class_diagram_mailing_dao_factory.png, id=308, 463.7325pt x 112.42pt>
 File: images/class_diagram_mailing_dao_factory.png Graphic file (type png)
 
 <use images/class_diagram_mailing_dao_factory.png>
@@ -1872,34 +1874,57 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 218.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 218.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 223.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 223.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 223.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 223.
- [14 <./images/class_diagram_mailing_dao_factory.png (PNG copy)>]
-<images/ccmail_db_schema.jpg, id=322, 2120.92375pt x 1022.82124pt>
-File: images/ccmail_db_schema.jpg Graphic file (type jpg)
 
-<use images/ccmail_db_schema.jpg>
-Package pdftex.def Info: images/ccmail_db_schema.jpg used on input line 230.
-(pdftex.def)             Requested size: 2120.9186pt x 1022.81874pt.
-
-
-LaTeX Warning: Float too large for page by 72.48178pt on input line 233.
-
-)
-Underfull \hbox (badness 10000) in paragraph at lines 224--43
+Underfull \hbox (badness 10000) in paragraph at lines 220--224
 
  []
 
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 226.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 226.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 226.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 226.
+[14 <./images/class_diagram_mailing_dao_factory.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 227--232
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+ []
 
 Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 252.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 252.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 252.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 252.
+[15] <images/ccmail_db_schema.jpg, id=329, 1257.69875pt x 709.65125pt>
+File: images/ccmail_db_schema.jpg Graphic file (type jpg)
+
+<use images/ccmail_db_schema.jpg>
+Package pdftex.def Info: images/ccmail_db_schema.jpg used on input line 255.
+(pdftex.def)             Requested size: 1257.69568pt x 709.6495pt.
+
+Overfull \vbox (39.88828pt too high) has occurred while \output is active []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 259.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 259.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 259.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 259.
+
+[16 <./images/ccmail_db_schema.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 266--271
+
+ []
+
+)
+Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 43.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 43.
@@ -1907,16 +1932,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 43.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 43.
-[15]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 43.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 43.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 43.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 43.
- [16 <./images/ccmail_db_schema.jpg>]
+ [17]
 \openout2 = `clevermail.aux'.
 
  (clevermail.tex
@@ -1930,248 +1946,268 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--8
 
  []
 
+
+Overfull \hbox (8.1814pt too wide) in paragraph at lines 9--10
+[]\T1/lmr/m/it/10.95 CleverInterface\T1/lmr/m/n/10.95 , ist die Schnitt-stel-le
+n An-wen-dung für den Datenimport/-
+ []
+
+
+Overfull \hbox (6.35924pt too wide) in paragraph at lines 10--11
+[]\T1/lmr/m/it/10.95 CleverSupport (neu)\T1/lmr/m/n/10.95 , ist die Web-Anwendu
+ng für die \T1/lmr/m/it/10.95 Sup-port\T1/lmr/m/n/10.95 -Abteilung. 
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 14.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 14.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 22.
+(babel)             in language  on input line 14.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 22.
-[17
+(babel)             in language  on input line 14.
+[18
 
 
 
 ]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 35.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 35.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 35.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 35.
- [18]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 36.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 36.
+Underfull \hbox (badness 10000) in paragraph at lines 24--28
 
-<images/clevermail_systemaufbau.jpg, id=368, 614.89725pt x 327.02174pt>
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 29.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 29.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 31.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 31.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 31.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 31.
+[19] <images/clevermail_systemaufbau.jpg, id=360, 614.89725pt x 327.02174pt>
 File: images/clevermail_systemaufbau.jpg Graphic file (type jpg)
 
 <use images/clevermail_systemaufbau.jpg>
 Package pdftex.def Info: images/clevermail_systemaufbau.jpg used on input line 
-40.
+34.
 (pdftex.def)             Requested size: 356.64066pt x 189.67273pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--50
+
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 56.
+(babel)             in language  on input line 58.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 56.
+(babel)             in language  on input line 58.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 56.
+(babel)             in language  on input line 58.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 56.
- [19 <./images/clevermail_systemaufbau.jpg>]
+(babel)             in language  on input line 58.
+[20 <./images/clevermail_systemaufbau.jpg>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 75.
+(babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 75.
+(babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 77.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 77.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 77.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 77.
- [20] <images/try_confirm_cancel.jpg, id=388, 669.702pt x 370.986pt>
+(babel)             in language  on input line 64.
+ [21]
+<images/try_confirm_cancel.jpg, id=379, 669.702pt x 370.986pt>
 File: images/try_confirm_cancel.jpg Graphic file (type jpg)
 
 <use images/try_confirm_cancel.jpg>
-Package pdftex.def Info: images/try_confirm_cancel.jpg used on input line 81.
+Package pdftex.def Info: images/try_confirm_cancel.jpg used on input line 68.
 (pdftex.def)             Requested size: 334.85017pt x 185.49254pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--93
+Underfull \hbox (badness 10000) in paragraph at lines 65--80
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 78--93
+Underfull \hbox (badness 10000) in paragraph at lines 65--80
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 81.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 81.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 81.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 94.
-[21 <./images/try_confirm_cancel.jpg>]
+(babel)             in language  on input line 81.
+[22 <./images/try_confirm_cancel.jpg>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 81.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 81.
 
-<images/clevermail-ejb-transaktion.jpg, id=396, 538.4115pt x 271.61475pt>
+<images/clevermail-ejb-transaktion.jpg, id=387, 538.4115pt x 271.61475pt>
 File: images/clevermail-ejb-transaktion.jpg Graphic file (type jpg)
 
 <use images/clevermail-ejb-transaktion.jpg>
 Package pdftex.def Info: images/clevermail-ejb-transaktion.jpg used on input li
-ne 98.
+ne 85.
 (pdftex.def)             Requested size: 269.2051pt x 135.80704pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--110
+Underfull \hbox (badness 10000) in paragraph at lines 82--97
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--110
+Underfull \hbox (badness 10000) in paragraph at lines 82--97
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 111.
+(babel)             in language  on input line 98.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 111.
+(babel)             in language  on input line 98.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 111.
+(babel)             in language  on input line 98.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 111.
-[22 <./images/clevermail-ejb-transaktion.jpg>]
+(babel)             in language  on input line 98.
+[23 <./images/clevermail-ejb-transaktion.jpg>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 112.
+(babel)             in language  on input line 99.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 112.
+(babel)             in language  on input line 99.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 129.
+(babel)             in language  on input line 116.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 129.
+(babel)             in language  on input line 116.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 129.
+(babel)             in language  on input line 116.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 129.
- [23]
+(babel)             in language  on input line 116.
+ [24]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 130.
+(babel)             in language  on input line 117.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 130.
+(babel)             in language  on input line 117.
 
-<images/clevermail-email-versand.jpg, id=416, 782.17218pt x 587.94656pt>
+<images/clevermail-email-versand.jpg, id=407, 782.17218pt x 587.94656pt>
 File: images/clevermail-email-versand.jpg Graphic file (type jpg)
 
 <use images/clevermail-email-versand.jpg>
 Package pdftex.def Info: images/clevermail-email-versand.jpg used on input line
- 133.
+ 120.
 (pdftex.def)             Requested size: 782.17027pt x 587.94513pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 137.
+(babel)             in language  on input line 124.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 137.
+(babel)             in language  on input line 124.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 137.
+(babel)             in language  on input line 124.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 137.
- [24 <./images/clevermail-email-versand.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 138--142
+(babel)             in language  on input line 124.
+ [25 <./images/clevermail-email-versand.jpg>]
+Underfull \hbox (badness 10000) in paragraph at lines 125--129
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--164
+Underfull \hbox (badness 10000) in paragraph at lines 146--151
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 164.
+(babel)             in language  on input line 151.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 164.
+(babel)             in language  on input line 151.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 151.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 151.
+[26]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 163.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 163.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 163.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 163.
+ [27]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 164.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 164.
-[25]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 176.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 176.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 176.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 176.
- [26]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 177.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 177.
 
-<images/clevermail_template_parameter.jpg, id=443, 432.86719pt x 337.26pt>
+<images/clevermail_template_parameter.jpg, id=434, 432.86719pt x 337.26pt>
 File: images/clevermail_template_parameter.jpg Graphic file (type jpg)
 
 <use images/clevermail_template_parameter.jpg>
 Package pdftex.def Info: images/clevermail_template_parameter.jpg used on input
- line 181.
+ line 168.
 (pdftex.def)             Requested size: 259.7223pt x 202.35756pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 191.
+(babel)             in language  on input line 178.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 191.
+(babel)             in language  on input line 178.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 191.
+(babel)             in language  on input line 178.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 191.
- [27 <./images/clevermail_template_parameter.jpg>]
+(babel)             in language  on input line 178.
+ [28 <./images/clevermail_template_parameter.jpg>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 201.
+(babel)             in language  on input line 188.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 201.
+(babel)             in language  on input line 188.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 201.
+(babel)             in language  on input line 188.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 201.
- [28]
+(babel)             in language  on input line 188.
+ [29]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 202.
+(babel)             in language  on input line 189.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 202.
+(babel)             in language  on input line 189.
 
-Underfull \hbox (badness 10000) in paragraph at lines 212--218
+Underfull \hbox (badness 10000) in paragraph at lines 199--205
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 205.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 205.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 218.
+(babel)             in language  on input line 205.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 218.
-[29]
+(babel)             in language  on input line 205.
+[30]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 222.
+(babel)             in language  on input line 209.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 222.
+(babel)             in language  on input line 209.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 222.
+(babel)             in language  on input line 209.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 222.
- [30]
+(babel)             in language  on input line 209.
+ [31]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 223.
+(babel)             in language  on input line 210.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 223.
- <images/clevermail_db_schema.jpg, id=477, 1282.7925pt x 701.62125pt>
+(babel)             in language  on input line 210.
+ <images/clevermail_db_schema.jpg, id=471, 1282.7925pt x 701.62125pt>
 File: images/clevermail_db_schema.jpg Graphic file (type jpg)
 
 <use images/clevermail_db_schema.jpg>
-Package pdftex.def Info: images/clevermail_db_schema.jpg used on input line 226
+Package pdftex.def Info: images/clevermail_db_schema.jpg used on input line 213
 .
 (pdftex.def)             Requested size: 1282.78937pt x 701.61952pt.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 230--44
+Underfull \hbox (badness 10000) in paragraph at lines 217--44
 
  []
 
@@ -2183,7 +2219,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 44.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 44.
-[31 <./images/clevermail_db_schema.jpg>]
+[32 <./images/clevermail_db_schema.jpg>]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 44.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2192,16 +2228,22 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 44.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 44.
- [32]
+ [33]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 61.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 61.
  (_DaBa.aux (kurzfassung.aux)
 (abstract.aux) (einleitung.aux) (ccmail.aux) (clevermail.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 61.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 61.
-Package rerunfilecheck Info: File `_DaBa.out' has not changed.
-(rerunfilecheck)             Checksum: DACA6CA3A94D535D75641EF7C93B4584;2808.
 
+
+Package rerunfilecheck Warning: File `_DaBa.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `_DaBa.out':
+(rerunfilecheck)             Before: 42EC4613B177D37A97464B0862360F20;2950
+(rerunfilecheck)             After:  5CFB4C4AE6D8D34555581303EA70D2AA;3050.
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -2210,13 +2252,13 @@ Package logreq Info: Writing requests to '_DaBa.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22318 strings out of 493634
- 337423 string characters out of 3141315
+ 22321 strings out of 493634
+ 337497 string characters out of 3141315
  825929 words of memory out of 3000000
- 25000 multiletter control sequences out of 15000+200000
- 103272 words of font info for 73 fonts, out of 3000000 for 9000
+ 25005 multiletter control sequences out of 15000+200000
+ 114619 words of font info for 76 fonts, out of 3000000 for 9000
  1029 hyphenation exceptions out of 8191
- 67i,11n,96p,1989b,1780s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 67i,12n,96p,1989b,1780s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{cite.0@atomikosTcc} has been referenced but does 
 not exist, replaced by a fixed one
 
@@ -2242,10 +2284,11 @@ ype1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/l
 m/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri9.pfb
 ><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmss10.pfb><C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmss12.pfb><C:/Program Files (x8
-6)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb>
-Output written on _DaBa.pdf (38 pages, 1758941 bytes).
+6)/MiKTeX 2.9/fonts/type1/public/lm/lmsso10.pfb><C:/Program Files (x86)/MiKTeX 
+2.9/fonts/type1/public/lm/lmtt9.pfb>
+Output written on _DaBa.pdf (39 pages, 1673664 bytes).
 PDF statistics:
- 583 PDF objects out of 1000 (max. 8388607)
- 200 named destinations out of 1000 (max. 500000)
+ 578 PDF objects out of 1000 (max. 8388607)
+ 194 named destinations out of 1000 (max. 500000)
  267 words of extra memory for PDF output out of 10000 (max. 10000000)
 
