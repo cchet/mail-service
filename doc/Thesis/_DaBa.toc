@@ -42,9 +42,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.1}1. M\IeC {\"o}glichkeit \emph {(REST-Client)}}{21}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}EJB}{23}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.2}2. M\IeC {\"o}glichkeit \emph {(EJB)}}{22}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Prozesse}{24}{section.3.2}
+\contentsline {section}{\numberline {3.2}\emph {E-Mail} Prozesse}{23}{section.3.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.1}E-Mail-Versand}{25}{subsection.3.2.1}
 \defcounter {refsection}{0}\relax 

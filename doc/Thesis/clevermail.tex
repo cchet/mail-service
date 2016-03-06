@@ -61,54 +61,60 @@ Diese technologischen Unterschiede könnten wie folgt gelöst werden:
 
 \subsection{1. Möglichkeit \emph{(REST-Client)}}
 Eine \emph{REST-Client-API}, welche sich mit JAX-RS 2.0 einfach realisieren lässt, würde ein hohes Maß an Abstraktion bieten, nur eine geringe Kopplung aufweisen und wenig Abhängigkeiten in den Anwendungen erfordern, die den \emph{REST-Client} verwenden. Dem steht aber gegenüber, dass \emph{REST-Services} zustandslos sind und sich daher nicht in Datenbank-Transaktionen einbinden lassen. Dies könnte aber erforderlich sein, wenn eine \emph{E-Mail} nur dann angelegt und versendet werden darf, wenn die Transaktion erfolgreich abgeschlossen wurde (z.B. beim Anlegen einer Bestellung). Für einen \emph{REST-Service} startet der Lebenszyklus mit dessen Aufruf und endet mit dem Übermitteln der Antwort oder wenn die Aktion abgeschlossen wurde (asynchron).
-\newpage
+\newline
+\newline
 Für diese Problem gibt es eine Lösung in Form eines Konzeptes mit der Bezeichnung Try-Confirm-Cancel (TCC).
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{try_confirm_cancel.jpg} %{CS0031}
+\includegraphics[scale=0.53]{try_confirm_cancel.jpg} %{CS0031}
 \caption{Beispiel einer Transaktion mit TCC}
 \label{fig:clevermail-rest-tcc}
 \end{figure}
 \ \newline
-Mit diesem Konzept müsste der REST-Service den Zustand persistent halten aber als \emph{unconfirmed} markieren, damit dieser in keiner Verarbeitungslogik miteinbezogen wird. Nachdem erfolgreichen Abschluss der Transaktion auf der Client-Seite muss der Client den durch den REST-Service persistent gehaltenen Zustand bestätigen und im Falle eines Fehlers abbrechen. Dies würde zwei Aufrufe zu REST-Services verursachen. Ebenfalls sollte die Transaktion über einen Transaktionskoordinator auf der REST-Seite kontrolliert werden, was wiederum einen Mehraufwand bedeutet. Dieser Transaktionskoordinator ist dafür verantwortlich die REST-Services, die Teil einer logischen Transaktionen sind,  zu managen. Mit \emph{TCC} besteht auch die Gefahr das eine Heuristic-Exception auftritt. Beim Auftreten einer solchen Exception würden inkonsistente Datenbestände auf der Datenbank entstehen, da es sein könnte dass nicht alle REST-Services ein Rollback durchgeführt haben.
+Mit dem Konzept \emph{TCC} hält der \emph{REST-Service} die \emph{E-Mail} persistent, markiert die \emph{E-Mail} aber als \emph{unconfirmed}, damit diese \emph{E-Mail} in keiner Verarbeitungslogik miteinbezogen wird. Nach dem erfolgreichen Abschluss der Transaktion auf der \emph{Client}-Seite bestätigt der \emph{Client} den durch den \emph{REST-Service} persistent gehaltenen Zustand, und im Falle eines Fehlers erklärt der \emph{Client} den Zustand für ungültig. Dies erfordert zwei Aufrufe zu REST-Services. Ebenfalls sollte die Transaktion über einen Transaktionskoordinator auf der REST-Seite kontrolliert werden, was wiederum einen Mehraufwand bedeutet. Dieser Transaktionskoordinator wäre dafür verantwortlich, die REST-Services, die Teil einer logischen Transaktionen sind, zu managen. 
 \newline
 \newline
-Diese Probleme bedeuten aber nicht dass REST-Services nicht in Frage kommen. Lediglich für transaktionale Operationen scheinen sie ungeeignet bzw. der Aufwand der betrieben werden muss zu hoch. Ein weiteres Problem könnte die Erreichbarkeit dieser REST-Services sein. Sollte dieser einmal ausfallen oder im Falle eines Deployments nicht erreichbar sein so müsste man eine Rückversicherung haben und die zu erstellenden E-Nachrichten anderweitig zwischenspeichern wie z.B.: in Form einer Textdatei, welche die Daten als JSON enthält.
+Mit \emph{TCC} besteht auch die Gefahr das eine \emph{Heuristic-Exception} auftritt. Eine \emph{Heuristic-Exception} tritt auf wenn ein Teilnehmer der Transaktion eine \emph{Heuristic-Decision} (eigenmächtige Entscheidung) trifft und dadurch Dateninkonsistenzen auf der Datenbank entstehen. Dies ist ein Problem, dass vor allem in verteilten System auftreten kann.
 \newline
 \newline
-Diese Onlinepublikation \cite{atomikosTcc} beschreibt den Prozess von \emph{TCC} mit mehreren involvierten REST-Services sehr gut und detailliert.
+Diese Probleme bedeuten aber nicht, dass \emph{REST-Services} nicht in Frage kommen. Lediglich für transaktionale Operationen scheinen sie ungeeignet bzw. der Aufwand, der betrieben werden muss, zu hoch. Ein weiteres Problem kann die Erreichbarkeit des \emph{REST-Service} sein. Sollte dieser einmal ausfallen, oder im Falle eines Neuinstallation nicht erreichbar sein, so müsste man eine Rückversicherung haben und die zu erstellenden \emph{E-Mails} anderweitig zwischenspeichern, wie z.B. in Form einer Textdatei, welche die Daten in Form von JSON (Javascript-Objekt-Notation) enthält.
+\newline
+\newline
+Der Artikel \cite{atomikosTcc} beschreibt den Prozess von \emph{TCC} mit mehreren involvierten REST-Services gut und detailliert.
 
-\subsection{EJB}
-Sollte eine Anwendung über EJB mit \emph{CleverMail} kommunizieren so würde hierbei eine starke Kopplung und starke Abhängigkeiten entstehen, da hier mehr Ressourcen benötigt werden. Ebenso könnte im Gegensatz zu einem REST-Client keine eigene Datenbank genutzt werden, da hier ein Zweiphasen-Commit erfolgen müsste. Natürlich würde diese Möglichkeit bestehen aber auch hier wäre man der Gefahr von Heursitc-Exceptions ausgesetzt.
+\subsection{2. Möglichkeit \emph{(EJB)}}
+Sollte eine Anwendung \emph{CleverMail} via dessen zur Verfügung gestellten \emph{EJBs} verwenden, so würde eine starke Kopplung und starke Abhängigkeiten entstehen, da mehr Ressourcen benötigt werden. Ebenso könnte im Gegensatz zu einem \emph{REST-Client} keine eigene Datenbank genutzt werden, da ein Zweiphasen-\emph{Commit} erfolgen müsste. Natürlich würde die Möglichkeit von mehreren verwendeten Datenbanken bestehen, aber man wäre der Gefahr von \emph{Heursitc-Exceptions} ausgesetzt.
+\newpage
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{clevermail-ejb-transaktion.jpg} %{CS0031}
-\caption{Beispiel einer EJB (JTA) Datenbanktransaktion}
+\includegraphics[scale=0.65]{clevermail-ejb-transaktion.jpg} %{CS0031}
+\caption{Beispiel einer Datenbanktransaktion mit \emph{EJB}}
 \label{fig:clevermail-rest-tcc}
 \end{figure}
-\ \newline
-In diesem Fall würde das Anlegen einer E-Mail in derselben Transaktion erfolgen und würde daher auch im Falle eines Roolbacks entfernt werden. Dies ist sicher die angenehmste Art und Weise um E-Mails anzulegen, da hier keine besonderen Mechanismen implementiert werden müssten um die Datenkonsistenz zu gewährleisten. Hierbei währen die E-Mail-Nachrichten auch Teil einer wohl definierten Transaktion.
+Wie in Abbildung \ref{fig:clevermail-rest-tcc} illustriert erfolgt das Anlegen einer \emph{E-Mail} in derselben Transaktion und würde daher auch im Falle eines \emph{Rollbacks} entfernt werden. Dies ist sicher die einfachste Art und Weise, um \emph{E-Mails} anzulegen, da hier keine besonderen Mechanismen implementiert werden müssen um die Datenkonsistenz zu gewährleisten. Mit diesem Ansatz wäre die \emph{E-Mail} Teil einer wohldefinierten Transaktion.
 \newline
 \newline
-Wie hier \ref{cha:clevermail} angemerkt können technologische Probleme auftreten wenn z.B.: eine Anwendung kein \emph{EJB} und/oder \emph{JPA} unterstützt. Hierbei müsste man eine eigene Implementierung erstellen, die zumindest Teil von \emph{CleverMail} sein sollte.
+Wie im Kapitel \ref{cha:clevermail} angemerkt, können technologische Probleme auftreten, wenn z.B. die Laufzeitumgebung einer Anwendung \emph{EJB} und \emph{JTA} nicht zur Verfügung stellt. In so einem Fall müsste man eigene Implementierungen zur Verfügung stellen, die Teil von \emph{CleverMail} sein müssen.
 \newline
 \newline
-Dieser transaktionale Ansatz unterschiedet sich nicht von dem in \emph{CCMail} bereits implementierten jedoch sollen hier die von \emph{CleverMail} zur Verfügung gestellten implementierten Ressourcen verwendet werden. Diese Ressourcen sollten auch im Backend der REST-Services von \emph{CleverMail} angewandt werden, da auch hier die Persistenz der E-Mails gewährleistet werden muss.
+Dieser transaktionale Ansatz unterschiedet sich nicht von dem in \emph{CCMail} bereits implementierten, jedoch müssen die von \emph{CleverMail} zur Verfügung gestellten Implementierungen verwendet werden. Diese Implementierungen müssen auch im Backend der \emph{REST-Services} von \emph{CleverMail} verwendet werden, da auch hier die Persistenz der \emph{E-Mails} gewährleistet werden muss.
  
-\newpage
-\section{Prozesse}
+\section{\emph{E-Mail} Prozesse}
 \label{sec:clevermail-prozesse}
-Diese Kapitel behandelt die Prozessspezifikationen von \emph{CleverMail}. Hierbei wird das Augenmerk auf den Mailversand gelegt. Grundlegend wird sich der E-Mail-Versand dadurch unterschieden, dass hier mehrere Ebenen involviert sind, bevor eine E-Mail-Nachricht bereit zum Versand ist. Vom grundlegenden Konzept wird sich gegenüber \emph{CCMail} nicht viel ändern. Es soll immer noch E-Mail-Typen geben, die aber jetzt nicht nur intern konfigurierbar sein sollen sondern ebenfalls durch die Kunden selbst konfiguriert und gesteuert werden können. Hierbei sollen folgende Konfigurationsmöglichkeiten zur Verfügung stehen.
+Dieser Abschnitt behandelt die Prozessspezifikationen von \emph{CleverMail}. Es wird das Augenmerk auf den Mailversand gelegt. Grundlegend wird sich der E-Mail-Versand dadurch unterscheiden, dass mehrere Ebenen involviert sind, bevor eine \emph{E-Mail} bereit zum Versand ist. 
+\newline
+\newline
+Vom grundlegenden Konzept wird sich gegenüber \emph{CCMail} nicht viel ändern. Es soll immer noch E-Mail-Typen geben, die aber jetzt nicht nur intern konfigurierbar sein sollen,  sondern ebenfalls durch die KundInnen selbst konfiguriert und gesteuert werden können. Es sollen folgende Konfigurationsmöglichkeiten zur Verfügung stehen.
 \begin{enumerate}
-	\item Definition von Schedules
-	\item Definition eigener E-Mail-Vorlagen
-	\item Konfiguration der Steuerbarkeit von E-Mail-Typen durch Lieferanten (darf aktivieren/de-aktivieren)
-	\item Definition eines Haftungsausschluss 
-	\item Definition von Standard Datei Anhängen
-	\item Steuerbarkeit von E-Mail-Typen für spezifischen Lieferanten
-	\item Konzernübergreifende Konfiguration
-	\item Definition eigener E-Mail-Typen
-	\item Konfiguration der Historie der E-Mail-Nachrichten
+	\item Definition von Zeitplänen.
+	\item Definition eigener \emph{E-Mail}-Vorlagen.
+	\item Konfiguration der Steuerbarkeit von \emph{E-Mail}-Typen durch LieferantInnen (darf aktivieren/de-aktivieren).
+	\item Definition eines Haftungsausschluss. 
+	\item Definition von Standard-Datei-Anhängen.
+	\item Steuerbarkeit von \emph{E-Mail}-Typen für spezifischen LieferantInnen.
+	\item Konzernübergreifende Konfiguration.
+	\item Definition eigener E-Mail-Typen.
+	\item Konfiguration der Historie der \emph{E-Mail}-Nachrichten.
 \end{enumerate}
 \ \newline
 Zur Zeit stehen diese Features, wenn vorhanden, nur intern zur Verfügung. Die Kunden haben lediglich die Möglichkeit einzelne E-Mail-Typen zu aktivieren oder zu de-aktivieren. Diese E-Mail-Typen können aber mehrere E-Mail-Nachrichten beinhalten. Das Grundlegende Ziel ist dass die Kunden mehr Kontrolle und Konfigurationsmöglichkeiten über die zur Verfügung gestellten E-Mail-Typen erhalten. Es wird hier aber auch solche E-Mail-Typen geben, bei denen diese Konfigurationsmöglichkeiten eingeschränkt werden. Nichts desto trotz soll der Kunde in der Lage sein, den E-Mail-Verkehr seiner E-Mail-Nachrichten besser zu steuern.
