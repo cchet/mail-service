@@ -10,6 +10,7 @@ Folgende Auflistung zeigt alle Anwendungen, die \emph{CleverMail} nutzen werden:
 	\item\emph{CleverSupport (neu)}, ist die Web-Anwendung für die \emph{Support}-Abteilung.
 	\item\emph{CleverDocument (neu)}, ist das Dokumentenmanagementsystem, welches von allen Anwendungen genutzt wird.
 \end{enumerate}
+\ \newline
 Im Gegensatz zu \emph{CCMail} soll \emph{CleverMail} nicht als Konsolen-Anwendung, sondern als eigenständige Komponente implementiert werden, die in einem Applikationsserver, der die JEE7-Plattform-Spezifikation unterstützt, betrieben werden kann.
 \newpage
 Mit der Nutzung der JEE7-Plattform-Spezifikation stehen \emph{CleverMail} eine Vielzahl von Möglichkeiten und Bibliotheken zur Verfügung wie z.B.: 
@@ -21,6 +22,7 @@ Mit der Nutzung der JEE7-Plattform-Spezifikation stehen \emph{CleverMail} eine V
 	\item\emph{JSF 2.2} (Java Server Faces. Java Spezifikation für die Entwicklung von Webanwendungen) und 
 	\item\emph{CDI 1.2} (Context and Dependency Injection. Java Spezifikation eines IOC-Containers (Inversion of control container)).
 \end{enumerate}
+\ \newline
 Diese Bibliotheken werden es erlauben, die Anwendung \emph{CleverMail} so flexibel wie möglich zu gestalten, bringen aber auch ein erhöhtes Maß an Komplexität beim Design mit sich. 
 \newline
 \newline
@@ -99,12 +101,12 @@ Wie im Kapitel \ref{cha:clevermail} angemerkt, können technologische Probleme a
 \newline
 Dieser transaktionale Ansatz unterschiedet sich nicht von dem in \emph{CCMail} bereits implementierten, jedoch müssen die von \emph{CleverMail} zur Verfügung gestellten Implementierungen verwendet werden. Diese Implementierungen müssen auch im Backend der \emph{REST-Services} von \emph{CleverMail} verwendet werden, da auch hier die Persistenz der \emph{E-Mails} gewährleistet werden muss.
  
-\section{\emph{E-Mail} Prozesse}
+\section{\emph{E-Mail}-Prozesse}
 \label{sec:clevermail-prozesse}
-Dieser Abschnitt behandelt die Prozessspezifikationen von \emph{CleverMail}. Es wird das Augenmerk auf den Mailversand gelegt. Grundlegend wird sich der E-Mail-Versand dadurch unterscheiden, dass mehrere Ebenen involviert sind, bevor eine \emph{E-Mail} bereit zum Versand ist. 
+Dieser Abschnitt behandelt die Prozessspezifikationen von \emph{CleverMail}. Es wird das Augenmerk auf den Mailversand gelegt. Grundlegend wird sich der \emph{E-Mail}-Versand dadurch unterscheiden, dass mehrere Ebenen involviert sind, bevor eine \emph{E-Mail} bereit zum Versand ist. 
 \newline
 \newline
-Vom grundlegenden Konzept wird sich gegenüber \emph{CCMail} nicht viel ändern. Es soll immer noch E-Mail-Typen geben, die aber jetzt nicht nur intern konfigurierbar sein sollen,  sondern ebenfalls durch die KundInnen selbst konfiguriert und gesteuert werden können. Es sollen folgende Konfigurationsmöglichkeiten zur Verfügung stehen.
+Vom grundlegenden Konzept wird sich gegenüber \emph{CCMail} nicht viel ändern. Es soll immer noch \emph{E-Mail}-Typen geben, die aber jetzt nicht nur intern konfigurierbar sein sollen,  sondern ebenfalls durch die KundInnen selbst konfiguriert und gesteuert werden können. Es sollen folgende Konfigurationsmöglichkeiten zur Verfügung stehen.
 \begin{enumerate}
 	\item Definition von Zeitplänen.
 	\item Definition eigener \emph{E-Mail}-Vorlagen.
@@ -113,114 +115,121 @@ Vom grundlegenden Konzept wird sich gegenüber \emph{CCMail} nicht viel ändern.
 	\item Definition von Standard-Datei-Anhängen.
 	\item Steuerbarkeit von \emph{E-Mail}-Typen für spezifischen LieferantInnen.
 	\item Konzernübergreifende Konfiguration.
-	\item Definition eigener E-Mail-Typen.
+	\item Definition eigener \emph{E-Mail}-Typen.
 	\item Konfiguration der Historie der \emph{E-Mail}-Nachrichten.
 \end{enumerate}
 \ \newline
-Zur Zeit stehen diese Features, wenn vorhanden, nur intern zur Verfügung. Die Kunden haben lediglich die Möglichkeit einzelne E-Mail-Typen zu aktivieren oder zu de-aktivieren. Diese E-Mail-Typen können aber mehrere E-Mail-Nachrichten beinhalten. Das Grundlegende Ziel ist dass die Kunden mehr Kontrolle und Konfigurationsmöglichkeiten über die zur Verfügung gestellten E-Mail-Typen erhalten. Es wird hier aber auch solche E-Mail-Typen geben, bei denen diese Konfigurationsmöglichkeiten eingeschränkt werden. Nichts desto trotz soll der Kunde in der Lage sein, den E-Mail-Verkehr seiner E-Mail-Nachrichten besser zu steuern.
+Zur Zeit stehen diese Möglichkeiten, wenn vorhanden, nur intern zur Verfügung. Die KundInnen haben lediglich die Möglichkeit, einzelne \emph{E-Mail}-Typen zu aktivieren oder zu de-aktivieren. Diese \emph{E-Mail}-Typen können aber mehrere \emph{E-Mails} halten. Das grundlegende Ziel ist, dass die KundInnen mehr Kontrolle und Konfigurationsmöglichkeiten über die zur Verfügung gestellten \emph{E-Mail}-Typen erhalten. Es wird hier aber auch solche \emph{E-Mail}-Typen geben, bei denen diese Konfigurationsmöglichkeiten eingeschränkt werden. Trotz etwaiger Einschränkungen, sollen die KundInnen in der Lage sein, den \emph{E-Mail}-Verkehr ihrer \emph{E-Mails} besser zu steuern.
 
 \newpage
-\subsection{E-Mail-Versand}
-\begin{figure}[h]
+\subsection{\emph{E-Mail}-Versand}
+Folgende Abbildung \ref{fig:clevermail-email-versand} illustriert ein Beispiel eines \emph{E-Mail}-Versands, wobei ein \emph{Client} über eine \emph{REST-Service}-Schnittstelle den Versand von \emph{E-Mails} eines Typs anstößt. Dabei wird der vollständige Prozess eines \emph{E-Mail}-Versands, wie angedacht, dargestellt.
+\begin{figure}[H]
 \centering
 \includegraphics[angle=90, scale=0.6]{clevermail-email-versand.jpg} %{CS0031}
-\caption{Prozess des E-Mail-Versands}
+\caption{Prozess des \emph{E-Mail}-Versands}
 \label{fig:clevermail-email-versand}
 \end{figure}
-\ \newpage
-Die Abbildung \ref{fig:clevermail-email-versand} soll den Prozess des E-Mail-Versands veranschaulichen und illustriert die Softwarekomponenten, die involviert sind um eine E-Mail-Nachricht zu erstellen. In diesem Beispiel wird der Prozess über einen REST-Service gestartet, der in diesem Fall den Prozess synchron abarbeitet und anschließend eine Response in Form eines erstellten Reports zurückliefert. Der REST-Service ist hierbei als optional anzusehen, da dieser Prozess auch anderweitig ausgelöst werden könnte. Nachdem sich dieser Prozess nicht in einer Transaktion eines Client befinden muss würde sich hier eine REST-Schnittstelle anbieten.
+\ \newline
+Der in Abbildung \ref{fig:clevermail-email-versand} dargestellte Prozess wird über eine\emph{REST-Service}-Schnittstelle angestoßen, der in diesem Fall den Prozess synchron abarbeitet und anschließend eine Antwort in Form eines erstellten Reports zurückliefert. Der \emph{REST-Service} ist als optional anzusehen, da dieser Prozess auch anderweitig ausgelöst werden könnte. Nachdem sich dieser Prozess nicht in einer Transaktion eines Client befinden muss, würde sich hier eine REST-Schnittstelle anbieten.
 \newline
 \newline
-Folgende sei der Prozess in grobe Schritte unterteilt angeführt und beschrieben.
+Im folgenden sei der Prozess in Unterpunkte unterteilt angeführt und beschrieben:
 
-\subsubsection{Daten Aufbereitung}
-Nachdem der Prozess gestartet wurde sollen die zu verarbeitenden E-Mail-Nachrichten aus der Datenbank ausgelesen und als \emph{Processing} markiert werden. Im Punkt \ref{sec:ccmail-email-versand} wurde angemerkt, dass das Problem bestand, dass die in Verarbeitung stehenden \emph{MailJob} Entitäten nicht als solche markiert wurden und daher eine parallele Verarbeitung durch mehrere Prozesse nicht möglich war. Dieses Problem besteht in diesem Fall nun nicht mehr. Nachdem die \emph{MailJob} geladen wurden sollen die zugrunde liegenden E-Mail-Vorlagen geladen werden. Hierbei würde sich ein Cache-Mechanismus auszahlen, da die E-Mail-Vorlagen Versionen definieren sollen und sich innerhalb einer Version nicht mehr ändern dürfen. Anschließend sollen die kundenspezifischen Konfigurationen geladen werden. Aus diesen Daten sollen Modelle erstellt werden, die in weitere Folge dazu verwendet werden sollen die E-Mail-Nachrichten zu erstellen.
+\subsubsection{1. \emph{MailJob}-Aufbereitung}
+Nachdem der Prozess des \emph{E-Mail}-Versands gestartet wurde, müssen die zu verarbeitenden \emph{E-Mails}, repräsentiert durch \emph{MailJobs} aus der Datenbank geladen und mit \emph{Processing} markiert werden. Im Abschnitt \ref{sec:ccmail-email-versand} wurde angemerkt, dass das Problem bestand, dass die in Verarbeitung stehenden \emph{MailJob}-Entitäten nicht als solche markiert wurden und daher eine parallele Verarbeitung durch mehrere Prozesse nicht möglich war. Dieses Problem besteht mit dem Ansatz des Markierens der \emph{MailJob}-Entitäten nicht mehr. Nachdem die \emph{MailJobs} geladen wurden, müssen die zu den \emph{E-Mail}-Typ dazugehörigen \emph{E-Mail}-Vorlagen geladen werden. Es würde sich ein \emph{Cache}-Mechanismus anbieten, da die \emph{E-Mail}-Vorlagen versioniert sind und sich die \emph{E-Mail}-Vorlagen einer Version nicht mehr ändern dürfen. Anschließend werden die kundenspezifischen Konfigurationen geladen. Aus diesen Daten werden Objekte erstellt, die eine \emph{E-Mail} repräsentieren. Diese Modelle werden in weitere Folge dazu verwendet, die tatsächlichen \emph{E-Mails} zu erstellen.
 
-\subsubsection{Erstellen der E-Mail-Nachrichten}
-Aus den Modellen sollen die E-Mail-Nachrichten erstellt werden. Hierbei wird dieser Prozess in drei Schritte unterteilt.
+\subsubsection{2. \emph{E-Mail}-Erstellung}
+Aus den erstellten Modellen werden die \emph{E-Mails} erstellt. Dabei wird dieser dreiteilige Prozess angewendet:
 \begin{enumerate}
-	\item\emph{Erstellen des Betreff}
-	\newline
-	Der Betreff wird aus einer E-Mail-Vorlage erstellt und mit Daten befüllt wenn in der Voralge Parameter definiert wurden
-	\item\emph{Erstellen der Nachricht}
-	\newline
-	Die Nachricht wird aus einer E-Mail-Vorlage erstellt und mit Daten befüllt wenn in der Voralge Parameter definiert wurden
-	\item\emph{Erstellen der DataSoruces}
-	\newline
-	Sollten Datei Anhänge definiert worden sein, so werden diese in Form von einer oder mehrerer DataSoruce Instanzen in die E-Mail-Nachricht angefügt.
+	\item\emph{Erstellen des Betreff.} Der Betreff wird aus einer \emph{E-Mail}-Vorlage erstellt und mit Daten befüllt, wenn in der Voralge Parameter definiert wurden.
+	\item\emph{Erstellen der Nachricht.} Die Nachricht wird aus einer \emph{E-Mail}-Vorlage erstellt und mit Daten befüllt, wenn in der Vorlage Parameter definiert wurden.
+	\item\emph{Erstellen der DataSoruces.} \emph{DataSource}-Objekte halten die Anhänge der \emph{E-Mails}. Die stellen einen \emph{Stream} über die Anhänge der \emph{E-Mail} zur Verfügung.
 \end{enumerate}
 \ \newline
-Die Verarbeitung der E-Mail-Vorlagen soll in einer Komponente mit dem Name \emph{Template-Processor} erfolgen. Nachdem die Werte der verwendeten Vorlagenparameter beim Erstellen eines \emph{MailJob} in der Datenbank gespeichert wurden können diese hier angewandt werden.
+Die Verarbeitung der \emph{E-Mail}-Vorlagen werden in einer Komponente mit dem Namen \emph{Template-Processor} erfolgen. Nachdem die Werte der verwendeten Vorlagenparameter beim Erstellen eines \emph{MailJobs} in der Datenbank gespeichert wurden, können diese angewandt werden.
 \newline
 \newline
-Die Verarbeitung der Datei Anhänge soll in einer Komponente mit dem Namen \emph{File-Processor} erfolgen, die die verlinkten Datei Anhänge in Form von \emph{DataSource} Instanzen der E-Mail-Nachricht zur Verfügung stellt. Beim Versand würde die E-Mail-Nachricht den Datei Anhang über diese \emph{DataSource} Instanz laden. Hierbei sollen die Dateien in Form von Links aus dem Dokumentenmanagementsystem \emph{CleverDocument} geladen werden. Es sollen keine Dateien in Form von Base64-Zeichenketten in der Datenbank gespeichert werden, um die Datenbank nicht mit unnötigen Daten zu belasten. Es könnten hierbei verschiedene \emph{DataSource} Implementierungen zur Verfügung gestellt werden, die die Dateien aus verschiedenen Quellen über die verschiedensten Protokolle laden können (z.B.: REST, SOAP, HTTP, usw.).
+Die Verarbeitung der Datei Anhänge erfolgt in einer Komponente mit dem Namen \emph{File-Processor}, welche die verlinkten Dateianhänge in Form von \emph{DataSource}-Objekten dem \emph{E-Mail}-Objekt zur Verfügung stellt. Beim Versand würde die das \emph{E-Mail}-Objekt den Dateianhang über die verfügbaren \emph{DataSource}-Objekte laden. Dabei werden die Dateien in Form von Links aus dem Dokumentenmanagementsystem \emph{CleverDocument} geladen. Es dürfen keine Dateien in Form von Base64-Zeichenketten in der Datenbank gespeichert werden, damit die Datenbank nicht mit unnötigen Daten belastet wird. Es könnten hierbei verschiedene \emph{DataSource}-Implementierungen zur Verfügung gestellt werden, welche die Dateien aus verschiedenen Quellen über verschiedene Protokolle laden können (z.B. REST, SOAP oder HTTP).
 
-\subsubsection{E-Mail versenden}
-Der E-Mail-Versand sowie das Erstellen der E-Mail-Nachricht sollte hierbei asynchron erfolgen, da eine sequenzielle Verarbeitung die Performance negativ beeinflussen würde. Nach dem erfolgreichen oder fehlgeschlagenen Versand einer E-Mail-Nachricht soll dieser Status in Form eines Resultates zurückgeliefert werden. Hierbei ist vor allem die SMTP-Response wichtig, die auf jeden Fall gespeichert werden soll, damit der Kunde nachvollziehen kann, wie der E-Mail-Versand seiner E-Mail abgearbeitet wurde und warum die E-Mail nicht zugestellt werden konnte. Ein fehlgeschlagener Versand könnte folgende Ursachen haben:
+\subsubsection{3. \emph{E-Mail}-Versand}
+Es sollte angedacht werden den \emph{E-Mail}-Versand sowie die Erstellung der \emph{E-Mail}-Objekte asynchron erfolgen zu lassen, da eine sequenzielle Verarbeitung schlecht für die Performance wäre. Nach dem erfolgreichen oder fehlgeschlagenen Versand einer \emph{E-Mail} werden die verfügbaren Daten des \emph{E-Mail}-Versands in Form eines aufbereiteten Resultates zurückgeliefert. Dabei ist vor allem der \emph{SMTP}-Status relevant, der auf jeden Fall gespeichert werden muss. Damit wird sichergestellt, dass die KundInnen nachvollziehen können, wie der Versand einer \emph{E-Mail} abgearbeitet wurde und mit welchen \emph{Error}-Code in einem Fehlerfall eine \emph{E-Mail} nicht zugestellt werden konnte. Ein fehlgeschlagener Versand könnte folgende Ursachen haben:
 \begin{enumerate}
-	\item Datei kann nicht geladen werden (nicht vorhanden, Timeout,...)
-	\item Mail-Server des Empfängers nicht erreichbar
-	\item E-Mail-Server nimmt Nachricht nicht an
-	\item uvm.
+	\item Datei kann nicht geladen werden (nicht vorhanden, \emph{timeout},...).
+	\item \emph{Mail-Server} des Empfängers nicht erreichbar.
+	\item \emph{Mail-Server} nimmt Nachricht nicht an.
 \end{enumerate}
-\ \newline
-Es kann unzählige Ursachen haben warum eine E-Mail-Nachricht nicht zugestellt werden kann. Die trifft vor allem auf den E-Mail-Servers des Empfängers zu, auf dessen Konfiguration kein Einfluss genommen werden kann.
+Es kann viele Ursachen haben warum eine \emph{E-Mail} nicht zugestellt werden konnte. Vor allem die \emph{Mail-Server} der KundInnen stellen hierbei einen Unsicherheitsfaktor dar, da diese in unterschiedlicher Art und Weise konfiguriert sein könnten. Diese Konfigurationen könnten dazu führen, dass \emph{E-Mails} nicht beim Empfänger ankommen.
 
 \newpage
-\subsection{E-Mail-Vorlagen(parameter)}
-Ein weiterer wichtiger Aspekt stellen die Vorlagen und dessen zur Verfügung gestellten Parameter und deren Verwaltung dar. Die Bereitstellung von Vorlagenparametern soll den AnwenderInnen die Möglichkeit bieten auf kontextabhängige Daten in einer E-Mail-Vorlage zugreifen zu können. Dadurch soll die Flexibilität erhöht werden und die AnwenderInnen sollen mehr Freiheiten beim Erstellen einer E-Mail-Vorlage bekommen. Diese Parameter müssen hierbei von den EntwicklerInnen innerhalb eines Kontextes zur Verfügung gestellt werden, wobei hier auch ein Entwicklungsaufwand besteht. Diese Parameter müssen beim Verarbeiten einer E-Mail-Vorlage aus dem aktuellen Kontext ausgelesen werden. Dabei können die Daten aus verschiedenen Objekten oder sogar Objektgraphen kommen. Dies bedeutet dass diese Parameter über eine spezielle Implementierung ausgelesen werden müssen, die auch zukünftig gewartet werden muss. Ebenso werden diese Parameter in verschiedenen Softwarekomponenten verwendet, die sich in verschiedenen Laufzeitumgebungen befinden können. Daher wird es erforderlich sein diese Parameter in einem spezifizierten Model oder über definierte Zuordnungen von einem Model in ein anderes Model zu überführen.
+\subsection{\emph{E-Mail}-Vorlagen und -Parameter}
+Einen weiteren wichtigen Aspekt stellen die \emph{E-Mail}-Vorlagen, deren Parameter und die Verwaltung derer dar. Die Bereitstellung von Vorlagenparametern wird den AnwenderInnen die Möglichkeit bieten, auf kontextabhängige Daten in einer \emph{E-Mail}-Vorlage zugreifen zu können. Dadurch wird die Flexibilität erhöht und die AnwenderInnen werden mehr Freiheiten beim Erstellen einer \emph{E-Mail}-Vorlage bekommen. 
+\newline
+\newline
+Die Vorlagenparameter müssen von den EntwicklerInnen innerhalb eines Kontexts zur Verfügung gestellt werden, wobei hier auch ein Entwicklungsaufwand besteht. Die Vorlagenparameter werden innerhalb deren Kontext evaluiert und in die \emph{E-Mail}-Vorlage eingefügt. Dabei können die Daten aus verschiedenen Objekten oder sogar Objektgraphen kommen. Dies bedeutet, dass die Vorlagenparameter über eine spezielle Implementierung ausgelesen werden müssen, die leicht wartbar gehalten werden muss. 
+\newline
+\newline
+Die Vorlagenparameter werden über mehrere Softwarekomponenten hinweg verwendet, die sich in verschiedenen Laufzeitumgebungen befinden dürfen. Daher wird es erforderlich sein, die Vorlagenparameter in einem übergreifenden Modell zu definieren oder über sie von einem Modell in ein anderes Modell über Zuordnungen wie z.B. \emph{Annotations} zu definieren.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{clevermail_template_parameter.jpg}
-\caption{Verwendung Vorlagenparameter}
+\caption{Verwendung von Vorlagenparametern}
 \label{fig:clevermail-template-parameter}
 \end{figure}
 \ \newline
-Wie in der Abbildung \ref{fig:clevermail-template-parameter} illustriert werden die Vorlagenparameter in mehreren Kontexten verwendet. Dadurch stellt sich die Frage wie diese Parameter adressiert werden. Man könnte eine Zuordnung in jedem Verwendungskontext erstellen, also jeder Kontext bekommt sein eigenes Model. Dadurch würde man sich zwar lose and die Vorlagenparameter koppeln jedoch erhält man auch eine Model Klasse je Kontext, die gewartet werden muss. 
+Wie in der Abbildung \ref{fig:clevermail-template-parameter} illustriert, werden die Vorlagenparameter in verschiedenen Verwendungskontext und Darstellungen verwendet. Dadurch stellt sich die Frage, wie diese Vorlagenparameter adressiert werden. Man könnte eine Zuordnung in jedem Verwendungskontext erstellen, also jeder Verwendungskontext bekommt sein eigenes Modell. Dadurch würde man zwar lose and die Vorlagenparameter gekoppelt sein , jedoch erhält man auch eine Modell-Klasse je Verwendungskontext, die gewartet werden muss. 
 
-\subsubsection{Webseite}
+\subsubsection{Verwendungskontext Webseite}
 \label{sec:template-parameter-web-view}
-Da diese Parameter in E-Mail-Vorlagen verwendet werden wird es auch eine Webseite geben, über die die AnwenderInnen diese Parameter in Ihren E-Mail-Vorlagen verwenden können. Diese müssen natürlich für die AnwenderInnen einen Name bekommen, der natürlich auch in mehreren Sprachen zur Verfügung stehen muss. Dadurch werden diese Parameter auf einen Schlüssel zugeordnet werden müssen, der wiederum auf einen lokalisierten Spracheintrag zugeordnet ist. Die Zuweisung auf diesen Schlüssel ist erforderlich aber benötigt man hier auch nochmals eine Zuordnung auf den Vorlagenparameter?
+Da die Vorlagenparameter in \emph{E-Mail}-Vorlagen verwendet werden, wird es auch eine Webseite geben müssen, über die die AnwenderInnen die Vorlagenparameter in Ihren \emph{E-Mail}-Vorlagen verwenden können. Die Vorlagenparameter müssen für die AnwenderInnen einen Namen bekommen, der auch in mehreren Sprachen zur Verfügung stehen muss. Dadurch werden die Vorlagenparameter auf einen Schlüssel zugeordnet, der wiederum auf einen lokalisierten Spracheintrag zugeordnet ist. Die Zuweisung auf diesen Schlüssel ist erforderlich, aber eine Abstraktion der Vorlagenparameter für die Webseite bzw. deren \emph{Backend} wäre übertrieben.
 
-\subsubsection{Freemarker}
+\subsubsection{Verwendungskontext \emph{Freemarker}-Vorlagen}
 \label{sec:template-parameter-freemarker}
-Ein weiterer Aspekt ist auch die direkte Verwendung der Parameter in der Vorlage selbst. Als Implementierung einer \emph{Template-Enging} soll für die Erstellung der Nachrichten aus den Vorlagen \emph{Freemarker}\footnote{\label{fn:freemarker}Frei verfügbare Template-Engine in Java für die Erstellung von dynamischen Textdateien} verwendet werden. Dieses Framework ist ein sehr beliebtes und gut gewartetes Framwork, welches alle benötigten Kontrollstrukturen sowie \emph{Freemarker-Expressions} zur Verfügung stellt. Diese \emph{Freemarker-Expressions} ähneln sehr den Java-EL-Expressions\footnote{Java-Expression-Language ist eine Java Spezifikation für Expressions}. 
-Die Vorlagenparameter werden in den \emph{Freemarker-Expressions} verwendet, die es ermögliche eine flache Adressierung sowie auch eine Adressierung über Objektgraphen zu definieren. Dadurch stellt sich auch hier die Frage ob diese Expressions wieder über eine Zuordnung zu den Parametern erstellt werden sollen oder ob die Parameter selbst verwendet werden sollen?
+Ein weiterer Aspekt ist auch die direkte Verwendung der Vorlagenparameter in der \emph{Freemarker}-Vorlage selbst. Als \emph{Template-Enginge} wird für die Erstellung der \emph{E-Mails} aus den \emph{E-Mail}-Vorlagen \emph{Freemarker} (Frei verfügbare \emph{Template-Engine} in Java für die Erstellung von dynamischen Textdateien) verwendet. Diese Bibliothek ist eine beliebte und gut gewartete Bibliothek, welche alle benötigten Kontrollstrukturen sowie \emph{Freemarker Expressions} zur Verfügung stellt. Diese \emph{Freemarker Expressions} ähneln den \emph{Java EL Expressions} (\emph{Java Expression Language} ist eine Java-Spezifikation für \emph{Expressions}). Die Vorlagenparameter werden in den \emph{Freemarker Expressions} verwendet, die es ermöglichen, eine flache Adressierung sowie auch eine Adressierung über Objektgraphen zu definieren. Auch im Verwendungskontext der \emph{Freemarker Expressions} ist eine Notwendigkeit einer Abstraktion der Vorlagenparametern in Frage zu stellen.
 
-\subsubsection{JSON}
+\subsubsection{Verwendungskontext JSON}
 \label{sec:template-parameter-json}
-Wenn eine E-Mail in Form eines \emph{MailJob} erstellt wird müssen zum jeweiligen Erstellungszeitpunkt alle Parameterwerte ausgelesen und mit dem \emph{MailJob} persistent gehalten werden. Nachdem die Anzahl der Parameter dynamisch ist und diese Daten lediglich in der Vorlagenverarbeitung verwendet werden ist es hier nicht erforderlich eine eigene Datenstruktur auf der Datenbank zu definieren. Dadurch würde sich hier \emph{JSON} anbieten um diese Daten in die Datenbank zu serialisieren. Nachdem \emph{JSON} eine Objektbeschreibung darstellt und auch über ein \emph{JSON-Schema} spezifiziert werden kann, sollte man überlegen ob man nicht das \emph{JSON} als Spezifikation für die Vorlagenparameter heranzieht. Diese Spezifikation kann in allen involvierten Komponenten verwendet werden. 
+Wenn eine \emph{E-Mail} in Form eines \emph{MailJobs} erstellt wird, müssen zum jeweiligen Erstellungszeitpunkt alle Vorlagenparameter evaluiert werden und mit dem \emph{MailJobs} persistent gehalten werden. Nachdem die Anzahl der Vorlagenparameter dynamisch ist und diese Daten lediglich in der Vorlagenverarbeitung verwendet werden, ist es nicht erforderlich eine eigene Datenstruktur in der Datenbank zu definieren. Daher würde sich hier \emph{JSON} anbieten, um diese Daten in die Datenbank zu speichern. Nachdem \emph{JSON} eine Objektbeschreibung mit Zeichenketten darstellt und auch über ein \emph{JSON}-Schema spezifiziert werden kann, sollte man überlegen, ob man nicht \emph{JSON} als Spezifikation für die Vorlagenparameter heranzieht. Diese Spezifikation kann in allen involvierten Komponenten verwendet werden. 
 
-\newpage
-\section{Datenbank}
-Neben der Persistenz der E-Mail-Nachrichten soll ebenfalls die Möglichkeit bestehen, den E-Mail-Versand zu konfigurieren. Dies soll einerseits Firmen intern möglich sein und andererseits auch für die AnwenderInnen. Hierbei sollen folgende Möglichkeiten zur Verfügung stehen:
+\section{\emph{CleverMail}-Datenbank}
+Zusätzlich zur Persistenz der \emph{E-Mails} soll auch die Möglichkeit bestehen, den \emph{E-Mail}-Versand zu konfigurieren. Dies soll einerseits innerhalb des Betriebes möglich sein und andererseits auch für die AnwenderInnen der KundInnen. Dabei sollen folgende Möglichkeiten zur Verfügung stehen:
 \begin{enumerate}
-	\item Zeitsteuerung des Versandes
-	\item Berechtigungen für Modifikationen der E-Mail-Nachrichten
-	\item Eigene E-Mail-Typen
-	\item Eigene E-Mail-Vorlagen
-	\item Zusatzdokumente 
-	\item Speicherverwaltung der E-Mail
+	\item Zeitsteuerung des Versands.
+	\item Berechtigungen für Modifikationen der \emph{E-Mail}-Vorlagen steuern.
+	\item Eigene E\emph{-Mail}-Typen definieren.
+	\item Eigene \emph{E-Mail}-Vorlagen definieren.
+	\item Zusatzdokumente für \emph{E-Mails} definieren. 
+	\item Speicherverwaltung der \emph{E-Mails} steuern.
 \end{enumerate}
 \ \newline
-Um diese Konfigurationen zu verwalten wird ein Speichermedium benötigt, welches ebenfalls in der Lage ist die Relationen abzubilden. Da bietet sich verständlicherweise eine Datenbank an. Dies wurde bereits in der alten Anwendung \emph{CCMail} so angewandt und soll auch hier fortgeführt werden. Hierbei soll aber das bestehende Datenbankschema nicht berücksichtigt werden und ein neues konzipiert werden. Im Gegensatz zu dem bestehenden Datenbankschema beschrieben im Punkt \ref{sec:ccmail-datanbank} soll hierbei keineswegs auf die referenzielle Integrität zwischen den involvierten Tabellen verzichtet werden. Dies stellt die größte Fehlentscheidung beim Design des Datenbankschemas dar. Des weiteren soll so gut wie möglich auf die Unabhängigkeit des Datenbankschemata geachtet werden. Hierbei ist gemeint dass die Tabellen des Schemata für \emph{CleverMail} nicht in bestehende Tabellen der Anwendung \emph{Clevercure} referenzieren sollen. Damit soll sichergestellt werden, dass dieses Datenbankschema auch als Standalone verwendet werden kann. Sollten Referenzen auf Tabellen wie Benutzer (USER), Kunde (COMPANY) des \emph{Clevercure} Datenbankschema eingeführt werden, so kann \emph{CleverMail} nicht außerhalb des Kontextes von \emph{Clevercure} existieren und würde immer nur für diese Anwendung zur Verfügung stehen. Das Modul \emph{CleverMail} sollte aber auch als Standalone-Anwendung funktionsfähig sein, auch wenn es für die Anwendung \emph{Clevercure} entwickelt werden soll. Diese begründet sich durch die Anwendungsfälle selbst, die nicht auf eine bestimmte Repräsentation von Inhabern von persistenten E-Mail-Nachrichten, E-Mail-Typen oder Konfigurationen angewiesen sind. Mann sollte sich hier die Möglichkeiten für eine zukünftige Anwendung in anderen Anwendungen offen halten anstatt sich den Aufwand einer umfangreichen Refaktorisierung beim Eintreffen eines solchen Falles auszusetzen. 
+Um diese Konfigurationen zu verwalten wird ein Speichermedium benötigt, welches auch in der Lage sein muss, die nötigen Relationen abzubilden. Da bietet sich eine relationale Datenbank an. Auch in der alten Anwendung \emph{CCMail} wurde eine relationale Datenbank verwendet und dies soll auch für die neue Anwendung \emph{CleverMail} gelten. Dabei kann das bestehende Datenbankschema von \emph{CCMail} außer Acht gelassen werden und ein vollständig neues Datenbankschema konzipiert werden. 
 \newline
 \newline
-Auch wenn dieser Ansatz verfolgt werden soll ist es natürlich auch möglich diese Referenzen herzustellen solange der Datenzugriff gekapselt nur einer Stelle oder voll definierten Stellen stattfindet. Somit ist gewährleistet, dass eine Refaktorisierung keine unerwünschten Nebeneffekte hat und man nicht vergisst Änderungen an Stellen nachzuziehen, die vergessen wurden. Dies kann leicht passieren wenn solche Implementierungsteile beim Refaktorisieren nicht bekannt sind. Scott W.Ambler und Parmond J.Sadalage beschreiben dies in Ihrem Buch 
-\emph{Refactoring Databases} \cite[66]{refactoreDatabase} wie folgt.
+Im Gegensatz zum Datenbankschema von \emph{CCMail}, beschrieben im Abschnitt \ref{sec:ccmail-datanbank}, darf keineswegs auf die referenzielle Integrität zwischen den Tabellen-Relationen verzichtet werden. Dies stellt die größte Fehlentscheidung beim Design des Datenbankschemas von \emph{CCMail} dar. Des weiteren soll so gut wie möglich auf die Unabhängigkeit des Datenbankschemata geachtet werden. Damit ist gemeint, dass die Tabellen des Datenbankschemas von \emph{CleverMail} nicht Tabellen der Anwendung \emph{Clevercure} referenzieren dürfen. Dadurch wird sichergestellt, dass das Datenbankschema von \emph{CleverMail} auch ohne \emph{Clevercure} verwendet werden kann. Sollten Referenzen auf Tabellen des Datenbankschemas von \emph{Clevercure} wie Benutzer (\emph{USER}), Kunde (\emph{COMPANY}) eingeführt werden, so kann \emph{CleverMail} nicht außerhalb des Kontextes von \emph{clevercure} existieren und würde immer nur für \emph{Clevercure} zur Verfügung stehen. Das Modul \emph{CleverMail} sollte aber auch als \emph{Standalone}-Anwendung funktionsfähig sein, auch wenn es für die Anwendung \emph{Clevercure} entwickelt werden soll. 
+\newline
+\newline
+Dies begründet sich durch die Anwendungsfälle selbst, die nicht auf eine bestimmte Repräsentation von Inhabern von persistenten \emph{E-Mail}, \emph{E-Mail}-Typen oder Konfigurationen angewiesen sind. Mann muss sich hier die Möglichkeiten für eine zukünftige Anwendung in anderen Anwendungen offen zu halten, anstatt sich den Aufwand einer umfangreichen Umstrukturierung, beim Eintreffen eines solchen Falles, auszusetzen. 
+\newline
+\newline
+Auch wenn der Ansatz der größtmöglichen Abstraktion von \emph{Clevercure} verfolgt werden soll, ist es trotzdem möglich Referenzen auf Tabellen des Datenbankschemas von \emph{Clevercure} herzustellen, solange der Datenzugriff gekapselt und nur einer Stelle gehalten wird. Somit ist gewährleistet, dass eine Umstrukturierung keine unerwünschten Nebeneffekte hat und Änderungen nur an definierten Stellen stattfinden müssen. Scott W.Ambler und Parmond J.Sadalage beschreiben es in 
+\emph{Refactoring Databases} \cite[66]{refactoreDatabase} wie folgt:
 \begin{quote}
-\emph{You could implement the SQL logic in a consistent manner, such as having save(), delete(), retrieve(), and find() operations for each business class. Or you could implement data access objects(DAOs), classes that impleemnt the data access logic separately from business classes.}
+\emph{You could implement the SQL logic in a consistent manner, such as having save(), delete(), retrieve(), and find() operations for each business class. Or you could implement data access objects(DAOs), classes that implement the data access logic separately from business classes.}
 \end{quote}
-Natürlich ist der Ansatz mit \emph{DAOs} vorzuziehen, da hier der Datenzugriff gekapselt an einer Stelle implementiert wird und nicht zerstreut über n-Business-Klassen implementiert wird.
+Natürlich ist der Ansatz mit \emph{DAOs} vorzuziehen, da hier der Datenzugriff gekapselt an einer Stelle und nicht zerstreut über mehrere \emph{Business}-Klassen implementiert wird.
 \newpage
-\subsection{Datenbankschemata CleverMail}
-\begin{figure}[h]
+\subsection{Datenbankschemata von \emph{CleverMail}}
+Folgendes \emph{ER}-Diagramm (\emph{Entity Relation})-Diagramm) \ref{fig:clevermail-db-schema} illustriert das Datenbankschema von \emph{CleverMail}. Dieses Datenbankschema stellt eine mögliche Grundstruktur dar und ist nicht als endgültig anzusehen.
+\begin{figure}[H]
 \centering
-\includegraphics[angle=90, scale=0.4]{clevermail_db_schema.jpg}
-\caption{Datenbankschema CleverMail}
+\includegraphics[angle=90, scale=0.44]{clevermail_db_schema.jpg}
+\caption{Datenbankschema von \emph{CleverMail}}
 \label{fig:clevermail-db-schema}
 \end{figure}
-Das angeführte Datenbankschema \ref{fig:clevermail-db-schema} stellt eine mögliche Implementierung des Datenbankschemata dar. Dieses Datenbankschema enthält keine Referenzen auf das Datenbankschema von \emph{Clevercure}. Die Integration in das Datenbankschema von \emph{Clevercure} bzw. die Integration des Datenbankschemata von \emph{Clevercure} in das Datenbankschemata von \emph{CleverMail}, wie im diesen Beispiel angedacht, könnte über N-M-Tabellen abgebildet werden. Mit dieser Art der Tabellenrelation kann auch eine 1-N Relation abgebildet werden, wobei noch zusätzlich ein Unique-Constraint auf den Forgein-Key der referenzierten Tabelle hinzugeüfgt werden muss. Mann erhält mit diesem Ansatz zwar noch zusätzliche Relationstabellen, die ebenfalls einen zusätzlichen Join erfordern, jedoch ist so sichergestellt, dass das Datenbankschemata von \emph{CleverMail} unabhängig bleibt.
+Das Datenbankschema aus Abbildung \ref{fig:clevermail-db-schema} enthält keine Referenzen auf das Datenbankschema von \emph{Clevercure}. Die Integration des Datenbankschema von \emph{CleverMail} in das Datenbankschema von \emph{Clevercure} oder visa versa, könnte über N:M-Tabellen abgebildet werden. Mit dieser Art der Tabellenrelation kann auch eine 1:N-Relation abgebildet werden, wobei noch zusätzlich ein \emph{Unique Constraint} auf den Fremdschlüssel der referenzierten Tabelle hinzugefügt werden muss. Mann erhält zwar noch zusätzliche Relationstabellen, die ebenfalls einen zusätzlichen \emph{Join} erfordern, jedoch ist so sichergestellt, dass das Datenbankschemata von \emph{CleverMail} unabhängig bleibt.
 \newline
 \newline
-Es ist auch anzumerken, dass das Datenbankschemata \ref{fig:clevermail-db-schema} von \emph{CleverMail} sehr dem Datenbankschemata \ref{fig:ccmail-db-schema} ähnelt. Wobei natürlich neue Tabellen hinzugefügt wurden um die neuen Features wie die Steuerbarkeit des E-Mail-Versandes zu unterstützen. Nicht desto Trotz finden sind viele Eigenschaften von \emph{CCMail} wieder mit einen etwas anderen Ansatz sowie natürlich auch der Umsetzung.
+Es ist auch anzumerken, dass das Datenbankschemata aus Abbildung \ref{fig:clevermail-db-schema} von \emph{CleverMail} sehr dem Datenbankschemata \ref{fig:ccmail-db-schema} ähnelt. Wobei neue Tabellen zu dem Datenbankschema von \emph{CleverMail} hinzugefügt wurden, um die neuen Möglichkeiten wie die Steuerbarkeit des \emph{E-Mail}-Versandes zu ermöglichen. 
+\newline
+\newline
+Die Tabellen, welche die Konfigurationen halten, sollten je nach Anforderung umgesetzt werden, wobei die Möglichkeit Konfigurationen zur Verfügung zu stellen, stets möglich sein soll. Dadurch werden auch die AnwenderInnen der KundInnen nicht unnötig mit nicht benötigten Konfigurationsmöglichkeiten belastet.

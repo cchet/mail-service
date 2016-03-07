@@ -1,0 +1,30 @@
+
+\chapter{Zusammenfassung}
+Zusammenfassend kann Ich sagen, dass das Ausarbeiten dieser Bachelorarbeit sich zeitweise als Herausforderung herausgestellt hat. Das Verfassen einer wissenschaftlichen Arbeit und die damit einhergehenden Vorschriften waren anfänglich ungewohnt für mich. Aber schlussendlich sehe Ich auch, dass diese Vorschriften und Konventionen durchaus ihren Sinn haben. Das Resultat ist eine gut strukturierte wissenschaftliche Arbeit, die dem Leser ein Themengebiet auf wissenschaftliche Art und weise näher bringt.
+\newline
+\newline
+Ich habe mich für das Thema "Konzeption eines \emph{Mail-Service}" entschieden, da mir folgende Punkte wichtig waren:
+\begin{enumerate}
+	\item Das Design und die Architektur der alten Anwendung \emph{CCMail} zu analysieren.
+	\item Das Konzept für eine neue Anwendung \emph{CleverMail} zu erstellen.
+	\item Neue Möglichkeiten und \emph{Framworks} kennen zu lernen.
+\end{enumerate}
+\ \newline
+Vor allem die Architektur der neuen Anwendung \emph{CleverMail}, deren Schichten sowie mit ihr interagierende Softwarekomponenten erschien mir wichtig. Diese Annahme stellten sich für mich als richtig heraus, da bei der Analyse von \emph{CCMail} herausgestellt hat, dass die Interaktion mit anderen Softwarekomponenten nicht vorgesehen wurde. Dies ist vor allem in der Verwendung der Datenbank als Schnittstelle begründet. Dadurch ist \emph{CCMail} nicht vollständig in das Gesamtsystem von \emph{Clevercure} integriert.
+\newline
+\newline
+Das Konzept von \emph{CleverMail} ist flexibel genug um mit anderen Softwarekomponenten interagieren zu können. Das wurde durch folgende Schnittstellen ermöglicht:
+\begin{enumerate}
+	\item REST-Service.
+	\item \emph{EJB} oder \emph{DAO}
+\end{enumerate}
+\ \newline
+Durch diese Schnittstellen wird die Datenbank als Schnittstelle abgelöst und wird damit von den Anwendungen abstrahiert. Das stellte für mich einen schweren Designfehler dar, da eine Kopplung zwischen Softwarekomponenten über eine Datenbank nicht zu empfehlen ist. Man hat es hier versäumt die nötige Abstraktion zwischen \emph{CCMail} und den Anwendungen wie z.B. \emph{CleverWeb} einzuhalten.
+\newline
+\newline
+Für den weiteren Verlauf sehe ich die größte Herausforderung in den Vorlagenparametern und dessen Verwendungskontexte. Hier wird man ein hohes Maß an Konsistenz einhalten müssen, um Probleme zu vermeiden. Die weit gestreute Verwendung der Vorlagenparameter über die verschiedenen Verwendungskontexte wie:
+\begin{itemize}
+	\item Webseite oder
+	\item \emph{Freemarker}-Vorlage
+\end{itemize} 
+werden Umstrukturierungen erschweren. Auch die Handhabung der Vorlagenparameter durch die Anwenderinnen über die Webseite ist schwierig, da es hier keinen etablierten Ansatz gibt, mit dem man dieses Problem lösen könnte. Es wird viel Eigenarbeit erfordern, das umzusetzen. Trotz dieser Herausforderungen wird sich das Konzept von \emph{CleverMail} ohne größer Schwierigkeiten umsetzen lassen. Alle angedachten Bibliotheken sind entweder in einem Standard spezifiziert oder haben sich über die Zeit etabliert und werden von der Entwicklergemeinde anerkannt.

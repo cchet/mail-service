@@ -14,7 +14,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Kurzfassung}{v}{chapter*.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Abstract}{vi}{chapter*.4}
+\contentsline {chapter}{Abstract}{vii}{chapter*.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
@@ -22,7 +22,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.1}Systemaufbau}{4}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}E-Mail-Versand}{6}{section.2.2}
+\contentsline {section}{\numberline {2.2}\emph {E-Mail}-Versand}{6}{section.2.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.3}Software-Design}{7}{section.2.3}
 \defcounter {refsection}{0}\relax 
@@ -34,7 +34,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.4}Klasse \emph {CCMailingDaoFactory}}{13}{subsection.2.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Datenbank}{14}{section.2.4}
+\contentsline {section}{\numberline {2.4}\emph {CCMail}-Datenbank}{14}{section.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.1}Datenbankschemata von \emph {CleverMail}}{16}{subsection.2.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Die neue Anwendung \emph {CleverMail}}{18}{chapter.3}
 \defcounter {refsection}{0}\relax 
@@ -44,24 +46,26 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.2}2. M\IeC {\"o}glichkeit \emph {(EJB)}}{22}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}\emph {E-Mail} Prozesse}{23}{section.3.2}
+\contentsline {section}{\numberline {3.2}\emph {E-Mail}-Prozesse}{23}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}E-Mail-Versand}{25}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.1}\emph {E-Mail}-Versand}{25}{subsection.3.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Daten Aufbereitung}{26}{section*.16}
+\contentsline {subsubsection}{1. \emph {MailJob}-Aufbereitung}{26}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Erstellen der E-Mail-Nachrichten}{26}{section*.17}
+\contentsline {subsubsection}{2. \emph {E-Mail}-Erstellung}{26}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{E-Mail versenden}{27}{section*.18}
+\contentsline {subsubsection}{3. \emph {E-Mail}-Versand}{27}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}E-Mail-Vorlagen(parameter)}{28}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.2}\emph {E-Mail}-Vorlagen und -Parameter}{28}{subsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Webseite}{29}{section*.20}
+\contentsline {subsubsection}{Verwendungskontext Webseite}{29}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Freemarker}{29}{section*.21}
+\contentsline {subsubsection}{Verwendungskontext \emph {Freemarker}-Vorlagen}{29}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{JSON}{29}{section*.22}
+\contentsline {subsubsection}{Verwendungskontext JSON}{29}{section*.22}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Datenbank}{30}{section.3.3}
+\contentsline {section}{\numberline {3.3}\emph {CleverMail}-Datenbank}{30}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Datenbankschemata CleverMail}{32}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}Datenbankschemata von \emph {CleverMail}}{32}{subsection.3.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Zusammenfassung}{34}{chapter.4}
