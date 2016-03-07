@@ -69,3 +69,9 @@
 \contentsline {subsection}{\numberline {3.3.1}Datenbankschemata von \emph {CleverMail}}{32}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Zusammenfassung}{34}{chapter.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Quellenverzeichnis}{36}{chapter*.24}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Literatur}{36}{section*.25}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Online-Quellen}{36}{section*.26}
