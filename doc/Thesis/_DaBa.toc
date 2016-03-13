@@ -2,19 +2,9 @@
 \defcounter {refsection}{0}\relax 
 \select@language {ngerman}
 \defcounter {refsection}{0}\relax 
-\select@language {ngerman}
+\contentsline {chapter}{Kurzfassung}{ii}{chapter*.2}
 \defcounter {refsection}{0}\relax 
-\select@language {ngerman}
-\defcounter {refsection}{0}\relax 
-\select@language {ngerman}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Erkl\IeC {\"a}rung}{iii}{chapter*.1}
-\defcounter {refsection}{0}\relax 
-\select@language {ngerman}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Kurzfassung}{v}{chapter*.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Abstract}{vii}{chapter*.4}
+\contentsline {chapter}{Abstract}{iv}{chapter*.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
@@ -24,7 +14,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.2}\emph {E-Mail}-Versand}{6}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Software-Design}{7}{section.2.3}
+\contentsline {section}{\numberline {2.3}\emph {Software}-Design}{7}{section.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.1}Klasse \emph {CCBasicEmail}}{9}{subsection.2.3.1}
 \defcounter {refsection}{0}\relax 
@@ -50,28 +40,22 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.1}\emph {E-Mail}-Versand}{25}{subsection.3.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{1. \emph {MailJob}-Aufbereitung}{26}{section*.16}
+\contentsline {subsubsection}{1. \emph {MailJob}-Aufbereitung}{26}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{2. \emph {E-Mail}-Erstellung}{26}{section*.17}
+\contentsline {subsubsection}{2. \emph {E-Mail}-Erstellung}{26}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{3. \emph {E-Mail}-Versand}{27}{section*.18}
+\contentsline {subsubsection}{3. \emph {E-Mail}-Versand}{27}{section*.17}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.2}\emph {E-Mail}-Vorlagen und -Parameter}{28}{subsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Verwendungskontext Webseite}{29}{section*.20}
+\contentsline {subsubsection}{Verwendungskontext Webseite}{29}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Verwendungskontext \emph {Freemarker}-Vorlagen}{29}{section*.21}
+\contentsline {subsubsection}{Verwendungskontext \emph {Freemarker}-Vorlagen}{29}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Verwendungskontext JSON}{29}{section*.22}
+\contentsline {subsubsection}{Verwendungskontext JSON}{29}{section*.21}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.3}\emph {CleverMail}-Datenbank}{30}{section.3.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.3.1}Datenbankschemata von \emph {CleverMail}}{32}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Zusammenfassung}{34}{chapter.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Quellenverzeichnis}{36}{chapter*.24}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{Literatur}{36}{section*.25}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{Online-Quellen}{36}{section*.26}

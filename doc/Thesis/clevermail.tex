@@ -1,12 +1,12 @@
 \chapter{Die neue Anwendung \emph{CleverMail}}
 \label{cha:clevermail}
-In diesem Kapitel wird das Konzept von \emph{CleverMail} erörtert, wobei \emph{CleverMail} die bestehende Anwendung \emph{CCMail} ablösen wird. Im Gegensatz zu \emph{CCMail} wird aus der Sicht von \emph{CleverMail} das Gesamtsystem aus mehreren Anwendungen bestehen, die in der Lage sein müssen \emph{E-Mails} zu versenden. Bis heute ist \emph{clevercure} angewachsen und es wurden neue Anwendungen hinzugefügt, die Aufgrund der Architektur von \emph{CCMyail} nicht in \emph{CCMail} eingebunden werden konnten bzw. man sich dazu entschieden hat, die Einbindung zu unterlassen.
+In diesem Kapitel wird das Konzept von \emph{CleverMail} erörtert, wobei \emph{CleverMail} die bestehende Anwendung \emph{CCMail} ablösen wird. Im Gegensatz zu \emph{CCMail} wird aus der Sicht von \emph{CleverMail} das Gesamtsystem aus mehreren Anwendungen bestehen, die in der Lage sein müssen, \emph{E-Mails} zu versenden. Bis heute ist \emph{clevercure} angewachsen und es wurden neue Anwendungen hinzugefügt, die Aufgrund der Architektur von \emph{CCMail} nicht in \emph{CCMail} eingebunden werden konnten bzw. man sich dazu entschieden hat, die Einbindung zu unterlassen.
 \newline
 \newline
 Folgende Auflistung zeigt alle Anwendungen, die \emph{CleverMail} nutzen werden:
 \begin{enumerate}
 	\item\emph{CleverWeb}, ist die Web-Anwendung für den webbasierten Zugriff auf \emph{clevercure}.
-	\item\emph{CleverInterface}, ist die Schnittstellen Anwendung für den Datenimport/-export.
+	\item\emph{CleverInterface}, ist die Schnittstellen Anwendung für den Datenimport und Datenexport.
 	\item\emph{CleverSupport (neu)}, ist die Web-Anwendung für die \emph{Support}-Abteilung.
 	\item\emph{CleverDocument (neu)}, ist das Dokumentenmanagementsystem, welches von allen Anwendungen genutzt wird.
 \end{enumerate}
@@ -16,7 +16,7 @@ Im Gegensatz zu \emph{CCMail} soll \emph{CleverMail} nicht als Konsolen-Anwendun
 Mit der Nutzung der JEE7-Plattform-Spezifikation stehen \emph{CleverMail} eine Vielzahl von Möglichkeiten und Bibliotheken zur Verfügung wie z.B.: 
 \begin{enumerate}
 	\item\emph{JAX-RS 2.0} (Java Api for RESTful Web Services 2.0),
-	\item\emph{EJB 3.1} (Enterpris Java Bean. Standard Komponenten für die Entwicklung in Java Enterprise Containern), 
+	\item\emph{EJB 3.1} (Enterprise Java Bean. Standard Komponenten für die Entwicklung in Java Enterprise Containern), 
 	\item\emph{JPA 2.1} (Java Persistence Api. Java Schnittstelle für Datenbankzugriffe), 
 	\item\emph{JTA 1.2} (Java Transaction Api. Java Schnittstelle für den Support von verteilten Transaktionen), 
 	\item\emph{JSF 2.2} (Java Server Faces. Java Spezifikation für die Entwicklung von Webanwendungen) und 
@@ -51,7 +51,7 @@ Dieser Ansatz würde das Problem der eigens implementierten Datenbankzugriffe be
 \begin{enumerate}
 	\item \emph{REST} nicht verfügbar,
 	\item \emph{EJB} nicht verfügbar oder
-	\item Falsche Java-Version.
+	\item eine falsche Java-Version.
 \end{enumerate}
 \ \newline
 Obwohl diese Probleme auftreten können, kann zumindest gewährleistet werden, dass alle Anwendungen dieselbe Schnittstelle und dasselbe Domänenmodell verwenden, selbst wenn eigene Implementierungen erforderlich sind. Diese Implementierungen würden Softwarekomponenten von \emph{CleverMail} darstellen und dürfen nicht von den Anwendungen selbst bereitgestellt werden.
@@ -79,10 +79,10 @@ Mit dem Konzept \emph{TCC} hält der \emph{REST-Service} die \emph{E-Mail} persi
 Mit \emph{TCC} besteht auch die Gefahr das eine \emph{Heuristic-Exception} auftritt. Eine \emph{Heuristic-Exception} tritt auf wenn ein Teilnehmer der Transaktion eine \emph{Heuristic-Decision} (eigenmächtige Entscheidung) trifft und dadurch Dateninkonsistenzen auf der Datenbank entstehen. Dies ist ein Problem, dass vor allem in verteilten System auftreten kann.
 \newline
 \newline
-Diese Probleme bedeuten aber nicht, dass \emph{REST-Services} nicht in Frage kommen. Lediglich für transaktionale Operationen scheinen sie ungeeignet bzw. der Aufwand, der betrieben werden muss, zu hoch. Ein weiteres Problem kann die Erreichbarkeit des \emph{REST-Service} sein. Sollte dieser einmal ausfallen, oder im Falle eines Neuinstallation nicht erreichbar sein, so müsste man eine Rückversicherung haben und die zu erstellenden \emph{E-Mails} anderweitig zwischenspeichern, wie z.B. in Form einer Textdatei, welche die Daten in Form von JSON (Javascript-Objekt-Notation) enthält.
+Diese Probleme bedeuten aber nicht, dass \emph{REST-Services} nicht in Frage kommen. Lediglich für transaktionale Operationen scheinen sie ungeeignet bzw. der Aufwand, der betrieben werden muss, zu hoch. Ein weiteres Problem kann die Erreichbarkeit des \emph{REST-Service} sein. Sollte dieser einmal ausfallen, oder im Falle einer Neuinstallation nicht erreichbar sein, so müsste man eine Rückversicherung haben und die zu erstellenden \emph{E-Mails} anderweitig zwischenspeichern, wie z.B. in Form einer Textdatei, welche die Daten in Form von JSON (Javascript-Objekt-Notation) enthält.
 \newline
 \newline
-Der Artikel \cite{atomikosTcc} beschreibt den Prozess von \emph{TCC} mit mehreren involvierten REST-Services gut und detailliert.
+Dieser Artikel \cite{atomikosTcc} beschreibt den Prozess von \emph{TCC} mit mehreren involvierten REST-Services gut und detailliert.
 
 \subsection{2. Möglichkeit \emph{(EJB)}}
 Sollte eine Anwendung \emph{CleverMail} via dessen zur Verfügung gestellten \emph{EJBs} verwenden, so würde eine starke Kopplung und starke Abhängigkeiten entstehen, da mehr Ressourcen benötigt werden. Ebenso könnte im Gegensatz zu einem \emph{REST-Client} keine eigene Datenbank genutzt werden, da ein Zweiphasen-\emph{Commit} erfolgen müsste. Natürlich würde die Möglichkeit von mehreren verwendeten Datenbanken bestehen, aber man wäre der Gefahr von \emph{Heursitc-Exceptions} ausgesetzt.
@@ -159,6 +159,7 @@ Es sollte angedacht werden den \emph{E-Mail}-Versand sowie die Erstellung der \e
 	\item \emph{Mail-Server} des Empfängers nicht erreichbar.
 	\item \emph{Mail-Server} nimmt Nachricht nicht an.
 \end{enumerate}
+\ \newline
 Es kann viele Ursachen haben warum eine \emph{E-Mail} nicht zugestellt werden konnte. Vor allem die \emph{Mail-Server} der KundInnen stellen hierbei einen Unsicherheitsfaktor dar, da diese in unterschiedlicher Art und Weise konfiguriert sein könnten. Diese Konfigurationen könnten dazu führen, dass \emph{E-Mails} nicht beim Empfänger ankommen.
 
 \newpage
@@ -172,7 +173,7 @@ Die Vorlagenparameter müssen von den EntwicklerInnen innerhalb eines Kontexts z
 Die Vorlagenparameter werden über mehrere Softwarekomponenten hinweg verwendet, die sich in verschiedenen Laufzeitumgebungen befinden dürfen. Daher wird es erforderlich sein, die Vorlagenparameter in einem übergreifenden Modell zu definieren oder über sie von einem Modell in ein anderes Modell über Zuordnungen wie z.B. \emph{Annotations} zu definieren.
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.6]{clevermail_template_parameter.jpg}
+\includegraphics[scale=0.55]{clevermail_template_parameter.jpg}
 \caption{Verwendung von Vorlagenparametern}
 \label{fig:clevermail-template-parameter}
 \end{figure}

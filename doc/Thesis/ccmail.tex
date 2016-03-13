@@ -12,7 +12,7 @@ Im folgenden wird der Systemaufbau aus der Sicht der Anwendung \emph{CCMail} und
 \label{fig:ccmail-system-und-integration}
 \end{figure}
 \ \newpage
-\parindent0pt{Abbildung} \ref{fig:ccmail-system-und-integration} zeigt das Gesamtsystem aus der Sicht der Anwendung \emph{CCMail}, wobei anzumerken ist, dass das System bis heute angewachsen ist und nunmehr aus mehreren Anwendungen als wie in Abbildung  \ref{fig:ccmail-system-und-integration} abgebildet besteht. Es lässt sich ableiten, dass das Kernstück des Systems die Datenbank ist. In der Datenbank werden die zu versendenden \emph{E-Mails} als sogenannte \emph{MailJobs} verwaltet. Ein \emph{MailJob} ist ein Eintrag in einer Datenbanktabelle namens \emph{MAIL\_JOBS}, die alle Informationen einer \emph{E-Mail} enthält. Es sind dabei die eigens implementierten Datenbankzugriffsschichten der einzelnen Anwendungen zu kritisieren, die zwar den Datenbankzugriff kapseln, jedoch nur für jede Anwendung an sich und nicht über Anwendungsgrenzen hinweg, was durchaus möglich wäre. Scott W.Ambler und Parmod J.Sadalge schreiben in ihrem Buch \cite[27]{refactoreDatabase} treffend:
+\parindent0pt{Abbildung} \ref{fig:ccmail-system-und-integration} zeigt das Gesamtsystem aus der Sicht der Anwendung \emph{CCMail}, wobei anzumerken ist, dass das System bis heute angewachsen ist und nunmehr aus mehreren Anwendungen als wie in Abbildung  \ref{fig:ccmail-system-und-integration} abgebildet besteht. Es lässt sich ableiten, dass das Kernstück des Systems die Datenbank ist. In der Datenbank werden die zu versendenden \emph{E-Mails}, als sogenannte \emph{MailJobs}, verwaltet. Ein \emph{MailJob} ist ein Eintrag in einer Datenbanktabelle namens \emph{MAIL\_JOBS}, die alle Informationen einer \emph{E-Mail} enthält. Es sind dabei die eigens implementierten Datenbankzugriffsschichten der einzelnen Anwendungen zu kritisieren, die zwar den Datenbankzugriff kapseln, jedoch nur für jede Anwendung an sich und nicht über Anwendungsgrenzen hinweg, was durchaus möglich wäre. Scott W.Ambler und Parmod J.Sadalge schreiben in ihrem Buch \cite[27]{refactoreDatabase} treffend:
 \begin{quote}
 \emph{The greater the coupeling, the harder is to refactore something. This is true of code refactoring, and it is certainly true of database refactoring}
 \end{quote}
@@ -30,7 +30,7 @@ Als Mail-Server wird \emph{Sendmail} verwendet. Es handelt sich hierbei um eine 
 Der im folgenden beschriebene Prozess des \emph{E-Mail}-Versands zeigt auf wie hinsichtlich des Systemaufbaus beschrieben in \ref{sec:ccmail-systemaufbau} der \emph{E-Mail}-Versand vom Anlegen eines \emph{MailJobs} bis hin zum Versand der eigentlichen \emph{E-Mail} funktioniert. 
 \newline
 \newline
-Als Kernkomponente des Systems wurde die Datenbank identifiziert, welche die \emph{MailJob-Entitäten} hält, die wiederum von \emph{CCMail} aus der Datenbank gelesen und verarbeitet werden. Dieser Ansatz ist an sich nicht als schlecht anzusehen, jedoch verbirgt sich hier eines der Hauptprobleme des \emph{E-Mail}-Versandes, nämlich die Inkonsistenz der versendeten \emph{E-Mail}, durch die Zeitdifferenz zwischen dem Anlegen eines \emph{MailJobs} durch die Anwendungen und dem tatsächlichen Versand der \emph{E-Mail} durch \emph{CCMail}.
+Als Kernkomponente des Systems wurde die Datenbank identifiziert, welche die \emph{MailJob}-Entitäten hält, die wiederum von \emph{CCMail} aus der Datenbank gelesen und verarbeitet werden. Dieser Ansatz ist an sich nicht als schlecht anzusehen, jedoch verbirgt sich hier eines der Hauptprobleme des \emph{E-Mail}-Versands, nämlich die Inkonsistenz der versendeten \emph{E-Mail}, durch die Zeitdifferenz zwischen dem Anlegen eines \emph{MailJobs} durch die Anwendungen und dem tatsächlichen Versand der \emph{E-Mail} durch \emph{CCMail}.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.8]{prozess_sequence_emailversand.jpg}
@@ -38,14 +38,14 @@ Als Kernkomponente des Systems wurde die Datenbank identifiziert, welche die \em
 \label{fig:sequence-diagramm-gesamtprozess}
 \end{figure}
 \ \newline
-Wie man aus dem Sequenz-Diagramm in Abbildung \ref{fig:sequence-diagramm-gesamtprozess} ableiten kann, ist eines der Hauptprobleme am \emph{E-Mail}-Versand die mögliche Inkonsistenz, was in der Art und Weise, wie die \emph{MailJob} Entitäten verarbeitet werden, begründet ist. Aufgrund der zeitgesteuerten bzw. zeitversetzten Verarbeitung kann es vorkommen, dass sich die zugrunde liegenden Daten einer \emph{E-Mail} ändern, bevor diese versendet wurde. In dem Beispiel in Abbildung \ref{fig:sequence-diagramm-gesamtprozess} wird eine Bestellung angelegt und kurz darauf geändert. Dies geschieht, bevor die \emph{E-Mail} über das Anlegen der Bestellung versendet wurde. Es wurde zwar ein neuer \emph{MailJob} angelegt, aber beide \emph{MailJob-Einträge} verweisen auf dieselbe Bestellung. Dadurch enthalten beide versendeten \emph{E-Mails} dieselben Daten und die Daten der erstellten Bestellung gingen verloren, da sie durch die gemachten Änderungen überschrieben wurden. 
+Wie man aus dem Sequenz-Diagramm in Abbildung \ref{fig:sequence-diagramm-gesamtprozess} ableiten kann, ist eines der Hauptprobleme am \emph{E-Mail}-Versand die mögliche Inkonsistenz, was in der Art und Weise, wie die \emph{MailJob} Entitäten verarbeitet werden, begründet ist. Aufgrund der zeitgesteuerten bzw. zeitversetzten Verarbeitung kann es vorkommen, dass sich die zugrunde liegenden Daten einer \emph{E-Mail} ändern, bevor diese versendet wurde. In dem Beispiel in Abbildung \ref{fig:sequence-diagramm-gesamtprozess} wird eine Bestellung angelegt und kurz darauf geändert. Dies geschieht, bevor die \emph{E-Mail} über das Anlegen der Bestellung versendet wurde. Es wurde zwar ein neuer \emph{MailJob} angelegt, aber beide \emph{MailJob}-Einträge verweisen auf dieselbe Bestellung. Dadurch enthalten beide versendeten \emph{E-Mails} dieselben Daten und die Daten der erstellten Bestellung gingen verloren, da sie durch die gemachten Änderungen überschrieben wurden. 
 \newpage
-Dies ist begründet in der Art und Weise, wie die \emph{MailJob-Einträge} aufgebaut sind. Ein \emph{MailJob} hält die Daten für den Versand einer \emph{E-Mail}, wobei hierbei nicht die gesamte \emph{E-Mail} oder die verwendeten Daten gespeichert werden, sondern lediglich die Parameter, die in einer SQL-Abfrage \emph{(Structured-Query-Language)} verwendet werden, um die Daten für die \emph{E-Mail} zu erhalten. Sollten sich also die Datenbank-Entitäten der involvierten Tabellen ändern, so sind die ursprünglichen Daten nicht mehr wiederherstellbar. Dadurch ist auch ein erneuter Versand einer bereits versendeten \emph{E-Mail} nicht mehr möglich bzw. es kann nicht garantiert werden, dass diese \emph{E-Mail} dieselben Daten enthält wie beim ersten Versand.
+Dies ist begründet in der Art und Weise, wie die \emph{MailJob}-Einträge aufgebaut sind. Ein \emph{MailJob} hält die Daten für den Versand einer \emph{E-Mail}, wobei hierbei nicht die gesamte \emph{E-Mail} oder die verwendeten Daten gespeichert werden, sondern lediglich die Parameter, die in einer SQL-Abfrage \emph{(Structured Query Language)} verwendet werden, um die Daten für die \emph{E-Mail} zu erhalten. Sollten sich also die Datenbank-Entitäten der involvierten Tabellen ändern, so sind die ursprünglichen Daten nicht mehr wiederherstellbar. Dadurch ist auch ein erneuter Versand einer bereits versendeten \emph{E-Mail} nicht mehr möglich bzw. es kann nicht garantiert werden, dass diese \emph{E-Mail} dieselben Daten enthält wie beim ersten Versand.
 \newline
 \newline
-Ein weiteres Problem liegt in der zeitgesteuerten Verarbeitung der \emph{MailJobs} durch \emph{CCMail}. Lange wurde nicht geprüft, ob bereits ein \emph{CCMail-Prozess} gestartet wurde, bevor dieser erneut gestartet wird. Dies hat dazu geführt, dass es vorkam ,dass mehrere Prozesse gleichzeitig die \emph{MailJob-Entitäten} verarbeiten und daher die \emph{E-Mail} mehrmals versendet wurden. Dieses Problem ist begründet durch die Tatsache, dass in Verarbeitung stehende \emph{MailoJob-Entitäten} nicht als "\emph{In Progress}" markiert wurden und von parallel laufenden Prozessen ausgelesen und verarbeitet wurden. Nun wird zwar geprüft, ob bereits ein Prozess gestartet wurde, bevor ein neuer Prozess gestartet wird, um zu verhindern das parallel laufende Prozesse auftreten. Dies macht es aber unmöglich die Arbeit auf mehrere Prozesse aufzuteilen. Der Ansatz die \emph{E-Mails} in nur einem Prozess zu verarbeiten, hat zur Folge dass der \emph{E-Mail}-Versand seriell verläuft, obwohl angemerkt sei, dass die einzelnen Nachrichten sehr wohl parallel in eigenen \emph{Threads} innerhalb des Prozesses verarbeitet und versendet werden. Man könnte die Arbeit auf mehrere Prozesse aufteilen und so die Performance verbessern und den Zeitaufwand für den Versand minimieren.
+Ein weiteres Problem liegt in der zeitgesteuerten Verarbeitung der \emph{MailJobs} durch \emph{CCMail}. Lange wurde nicht geprüft, ob bereits ein \emph{CCMail-Prozess} gestartet wurde, bevor dieser erneut gestartet wird. Dies hat dazu geführt, dass es vorkam ,dass mehrere Prozesse gleichzeitig die \emph{MailJob-Entitäten} verarbeiten und daher die \emph{E-Mail} mehrmals versendet wurden. Dieses Problem ist begründet durch die Tatsache, dass in Verarbeitung stehende \emph{MailJob}-Entitäten nicht als "\emph{In Progress}" markiert wurden und von parallel laufenden Prozessen ausgelesen und verarbeitet wurden. Nun wird zwar geprüft, ob bereits ein Prozess gestartet wurde, bevor ein neuer Prozess gestartet wird, um zu verhindern das parallel laufende Prozesse auftreten. Dies macht es aber unmöglich die Arbeit auf mehrere Prozesse aufzuteilen. Der Ansatz die \emph{E-Mails} in nur einem Prozess zu verarbeiten, hat zur Folge dass der \emph{E-Mail}-Versand seriell verläuft, obwohl angemerkt sei, dass die einzelnen Nachrichten sehr wohl parallel in eigenen \emph{Threads} innerhalb des Prozesses verarbeitet und versendet werden. Man könnte die Arbeit auf mehrere Prozesse aufteilen und so die Performance verbessern und den Zeitaufwand für den Versand minimieren.
 
-\section{Software-Design}
+\section{\emph{Software}-Design}
 \label{sec:ccmail-software-design}
 Nachdem der Systemaufbau diskutiert wurde befassen wir uns jetzt mit dem Software-Design von \emph{CCMail}. \emph{CCMail} wurde als Konsolen-Anwendung implementiert und stellt alle Ressourcen, die zur benötigt werden, zur Verfügung, wie:
 \begin{enumerate}
@@ -89,10 +89,10 @@ Aus dem Klassendiagramm in Abbildung \ref{fig:klassen-hierarchie-ccbasicemail} l
 Am Beispiel der Klasse \emph{CCItbCustUser} ist ersichtlich, dass neben dem Abbilden eines \emph{E-Mail}-Typs als eigene Java-Klasse man ebenfalls eine eigene Subvererbungshierarchie eingeführt hat, um \emph{E-Mail}-Typen, die sich in einem gemeinsamen Kontext befinden, zu gruppieren. Ob dies ein guter Ansatz ist, um kontextabhängige Ressourcen zu gruppieren, ist zu hinterfragen. Es gäbe hier andere Ansätze, wie man eine solche Gruppierung hätte realisieren können, die flexibler sind als eine Vererbungshierarchie. Eine Vererbungshierarchie ist starr und Änderungen an der Struktur können sich negativ auf die Gesamtstruktur auswirken. Ebenso produziert man so eine Vielzahl von Klassen, die gewartet werden müssen und die Struktur einer Subvererbungshierarchie lässt sich nur über ein Klassendiagramm darstellen und ist nicht aus dem Quelltext abzuleiten. Ebenso wird man bei den Vererbungshierarchien schnell an Grenzen stoßen, da hier nur gerichtete Graphen möglich sind und Mehrfachvererbung bei Klassen von Java nicht unterstützt wird. 
 \newline
 \newline
-Mehrfachvererbung, auch wenn unterstützt, ist aber ohnedies zu vermeiden, da hier Kollisionen bei den Klassenvariablen und Methoden auftreten können. Außerdem wird durch Mehrfachvererbung die Komplexität der Klassenhierarchie nur unnötig erhöht und bringt daher keine Erleichterungen mit sich.
+Mehrfachvererbung, auch wenn unterstützt, ist aber ohnedies zu vermeiden, da hier Kollisionen bei den Klassen Variablen und Methoden auftreten können. Außerdem wird durch Mehrfachvererbung die Komplexität der Klassenhierarchie nur unnötig erhöht und bringt daher keine Erleichterungen mit sich.
 
 \subsection{Klasse CCItbCustUser}
-Nachdem die Vererbungshierarchie von \emph{CCBasicEmail} diskutiert wurde, wird im Folgenden als Beispiel einer Implementierung von \emph{CCBasicEMail} die Implementierung der Klasse \emph{CCItbCustUser} angeführt. Diese Implementierung dient als Beispiel für die restlichen \emph{E-Mail}-Typ-Implementierungen, die nach dem selben Prinzip mit ähnlichem Umfang implementiert wurden. Im Abschnitt ~\ref{sec:implementierung-ccbasic-mail} wurde behauptet, dass diese Ableitungen eingeführt wurden, um \emph{E-Mail}-Typen zu gruppieren. Man könnte aber auch annehmen, dass diese eigene Subvererbungshierarchie eingeführt wurde, um gemeinsame Funktionalitäten für die abgeleiteten \emph{E-Mail}-Typen zu kapseln. 
+Nachdem die Vererbungshierarchie von \emph{CCBasicEmail} diskutiert wurde, wird im Folgenden als Beispiel einer Implementierung von \emph{CCBasicEMail} die Implementierung der Klasse \emph{CCItbCustUser} angeführt. Diese Implementierung dient als Beispiel für die restlichen \emph{E-Mail}-Typ-Implementierungen, die nach dem selben Prinzip mit ähnlichem Umfang implementiert wurden. Im Abschnitt~\ref{sec:implementierung-ccbasic-mail} wurde behauptet, dass diese Ableitungen eingeführt wurden, um \emph{E-Mail}-Typen zu gruppieren. Man könnte aber auch annehmen, dass diese eigene Subvererbungshierarchie eingeführt wurde, um gemeinsame Funktionalitäten für die abgeleiteten \emph{E-Mail}-Typen zu kapseln. 
 \newline
 \newline
 Folgender Quelltext illustriert, dass die Implementierungen der einzelnen \emph{E-Mail}-Typen hauptsächlich aus dem Erstellen der \emph{E-Mails} besteht, da der Versand bereits in der Klasse \emph{CCBasicEmail} implementiert wurde. Die Parameter für die Vorlage werden aus dem Resultat der spezifischen SQL-Abfrage in der Methode \emph{getMailBody} extrahiert und in der Nachricht bzw. der verwendeten Vorlage verwendet. Die erstellte Nachricht wird dann als Resultat geliefert. Das unterschiedliche Erstellen der \emph{E-Mails} ist also der Grund für das Abbilden der einzelnen \emph{E-Mail}-Typen als eigene Java-Klassen. Dieser Ansatz produziert viele Klassen, die in einer starren Hierarchie gebunden sind. Und dies nur um das Erstellen der eigentlichen \emph{E-Mail}-Nachricht in einer eigenen Java-Klasse zu kapseln. Es sei angemerkt, dass diese Klassen auch dazu verwendet um die \emph{E-Mail}-Typen zu aktivieren oder zu deaktivieren. Zu kritisieren ist hierbei, dass das Erstellen einer \emph{E-Mail} zu stark an einen \emph{E-Mail}-Typ gekoppelt ist und es hier an Abstraktion fehlt. Die \emph{E-Mail} werden immer nach dem selben Schema erstellt. Es gibt lediglich folgende Unterschiede:
@@ -143,19 +143,17 @@ public class CCItbCustUser extends CCBasicEmail {
 		int lanId   = ((CCItbVO)currVO).getLanguageId();
 		int itbhId  = ((CCItbVO)currVO).getItbhID();
 		String body = "";
-		String key  = itbhId + "_" + lanId;
+		String key  = itbhId+"_"+lanId;
 		if (cache.containsKey(key)) {
 			body = (String)cache.get(key);
-			LOG.debug("48: Got from cache key: " + key 
-					  + " body: " + body);
+			LOG.debug("48: Got from cache key: "+key+" body: "+body);
 		} else {
 			Object[] allParams = getDAO().getItbCustData((CCItbVO)currVO, 19);
 			MessageFormat form = new MessageFormat(rb.getString(bodyKey)
 			                                         .trim());
 	 		body               = form.format(params);
 	 		cache.put(key, body);
-	 		LOG.debug("48: DB access for the key: " + key
-	 				+ " got body: " + body);
+	 		LOG.debug("48: DB access for the key: "+key+" got body: "+body);
 		} // end if-else
 		return body;
 	} // end getMailBody
@@ -169,11 +167,11 @@ public class CCItbCustUser extends CCBasicEmail {
 Die folgenden drei Methoden werden von den \emph{E-Mail}-Typ-Klassen implementiert:
 \begin{enumerate}
 	\item\emph{getMailType}: zum Bereitstellen eines eindeutigen Schlüssels, der diesen \emph{E-Mail}-Typ identifiziert.
-	\item\emph{getMailBody}: zum Erstellen der \emph{E-Mail} aus einer Vorlage, welche mit Parametern befüllt wird
-	\item\emph{run}: Jeder \emph{E-Mail}-Typ wird in einem eigenen Thread abgearbeitet. Dabei wird entschiedenen welche Art von \emph{E-Mail}-Versand genutzt wird. \emph{CCBasiEmail} stellt mehrere Implementierungen zur Verfügung z.B.:
+	\item\emph{getMailBody}: zum Erstellen der \emph{E-Mail} aus einer Vorlage, welche mit Parametern befüllt wird.
+	\item\emph{run}: Jeder \emph{E-Mail}-Typ wird in einem eigenen \emph{Thread} abgearbeitet. Dabei wird entschiedenen welche Art von \emph{E-Mail}-Versand genutzt wird. \emph{CCBasiEmail} stellt mehrere Implementierungen zur Verfügung z.B.:
 	\begin{itemize}
-		\item ohne Anhänge, 
-		\item mit Anhängen, welche über das lokale Filesystem zur Verfügung gestellt werden, und
+		\item ohne Anhänge,
+		\item mit Anhängen, welche über das lokale Filesystem zur Verfügung gestellt werden  und
 		\item mit Anhängen, welche über externe Systeme zur Verfügung gestellt werden.
 	\end{itemize}
 \end{enumerate}
@@ -221,6 +219,7 @@ Abschließend wird der Aufbau des Datenbankschemas betrachtet, welches die Kernk
 \newline
 \newline 
 Im Buch \emph{Refactoring Database} \cite[213]{refactoreDatabase} wird als Argument für nicht verwendete Fremdschlüssel die Performanz genannt, wobei in diesem Fall diese Begründung nicht hält. Die beiden Anwendungen \emph{CleverWeb} und \emph{CleverInterface} erstellen lediglich einzelne oder wenige \emph{MailJob}-Einträge auf einmal, und \emph{CCMail} ist die einzige Anwendung, die diese \emph{MailJob}-Einträge einmalig ausliest und verarbeitet. Also muss die Performance ohnehin kein Problem darstellen, da hier keine Vielzahl von TeilnehmerInnen und die keine Konkurrenz nicht geben ist. Das Problem von nicht verwendeten Fremdschlüsseln wird in \emph{Refactoring Databases} \cite[213]{refactoreDatabase} wie folgt beschrieben:
+\newpage
 \begin{quote}
 \emph{The fundamental tradeoff is performance versus quality: Foreign key constraints ensure the validity of the data at the database level at the cost of the constraint being enforced each time the source data is updated. When you apply Drop Foreign Key, your applications will be at risk of introducing invalid data if they do not validate the data before writing to the database.}
 \end{quote}
@@ -249,7 +248,7 @@ Wie in Abbildung \ref{fig:ccmail-db-schema} ersichtlich, wurden die Spalten der 
 	ist die Tabelle, welche die Anhänge eines \emph{MailJob} repräsentiert.
 \end{itemize}
 \ \newline
-Diese Tabellen wurden nachträglich hinzugefügt und man hat den Ansatz des Verzichts auf Fremdschlüssel offensichtlich aufgegeben. Diese Tabellen werden dazu verwendet, um Datei- Anhänge von \emph{E-Mail} zu verwalten, die bereits bei der Erstellung des \emph{MailJobs} vorhanden sind. Dies war eine Umgehungslösung und darf so auch nicht mehr angewandt werden, da hier die Dateien kodiert in Base64 (\emph{Codepage} unabhängige ASCII- Zeichenfolge) gehalten werden und die Datenbank unnötig mit Daten belasten. Sie sollten in einem Dateisystem oder Dokumentenverwaltungssystem verwaltet und lediglich referenziert werden, was aber zum Zeitpunkt der Implementierung noch nicht zur Verfügung stand. 
+Diese Tabellen wurden nachträglich hinzugefügt und man hat den Ansatz des Verzichts auf Fremdschlüssel offensichtlich aufgegeben. Diese Tabellen werden dazu verwendet, um Datei- Anhänge von \emph{E-Mail} zu verwalten, die bereits bei der Erstellung des \emph{MailJobs} vorhanden sind. Dies war eine Umgehungslösung und darf so auch nicht mehr angewandt werden, da hier die Dateien kodiert in Base64 (\emph{Codepage} unabhängige ASCII- Zeichenfolge) gehalten werden und die Datenbank unnötig mit Daten belasten. Die Dateien müssten nur als Referenzen in der Datenbank präsent sein.
 \ \newpage
 \subsection{Datenbankschemata von \emph{CleverMail}}
 Folgende Abbildung \ref{fig:ccmail-db-schema} illustriert das Datenbankschema von \emph{CCMail}.
@@ -261,9 +260,10 @@ Folgende Abbildung \ref{fig:ccmail-db-schema} illustriert das Datenbankschema vo
 \end{figure}
 Mit den Betrachtungen des Datenbankschemas von \emph{CCMail} ist die Analyse von \emph{CCMail} abgeschlossen. Bei der Analyse wurden einige Probleme und Fehlentscheidungen von \emph{CCMail} identifiziert wie z.B.:
 \begin{itemize}
-	\item Vererbungshierarchie der \emph{Mail}-Typen.
-	\item Statische \emph{Mail}-Vorlagen.
-	\item Verzicht auf Datenbank-Fremdschlüssel.
-	\item Global eindeutige Tabellenspaltennamen.
+	\item Die Vererbungshierarchie der \emph{Mail}-Typen.
+	\item Die Statische \emph{Mail}-Vorlagen.
+	\item Der Verzicht auf Datenbank-Fremdschlüssel.
+	\item Die global eindeutigen Namen der Tabellenspalten.
 \end{itemize}
-Die Ergebnisse der Betrachtungen stellen eine Grundlage für die Konzipierung von \emph{CleverMail} dar. Diese Grundlage wird die Konzipierung von \emph{CleverMail} erheblich erleichtern.
+\ \newline
+Die Ergebnisse der Betrachtungen stellen eine Grundlage für die Konzipierung von \emph{CleverMail} dar. Folgendes Kapitel wird sich neben der Konzeption von \emph{CleverMail} auch mit neuen Technologien und Bibliotheken befassen, die für \emph{CleverMail} Anwendung finden könnten. 
