@@ -26,7 +26,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.4}\emph {CCMail}-Datenbank}{14}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.1}Datenbankschemata von \emph {CleverMail}}{16}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.1}Datenbankschema von \emph {CleverMail}}{16}{subsection.2.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Die neue Anwendung \emph {CleverMail}}{18}{chapter.3}
 \defcounter {refsection}{0}\relax 
@@ -56,7 +56,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.3}\emph {CleverMail}-Datenbank}{30}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Datenbankschemata von \emph {CleverMail}}{32}{subsection.3.3.1}
+\contentsline {subsection}{\numberline {3.3.1}Datenbankschema von \emph {CleverMail}}{32}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Zusammenfassung}{34}{chapter.4}
 \defcounter {refsection}{0}\relax 
