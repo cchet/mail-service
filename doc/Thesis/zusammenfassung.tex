@@ -1,30 +1,43 @@
-\chapter{Zusammenfassung}
-Zusammenfassend kann Ich sagen, dass das Ausarbeiten dieser Bachelorarbeit sich zeitweise als Herausforderung herausgestellt hat. Das Verfassen einer wissenschaftlichen Arbeit und die damit einhergehenden Vorschriften waren anfänglich ungewohnt für mich. Aber schlussendlich habe Ich erkannt, dass diese Vorschriften und Konventionen durchaus ihren Sinn haben. Das Resultat ist eine gut strukturierte wissenschaftliche Arbeit, die dem Leser ein Themengebiet auf wissenschaftliche Art und Weise näher bringt.
+\chapter{Zusammenfassung, weitere Arbeiten und Erfahrungen}
+In diesem Kapitel wird diese Arbeit zusammenfassend betrachtet, sowie die weitere Vorgehensweise und die gemachten Erfahrungen.
+\section{Zusammenfassung}
+Diese Arbeit beschäftigt sich mit der Konzeption eines \emph{Mail-Service} mit dem Namen \emph{CleverMail}, welcher die bestehende Anwendung mit dem Namen \emph{CCMail} ersetzen soll. Zuerst wurde die bestehende Anwendung \emph{CCMail} analysiert, bevor das Konzept für \emph{CleverMail} erstellt wurde. Bei dieser Analyse wurden einige Probleme ausgemacht wie
+\begin{itemize}
+	\item die Vererbungshierarchie der \emph{Mail}-Typen,
+	\item die Inkonsistenz beim \emph{E-Mail}-Versand, oder
+	\item die Datenbank als zentrale Schnittelle,
+\end{itemize}
+die eine Umstrukturierung von \emph{CCMail} verhindern. Dadurch können die neuen Anforderungen, welche durch die KundInnen definiert wurden, durch eine Umstrukturierung von \emph{CCMail} nicht erfüllt werden. Als größtes Problem stellte sich die Datenbank als zentrale Schnittstelle heraus, da alle Anwendungen, die \emph{CCMail} verwenden, mit \emph{CCMail} über die Datenbank interagieren müssen. Dadurch sind die Anwendungen an das Datenbankschema von \emph{CCMail} gekoppelt, anstatt davon abstrahiert zu sein. 
 \newline
 \newline
-Ich habe mich für das Thema \emph{Konzeption eines Mail-Service} entschieden, da mir folgende Punkte wichtig waren:
+Das Konzept von \emph{CleverMail} berücksichtigt alle gemachten Fehler von \emph{CCMail} sowie die neuen Anforderungen der KundInnen. Trotz der Probleme von \emph{CCMail} konnten einige Aspekte von \emph{CCMail} in \emph{CleverMail} übernommen werden wie:
+\begin{itemize}
+	\item der prinzipielle Prozess des \emph{E-Mail}-Versands oder
+	\item die Verwendung von verschiedenen \emph{E-Mail}-Typen.
+\end{itemize}
+Im Gegensatz zu \emph{CCMail} wurde bei der Konzipierung von \emph{CleverMail} auf die Trennung der Softwarekomponenten von \emph{CleverMail} und einheitliche Schnittstellen für die Anwendungen, die \emph{CleverMail} verwenden, Wert gelegt. Eines der Hauptziele war es die Anwendungen von \emph{CleverMail} so weit zu abstrahieren, dass nur die zur Verfügung gestellten Schnittstellen verwendet werden und die Anwendungen nicht zu stark an \emph{CleverMail} gekoppelt sind. Das wurde durch folgende eingeführte Schnittstellen ermöglicht:
 \begin{enumerate}
-	\item Das Design und die Architektur der alten Anwendung \emph{CCMail} zu analysieren.
-	\item Das Konzept für eine neue Anwendung \emph{CleverMail} zu erstellen.
-	\item Neue Möglichkeiten, Technologien und \emph{Bibliotheken} kennen zu lernen.
-\end{enumerate}
-\ \newline
-Vor allem die Architektur der neuen Anwendung \emph{CleverMail}, deren Schichten, sowie mit ihr interagierende Softwarekomponenten, waren mir sehr wichtig. Bei der Analyse von \emph{CCMail} stellte sich heraus, dass die Interaktion mit anderen Softwarekomponenten nicht vorgesehen wurde. Dies ist vor allem in der Verwendung der Datenbank als zentrale Schnittstelle begründet. Dadurch ist \emph{CCMail} nicht vollständig in das Gesamtsystem von \emph{Clevercure} integriert.
-\newline
-\newline
-Das Konzept von \emph{CleverMail} ist flexibel genug, um mit anderen Softwarekomponenten interagieren zu können. Das wurde durch folgende Schnittstellen ermöglicht:
-\begin{enumerate}
-	\item REST-Service,
+	\item \emph{REST-Service},
 	\item \emph{EJB} und
 	\item \emph{DAO}.
 \end{enumerate}
 \ \newline
-Durch diese Schnittstellen wird die Datenbank als zentrale Schnittstelle abgelöst und \emph{CleverMail} wird von den Anwendungen wie z.B. \emph{CleverWeb} abstrahiert. 
-\newline
-\newline
-Für den weiteren Verlauf sehe ich die größte Herausforderung in den Vorlagenparametern und deren Verwendungskontexte. Man wird ein hohes Maß an Konsistenz einhalten müssen, um Probleme der Wartbarkeit zu vermeiden. Die weit gestreute Verwendung der Vorlagenparameter, über die verschiedenen Verwendungskontexte wie:
+Durch diese Schnittstellen wird die Datenbank als zentrale Schnittstelle abgelöst und \emph{CleverMail} wird von den Anwendungen wie z.B. \emph{CleverWeb} abstrahiert. Ein besonderes Augenmerk wurde auf die Architektur der neuen Anwendung \emph{CleverMail} , deren Schichten, sowie mit ihr interagierende Softwarekomponenten gerichtet. Bei der Konzipierung von \emph{CleverMail} wurden neue Technologien, Spezifikationen und Bibliotheken berücksichtigt wie z.B:
+\begin{itemize}
+	\item \emph{JAX-RS 2.0},
+	\item \emph{EJB 3.1} oder
+	\item \emph{Freemarker}.
+\end{itemize}
+\ \newline
+Der Nutzen dieser Technologien, Spezifikationen und Bibliotheken für \emph{CleverMail} wurde zwar aufgezeigt, muss aber noch über einen Prototypen getestet werden.
+
+\section{Weitere Arbeiten}
+Für den weiteren Verlauf besteht die größte Herausforderung in den Vorlagenparametern und deren Verwendungskontexte. Man wird ein hohes Maß an Konsistenz einhalten müssen, um Probleme der Wartbarkeit vermeiden zu können. Die weit gestreute Verwendung der Vorlagenparameter, über die verschiedenen Verwendungskontexte wie
 \begin{itemize}
 	\item Webseite oder
-	\item \emph{Freemarker}-Vorlage.
+	\item \emph{Freemarker}-Vorlage
 \end{itemize} 
-werden Umstrukturierungen erschweren. Auch die Handhabung der Vorlagenparameter durch die Anwenderinnen über die Webseite ist schwierig, da es für diesen Verwendungskontext keine etablierten Ansätze oder Bibliotheken gibt. Es wird viel Eigenarbeit erfordern, die Verwaltung der Vorlagenparameter über eine Webseite zu implementieren. Trotz dieser Herausforderungen wird sich das Konzept von \emph{CleverMail} ohne größere Schwierigkeiten umsetzen lassen können. Alle angedachten Bibliotheken sind entweder in einem Standard spezifiziert, oder haben sich über die Zeit etabliert und werden von der Entwicklergemeinde anerkannt.
+werden zukünftige Umstrukturierungen erschweren. Auch die Handhabung der Vorlagenparameter durch die AnwenderInnen über die Webseite ist schwierig, da es für diesen Verwendungskontext keine etablierten Ansätze oder Bibliotheken gibt. Es wird viel Eigenarbeit erfordern, die Handhabung der Vorlagenparameter über eine Webseite zu implementieren. Trotz dieser Herausforderungen wird sich das Konzept von \emph{CleverMail} ohne größere Schwierigkeiten umsetzen lassen können. Alle angedachten Bibliotheken sind entweder in einem Standard spezifiziert, oder haben sich über die Zeit etabliert und werden von der Entwicklergemeinde anerkannt. Trotzdem sollte ein Prototyp entwickelt werden, um den Nutzen der Bibliotheken für \emph{CleverMail} zu testen.
+
+\section{Erfahrungen}
+Zusammenfassend kann ich sagen, dass das Ausarbeiten dieser Bachelorarbeit sich zeitweise als Herausforderung für mich herausgestellt hat. Das Verfassen einer wissenschaftlichen Arbeit und die damit einhergehenden Vorschriften waren anfänglich ungewohnt für mich. Aber schlussendlich habe ich erkannt, dass diese Vorschriften und Konventionen durchaus ihren Sinn haben. Das Resultat ist eine gut strukturierte wissenschaftliche Arbeit, die dem Leser ein Themengebiet auf wissenschaftliche Art und Weise näher bringt.

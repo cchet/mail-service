@@ -6,20 +6,18 @@
 \graphicspath{{images/}}    % name of directory containing the images
 \logofile{FHOOeIntl2014}			% name of PDF, remove or use \logofile{} for no logo
 \AddBibFile{literatur}  	% name of the BibTeX (.bib) file
-
+\usepackage{pdfpages}
 
 %%%----------------------------------------------------------
 \begin{document}
-%%%----------------------------------------------------------
-
-
-
+%%%---------------------------------------------------------- 
+%\includepdf[pages={1,2}]{../Titelblatt_Gesamt.pdf}
+\includepdf[pages={1,2}]{../Titelblatt_BAC_1.pdf}
 %%%----------------------------------------------------------
 \frontmatter
 %\maketitle
 \tableofcontents
 %%%----------------------------------------------------------
-
 \include{kurzfassung}		
 \include{abstract}			
 
@@ -41,7 +39,7 @@
 %\include{anhang_d}	% Quelltext dieses Dokuments
 
 %%%----------------------------------------------------------
-\MakeBibliography
+%\MakeBibliography
 %%%----------------------------------------------------------
 
 %%%Messbox zur Druckkontrolle

@@ -18,15 +18,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.1}Klasse \emph {CCBasicEmail}}{9}{subsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.2}Klasse CCItbCustUser}{10}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.2}Klasse \emph {CCItbCustUser}}{10}{subsection.2.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.3}Klasse CCMailingDao}{12}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.3}Klasse \emph {CCMailingDao}}{12}{subsection.2.3.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.4}Klasse \emph {CCMailingDaoFactory}}{13}{subsection.2.3.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.4}\emph {CCMail}-Datenbank}{14}{section.2.4}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.1}Datenbankschema von \emph {CleverMail}}{16}{subsection.2.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Die neue Anwendung \emph {CleverMail}}{18}{chapter.3}
 \defcounter {refsection}{0}\relax 
@@ -56,12 +54,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.3}\emph {CleverMail}-Datenbank}{30}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}Datenbankschema von \emph {CleverMail}}{32}{subsection.3.3.1}
+\contentsline {chapter}{\numberline {4}Zusammenfassung, weitere Arbeiten und Erfahrungen}{34}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Zusammenfassung}{34}{chapter.4}
+\contentsline {section}{\numberline {4.1}Zusammenfassung}{34}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Quellenverzeichnis}{36}{chapter*.23}
+\contentsline {section}{\numberline {4.2}Weitere Arbeiten}{35}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Literatur}{36}{section*.24}
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{Online-Quellen}{36}{section*.25}
+\contentsline {section}{\numberline {4.3}Erfahrungen}{36}{section.4.3}

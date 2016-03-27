@@ -91,7 +91,7 @@ Am Beispiel der Klasse \emph{CCItbCustUser} ist ersichtlich, dass neben dem Abbi
 \newline
 Mehrfachvererbung, auch wenn unterstützt, ist aber ohnedies zu vermeiden, da hier Kollisionen bei den Klassen Variablen und Methoden auftreten können. Außerdem wird durch Mehrfachvererbung die Komplexität der Klassenhierarchie nur unnötig erhöht und bringt daher keine Erleichterungen mit sich.
 
-\subsection{Klasse CCItbCustUser}
+\subsection{Klasse \emph{CCItbCustUser}}
 Nachdem die Vererbungshierarchie von \emph{CCBasicEmail} diskutiert wurde, wird im Folgenden als Beispiel einer Implementierung von \emph{CCBasicEMail} die Implementierung der Klasse \emph{CCItbCustUser} angeführt. Diese Implementierung dient als Beispiel für die restlichen \emph{E-Mail}-Typ-Implementierungen, die nach dem selben Prinzip mit ähnlichem Umfang implementiert wurden. Im Abschnitt~\ref{sec:implementierung-ccbasic-mail} wurde behauptet, dass diese Ableitungen eingeführt wurden, um \emph{E-Mail}-Typen zu gruppieren. Man könnte aber auch annehmen, dass diese eigene Subvererbungshierarchie eingeführt wurde, um gemeinsame Funktionalitäten für die abgeleiteten \emph{E-Mail}-Typen zu kapseln. 
 \newline
 \newline
@@ -178,7 +178,7 @@ Die folgenden drei Methoden werden von den \emph{E-Mail}-Typ-Klassen implementie
 \ \newline
 Der Quelltext aus Abbildung \ref{fig:code-ccitbcustuser} illustriert, dass die \emph{E-Mail}-Typen keine nennenswerte Logik haben, sondern lediglich für das Erstellen der \emph{E-Mail} verantwortlich sind. 
 
-\subsection{Klasse CCMailingDao}
+\subsection{Klasse \emph{CCMailingDao}}
 Im Gegensatz zur Strukturierung der \emph{E-Mail}-Typen hat man sich bei der Datenzugriffsschicht nicht dazu entschieden, diese kontextabhängig zu gruppieren. Hier wurden alle Datenbankabfragen in einer einzigen Schnittstelle spezifiziert, ohne Rücksichtnahme auf deren Kontext.
 \newline
 \begin{figure}[h]
@@ -250,7 +250,6 @@ Wie in Abbildung \ref{fig:ccmail-db-schema} ersichtlich, wurden die Spalten der 
 \ \newline
 Diese Tabellen wurden nachträglich hinzugefügt und man hat den Ansatz des Verzichts auf Fremdschlüssel offensichtlich aufgegeben. Diese Tabellen werden dazu verwendet, um Datei- Anhänge von \emph{E-Mail} zu verwalten, die bereits bei der Erstellung des \emph{MailJobs} vorhanden sind. Dies war eine Umgehungslösung und darf so auch nicht mehr angewandt werden, da hier die Dateien kodiert in Base64 (\emph{Codepage} unabhängige ASCII- Zeichenfolge) gehalten werden und die Datenbank unnötig mit Daten belasten. Die Dateien müssten nur als Referenzen in der Datenbank präsent sein.
 \ \newpage
-\subsection{Datenbankschema von \emph{CleverMail}}
 Folgende Abbildung \ref{fig:ccmail-db-schema} illustriert das Datenbankschema von \emph{CCMail}.
 \begin{figure}[H]
 \centering
