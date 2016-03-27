@@ -61,3 +61,9 @@
 \contentsline {section}{\numberline {4.2}Weitere Arbeiten}{35}{section.4.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.3}Erfahrungen}{36}{section.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Quellenverzeichnis}{37}{chapter*.23}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Literatur}{37}{section*.24}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Online-Quellen}{37}{section*.25}
