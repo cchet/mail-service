@@ -1,0 +1,38 @@
+\chapter{Einleitung}
+\label{cha:Einleitung}
+Die vorliegende Sachlage beschäftigt sich mit der Konzeption und Implementierung eines Vorlagen-\emph{Management} für den in der theoretischen Bachelorarbeit konzipierten \emph{Mail}-Service. Das Vorlagen-\emph{Management} stellt einen essentiellen Teil des \emph{Mail}-Service dar, mit dem sich parametrisierte \emph{E-Mail}-Vorlagen erstellen lassen. Das Vorlagen-\emph{Management} soll es den BenutzerInnen ermöglichen einfach eigene parametrisierte \emph{E-Mail}-Vorlagen zu erstellen, die in einer Anwendung, die den \emph{Mail}-Service nutzen, verwendet werden können, um benutzerspezifische \emph{E-Mail}-Nachrichten zu versenden. Mit dem Vorlagen-\emph{Management} ist es nicht mehr erforderlich die \emph{E-Mail}-Vorlagen statisch zu definieren und die \emph{E-Mail}-Vorlagen können von den Benutzerinnen nach ihren Wünschen angepasst werden.  
+
+\section{Das Unternehmen curecomp Software Service GmbH}
+Diese Arbeit wird in Zusammenarbeit mit dem Unternehmen \emph{curecomp Software Service GembH} erstellt. Das Unternehmen \emph{curecomp} ist ein ein Dienstleister im \emph{Supplier-Relationship-Management (SRM)} und betreibt eine eigene Softwarelösung namens \emph{clevercure}. Die Softwarelösung \emph{clevercure} besteht aus den folgenden Anwendungen:
+\begin{itemize}
+	\item\emph{CleverWeb} ist eine \emph{Web}-Anwendung für den webbasierten Zugriff auf \emph{clevercure}.
+	\item\emph{CleverInterface} ist eine Schnittstellen-Anwendung für den XML-basierten Datenimport /-export zwischen clevercure und den ERP-Systemen der Kunden.
+	\item\emph{CleverSupport} ist eine unternehmensinterne \emph{Web}-Anwendung für die Abwicklung von \emph{Support}-Prozessen.
+	\item\emph{CleverDocument} ist ein Dokumentenmanagementsystem für die Verwaltung aller anfallender Dokumente innerhalb von \emph{clevercure}.
+	\item\emph{CCMail} ist die bestehende \emph{Mail}-Anwendung für den Versand aller innerhalb \emph{clevercure} anfallender \emph{E-Mail}-Nachrichten.
+\end{itemize}
+\ \newline
+Wie bereits in der theoretischen Bachelorarbeit behandelt, wird \emph{CCMail} von \emph{CleverMail} abgelöst werden, wobei dass in dieser Arbeit behandelte Vorlagenmanagement die Grundlage für \emph{CleverMail} darstellt. Alle Anwendung innerhalb der Softwarelösung \emph{clevercure} haben die Anforderung das \emph{E-Mail}-Vorlagen parametrisiert und benutzerdefiniert erstellt werden können. Diese Anforderung wird mit dem Vorlagenmanagement erfüllt.
+
+\section{Das Vorlagenmanagement für den \emph{Mail}-Service}
+Mit dem Vorlagenmanagement können \emph{E-Mail}-Vorlagen einerseits von den EntwicklerInnen und Benutzerinnen benutzerdefiniert und parametrisiert erstellt werden. Damit können \emph{E-Mail}-Vorlagen dynamisch auch zur Laufzeit erstellt/modifiziert und gelöscht werden. Somit sind keine statischen \emph{E-Mail}-Vorlagen mehr nötig und alle damit verbunden Nachteile wie z.B. 
+\begin{itemize}
+	\item das neu Kompilieren und Einspielen bei Änderungen der \emph{E-Mail}-Vorlagen,
+	\item keine Möglichkeit für benutzerdefinierten Vorlagen oder
+	\item keine Möglichkeit der Nutzung von dynamischen Parametern.
+\end{itemize}
+\ \newline
+Das Vorlagenmanagement kann auch in einem anderen Kontext verwendet werden, wobei diese Arbeit sich  ausschließlich mit der Verwendung des Vorlagenmanagement innerhalb des \emph{Mail}-Service beschäftigen wird. 
+
+TODO: Add graphic about system architecture and depdendencies to template management.
+
+\section{Die Rahmenbedingungen}
+Das Vorlagenmanagement wird in Java in Version 8 implementiert und wird sich an der \emph{Java-Enterprise-Edition 7 (JEE7)} Spezifikation orientieren, wobei folgende Teilspezifikationen angewendet werden.
+\begin{itemize}
+	\item \emph{JPA 2.2} ist die Spezifikation für die Persistenz.
+	\item \emph{CDI 1.1} ist die Spezifikation für kontextabhängige Injektion innerhalb einer \emph{JEE7}-Umgebung.
+	\item \emph{JSF 2.2} ist die Spezifikation der \emph{View}-Technologie. 
+\end{itemize}
+\ \newline
+Damit wird das Vorlagenmanagement mit den aktuellsten Standards implementiert und wird daher für die Zukunft gewappnet sein.
+

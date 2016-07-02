@@ -1,0 +1,52 @@
+Strukturvorschlag BAC2:
+
+Da für den gesamten Mail-Service die Zeit nicht ausreicht wird sich diese Arbeit hauptsächlich
+mit dem Templatemanagement sowie die Integrationen des Templatemanagements in JSF, CDI 
+und Typescript befassen.
+Im Grunde wird alles bis auf den Backend für den Versand der E-Mails vorhanden sein.
+# Template erstellen und bearbeiten
+# E-Mail DB-Eintrag erstellen und Daten für Template bereitstellen.
+
+------------------------------------
+Templatemanagement für Mail-Service
+------------------------------------
+-- Lösungskonzept --
+# Interfaces und Klassen (Variablenspezifikation, Variablenauflösung und für die Erstellung des JSON für den Mailversand (Builder))
+## ...
+# Integration
+## Typescript
+## CDI
+## JSF
+## Persistence des Mail-Service (Templates)
+
+-- Realisierung --
+# Typescript-Integration
+## CKEditor-Plugin
+# CDI-Integration
+## CDI-Extension (Sammelt zur verfügung gestellte Variablen und derren Resolver)
+## CDI-Producer (Stellt CDI Resourcen für Variablenmanagement zur Verfügung)
+## i18n für Variablen
+# JSF-Integration
+## JSF-Komponente für CKEditor (Primefaces-Extensions)
+## Converter (Template (HTMl-Variable) -> Template (Freemarker-Expressions))
+# Example-Use-Case
+## Business-Logic (E-Mail DB-Eintrag erstellen für Mail-Typ)
+## Mail-Template (Erstellen und bearbeiten)
+# Persistence für Mail-Service (Integration in Mail-Service DB-Schema)
+
+-- Analyse der Realisierung --
+# Tests
+## Persistence (Spezielle Behandlung bei Insert/Update/Delete, Draft-Mode)
+## CDI-Extension (Variablensammlung, Produzierte Resourcen)
+## JSF-UI (Prototyp mit Metadaten [Benutzte Variablenliste, Json, DB-Eintrag, usw.])
+# Erreichte Ziele
+## Typescript (CKEditor-Plugin)
+## CDI-Integration (CDI-Variablenkontext, Producer, Lokalisierung)
+## JSF (Web, Converter)
+## Persistence (Integration in Mail-Service-Datenmodell)
+
+
+
+
+
+
