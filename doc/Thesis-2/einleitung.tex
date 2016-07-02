@@ -15,24 +15,37 @@ Diese Arbeit wird in Zusammenarbeit mit dem Unternehmen \emph{curecomp Software 
 Wie bereits in der theoretischen Bachelorarbeit behandelt, wird \emph{CCMail} von \emph{CleverMail} abgelöst werden, wobei dass in dieser Arbeit behandelte Vorlagenmanagement die Grundlage für \emph{CleverMail} darstellt. Alle Anwendung innerhalb der Softwarelösung \emph{clevercure} haben die Anforderung das \emph{E-Mail}-Vorlagen parametrisiert und benutzerdefiniert erstellt werden können. Diese Anforderung wird mit dem Vorlagenmanagement erfüllt.
 
 \section{Das Vorlagenmanagement für den \emph{Mail}-Service}
-Mit dem Vorlagenmanagement können \emph{E-Mail}-Vorlagen einerseits von den EntwicklerInnen und Benutzerinnen benutzerdefiniert und parametrisiert erstellt werden. Damit können \emph{E-Mail}-Vorlagen dynamisch auch zur Laufzeit erstellt/modifiziert und gelöscht werden. Somit sind keine statischen \emph{E-Mail}-Vorlagen mehr nötig und alle damit verbunden Nachteile wie z.B. 
+Mit dem Vorlagenmanagement können \emph{E-Mail}-Vorlagen einerseits von den EntwicklerInnen und BenutzerInnen benutzerdefiniert und parametrisiert erstellt werden. Damit können \emph{E-Mail}-Vorlagen dynamisch auch zur Laufzeit erstellt, modifiziert und gelöscht werden. Es sind keine statischen \emph{E-Mail}-Vorlagen mehr nötig und alle damit verbunden Nachteile wie z.B. 
 \begin{itemize}
 	\item das neu Kompilieren und Einspielen bei Änderungen der \emph{E-Mail}-Vorlagen,
 	\item keine Möglichkeit für benutzerdefinierten Vorlagen oder
-	\item keine Möglichkeit der Nutzung von dynamischen Parametern.
+	\item keine Möglichkeit der Nutzung von dynamischen Parametern in den \emph{E-Mail}-Vorlagen
 \end{itemize}
 \ \newline
-Das Vorlagenmanagement kann auch in einem anderen Kontext verwendet werden, wobei diese Arbeit sich  ausschließlich mit der Verwendung des Vorlagenmanagement innerhalb des \emph{Mail}-Service beschäftigen wird. 
-
-TODO: Add graphic about system architecture and depdendencies to template management.
+eliminiert werden. Das Vorlagenmanagement kann auch in einem anderen Kontext verwendet werden, wobei diese Arbeit sich  ausschließlich mit der Verwendung des Vorlagenmanagement innerhalb des \emph{Mail}-Service beschäftigen wird. 
+\newline
+TODO: Add graphic about template management
+\newline
 
 \section{Die Rahmenbedingungen}
-Das Vorlagenmanagement wird in Java in Version 8 implementiert und wird sich an der \emph{Java-Enterprise-Edition 7 (JEE7)} Spezifikation orientieren, wobei folgende Teilspezifikationen angewendet werden.
+Das Vorlagenmanagement wird in Java in der Version 8 implementiert und wird sich an der \emph{Java-Enterprise-Edition 7 (JEE-7)} Spezifikation orientieren, wobei folgende Teilspezifikationen Anwendung finden.
 \begin{itemize}
-	\item \emph{JPA 2.2} ist die Spezifikation für die Persistenz.
+	\item \emph{JPA 2.1} ist die Spezifikation für die Persistenz.
 	\item \emph{CDI 1.1} ist die Spezifikation für kontextabhängige Injektion innerhalb einer \emph{JEE7}-Umgebung.
 	\item \emph{JSF 2.2} ist die Spezifikation der \emph{View}-Technologie. 
 \end{itemize}
 \ \newline
-Damit wird das Vorlagenmanagement mit den aktuellsten Standards implementiert und wird daher für die Zukunft gewappnet sein.
-
+Damit wird das Vorlagenmanagement mit den aktuellsten Standards implementiert und wird daher für die Zukunft gut gewappnet sein. Die Funktionalität des Vorlagenmanagement wird weitestgehend ohne die Verwendung spezieller Bibliotheken implementiert, wobei folgende Integrationen zur Verfügung gestellt werden.
+\begin{itemize}
+	\item \emph{CDI}-Integration:
+	\newline
+	Innerhalb eines \emph{CDI-Containers} werden Objekte kontextabhängig zur Verfügung gestellt.
+	\item \emph{JSF}-Integration:
+	\newline
+	Mit der \emph{View}-Technologie \emph{JSF} wird eine Webseite erstellt, über die die Vorlagen verwaltet werden können.
+	\item \emph{Typescript}-Integration:
+	\newline
+	Mit \emph{Typescript} wird ein \emph{Plugin} für den \emph{Rich-Editor CKEditor} implementiert, welches die Variablen für eine \emph{E-Mail}-Vorlage innerhalb des \emph{CKEditors} verwaltet.
+\end{itemize} 
+\ \newline
+Als Entwicklungsumgebung wird die \emph{IDE Intellij} verwendet, die eine bekannte Entwicklungsumgebung im \emph{Java}-Umfeld darstellt und ein Produkt des Unternehmens \emph{Jetbrains} mit Sitz in Tschechien ist. Als Applikationsserver wird \emph{Wildfly 10.x}, vormals \emph{JbossAS} genannt, des Unternehmens  \emph{Redhat} verwendet, der ein zertifizierter \emph{JEE-7}-Server ist und somit alle benötigten Spezifikationen unterstützt.

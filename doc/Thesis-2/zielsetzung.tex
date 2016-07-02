@@ -1,6 +1,71 @@
 \chapter{Das Ziel des Projekts}
 \label{cha:Zielsetzung}
+Ziel dieses Projekts ist die Konzipierung und Umsetzung des Vorlagenmanagement für den \emph{Mail}-Service. Das Vorlagenmanagement stellt einen essentiellen Teil des \emph{Mail}-Service dar und wird auch über Anwendungsgrenzen hinweg verwendet werden. Die verschiedenen Anwendungen werden auch unterschiedlichen Laufzeitumgebungen betrieben.
+\begin{itemize}
+	\item\emph{IBM-Integration-Bus (IIB)}
+	\newline
+	ist ein proprietäres Produkt des Unternehmens IBM, für \emph{XML}-Konvertierungen und \emph{XML}-basierten Datenimport und -export.
+	\item\emph{Wildfly}
+	\newline
+	ist ein zertifizierter \emph{JEE-7} Applikationsserver des Unternehmens \emph{Redhat}.
+\end{itemize} 
+\ \newline
+Die verschiedenen Anwendungen von \emph{clevercure} sollen mit geringsten Aufwand in der Lage sein \emph{E-Mail}-Vorlagen zu verwenden bzw. \emph{E-Mails} auf Basis dieser Vorlagen zu erstellen und zu versenden. Dabei sollen die benötigten Abhängigkeiten der Anwendungen zu dem Vorlagenmanagement so klein wie möglich gehalten werden, sowie nur vorgegebene Schnittstellen verwendet werden.  
+\newline
+Wird eine \emph{E-Mail} aus einer Anwendung heraus auf Basis einer \emph{E-Mail}-Vorlage erstellt, so müssen dessen enthaltene Parameter beim Zeitpunkt des Erstellens aufgelöst und serialisiert werden, damit die \emph{E-Mail} mit denselben Daten zu jedem Zeitpunkt erneut versendet werden kann. Für die Anwendungen soll nicht ersichtlich sein wie die \emph{E-Mails} nach ihrer Erstellung versendet bzw. verwaltet werden. Grundlegend sollen die Anwendungen, die das Vorlagenmanagement verwenden, so geringe Abhängigkeiten wie möglich zum Vorlagenmanagement besitzen.
+
 \section{Die funktionalen Ziele}
+Für das Vorlagenmanagement wurden folgende funktionalen Anforderungen definiert.
+
+\paragraph{Die Persistenz der Vorlagen:}
+\ \newline
+Die Vorlagen sollen über Anwendungsgrenzen hinweg innerhalb einer Datenbank persistent gehalten werden. Da das Vorlagenmanagement vorerst exklusiv für den \emph{Mail}-Service verwendet wird, wird die Persistenz der Vorlagen innerhalb des \emph{Mail}-DB-Schema realisiert.
+
+\paragraph{Die Mehrsprachigkeit der Vorlagen:}
+\ \newline
+Die Vorlagen sollen in mehreren Sprachen erstellt und verwaltet werden können, wobei eine Sprache immer als Standardsprache zu definieren ist, auf die zurückgefallen wird, wenn die gewünschte Sprache nicht vorhanden ist.
+
+\paragraph{Die Mehrsprachigkeit der Vorlagenparameter:}
+\ \newline
+Die zur Verfügung stehenden Vorlagenparameter werden durch die EntwicklerInnen spezifiziert und stellen einen Titel und eine Beschreibung des Parameters zur Verfügung. Der Titel und die Beschreibung des Vorlagenparameters  sollen mehrsprachig zur Verfügung stehen, wobei als Standardsprache Englisch zu definieren ist.
+
+\paragraph{Die Parametrierbarkeit der Vorlagen:}
+\ \newline
+Die \emph{E-Mail}-Vorlagen werden für einen bestimmten \emph{Mail}-Typ definiert der einen bestimmten Kontext darstellt wie z.B.
+\begin{itemize}
+	\item Ein Benutzer wurde erstellt,
+	\item Der Zugang eines Benutzer wurde gesperrt oder
+	\item Das Passwort wurde zurückgesetzt.
+\end{itemize}
+\ \newline
+Für einen \emph{Mail}-Typ bzw. einen Kontext, in dem eine \emph{E-Mail}-Vorlage verwendet werden, sollen kontextabhängige Vorlagenparameter zur Verfügung stehen wie z.B.:
+\begin{itemize}
+	\item\emph{CURRENT\_USER} ist der Benutzer der die \emph{E-Mail} erstellt halt.
+	\item\emph{USER} ist der Benutzer, für den die \emph{E-Mail} bestimmt ist.
+\end{itemize}
+\ \newline
+Die EntwicklerInnen sollen für einen bestimmten Kontext in der Lage sein Parameter zu definieren. Die BenutzerInnen sollen innerhalb der definierten Menge von zur Verfügung stehenden Parametern frei wählen können und eine beliebige Anzahl der Parameter mit Wiederholungen der Parameter in der Vorlage verwenden dürfen.
+ 
+\paragraph{Die automatische Registrierung der spezifizierten Vorlagenparameter:}
+\ \newline
+Innerhalb einer \emph{CDI}-Umgebung sollen die spezifizierten Vorlagenparameter beim Start des \emph{CDI}-Containers automatisch aufgelöst und registriert werden. Dies ist über eine \emph{CDI-Extension} realisierbar.
+
+\paragraph{Die Verwaltung der Vorlagen über eine Webseite:}
+\ \newline
+Die Vorlagen sollen über eine Webseite verwaltbar sein, wobei eine Vorlage explizit freigegeben werden muss bevor diese Vorlage verwendet wird. Die Webseite soll mit der \emph{View}-Technologie \emph{JSF} implementiert werden. Über einen \emph{FacesConverter} soll die Vorlage von der \emph{View}-Repräsentation in die Repräsentation der verwendeten \emph{Template-Engine} überführt werden.
+\newline
+\newline
+Da die Vorlagen formatierbar sein sollen wie z.B.: Schriftart und Schriftstil, soll der \emph{Rich-Editor CKEditor} verwendet werden, da es für diesen \emph{Javascript} basierten \emph{Rich-Editor} bereits eine Integration in \emph{JSF} gibt, die von \emph{Primefaces-Extensions} zur Verfügung gestellt wird. 
 
 \section{Die technischen Ziele}
+Folgende Punkte wurden als technische Ziele definiert.
+\paragraph{Die Verwendung des Vorlagenmanagement in verschiedenen Umgebungen und Anwendungen}
+\ \newline
+Die Kernfunktionalität des Vorlagenmanagement soll ohne Verwendung spezieller Bibliotheken implementiert werden. Diese Funktionalitäten sollen in den verschiedenen Umgebungen wie z.B. einer \emph{CDI}-Umgebung integriert werden können. Innerhalb einer \emph{CDI}-Umgebung können die benötigten Ressourcen vorkonfiguriert und kontextabhängig über Injektion zur Verfügung gestellt werden.
+\newline
+\newline
+Das Vorlagenmanagement wird in mehreren Anwendungen verwendet, die jeweils unterschiedliche technische Anforderungen definieren, daher soll es jeweils eine eigene Integration pro Anwendung geben, die das Vorlagenmanagement und dessen zur Verfügung gestellten Funktionalitäten in die Anwendung integrieren.
 
+\paragraph{Die Komponentenorientierte Entwicklung}
+\ \newline
+Die einzelnen Softwarekomponenten des Vorlagenmanagement sollen so weit wie möglich unabhängig voneinander implementiert und über Schnittstellen aneinander gekoppelt werden. Damit soll die Modularität des Vorlagenmanagement gewährleistet werden, da es jeweils eigene In
