@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  2 JUL 2016 16:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  10 JUL 2016 17:29
 entering extended mode
 **./_DaBa.tex
 (_DaBa.tex
@@ -1381,30 +1381,30 @@ File: english.lbx 2015/12/22 v3.2 biblatex localization (PK/JW/AB)
 (anhang_a.aux) (messbox.aux))
 \openout1 = `_DaBa.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 18.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 17.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -1425,7 +1425,7 @@ ii"
 \everyMPtoPDFconversion=\toks38
 )
 \AtBeginShipoutBox=\box37
-Package hyperref Info: Link coloring OFF on input line 18.
+Package hyperref Info: Link coloring OFF on input line 17.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
@@ -1434,9 +1434,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count370
 )
-LaTeX Info: Redefining \ref on input line 18.
-LaTeX Info: Redefining \pageref on input line 18.
-LaTeX Info: Redefining \nameref on input line 18.
+LaTeX Info: Redefining \ref on input line 17.
+LaTeX Info: Redefining \pageref on input line 17.
+LaTeX Info: Redefining \nameref on input line 17.
 
 (_DaBa.out) (_DaBa.out)
 \@outlinefile=\write4
@@ -1455,54 +1455,54 @@ Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file '_DaBa.bbl' not found.
 
 No file _DaBa.bbl.
-Package biblatex Info: Reference section=0 on input line 18.
-Package biblatex Info: Reference segment=0 on input line 18.
+Package biblatex Info: Reference section=0 on input line 17.
+Package biblatex Info: Reference segment=0 on input line 17.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 50.
+(babel)             in language  on input line 49.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 49.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )<<ot1.cmap>>
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 50.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 49.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )<<oml.cmap>>
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 50.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 49.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )<<oms.cmap>><<omx.cmap>>
 LaTeX Font Info:    External font `cmex7' loaded for size
-(Font)              <6> on input line 50.
-LaTeX Font Info:    Try loading font information for U+msa on input line 50.
+(Font)              <6> on input line 49.
+LaTeX Font Info:    Try loading font information for U+msa on input line 49.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 50.
+LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1510,16 +1510,16 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <images/logo.pdf, id=180, 269.93045pt x 269.93045pt>
 File: images/logo.pdf Graphic file (type pdf)
  <use images/logo.pdf>
-Package pdftex.def Info: images/logo.pdf used on input line 50.
+Package pdftex.def Info: images/logo.pdf used on input line 49.
 (pdftex.def)             Requested size: 85.35805pt x 85.35826pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 
 [1
 
@@ -1527,43 +1527,43 @@ Package babel Info: Redefining ngerman shorthand "~
 
 {C:/Users/herzo/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./images/lo
 go.pdf>]
-LaTeX Font Info:    Try loading font information for T1+lmss on input line 50.
+LaTeX Font Info:    Try loading font information for T1+lmss on input line 49.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmss.fd"
 File: t1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 49.
 
 [2]
 Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 49.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 49.
+Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 50.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 50.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 51.
+(babel)             in language  on input line 50.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 51.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 51.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 51.
+(babel)             in language  on input line 50.
  [3
 
 ] (_DaBa.toc
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 111.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 111.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 111.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 97.
+(babel)             in language  on input line 111.
  [4
 
 ])
@@ -1571,13 +1571,13 @@ Package babel Info: Redefining ngerman shorthand "~
 \openout5 = `_DaBa.toc'.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 53.
  [5]
 \openout2 = `kurzfassung.aux'.
 
@@ -1588,13 +1588,13 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 53.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 53.
  [6
 
 
@@ -1608,13 +1608,13 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 55.
+(babel)             in language  on input line 54.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 55.
+(babel)             in language  on input line 54.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 55.
+(babel)             in language  on input line 54.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 55.
+(babel)             in language  on input line 54.
  [7
 
 
@@ -1685,13 +1685,13 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 40.
 [2])
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 61.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 61.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 61.
+(babel)             in language  on input line 60.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 61.
+(babel)             in language  on input line 60.
  [3]
 \openout2 = `zielsetzung.aux'.
 
@@ -1748,13 +1748,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--68
 
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 62.
+(babel)             in language  on input line 61.
  [6]
 \openout2 = `loesungskonzept.aux'.
 
@@ -1768,44 +1768,166 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 3.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 5.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 5.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 10.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 10.
+<images/20160710_template-logic-api.jpg, id=298, 515.67656pt x 240.14719pt>
+File: images/20160710_template-logic-api.jpg Graphic file (type jpg)
+
+<use images/20160710_template-logic-api.jpg>
+Package pdftex.def Info: images/20160710_template-logic-api.jpg used on input l
+ine 7.
+(pdftex.def)             Requested size: 376.44075pt x 175.30597pt.
+
+Overfull \hbox (16.44075pt too wide) in paragraph at lines 7--8
+ [][] 
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 11.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 11.
 Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 11.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 11.
+[7
+
+
+
+ <./images/20160710_template-logic-api.jpg>]
+Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 13.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 13.
+
+Underfull \hbox (badness 10000) in paragraph at lines 24--28
+
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 15.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 15.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 17.
+(babel)             in language  on input line 28.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 17.
+(babel)             in language  on input line 28.
+[8]
+Package hyperref Info: bookmark level for unknown program defaults to 0 on inpu
+t line 31.
+
+("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstlang1.
+sty"
+File: lstlang1.sty 2015/06/04 1.6 listings language file
+)
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 33.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+Package csquotes Info: Input encoding change on input line 33.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+Package csquotes Info: Input encoding change on input line 80.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 63.
+(babel)             in language  on input line 91.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 63.
+(babel)             in language  on input line 91.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 63.
+(babel)             in language  on input line 91.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 63.
- [7
+(babel)             in language  on input line 91.
+ [9]
+Overfull \hbox (6.16856pt too wide) in paragraph at lines 94--95
+\T1/lmr/m/n/10.95 Die Schnitt-stel-le \T1/lmr/m/it/10.95 Va-ria-ble-Re-sol-ver-
+Fac-to-ry \T1/lmr/m/n/10.95 spe-zi-fi-ziert wie Ob-jek-te der Schnitt-
+ []
 
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 95.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 95.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 95.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 95.
+[10]
+Package csquotes Info: Input encoding change on input line 100.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+Package csquotes Info: Input encoding change on input line 119.
 
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 134.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 134.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 134.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 134.
+ [11]
+Package csquotes Info: Input encoding change on input line 138.
 
-]
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+Underfull \hbox (badness 10000) in paragraph at lines 155--159
+
+ []
+
+Package csquotes Info: Input encoding change on input line 163.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 186.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 186.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 187.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 187.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 189.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 189.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 191.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 191.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 193.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 193.
+)
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 62.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 62.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 62.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 62.
+ [12]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 62.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 62.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 62.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 62.
+ [13]
 \openout2 = `realisierung.aux'.
 
  (realisierung.tex
@@ -1844,14 +1966,14 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 30.
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 64.
+(babel)             in language  on input line 63.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 64.
+(babel)             in language  on input line 63.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 64.
+(babel)             in language  on input line 63.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 64.
- [8
+(babel)             in language  on input line 63.
+ [14
 
 
 
@@ -1902,14 +2024,14 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 19.
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 65.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 65.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 65.
+(babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 65.
- [9
+(babel)             in language  on input line 64.
+ [15
 
 
 
@@ -1926,10 +2048,6 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 7.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 7.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 14.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
-File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 24.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1945,8 +2063,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 44.
 
-
-LaTeX Warning: Reference `sec:Windows' on page 10 undefined on input line 47.
+LaTeX Warning: Reference `sec:Windows' on page 16 undefined on input line 47.
 
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 62.
@@ -1956,7 +2073,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 62.
-[10
+[16
 
 
 
@@ -1967,41 +2084,41 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 78.
 
 
-LaTeX Warning: Reference `sec:MacOs' on page 11 undefined on input line 81.
+LaTeX Warning: Reference `sec:MacOs' on page 17 undefined on input line 81.
 
 )
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 70.
+(babel)             in language  on input line 69.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 70.
+(babel)             in language  on input line 69.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 70.
+(babel)             in language  on input line 69.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 70.
- [11]
+(babel)             in language  on input line 69.
+ [17]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 76.
+(babel)             in language  on input line 75.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 76.
+(babel)             in language  on input line 75.
 
 
-LaTeX Warning: Empty bibliography on input line 76.
+LaTeX Warning: Empty bibliography on input line 75.
 
 
-LaTeX Warning: Empty bibliography on input line 76.
+LaTeX Warning: Empty bibliography on input line 75.
 
 
-LaTeX Warning: Empty bibliography on input line 76.
+LaTeX Warning: Empty bibliography on input line 75.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 78.
+(babel)             in language  on input line 77.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 78.
+(babel)             in language  on input line 77.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 78.
+(babel)             in language  on input line 77.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 78.
-[12
+(babel)             in language  on input line 77.
+[18
 
 
 ]
@@ -2009,26 +2126,26 @@ Package babel Info: Redefining ngerman shorthand "~
 
  (messbox.tex)
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 78.
+(babel)             in language  on input line 77.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 78.
+(babel)             in language  on input line 77.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 78.
+(babel)             in language  on input line 77.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 78.
- [13
+(babel)             in language  on input line 77.
+ [19
 
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 80.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 80.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 79.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
  (_DaBa.aux (kurzfassung.aux) (abstract.aux)
 (einleitung.aux) (zielsetzung.aux) (loesungskonzept.aux) (realisierung.aux)
 (analyse.aux) (anhang_a.aux) (messbox.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 80.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 80.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
 Package rerunfilecheck Info: File `_DaBa.out' has not changed.
-(rerunfilecheck)             Checksum: F3C1F6EFF57CED12845736C3B1174D63;8884.
+(rerunfilecheck)             Checksum: 2D2338FDEA0A195966C3D94C5FDFF3B0;8884.
 
 
 LaTeX Warning: There were undefined references.
@@ -2038,13 +2155,13 @@ Package logreq Info: Writing requests to '_DaBa.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 22711 strings out of 493634
- 348393 string characters out of 3141315
- 876596 words of memory out of 3000000
- 25467 multiletter control sequences out of 15000+200000
- 105353 words of font info for 72 fonts, out of 3000000 for 9000
+ 23282 strings out of 493634
+ 355510 string characters out of 3141315
+ 1014461 words of memory out of 3000000
+ 25914 multiletter control sequences out of 15000+200000
+ 115601 words of font info for 75 fonts, out of 3000000 for 9000
  1029 hyphenation exceptions out of 8191
- 67i,12n,96p,1097b,1802s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 67i,12n,96p,1172b,1802s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program F
 iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Program Files (x86)/
 MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files (x86)/MiKTeX 2.9/font
@@ -2067,9 +2184,9 @@ Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)
 /MiKTeX 2.9/fonts/type1/public/lm/lmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/
 fonts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
 /public/lm/lmtt9.pfb>
-Output written on _DaBa.pdf (20 pages, 514680 bytes).
+Output written on _DaBa.pdf (26 pages, 588986 bytes).
 PDF statistics:
- 449 PDF objects out of 1000 (max. 8388607)
- 76 named destinations out of 1000 (max. 500000)
- 370 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 591 PDF objects out of 1000 (max. 8388607)
+ 179 named destinations out of 1000 (max. 500000)
+ 375 words of extra memory for PDF output out of 10000 (max. 10000000)
 
