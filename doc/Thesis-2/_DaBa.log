@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  10 JUL 2016 17:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  11 JUL 2016 21:40
 entering extended mode
 **./_DaBa.tex
 (_DaBa.tex
@@ -1507,7 +1507,7 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 49.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<images/logo.pdf, id=180, 269.93045pt x 269.93045pt>
+<images/logo.pdf, id=160, 269.93045pt x 269.93045pt>
 File: images/logo.pdf Graphic file (type pdf)
  <use images/logo.pdf>
 Package pdftex.def Info: images/logo.pdf used on input line 49.
@@ -1557,13 +1557,13 @@ Package babel Info: Redefining ngerman shorthand "~
 
 ] (_DaBa.toc
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 111.
+(babel)             in language  on input line 117.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 111.
+(babel)             in language  on input line 117.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 111.
+(babel)             in language  on input line 117.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 111.
+(babel)             in language  on input line 117.
  [4
 
 ])
@@ -1768,7 +1768,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 3.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 3.
-<images/20160710_template-logic-api.jpg, id=298, 515.67656pt x 240.14719pt>
+<images/20160710_template-logic-api.jpg, id=273, 515.67656pt x 240.14719pt>
 File: images/20160710_template-logic-api.jpg Graphic file (type jpg)
 
 <use images/20160710_template-logic-api.jpg>
@@ -1878,37 +1878,81 @@ Package csquotes Info: Input encoding change on input line 138.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 )
-Underfull \hbox (badness 10000) in paragraph at lines 155--159
+Underfull \hbox (badness 10000) in paragraph at lines 155--160
 
  []
 
-Package csquotes Info: Input encoding change on input line 163.
+
+Underfull \hbox (badness 10000) in paragraph at lines 155--160
+
+ []
+
+
+Overfull \hbox (3.75378pt too wide) in paragraph at lines 161--162
+[]\T1/lmr/m/n/10.95 Die Me-tho-den \T1/lmr/m/it/10.95 String re-pla-ce-Ex-pres-
+si-on(...) \T1/lmr/m/n/10.95 und \T1/lmr/m/it/10.95 String re-pla-ce-Cu-stom(..
+.)
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 162.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 162.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 162.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 162.
+[12]
+Package csquotes Info: Input encoding change on input line 167.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+Overfull \hbox (1.13269pt too wide) in paragraph at lines 190--194
+\T1/lmr/m/n/10.95 Par-sen ei-ner Vor-la-ge ent-hält. Ei-ne An-for-de-rung ist e
+s die \T1/lmr/m/it/10.95 E-Mail\T1/lmr/m/n/10.95 -Nachrichten
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 190--194
+
+ []
+
+Package csquotes Info: Input encoding change on input line 194.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 )
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 200.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 200.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 200.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 200.
+ [13]
+Package csquotes Info: Input encoding change on input line 205.
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 253.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 253.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 253.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 253.
+ [14]
+Underfull \hbox (badness 10000) in paragraph at lines 254--259
 
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 186.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 186.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 187.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 187.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 189.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 189.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 191.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 191.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 193.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 193.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 262--266
+
+ []
+
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 62.
@@ -1918,16 +1962,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 62.
- [12]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 62.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 62.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 62.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 62.
- [13]
+ [15]
 \openout2 = `realisierung.aux'.
 
  (realisierung.tex
@@ -1973,7 +2008,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 63.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 63.
- [14
+ [16
 
 
 
@@ -2031,7 +2066,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 64.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 64.
- [15
+ [17
 
 
 
@@ -2063,7 +2098,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 44.
 
-LaTeX Warning: Reference `sec:Windows' on page 16 undefined on input line 47.
+LaTeX Warning: Reference `sec:Windows' on page 18 undefined on input line 47.
 
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 62.
@@ -2073,7 +2108,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 62.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 62.
-[16
+[18
 
 
 
@@ -2084,7 +2119,7 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 78.
 
 
-LaTeX Warning: Reference `sec:MacOs' on page 17 undefined on input line 81.
+LaTeX Warning: Reference `sec:MacOs' on page 19 undefined on input line 81.
 
 )
 Package babel Info: Redefining ngerman shorthand "|
@@ -2095,7 +2130,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 69.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 69.
- [17]
+ [19]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 75.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2118,7 +2153,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 77.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 77.
-[18
+[20
 
 
 ]
@@ -2133,7 +2168,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 77.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 77.
- [19
+ [21
 
 
 ]
@@ -2145,7 +2180,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 79.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 79.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 79.
 Package rerunfilecheck Info: File `_DaBa.out' has not changed.
-(rerunfilecheck)             Checksum: 2D2338FDEA0A195966C3D94C5FDFF3B0;8884.
+(rerunfilecheck)             Checksum: 7B8C5197E3C8CE2C3CE04EBAE7785535;7555.
 
 
 LaTeX Warning: There were undefined references.
@@ -2155,10 +2190,10 @@ Package logreq Info: Writing requests to '_DaBa.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 23282 strings out of 493634
- 355510 string characters out of 3141315
- 1014461 words of memory out of 3000000
- 25914 multiletter control sequences out of 15000+200000
+ 23359 strings out of 493634
+ 356852 string characters out of 3141315
+ 1014755 words of memory out of 3000000
+ 25943 multiletter control sequences out of 15000+200000
  115601 words of font info for 75 fonts, out of 3000000 for 9000
  1029 hyphenation exceptions out of 8191
  67i,12n,96p,1172b,1802s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -2184,9 +2219,9 @@ Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy10.pfb><C:/Program Files (x86)
 /MiKTeX 2.9/fonts/type1/public/lm/lmsy9.pfb><C:/Program Files (x86)/MiKTeX 2.9/
 fonts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1
 /public/lm/lmtt9.pfb>
-Output written on _DaBa.pdf (26 pages, 588986 bytes).
+Output written on _DaBa.pdf (28 pages, 596921 bytes).
 PDF statistics:
- 591 PDF objects out of 1000 (max. 8388607)
- 179 named destinations out of 1000 (max. 500000)
- 375 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 633 PDF objects out of 1000 (max. 8388607)
+ 223 named destinations out of 1000 (max. 500000)
+ 335 words of extra memory for PDF output out of 10000 (max. 10000000)
 

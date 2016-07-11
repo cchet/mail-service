@@ -128,7 +128,7 @@ public interface VariableResolverFactoryProvider extends Serializable {
 \ \newline
 Auch diese Schnittstelle wurde als \emph{FunctionalInterface} implementiert um Implementierungen über \emph{Lambda}-Funktionen oder Methodenreferenzen zur Verfügung stellen zu können.
 
-\subsubsection{Die Schnittstelle \emph{VariableResolverFactoryProvider}}
+\subsubsection{Die Schnittstelle \emph{VariableContractResolverCtx}}
 \label{sec:variableResolverFactoryProvider}
 Die Schnittstelle \emph{VariableContractResolverCtx} spezifiziert den Kontext, welcher bei der Auflösung der Variablen zur Verfügung steht. Dieser Kontext stellt alle Daten bereit, die bei der Auflösung der Variable für eine Vorlage nötig sind. Es ist auch möglich Benutzerdaten im Kontext zu setzten, die bei der Auflösung der Variablen angewendet werden können, wodurch das Auflösen der Variablen unabhängig von der Handhabung der Vorlage ist.
 
@@ -156,6 +156,10 @@ Die Schnittstelle \emph{TemplateProcessor} spezifiziert wie die Vorlagen behande
 \newline
 \newline
 Eine konkrete Implementierung dieser Schnittstelle ist eine Implementierung für eine bestimmte \emph{Template-Engine}, da die in der Vorlage verwendeten \emph{Expressions} spezifisch für die verwendete \emph{Template-Engine} sind.
+\newline 
+
+Die Methoden \emph{String replaceExpression(...)} und \emph{String replaceCustom(...)} verwenden als Formalparameter für den benötigte Konverter ein \emph{FunctionalInterface} namens \emph{Function}, welches von der Sprache \emph{Java} bereitgestellt wird. Dadurch ist das Spezifizieren einer eigenen Schnittstelle für die Konvertierung nicht mehr nötig. Der Konverter kann über eine \emph{Lambda}-Funktion oder Methodenreferenz bereitgestellt werden. 
+\newpage
 
 \begin{program}[h]
 \caption{TemplateProcessor.java}
@@ -180,15 +184,92 @@ public interface TemplateProcessor {
 }
 \end{JavaCode}
 \end{program}
-\ \newline 
-Die Methoden \emph{String replaceExpression(...)} und \emph{String replaceCustom(...)} verwenden als Formalparameter für den benötigte Konverter ein \emph{FunctionalInterface} namens \emph{Function}, welches von der Sprache \emph{Java} bereitgestellt wird. Dadurch ist das Spezifizieren einer eigenen Schnittstelle für die Konvertierung nicht mehr nötig. Der Konverter kann über eine \emph{Lambda}-Funktion oder Methodenreferenz bereitgestellt werden. 
 
-\section{Die Spezifikation der Vorlagenintegration}
-\subsection{Das Vorlagen-\emph{Management} in Typescript und Javascript}
+\subsubsection{Die Schnittstelle \emph{TemplateDataJsonBuilder}}
+\label{sec:templateDataJsonBuilder}
+Die Schnittstelle \emph{TemplateDataJsonBuilder} spezifiziert die Signatur des konkreten \emph{Builders}, der das \emph{JSON}-Objekt erstellt, welches die Daten für das Parsen einer Vorlage enthält. Eine Anforderung ist es die \emph{E-Mail}-Nachrichten persistent zu halten, wobei der Inhalt der \emph{E-Mail}-Nachricht unveränderbar sein soll. Daher wurde entschieden dass die Daten einer \emph{E-Mail}-Nachricht in Form eines \emph{JSON}-String persistent gehalten werden. Mit diesem \emph{JSON}-Objekt kann die korrespondierende Vorlage zu jedem Zeitpunkt mit demselben Resultat erneut geparst werden.
+\newline
+\newline
+Es wurde hier das \emph{Builder}-Muster angewendet, da sich die Initialisierung des \emph{Builders} mit einer \emph{Fluent-API}, wie bei einem \emph{Builder} üblich, sehr gut abbilden lässt. Folgendes Beispiel soll illustrieren, wie ein \emph{Builder} initialisiert werden kann.
+\begin{JavaCode}[numbers=none]
+builder.withLocalization(locale, zoneId)
+       .withTemplate(templateString)
+       .withUserData(userDataMap)
+       .toJsonModel();
+\end{JavaCode}
+\newpage
 
-\subsection{Das Vorlagen-\emph{Management} in CDI}
+\begin{program}[h]
+\caption{TemplateDataJsonBuilder.java}
+\label{prog:templateDataJsonBuilder}
+\begin{JavaCode}
+public interface TemplateDataJsonBuilder<I, 
+                         M extends AbstractTemplateMetadata<I>, 
+	                     B extends TemplateDataJsonBuilder> 
+						 extends Serializable {
 
-\subsection{Das Vorlagen-\emph{Management} in JSF}
+    B withWeakMode();
 
-\subsection{Das Vorlagen-\emph{Management} in \emph{Mail}-DB-Schema}
+    B withLocalization(Locale locale,
+                       ZoneId zoneId);
+
+    B withUserData(Map<Object, Object> userData);
+
+    B withStrictMode();
+
+    B withVariableResolverFactoryFactory(VariableResolverFactoryProvider factory);
+
+    B withVariableResolverFactory(VariableResolverFactory factory);
+
+    B withTemplate(M metadata);
+
+    void end();
+
+    B addVariable(VariableContract contract,
+                  Object value);
+
+    B addVariableResolver(VariableContract contract,
+                          VariableResolver resolver);
+
+    TemplateRequestJson toJsonModel();
+
+    String toJsonString();
+
+    Map<String, Object> toJsonMap();
+}
+\end{JavaCode}
+\end{program}
+
+\subsubsection{Die abstrakte Klasse \emph{AbstractTemplateMetadata}}
+\label{sec:abstractTemplateMetadata}
+Die abstrakte Klasse \emph{AbstractTemplateMetadata} implementiert die Logik, die von allen konkreten Implementierungen dieser abstrakten Klasse genutzt werden kann. Die Metadaten wie
+\begin{enumerate}
+	\item die Anzahl der gültigen Variablen in der Vorlage,
+	\item die Anzahl der ungültigen Variablen in der Vorlage,
+	\item die Zeichenlänge der Vorlage,
+	\item die eindeutige \emph{Id} der Vorlage,
+	\item die Version der Vorlage und
+	\item die Vorlage selbst
+\end{enumerate}
+\ \newline
+werden in dieser Klasse abgebildet. Diese Metadaten sind unabhängig der verwendeten \emph{Template-Engine} und eine konkrete Implementierung für eine \emph{Template-Engine} kann zusätzliche Metadaten definieren. Die Metadaten werden einmalig ermittelt und sind über die Lebenszeit des Objekts unveränderbar. 
+\newline
+\newline
+\emph{TODO: Add reference to appendix for this source}
+
+\subsubsection{Die abstrakte Klasse \emph{AbstractTemplateDataJsonBuilder}}
+\label{sec:abstractTemplateDataJsonBuilder}
+Die abstrakte Klasse \emph{AbstractTemplateDataJsonBuilder} implementiert die Logik, die von allen konkreten Implementierungen genutzt werden kann. Sie stellt ebenso Hilfsmethoden bereit, die Variablen innerhalb der Vorlage finden, validieren und auflösen. Das resultierende \emph{JSON}-Objekt des \emph{Builders} ist spezifiziert, jedoch nicht die Struktur der Daten für die beinhalteten Variablen. Diese Daten sind spezifisch für die verwendete \emph{Template-Engine}. Es könnten auch noch andere Daten für das Verarbeiten einer Vorlage von Nöten sein, die in der spezifizierten \emph{JSON}-Objekt nicht vorhanden sind. 
+\newline 
+\newline  
+\emph{TODO: Add reference to appendix for this source}
+
+%\section{Die Spezifikation der Vorlagenintegration}
+%\subsection{Das Vorlagen-\emph{Management} in Typescript und Javascript}
+
+%\subsection{Das Vorlagen-\emph{Management} in CDI}
+
+%\subsection{Das Vorlagen-\emph{Management} in JSF}
+
+%\subsection{Das Vorlagen-\emph{Management} in \emph{Mail}-DB-Schema}
 
