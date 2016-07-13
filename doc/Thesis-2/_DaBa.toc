@@ -22,114 +22,110 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.2}Das Vorlagenmanagement f\IeC {\"u}r den \emph {Mail}-Service}{2}{section.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.3}Die Rahmenbedingungen}{2}{section.1.3}
+\contentsline {section}{\numberline {1.3}Die Rahmenbedingungen}{3}{section.1.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Das Ziel des Projekts}{4}{chapter.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2.1}Die funktionalen Ziele}{5}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Die Persistenz der Vorlagen:}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Die Persistenz der Vorlagen}{5}{subsection.2.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Die Mehrsprachigkeit der Vorlagen:}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.2}Die Mehrsprachigkeit der Vorlagen}{5}{subsection.2.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Die Mehrsprachigkeit der Vorlagenparameter:}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.3}Die Variablen f\IeC {\"u}r die Vorlagen}{5}{subsection.2.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Die Parametrierbarkeit der Vorlagen:}{5}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.4}Die Mehrsprachigkeit der Variablen}{6}{subsection.2.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Die automatische Registrierung der spezifizierten Vorlagenparameter:}{6}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.5}Die automatische Registrierung der Variablen}{6}{subsection.2.1.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Die Verwaltung der Vorlagen \IeC {\"u}ber eine Webseite:}{6}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.6}Die Verwaltung der Vorlagen \IeC {\"u}ber eine Webseite}{6}{subsection.2.1.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}Die technischen Ziele}{6}{section.2.2}
+\contentsline {section}{\numberline {2.2}Die technischen Ziele}{7}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Die Verwendung des Vorlagenmanagement in verschiedenen Umgebungen und Anwendungen}{6}{section.2.2}
+\contentsline {chapter}{\numberline {3}Das L\IeC {\"o}sungskonzept}{8}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Die Komponentenorientierte Entwicklung}{6}{section.2.2}
+\contentsline {section}{\numberline {3.1}Die Spezifikation der Vorlagen-\emph {API}}{8}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Das L\IeC {\"o}sungskonzept}{7}{chapter.3}
+\contentsline {subsection}{\numberline {3.1.1}Die Schnittstellen und abstrakten Klassen}{9}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Die Spezifikation der Vorlagen-\emph {API}}{7}{section.3.1}
+\contentsline {subsubsection}{Die Schnittstelle \emph {VariableContract}}{9}{Item.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}Die Schnittstellen und abstrakten Klassen}{8}{subsection.3.1.1}
+\contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolver}}{12}{lstnumber.-3.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {VariableContract}}{8}{Item.4}
+\contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolverFactory}}{12}{lstnumber.-4.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolver}}{10}{lstnumber.-1.34}
+\contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolverFactoryProvider}}{13}{lstnumber.-5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolverFactory}}{10}{lstnumber.-2.6}
+\contentsline {subsubsection}{Die Schnittstelle \emph {VariableContractResolverCtx}}{13}{lstnumber.-6.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolverFactoryProvider}}{11}{lstnumber.-3.6}
+\contentsline {subsubsection}{Die Schnittstelle \emph {TemplateProcessor}}{14}{lstnumber.-7.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {VariableContractResolverCtx}}{11}{lstnumber.-4.6}
+\contentsline {subsubsection}{Die Schnittstelle \emph {TemplateDataJsonBuilder}}{15}{lstnumber.-8.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {TemplateProcessor}}{12}{lstnumber.-5.11}
+\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateMetadata}}{16}{lstnumber.-10.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {TemplateDataJsonBuilder}}{13}{lstnumber.-6.17}
+\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateDataJsonBuilder}}{17}{Item.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateMetadata}}{14}{lstnumber.-8.34}
+\contentsline {chapter}{\numberline {4}Die Realisierung}{18}{chapter.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateDataJsonBuilder}}{15}{Item.10}
+\contentsline {section}{\numberline {4.1}Die Implementierung der Spezifikationen}{18}{section.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Die Realisierung}{16}{chapter.4}
+\contentsline {subsection}{\numberline {4.1.1}Die Implementierung f\IeC {\"u}r \emph {CKEditor}}{18}{subsection.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Die Implementierung der Spezifikationen}{16}{section.4.1}
+\contentsline {subsubsection}{Das \emph {CKEDitor-Plugin} in Typescript}{18}{subsection.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.1}Die Implementierung f\IeC {\"u}r \emph {CKEditor}}{16}{subsection.4.1.1}
+\contentsline {subsubsection}{Die Variablenrepr\IeC {\"a}sentation in JSON}{18}{subsection.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Das \emph {CKEDitor-Plugin} in Typescript}{16}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Die Implementierungen f\IeC {\"u}r CDI}{18}{subsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Variablenrepr\IeC {\"a}sentation in JSON}{16}{subsection.4.1.1}
+\contentsline {subsubsection}{Die Vorlagen-\emph {Management CDI-Extension}}{18}{subsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Die Implementierungen f\IeC {\"u}r CDI}{16}{subsection.4.1.2}
+\contentsline {subsubsection}{Der Vorlagen-\emph {Management CDI-Producer}}{18}{subsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Vorlagen-\emph {Management CDI-Extension}}{16}{subsection.4.1.2}
+\contentsline {subsubsection}{Die Vorlagen-\emph {Management CDI-Utility}}{18}{subsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Der Vorlagen-\emph {Management CDI-Producer}}{16}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Die Implementierungen f\IeC {\"u}r JSF}{18}{subsection.4.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Vorlagen-\emph {Management CDI-Utility}}{16}{subsection.4.1.2}
+\contentsline {subsubsection}{Der Vorlagen \emph {FacesConverter}}{18}{subsection.4.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Die Implementierungen f\IeC {\"u}r JSF}{16}{subsection.4.1.3}
+\contentsline {subsubsection}{Die \emph {Primefaces-Extension} f\IeC {\"u}r den \emph {CKEditor}}{18}{subsection.4.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Der Vorlagen \emph {FacesConverter}}{16}{subsection.4.1.3}
+\contentsline {section}{\numberline {4.2}Die Vorlagen-\emph {Management} Beispielanwendung}{18}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die \emph {Primefaces-Extension} f\IeC {\"u}r den \emph {CKEditor}}{16}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.2.1}Die Verwendung in einem \emph {Business}-Service}{18}{subsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Die Vorlagen-\emph {Management} Beispielanwendung}{16}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.2}Die Verwendung in der \emph {Web}-Oberfl\IeC {\"a}che}{18}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Die Verwendung in einem \emph {Business}-Service}{16}{subsection.4.2.1}
+\contentsline {chapter}{\numberline {5}Die Analyse und Tests}{19}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Die Verwendung in der \emph {Web}-Oberfl\IeC {\"a}che}{16}{subsection.4.2.2}
+\contentsline {section}{\numberline {5.1}Die Tests}{19}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Die Analyse und Tests}{17}{chapter.5}
+\contentsline {subsection}{\numberline {5.1.1}Die Tests der \emph {Services}}{19}{subsection.5.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Die Tests}{17}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.2}Die Tests der \emph {CDI}-Integration}{19}{subsection.5.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}Die Tests der \emph {Services}}{17}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.3}Die Tests der \emph {Web}-Oberfl\IeC {\"a}che}{19}{subsection.5.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Die Tests der \emph {CDI}-Integration}{17}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Die erreichten Ziele}{19}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Die Tests der \emph {Web}-Oberfl\IeC {\"a}che}{17}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.2.1}Das Vorlagen-\emph {Management \IeC {\"u}ber \emph {CKEditor}}}{19}{subsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Die erreichten Ziele}{17}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.2}Das Vorlagen-\emph {Management} in einer \emph {CDI}-Umgebung}{19}{subsection.5.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Das Vorlagen-\emph {Management \IeC {\"u}ber \emph {CKEditor}}}{17}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.3}Das Vorlagen-\emph {Management} in JSF}{19}{subsection.5.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Das Vorlagen-\emph {Management} in einer \emph {CDI}-Umgebung}{17}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.4}Das Vorlagen-\emph {Management} in \emph {Mail}-DB-Schema}{19}{subsection.5.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.3}Das Vorlagen-\emph {Management} in JSF}{17}{subsection.5.2.3}
+\contentsline {chapter}{\numberline {A}Technische Informationen}{20}{appendix.A}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.4}Das Vorlagen-\emph {Management} in \emph {Mail}-DB-Schema}{17}{subsection.5.2.4}
+\contentsline {section}{\numberline {A.1}Aktuelle Dateiversionen}{20}{section.A.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {A}Technische Informationen}{18}{appendix.A}
+\contentsline {section}{\numberline {A.2}Details zur aktuellen Version}{20}{section.A.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.1}Aktuelle Dateiversionen}{18}{section.A.1}
+\contentsline {subsection}{\numberline {A.2.1}Allgemeine technische Voraussetzungen}{20}{subsection.A.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {A.2}Details zur aktuellen Version}{18}{section.A.2}
+\contentsline {subsection}{\numberline {A.2.2}Verwendung unter Windows}{20}{subsection.A.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {A.2.1}Allgemeine technische Voraussetzungen}{18}{subsection.A.2.1}
+\contentsline {subsection}{\numberline {A.2.3}Verwendung unter Mac~OS}{21}{subsection.A.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {A.2.2}Verwendung unter Windows}{18}{subsection.A.2.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {A.2.3}Verwendung unter Mac~OS}{19}{subsection.A.2.3}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Quellenverzeichnis}{20}{appendix*.6}
+\contentsline {chapter}{Quellenverzeichnis}{22}{appendix*.6}

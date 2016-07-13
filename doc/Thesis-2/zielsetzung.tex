@@ -1,71 +1,74 @@
 \chapter{Das Ziel des Projekts}
 \label{cha:Zielsetzung}
-Ziel dieses Projekts ist die Konzipierung und Umsetzung des Vorlagenmanagement für den \emph{Mail}-Service. Das Vorlagenmanagement stellt einen essentiellen Teil des \emph{Mail}-Service dar und wird auch über Anwendungsgrenzen hinweg verwendet werden. Die verschiedenen Anwendungen werden auch unterschiedlichen Laufzeitumgebungen betrieben.
+Ziel ist es die Softwarekomponente Vorlagenmanagement für den \emph{Mail}-Service zu implementieren, mit dem \emph{E-Mail}-Vorlagen erstellt und verwaltet werden können. Das Vorlagenmanagement stellt einen essentiellen Teil des \emph{Mail}-Service dar und wird auch von mehreren Anwendungen verwendet werden. Die verschiedenen Anwendungen, die das Vorlagenmanagement verwenden, sind ebenfalls in Java implementiert, werden aber in unterschiedlichen Laufzeitumgebungen betrieben wie z.B.:
 \begin{itemize}
 	\item\emph{IBM-Integration-Bus (IIB)}
 	\newline
-	ist ein proprietäres Produkt des Unternehmens IBM, für \emph{XML}-Konvertierungen und \emph{XML}-basierten Datenimport und -export.
+	ist ein proprietäres Produkt des Unternehmens \emph{IBM}, für \emph{XML}-Konvertierungen und den \emph{XML}-basierten Datenimport und Datenexport.
 	\item\emph{Wildfly}
 	\newline
 	ist ein zertifizierter \emph{JEE-7} Applikationsserver des Unternehmens \emph{Redhat}.
 \end{itemize} 
 \ \newline
-Die verschiedenen Anwendungen von \emph{clevercure} sollen mit geringsten Aufwand in der Lage sein \emph{E-Mail}-Vorlagen zu verwenden bzw. \emph{E-Mails} auf Basis dieser Vorlagen zu erstellen und zu versenden. Dabei sollen die benötigten Abhängigkeiten der Anwendungen zu dem Vorlagenmanagement so klein wie möglich gehalten werden, sowie nur vorgegebene Schnittstellen verwendet werden.  
-\newline
-Wird eine \emph{E-Mail} aus einer Anwendung heraus auf Basis einer \emph{E-Mail}-Vorlage erstellt, so müssen dessen enthaltene Parameter beim Zeitpunkt des Erstellens aufgelöst und serialisiert werden, damit die \emph{E-Mail} mit denselben Daten zu jedem Zeitpunkt erneut versendet werden kann. Für die Anwendungen soll nicht ersichtlich sein wie die \emph{E-Mails} nach ihrer Erstellung versendet bzw. verwaltet werden. Grundlegend sollen die Anwendungen, die das Vorlagenmanagement verwenden, so geringe Abhängigkeiten wie möglich zum Vorlagenmanagement besitzen.
+Die verschiedenen Anwendungen von \emph{clevercure} sollen mit geringsten Aufwand in der Lage sein \emph{E-Mail}-Vorlagen zu verwenden und \emph{E-Mail}-Nachrichten auf Basis dieser \emph{E-Mail}-Vorlagen zu erstellen. Dabei sollen die Abhängigkeiten der Anwendungen zu dem Vorlagenmanagement so gering wie möglich gehalten werden, sowie nur vorgegebene Schnittstellen verwendet werden. Wird eine \emph{E-Mail}-Nachricht von einer Anwendung auf Basis einer \emph{E-Mail}-Vorlage erstellt, so müssen dessen enthaltene Variablen beim Zeitpunkt des Erstellens der \emph{E-Mail}-Nachricht aufgelöst und serialisiert werden, damit die \emph{E-Mail}-Nachricht mit denselben Daten zu jedem Zeitpunkt erneut versendet werden kann. Für die Anwendungen soll nicht erkennbar sein wie die \emph{E-Mail}-Nachrichten nach ihrer Erstellung weiter verwendet werden. Zurzeit interagieren die Anwendungen direkt mit der Datenbank anstatt von ihr abstrahiert zu sein und sind daher stark an die bestehende Anwendung \emph{CCMail} gekoppelt bzw. an dessen Datenbankschema.
+\newpage
 
 \section{Die funktionalen Ziele}
-Für das Vorlagenmanagement wurden folgende funktionalen Anforderungen definiert.
+Für das Vorlagenmanagement wurden die folgende funktionalen Anforderungen definiert.
 
-\paragraph{Die Persistenz der Vorlagen:}
-\ \newline
-Die Vorlagen sollen über Anwendungsgrenzen hinweg innerhalb einer Datenbank persistent gehalten werden. Da das Vorlagenmanagement vorerst exklusiv für den \emph{Mail}-Service verwendet wird, wird die Persistenz der Vorlagen innerhalb des \emph{Mail}-DB-Schema realisiert.
+\subsection{Die Persistenz der Vorlagen}
+Die Vorlagen müssen innerhalb einer Datenbank persistent gehalten werden. Da das Vorlagenmanagement vorerst exklusiv für den \emph{Mail}-Service verwendet wird, soll die Persistenz der Vorlagen innerhalb des \emph{Mail}-DB-Schema realisiert werden. Die persistenten Vorlagen müssen versioniert werden, damit diese von anderen Entitäten referenziert werden können, ohne dass die Gefahr besteht, dass sich die referenzierte Vorlage geändert hat, wodurch die Konsistenz verloren gehen würde. Persistente Vorlagen müssen explizit freigegeben werden bevor diese verwendet dürfen. Nach einer Freigabe darf die Vorlage nicht mehr geändert werden.
 
-\paragraph{Die Mehrsprachigkeit der Vorlagen:}
-\ \newline
-Die Vorlagen sollen in mehreren Sprachen erstellt und verwaltet werden können, wobei eine Sprache immer als Standardsprache zu definieren ist, auf die zurückgefallen wird, wenn die gewünschte Sprache nicht vorhanden ist.
+\subsection{Die Mehrsprachigkeit der Vorlagen}
+Die Vorlagen müssen in mehreren Sprachen erstellt und verwaltet werden können, wobei eine Sprache als Standardsprache zu definieren ist und es für diese Sprache immer einen Eintrag geben muss. Auf die Standardsprache wird zurückgegriffen, wenn es für eine angeforderte Sprache keinen Eintrag gibt. Somit ist gewährleistet, dass immer eine Vorlage für jede angeforderte Sprache zur Verfügung steht. Es ist nicht erforderlich dass dieselben Variablen über alle definierte Sprachen gleich sind. Es dürfen in einer Vorlage, die in mehreren Sprachen definiert wurde, eine unterschiedliche Anzahl oder unterschiedliche Variablen definiert sein.
 
-\paragraph{Die Mehrsprachigkeit der Vorlagenparameter:}
-\ \newline
-Die zur Verfügung stehenden Vorlagenparameter werden durch die EntwicklerInnen spezifiziert und stellen einen Titel und eine Beschreibung des Parameters zur Verfügung. Der Titel und die Beschreibung des Vorlagenparameters  sollen mehrsprachig zur Verfügung stehen, wobei als Standardsprache Englisch zu definieren ist.
-
-\paragraph{Die Parametrierbarkeit der Vorlagen:}
-\ \newline
-Die \emph{E-Mail}-Vorlagen werden für einen bestimmten \emph{Mail}-Typ definiert der einen bestimmten Kontext darstellt wie z.B.
+\subsection{Die Variablen für die Vorlagen}
+Die Vorlagen werden für einen bestimmten \emph{Mail}-Typ definiert, der einen bestimmten Kontext darstellt wie z.B.
 \begin{itemize}
-	\item Ein Benutzer wurde erstellt,
-	\item Der Zugang eines Benutzer wurde gesperrt oder
-	\item Das Passwort wurde zurückgesetzt.
+	\item ein Benutzer wurde erstellt,
+	\item eine Bestellung wurde erstellt oder
+	\item ein Dokument wurde hochgeladen.
 \end{itemize}
 \ \newline
-Für einen \emph{Mail}-Typ bzw. einen Kontext, in dem eine \emph{E-Mail}-Vorlage verwendet werden, sollen kontextabhängige Vorlagenparameter zur Verfügung stehen wie z.B.:
+Für die Vorlagen, die für einen bestimmten \emph{Mail}-Typ erstellt werden können, sollen Variablen zur Verfügung gestellt werden können wie z.B.:
 \begin{itemize}
-	\item\emph{CURRENT\_USER} ist der Benutzer der die \emph{E-Mail} erstellt halt.
-	\item\emph{USER} ist der Benutzer, für den die \emph{E-Mail} bestimmt ist.
+	\item \emph{CURRENT\_USER} ist der Benutzer, der die \emph{E-Mail}-Nachricht erstellt halt.
+	\item \emph{ORDER\_NUMBER} ist die Nummer der erstellten Bestellung.
 \end{itemize}
-\ \newline
-Die EntwicklerInnen sollen für einen bestimmten Kontext in der Lage sein Parameter zu definieren. Die BenutzerInnen sollen innerhalb der definierten Menge von zur Verfügung stehenden Parametern frei wählen können und eine beliebige Anzahl der Parameter mit Wiederholungen der Parameter in der Vorlage verwenden dürfen.
- 
-\paragraph{Die automatische Registrierung der spezifizierten Vorlagenparameter:}
-\ \newline
-Innerhalb einer \emph{CDI}-Umgebung sollen die spezifizierten Vorlagenparameter beim Start des \emph{CDI}-Containers automatisch aufgelöst und registriert werden. Dies ist über eine \emph{CDI-Extension} realisierbar.
+Die EntwicklerInnen sollen für einen bestimmten \emph{Mail}-Typ in der Lage sein einfach Variablen zu definieren, die von den BenutzerInnen beim Erstellen einer Vorlage für den korrespondierenden \emph{Mail-Typ} frei verwendet werden können. Die Variablen sollen auch global definiert werden können und in allen Vorlagen anwendbar sein. Die EntwicklerInnen müssen in der Lage sein die Menge der zur Verfügung stehenden Variablen zur Laufzeit aufgrund von bestimmten Zuständen verändern zu können. Die Menge der Variablen könnte z.B von Berechtigungen der BenutzerInnen abhängig sein.
 
-\paragraph{Die Verwaltung der Vorlagen über eine Webseite:}
+\subsection{Die Mehrsprachigkeit der Variablen}
+Die zur Verfügung stehenden Variablen werden durch die EntwicklerInnen statisch definiert und müssen einen Titel und eine Beschreibung einer Variable zur Verfügung stellen. Der Titel und die Beschreibung der Variable müssen mehrsprachig zur Verfügung stehen, wobei als Standardsprache Englisch zu verwenden ist.
+
+\subsection{Die automatische Registrierung der Variablen}
+Innerhalb einer \emph{CDI}-Umgebung sollen die definierten Variablen beim Start des \emph{CDI-Containers} automatisch gefunden und registriert werden. Die automatische Registrierung der Variablen soll mit einer \emph{CDI-Extension (javax.inject.spi.Extension)} realisiert werden, die beim Start des \emph{CDI-Containers}, die Variablen findet und registriert. Mit einer automatischen Registrierung der variablen wird erreicht das neu definierte Variablen automatisch gefunden und registriert werden und somit nicht manuell registriert werden müssen, was ein gewisses Risiko in sich birgt, wenn Variablen vergessen werden.
+
+\subsection{Die Verwaltung der Vorlagen über eine Webseite}
+Die Vorlagen sollen über eine Webseite verwaltet werden können. Die Webseite soll mit der \emph{View}-Technologie \emph{JSF} implementiert werden. Über einen \emph{FacesConverter} soll die Vorlage von der \emph{View}-Repräsentation in die Repräsentation der verwendeten \emph{Template-Engine} konvertiert werden.
+\newline
+Das folgende \emph{HTML-Markup} enthält die Variablen in ihrer \emph{HTML}-Repräsentation wie sie in dem \emph{Rich-Editor} verwendet wird.
+\begin{program}[h]
+	\caption{\emph{HTML-Markup} einer Vorlage}
+	\label{prog:html-markup-vorlage}
+	\begin{HtmlCode}[numbers=none]
+	<p>Das ist eine Variable:</p>
+	<span class="variable" title="Beschreibung" data-variable="VAR_1">
+		Variable 1
+	</span>
+	\end{HtmlCode}
+\end{program}
 \ \newline
-Die Vorlagen sollen über eine Webseite verwaltbar sein, wobei eine Vorlage explizit freigegeben werden muss bevor diese Vorlage verwendet wird. Die Webseite soll mit der \emph{View}-Technologie \emph{JSF} implementiert werden. Über einen \emph{FacesConverter} soll die Vorlage von der \emph{View}-Repräsentation in die Repräsentation der verwendeten \emph{Template-Engine} überführt werden.
-\newline
-\newline
-Da die Vorlagen formatierbar sein sollen wie z.B.: Schriftart und Schriftstil, soll der \emph{Rich-Editor CKEditor} verwendet werden, da es für diesen \emph{Javascript} basierten \emph{Rich-Editor} bereits eine Integration in \emph{JSF} gibt, die von \emph{Primefaces-Extensions} zur Verfügung gestellt wird. 
+Der folgende Text stellt das konvertierte \emph{HTML-Markup} aus \ref{prog:html-markup-vorlage} als \emph{Freemarker-Template} dar.
+\begin{program}[h]
+	\caption{Konvertiertes \emph{HTML-Markup} als \emph{Freemarker-Template}}
+	\label{prog:html-markup-vorlage}
+	\begin{GenericCode}[numbers=none]
+	<p>Das ist eine Variable:</p>
+	${module.core.VariableHolder["VAR_1"]!("Variable nicht gefunden")}
+	\end{GenericCode}
+\end{program}
+\ \newline
+Als \emph{Rich-Editor} soll \emph{CKEditor} verwendet werden, da es für diesen \emph{Rich-Editor} von \emph{primefaces-extensions} eine \emph{JSF}-Integartion in Form einer \emph{JSF}-Komponente zur Verfügung gestellt wird. Dadurch entfällt die Integration eines reinen \emph{Javascript Rich-Editors} der keine Integartion in den Lebenszyklus von \emph{JSF} hat und daher auch keine \emph{AJAX}-Events unterstützt, die von \emph{JSF} verarbeitet werden können.
 
 \section{Die technischen Ziele}
-Folgende Punkte wurden als technische Ziele definiert.
-\paragraph{Die Verwendung des Vorlagenmanagement in verschiedenen Umgebungen und Anwendungen}
-\ \newline
-Die Kernfunktionalität des Vorlagenmanagement soll ohne Verwendung spezieller Bibliotheken implementiert werden. Diese Funktionalitäten sollen in den verschiedenen Umgebungen wie z.B. einer \emph{CDI}-Umgebung integriert werden können. Innerhalb einer \emph{CDI}-Umgebung können die benötigten Ressourcen vorkonfiguriert und kontextabhängig über Injektion zur Verfügung gestellt werden.
-\newline
-\newline
-Das Vorlagenmanagement wird in mehreren Anwendungen verwendet, die jeweils unterschiedliche technische Anforderungen definieren, daher soll es jeweils eine eigene Integration pro Anwendung geben, die das Vorlagenmanagement und dessen zur Verfügung gestellten Funktionalitäten in die Anwendung integrieren.
-
-\paragraph{Die Komponentenorientierte Entwicklung}
-\ \newline
-Die einzelnen Softwarekomponenten des Vorlagenmanagement sollen so weit wie möglich unabhängig voneinander implementiert und über Schnittstellen aneinander gekoppelt werden. Damit soll die Modularität des Vorlagenmanagement gewährleistet werden, da es jeweils eigene In
+Als technische Ziele wurde die Implementierung in \emph{Java 8}, die Integration in eine \emph{CDI}-Umgebung und die komponentenorientierte Entwicklungdes Vorlagenmanagements definiert. Das Templatemanagement soll als eine eingeständige Softwarekomponenete implementiert werden, die ohne großen Aufwand in anderen Anwendungen verwendet werden kann, sofern die technischen Vorraussetzunge wie die Version von \emph{Java} und die Unterstützung der verwendeten Bibliotheken, erfüllt sind. Das Vorlagenmanagement soll Schnittstellen definieren, die Funktionalitäten des Vorlagenmanagements nach außen offenlegen, ohne dass die Anwendungen in Berüghrung mit konkreten Implementierungen kommen.

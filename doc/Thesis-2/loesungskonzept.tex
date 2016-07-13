@@ -1,5 +1,16 @@
 \chapter{Das Lösungskonzept}
 \label{cha:Lösungskonzept}
+In diesem Kapitel wird der Lösungsansatz und die Spezifikation des Vorlagenmanagements erörtert. Bei der Spezifikation handelt es sich um Schnittstellen und abstrakte Klassen, die die Struktur des Vorlagenmanagements definieren. Diese Schnittstellen und abstrakten erlauben es Implementierungen für verschiedene \emph{Template-Engines} wie z.B
+\begin{itemize}
+	\item \emph{Freemakrer},
+	\item \emph{Velocity} oder
+	\item \emph{Thymeleaf}
+\end{itemize}
+zur Verfügung zu stellen, wobei die abstrakten Klassen die gemeinsam nutzbare Logik implementieren, die über die verschiedenen \emph{Template-Engines} verwendet werden kann.
+\newline
+\newline
+Mit der Möglichkeit die verschiedensten \emph{Template-Engines} verwenden zu können, wird erreicht dass das Vorlagenmanagement sehr flexibel ist. Bei dem Wechsel zu einer anderen \emph{Template-Engine} müssen nur die \emph{Expressions} einer Vorlagen in die \emph{Template-Engine} spezifischen \emph{Expressions} umgewandelt werden. 
+
 \section{Die Spezifikation der Vorlagen-\emph{API}}
 Dieses Kapitel behandelt die erstellten Spezifikationen des Vorlagenmanagements. Auf Basis dieser Spezifikationen wird das Vorlagenmanagement und die Integrationen in die verschiedenen Umgebungen realisiert. Die erstellte Spezifikationen sind frei von Abhängigkeiten auf konkrete Implementierungen jeglicher Art. Sie haben nur Abhängigkeiten auf andere Spezifikationen wie die \emph{JEE-7} Spezifikation.
 \begin{figure}[h]
