@@ -52,9 +52,11 @@ Das folgende \emph{HTML-Markup} enthält die Variablen in ihrer \emph{HTML}-Repr
 	\label{prog:html-markup-vorlage}
 	\begin{HtmlCode}[numbers=none]
 	<p>Das ist eine Variable:</p>
-	<span class="variable" title="Beschreibung" data-variable="VAR_1">
-		Variable 1
-	</span>
+	<p>
+		<span class="variable" title="Beschreibung" data-variable="VAR_1">
+			Variable 1
+		</span>
+	</p>
 	\end{HtmlCode}
 \end{program}
 \ \newline
@@ -64,7 +66,9 @@ Der folgende Text stellt das konvertierte \emph{HTML-Markup} aus \ref{prog:html-
 	\label{prog:html-markup-vorlage}
 	\begin{GenericCode}[numbers=none]
 	<p>Das ist eine Variable:</p>
-	${module.core.VariableHolder["VAR_1"]!("Variable nicht gefunden")}
+	<p>
+		${module.core.VariableHolder["VAR_1"]!("Variable nicht gefunden")}
+	</p>	
 	\end{GenericCode}
 \end{program}
 \ \newline

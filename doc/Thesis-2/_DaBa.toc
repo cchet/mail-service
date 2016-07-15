@@ -44,13 +44,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Das L\IeC {\"o}sungskonzept}{8}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Die Spezifikation der Vorlagen-\emph {API}}{8}{section.3.1}
+\contentsline {section}{\numberline {3.1}Die Spezifikation des Vorlagenmanagements}{9}{section.3.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.1}Die Schnittstellen und abstrakten Klassen}{9}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Die Schnittstelle \emph {VariableContract}}{9}{Item.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolver}}{12}{lstnumber.-3.34}
+\contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolver}}{11}{lstnumber.-3.34}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolverFactory}}{12}{lstnumber.-4.6}
 \defcounter {refsection}{0}\relax 
@@ -60,11 +60,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Die Schnittstelle \emph {TemplateProcessor}}{14}{lstnumber.-7.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {TemplateDataJsonBuilder}}{15}{lstnumber.-8.17}
+\contentsline {subsubsection}{Die Schnittstelle \emph {TemplateDataJsonBuilder}}{15}{lstnumber.-9.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateMetadata}}{16}{lstnumber.-10.34}
+\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateMetadata}}{17}{lstnumber.-11.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateDataJsonBuilder}}{17}{Item.10}
+\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateDataJsonBuilder}}{17}{lstnumber.-11.34}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Die Realisierung}{18}{chapter.4}
 \defcounter {refsection}{0}\relax 
