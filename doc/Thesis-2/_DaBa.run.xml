@@ -82,7 +82,7 @@
       <file>_DaBa.bcf</file>
     </requires>
     <requires type="editable">
-      <file>literatur.bib</file>
+      <file>literatur</file>
     </requires>
   </external>
 </requests>
