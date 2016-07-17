@@ -44,6 +44,7 @@ Die zur Verfügung stehenden Variablen werden durch die EntwicklerInnen statisch
 Innerhalb einer \emph{CDI}-Umgebung sollen die definierten Variablen beim Start des \emph{CDI-Containers} automatisch gefunden und registriert werden. Die automatische Registrierung der Variablen soll mit einer \emph{CDI-Extension (javax.inject.spi.Extension)} realisiert werden, die beim Start des \emph{CDI-Containers}, die Variablen findet und registriert. Mit einer automatischen Registrierung der variablen wird erreicht das neu definierte Variablen automatisch gefunden und registriert werden und somit nicht manuell registriert werden müssen, was ein gewisses Risiko in sich birgt, wenn Variablen vergessen werden.
 
 \subsection{Die Verwaltung der Vorlagen über eine Webseite}
+\label{sec:sub-template-management-website}
 Die Vorlagen sollen über eine Webseite verwaltet werden können. Die Webseite soll mit der \emph{View}-Technologie \emph{JSF} implementiert werden. Über einen \emph{FacesConverter} soll die Vorlage von der \emph{View}-Repräsentation in die Repräsentation der verwendeten \emph{Template-Engine} konvertiert werden.
 \newline
 Das folgende \emph{HTML-Markup} enthält die Variablen in ihrer \emph{HTML}-Repräsentation wie sie in dem \emph{Rich-Editor} verwendet wird.

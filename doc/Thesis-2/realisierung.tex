@@ -69,33 +69,134 @@ variablesHandler.convertVariables(
 Die Funktion \emph{convertVariables} definiert den Formalparameter \emph{converter} als eine sogenannte \emph{Arrow}-Funktion, die einer \emph{Lambda}-Funktion in \emph{Java} ähnelt. Mit der \emph{Arrow}-Funktion wird die Signatur der Funktion für die Konvertierung vorgegeben. Ebenfalls wird für den Formalparameter \emph{converter} eine Standardimplementierung definiert, die verwendet wird, sollte der Formalparameter \emph{converter} bei Aktivierung der Funktion \emph{convertVariables} nicht gesetzt sein. Der Typ \emph{any[]} ist vergleichbar mit dem Datentyp \emph{var} aus \emph{.NET} und gibt an das jeder Datentyp als Typ des zurückgelieferten \emph{Arrays} erlaubt ist.
 \newline
 \newline
-Das \emph{CKEditor Plugin} ist für die Integration der Variablen in den \emph{Editor} verantwortlich, wobei die zur Verfügung stehenden über einen Dialog ausgewählt werden können. Ausgewählte variablen werden an die aktuelle Position des Cursors im \emph{Editor} in Form einer \emph{HTML Tags} platziert.
+Das \emph{CKEditor Plugin} ist für die Integration der Variablen in den \emph{Editor} verantwortlich, wobei die zur Verfügung stehenden Variablen über einen Dialog ausgewählt werden können. Ausgewählte Variablen werden an die aktuelle Position des Cursors im \emph{Editor} in Form eines \emph{HTML Tags} platziert. Die \emph{HTML}-Repräsentation der Variable ist gekoppelt an den \emph{FacesConverter}, da der Konverter die Variable von dessen \emph{HTML}-Repräsentation in die \emph{Template-Engine} spezifische Repräsentation überführen können muss. Die verwendete \emph{Template-Engine} ist für diese \emph{Plugin} irrelevant, da die Variablen immer in dieselbe \emph{JSON}-Repräsentation überführt werden.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{ckeditor-toolbar-open-dialog}
+\caption{\emph{CKEditor Toolbar Button} zum Öffnen des Dialogs}
+\label{fig:ckeditor-toolbar-opne-dialog}
+\end{figure}
+\ \newline
+Der in Abbildung \ref{fig:ckeditor-toolbar-opne-dialog} rot markierte \emph{Toolbar Button} wird über das \emph{Plugin} registriert und in die \emph{Toolbar} eingefügt. Über diesen \emph{Button} kann der Dialog für die Variablenauswahl geöffnet werden.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=1]{ckeditor-dialog-insert-variable}
 \caption{\emph{CKEditor} Dialog für die Variablenauswahl}
-\label{fig:clevermail-rest-tcc}
+\label{fig:ckeditor-dialog-insert-variable}
 \end{figure}
+\ \newline
+Über den Dialog aus Abbildung \ref{fig:ckeditor-dialog-insert-variable} stehen alle im \emph{CKEditor Plugin} registrierten Variablen zur Auswahl. Der Titel der Variable ist der Text in der Auswahlkomponente und die Beschreibung der ausgewählten Variable wird unterhalb der Auswahlkomponente angezeigt. Durch klick auf den \emph{Button OK} wird die Variable in die Vorlage eingefügt und der Dialog wird geschlossen.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{ckeditor-example-template}
+\caption{Beispiel einer Vorlage im \emph{CKEditor}}
+\label{fig:ckeditor-example-template}
+\end{figure}
+\ \newline 
+Die Abbildung \ref{fig:ckeditor-example-template} illustriert eine Vorlage innerhalb des \emph{CKEditors}, wobei die eingefügten Variablen besonders hervorgehoben werden. Der Titel der Variable stellt den Name für den \emph{HTML Tag} bereit und die Beschreibung dessen Titel. Die eingefügten \emph{HTML Tags} dürfen nicht verändert werden, daher ist das \emph{Drag and Drop} und das Selektieren dieses eingefügten Texts nicht erlaubt, da dadurch die \emph{HTML}-Repräsentation der Variablen zerstört werden könnte und die Variablen nicht mehr vom \emph{FacesConverter} gefunden werden können.
+\newpage
 
 \subsubsection{Die Variablenrepräsentation in JSON}
+Die Variablen werden als Objekte der Schnittstelle \emph{VariableContract} definiert, und müssen für den \emph{CKEditor} in eine \emph{JSON}-Repräsentation überführt werden, die als \emph{Javascript}-Objekte innerhalb des \emph{CKEDitor Plugins} verwendet werden können. Dafür wurde in \emph{Typescript} eine Schnittstelle definiert, die die Struktur einer Variable innerhalb von \emph{Typescript} und \emph{Javascript} spezifiziert.
+\begin{JsCode}[numbers=none]
+module cc.variables {
+
+    export interface VariableMapping {
+    
+        id:string,
+        
+        displayName:string,
+        
+        info:string,
+    }
+    
+    ...
+}
+\end{JsCode}
+\ \newline
+Diese Schnittstelle ist Teil des Moduls \emph{cc.variables} und wird mit dem Schlüsselwort \emph{export} nach außen offengelegt und kann über den vollständigen Pfad \emph{cc.variables.VariableMapping} innerhalb von \emph{Typescript} und \emph{Javascript} verwendet werden. Mit dieser Schnittstelle werden Typinformationen für \emph{Typescript} bereitgestellt, die innerhalb von \emph{Typescript} die Typsicherheit sicherstellen. Solange die Variablen, die registriert werden, dieser Spezifikation folgen, können innerhalb des \emph{Typescipt} Quelltext keine Fehler auftreten.
+\newline
+\newline
+Der Quelltext aus \ref{prog:variableJson} zeigt die Implementierung der \emph{JSON}-Spezifikation in \emph{Java}, die dazu verwendet wird, die Variablen in den spezifizierten \emph{JSON-String} zu überführen. Damit wird sichergestellt, das die Variablen in \emph{Typescript} korrekt registriert werden. Als \emph{JSON Provider} wird die Bibliothek \emph{fasterxml-jackson-json} vormals \emph{jackson-json} verwendet, die es erlaubt mit Annotationen deklarativ Attribute und/oder Methoden einer Klasse auf \emph{JSON}-Attribute abzubilden. Durch diesen deklarativen Ansatz sind die Attribute und/oder die Methoden einer Klasse entkoppelt von der \emph{JSON}-Spezifikation und können daher abgeändert werden. Nur ein Ändern des Datentyps eines Attributes könnte zu Problemen führen. 
+\begin{program}
+\caption{VariableJson.java}
+\label{prog:variableJson}
+\begin{JsCode}
+@JsonTypeName(value = "variable-json")
+public class VariableJson extends AbstractJsonModel {
+
+    private String id;
+    private String label;
+    private String info;
+
+    public VariableJson() {
+    }
+
+    public VariableJson(String id,
+                        String displayName,
+                        String tooltip) {
+        this.id = id;
+        this.label = displayName;
+        this.info = tooltip;
+    }
+
+    @JsonGetter("id")
+    public String getId() {
+        return id;
+    }
+
+    @JsonSetter("id")
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @JsonGetter("displayName")
+    public String getLabel() {
+        return label;
+    }
+
+    @JsonSetter("displayName")
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    @JsonGetter("info")
+    public String getInfo() {
+        return info;
+    }
+
+    @JsonSetter("info")
+    public void setInfo(String info) {
+        this.info = info;
+    }
+    
+}
+\end{JsCode}
+\end{program}
+\ \newpage
 
 
 \subsection{Die Implementierungen für CDI}
+Folgender Abschnitt behandelt die Implementierungen für die Integration in einen \emph{CDI Container}. Wie in Abschnitt \ref{sec:sub-template-management-cdi} beschrieben sollen die Variablen automatisch beim start des \emph{CDI Containers} registriert werden, sowie Vorlagenmanagementressourcen kontextabhängig über eine \emph{CDI Producer} zur Verfügung gestellt werden können. 
 
 \subsubsection{Die Vorlagen-\emph{Management CDI-Extension}}
+Um die Variablen beim Start des \emph{CDI Containers} automatisch registrieren zu können, wurde die Klasse \emph{TemplateCdiExtension} implementiert, die in der Lage ist auf Lebenszyklus \emph{Events} des \emph{CDI -Containers} zu reagieren und die Schnittstelle \emph{javax.enterprise.inject.spi.Extension} implementiert. Die Schnittstelle \emph{javax.enterprise.inject.spi.Extension} enthält keine abstrakten Methoden und markiert ein Implementierung als eine \emph{CDI-Extension}. Die \emph{CDI-Extension} wird als \emph{Service Provider} über die Schnittstelle \emph{Service-Provider-Interface} (SPI) registriert, in dem man eine folgende Datei erstellt \emph{META-INF/services/javax.enterprise.inject.spi.Extension}, die eine normale Textdatei ist und den vollständigen Namen der \emph{Service Provider} Implementierung enthält. 
+\newline
+\newline
+Eine \emph{CDI-Extension} ist eigentlich kein \emph{CDI-Bean}, da ein Objekt der \emph{CDI-Extension} bereits beim Start des \emph{CDI-Containers} erstellt wird und somit existiert bevor der \emph{CDI-Container} vollständig gestartet ist. Trotzdem ist eine Extension injizierbar und kann in \emph{CDI-Beans} verwendet werden.
+ 
+%\subsubsection{Der Vorlagen-\emph{Management CDI-Producer}}
 
-\subsubsection{Der Vorlagen-\emph{Management CDI-Producer}}
-
-\subsubsection{Die Vorlagen-\emph{Management CDI-Utility}}
-
-
-\subsection{Die Implementierungen für JSF}
-
-\subsubsection{Der Vorlagen \emph{FacesConverter}}
-
-\subsubsection{Die \emph{Primefaces-Extension} für den \emph{CKEditor}}
+%\subsubsection{Die Vorlagen-\emph{Management CDI-Utility}}
 
 
-\section{Die Vorlagen-\emph{Management} Beispielanwendung}
-\subsection{Die Verwendung in einem \emph{Business}-Service}
-\subsection{Die Verwendung in der \emph{Web}-Oberfläche}
+%\subsection{Die Implementierungen für JSF}
+
+%\subsubsection{Der Vorlagen \emph{FacesConverter}}
+
+%\subsubsection{Die \emph{Primefaces-Extension} für den \emph{CKEditor}}
+
+
+%\section{Die Vorlagen-\emph{Management} Beispielanwendung}
+%\subsection{Die Verwendung in einem \emph{Business}-Service}
+%\subsection{Die Verwendung in der \emph{Web}-Oberfläche}
