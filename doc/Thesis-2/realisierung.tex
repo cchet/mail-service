@@ -183,9 +183,64 @@ Folgender Abschnitt behandelt die Implementierungen für die Integration in eine
 Um die Variablen beim Start des \emph{CDI Containers} automatisch registrieren zu können, wurde die Klasse \emph{TemplateCdiExtension} implementiert, die in der Lage ist auf Lebenszyklus \emph{Events} des \emph{CDI -Containers} zu reagieren und die Schnittstelle \emph{javax.enterprise.inject.spi.Extension} implementiert. Die Schnittstelle \emph{javax.enterprise.inject.spi.Extension} enthält keine abstrakten Methoden und markiert ein Implementierung als eine \emph{CDI-Extension}. Die \emph{CDI-Extension} wird als \emph{Service Provider} über die Schnittstelle \emph{Service-Provider-Interface} (SPI) registriert, in dem man eine folgende Datei erstellt \emph{META-INF/services/javax.enterprise.inject.spi.Extension}, die eine normale Textdatei ist und den vollständigen Namen der \emph{Service Provider} Implementierung enthält. 
 \newline
 \newline
-Eine \emph{CDI-Extension} ist eigentlich kein \emph{CDI-Bean}, da ein Objekt der \emph{CDI-Extension} bereits beim Start des \emph{CDI-Containers} erstellt wird und somit existiert bevor der \emph{CDI-Container} vollständig gestartet ist. Trotzdem ist eine Extension injizierbar und kann in \emph{CDI-Beans} verwendet werden.
- 
-%\subsubsection{Der Vorlagen-\emph{Management CDI-Producer}}
+Eine \emph{CDI-Extension} ist eigentlich kein \emph{CDI-Bean}, da ein Objekt der \emph{CDI-Extension} bereits beim Start des \emph{CDI-Containers} erstellt wird und somit existiert bevor der \emph{CDI-Container} vollständig gestartet ist. Trotzdem ist eine Extension injizierbar und kann in \emph{CDI-Beans} injiziert werden. Das erstellte Objekt der \emph{CDI-Extension} existiert über die Lebensdauer des \emph{CDI-Containers}.
+\newline
+\newline
+Das folgende Programm \ref{prog:templateCdiExtension} ist ein Auszug aus der implementierten \emph{CDI-Extension} und illustriert die \emph{CDI-Container} Lebenszyklus \emph{Events}, auf die reagiert wird. Über diese \emph{CDI-Extension} werden alle implementierten Typen der Schnittstelle \emph{VariableContract} gefunden und im Objekt der Klasse \emph{TemplateConfiguration} registriert. Vorerst werden nur Implementierungen der Schnittstelle \emph{VariableContract} unterstützt, die mit dem \emph{Java}-Typ \emph{enum} implementiert wurden. Ebenfalls werden alle implementierten Typen der Schnittstelle \emph{VariableResolverFactory} gefunden und in der \emph{Extension} registriert. Die \emph{Extension} wird  in der später vorgestellten \emph{CDI-Producer} Implementierung verwendet um Objekte der Schnittstelle \emph{VariableResolverFactory} zu produzieren. 
+\newpage
+\begin{program}[h]
+\caption{TemplateCdiExtension.java}
+\label{prog:templateCdiExtension}
+\begin{JavaCode}
+public class TemplateCdiExtension implements Extension,
+        Serializable {
+
+    private TemplateConfiguration templateConfig;
+    private Map<Class<? extends VariableContract>, 
+                Class<VariableResolverFactory>>  
+            variableResolverFactoryMap;
+    private Logger log;
+
+    void beforeBeanDiscovery(@Observes BeforeBeanDiscovery bbd) {
+        // Init class members
+    }
+
+    <T> void processCdiVariableContracts
+             (@Observes @WithAnnotations({BaseName.class, 
+                                          CdiVariableContract.class}) 
+             ProcessAnnotatedType<T> pat) {
+       // Collect VariableContract implementations (Enum type only)
+    }
+
+    <T> void processVariableResolverFactoryFactories
+        (@Observes @WithAnnotations(CdiVariableResolverFactory.class) 
+        ProcessAnnotatedType<T> pat) {
+        // Collect VariableResolverFactory implementations
+    }
+
+    // Getter for class members templateConfig
+    // and variableResolverFactoryMap
+}
+\end{JavaCode}
+\end{program}
+\begin{itemize}
+	\item\emph{void beforeBeanDiscovery(...)} 
+	\newline
+	ist die \emph{Observer}-Methode, die einmalig aufgerufen wird bevor mit dem Auffinden der \emph{CDI-Beans} begonnen wird. In dieser Methode wird die Extension initialisiert.
+	\item\emph{<T> void processCdiVariableContracts(...)} 
+	\newline
+	ist die \emph{Observer}-Methode, die für jeden annotierten Typ aufgerufen wird, der mit den Annotationen \emph{@BaseName} und \emph{@CdiVariableContract} annotiert ist.
+	\item\emph{<T> void processVariableResolverFactoryFactories(...)} 
+	\newline
+	ist die \emph{Observer}-Methode, die für jeden annotierten Typ, der mit den Annotationen \emph{@CdiVariableResolverFactory} annotiert ist.
+\end{itemize}
+\ \newpage
+
+\subsubsection{Der Vorlagen-\emph{Management CDI-Producer}}
+Es wurde ein \emph{CDI-Producer} \emph{TemplateResourceProducer} implementiert, mit dem kontextabhängig Ressourcen des Vorlagenmanagements produziert werden können. Diese Klasse ist die einzige Klasse, die sich die \emph{Extension TemplateCdiExtension} injizieren lässt. Es kann nicht verhindert werden, dass andere \emph{CDI-Beans} sich diese Klasse injizieren, da eine \emph{CDI-Extension}-Klasse öffentlich sein muss. Da mehrere \emph{Template-Engines} unterstützt werden sollen, wurde die Annotation \emph{@FreemarkerTemplate} eingeführt, die einen Injektionspunkt für \emph{Freemarker} qualifiziert. Ebenso wurde jeweils eine \emph{Producer}-Methode für den Qualifizierer \emph{@Default} implementiert, über die Standardimplementierung bereitgestellt wird, die in der derzeitigen Implementierung Implementierungen die den Qualifizierer \emph{@FreemarkerTemplate} produziert. Damit ist sichergestellt, dass keine \emph{UnsatisfiedResolutionException} auftreten kann, obwohl man sich der Gefahr aussetzt, dass die produzierte \emph{@Default} Implementierung nicht die gewollte ist.
+\newline
+\newline
+
 
 %\subsubsection{Die Vorlagen-\emph{Management CDI-Utility}}
 
