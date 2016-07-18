@@ -179,7 +179,7 @@ public class VariableJson extends AbstractJsonModel {
 \subsection{Die Implementierungen für CDI}
 Folgender Abschnitt behandelt die Implementierungen für die Integration in einen \emph{CDI Container}. Wie in Abschnitt \ref{sec:sub-template-management-cdi} beschrieben sollen die Variablen automatisch beim start des \emph{CDI Containers} registriert werden, sowie Vorlagenmanagementressourcen kontextabhängig über eine \emph{CDI Producer} zur Verfügung gestellt werden können. 
 
-\subsubsection{Die Vorlagen-\emph{Management CDI-Extension}}
+\subsubsection{Die Vorlagenmanagement \emph{CDI-Extension}}
 Um die Variablen beim Start des \emph{CDI Containers} automatisch registrieren zu können, wurde die Klasse \emph{TemplateCdiExtension} implementiert, die in der Lage ist auf Lebenszyklus \emph{Events} des \emph{CDI -Containers} zu reagieren und die Schnittstelle \emph{javax.enterprise.inject.spi.Extension} implementiert. Die Schnittstelle \emph{javax.enterprise.inject.spi.Extension} enthält keine abstrakten Methoden und markiert ein Implementierung als eine \emph{CDI-Extension}. Die \emph{CDI-Extension} wird als \emph{Service Provider} über die Schnittstelle \emph{Service-Provider-Interface} (SPI) registriert, in dem man eine folgende Datei erstellt \emph{META-INF/services/javax.enterprise.inject.spi.Extension}, die eine normale Textdatei ist und den vollständigen Namen der \emph{Service Provider} Implementierung enthält. 
 \newline
 \newline
@@ -232,22 +232,83 @@ public class TemplateCdiExtension implements Extension,
 	ist die \emph{Observer}-Methode, die für jeden annotierten Typ aufgerufen wird, der mit den Annotationen \emph{@BaseName} und \emph{@CdiVariableContract} annotiert ist.
 	\item\emph{<T> void processVariableResolverFactoryFactories(...)} 
 	\newline
-	ist die \emph{Observer}-Methode, die für jeden annotierten Typ, der mit den Annotationen \emph{@CdiVariableResolverFactory} annotiert ist.
+	ist die \emph{Observer}-Methode, die für jeden annotierten Typ aufgerufen wird, der mit den Annotationen \emph{@CdiVariableResolverFactory} annotiert ist.
 \end{itemize}
 \ \newpage
 
-\subsubsection{Der Vorlagen-\emph{Management CDI-Producer}}
+\subsubsection{Der Vorlagenmanagement \emph{CDI-Producer}}
 Es wurde ein \emph{CDI-Producer} \emph{TemplateResourceProducer} implementiert, mit dem kontextabhängig Ressourcen des Vorlagenmanagements produziert werden können. Diese Klasse ist die einzige Klasse, die sich die \emph{Extension TemplateCdiExtension} injizieren lässt. Es kann nicht verhindert werden, dass andere \emph{CDI-Beans} sich diese Klasse injizieren, da eine \emph{CDI-Extension}-Klasse öffentlich sein muss. Da mehrere \emph{Template-Engines} unterstützt werden sollen, wurde die Annotation \emph{@FreemarkerTemplate} eingeführt, die einen Injektionspunkt für \emph{Freemarker} qualifiziert. Ebenso wurde jeweils eine \emph{Producer}-Methode für den Qualifizierer \emph{@Default} implementiert, über die Standardimplementierung bereitgestellt wird, die in der derzeitigen Implementierung Implementierungen die den Qualifizierer \emph{@FreemarkerTemplate} produziert. Damit ist sichergestellt, dass keine \emph{UnsatisfiedResolutionException} auftreten kann, obwohl man sich der Gefahr aussetzt, dass die produzierte \emph{@Default} Implementierung nicht die gewollte ist.
+\begin{program}[h]
+\caption{TemplateResourceProducer.java}
+\label{prog:templateResourceProducer}
+\begin{JavaCode}
+@ApplicationScoped
+public class TemplateResourceProducer implements Serializable {
+    @Produces
+    @ApplicationScoped
+    @Default
+    public VariableConfiguration produceConfiguration() {
+        return extension.getVariableConfiguration();
+    }
+    
+    @Produces
+    @Dependent
+    @Default
+    public TemplateDataJsonBuilder produceDefaultTemplateBuilder
+          (final @Default VariableResolverFactoryProvider factory) {
+        return produceFreeMarkerTemplateBuilder(factory);
+    }
+
+    @Produces
+    @Dependent
+    @FreemarkerTemplate
+    public TemplateDataJsonBuilder produceFreeMarkerTemplateBuilder
+           (final @Default VariableResolverFactoryProvider factory) {
+        return new FreemarkerTemplateDataJsonBuilder()
+                .withWeakMode()
+                .withVariableResolverFactoryProvider(factory);
+    }
+}
+\end{JavaCode}
+\end{program}
+\ \newline
+Der Quelltext aus \ref{prog:templateResourceProducer} ist ein Auszug aus der Klasse \emph{TemplateResourceProducer} und dient als Beispiel für die implementierten \emph{Producer}-Methoden. Die beiden implementierten \emph{Producer}-Methoden \emph{produceDefaultTemplateBuilder} und \emph{produceFreeMarkerTemplateBuilder} produzieren Objekte der Schnittstelle \emph{TemplateDataJsonBuilder} für verschiedene Qualifizierer. Die Methode \emph{produceDefaultTemplateBuilder} produziert Objekte der Schnittstelle \emph{TemplateDataJsonBuilder} qualifiziert mit \emph{@Default}, wobei ein Injektionspunkt diesen Qualifizierer nicht explizit angeben muss, da dieser als Standard verwendet wird. Die Methode \emph{produceFreeMarkerTemplateBuilder} produziert Objekte der Schnittstelle \emph{TemplateDataJsonBuilder} qualifiziert mit \emph{@FreemarkerTemplate}, wobei ein Injektionspunkt diesen Qualifizierer explizit angeben muss.  Beide Methoden produzieren Objekte für den sogenannten Pseudo-\emph{Scope @Dependent}, wobei für jeden Injektionspunkt ein neues Objekt erstellt wird.
+Als Argument für diesen beiden Methoden wird ein Objekt der Schnittstelle \emph{VariableResolverFactoryProvider} injiziert, der \emph{@Default} qualifiziert ist. Dieses Objekt wird kontextabhängig injiziert, wobei der Geltungsbereich dieses Objekts für die Methoden nicht bekannt ist. 
 \newline
 \newline
+Die Methode \emph{produceConfiguration} produziert ein Objekt der Schnittstelle  \emph{VariableConfiguration}, die die registrierten Variablen enthält und von der \emph{Extension} bereitgestellt wird. Nachdem diese Schnittstelle nur lesenden Zugriff erlaubt und nur die \emph{Extension} Variablen registriert, wird dieses Objekt für den Gültigkeitsbereich der Anwendung produziert, als einmalig für die gesamte Anwendungslaufzeit.
 
+\subsubsection{Die Vorlagenmanagement \emph{CDI-Utility}}
+Die Klasse \emph{CdiTemplateUtil} wurde implementiert um ein kontextabhängiges \emph{CDI-Bean} zur Verfügung zu stellen, das Hilfsmethoden für die Konvertierung und Lokalisierung der Variablen bereitstellt. Für die Lokalisierung wurde die Schnittstelle \emph{VariableLocaleProvider} spezifiziert, dessen Implementierung kontextabhängig als \emph{CDI-Bean} zur Verfügung gestellt wird, um ein Objekt der Klasse \emph{java.util.Locale} zu bekommen, dass für die Lokalisierung benötigt wird. Eine Implementierung der Schnittstelle \emph{VariableLocaleProvider} kann dabei das Objekt der Klasse \emph{java.util.Locale} abhängig von einem eingeloggten BenutzerIn bereitstellen, in einem beliebigen Gültigkeitsbereich.
+\newline
+\newline
+Es wird die Implementierung \emph{DefaultVariableLocaleProvider} der Schnittstelle \emph{VariableLocaleProvider} bereitgestellt, die mit \emph{@ApplicationScoped} qualifiziert ist und die das Objekt der Klasse \emph{java.util.Locale} über \emph{Locale.getDefault();} bereitstellt. Diese Implementierung stellt die Standardimplementierung dar. Um eine eigene Implementierung zur Verfügung zu stellen, stehen folgende Möglichkeiten zur Verfügung.
+\begin{itemize}
+	\item\emph{Spezialisierung} ist eine Möglichkeit ein \emph{Bean} zu spezialisieren, wobei die eigene Implementierung von der spezialisierten Implementierung ableiten und mit \emph{@Specializes} annotiert werden muss. Oder es gibt eine \emph{Producer}-Methode, die mit \emph{@Specializes} annotiert ist. Mit diesem Ansatz werden alle gesetzten Qualifizierer, der Name und der Gültigkeitsbereich geerbt. Die spezialisierte Implementierung wird mit der Spezialisierung deaktiviert und steht nicht mehr zur Verfügung.
+	\item\emph{Alternative Implementierung} ist die Möglichkeit für den Typ, in diesem Fall \emph{VariableLocaleProvider}, eine alternative Implementierung zur Verfügung zu stellen, wobei die alternative Implementierung in der \emph{beans.xml} registriert und/oder mit \emph{@Alternative} annotiert werden muss (Abhängig von der konkreten \emph{CDI}-Implementierung). Mit diesem Ansatz kann ein unterschiedlicher Gültigkeitsbereich, Name und Qualifizierer verwendet werden. Mit einer alternativen Implementierung kann die andere Implementierung noch immer zur Verfügung stehen, abhängig ob die Qualifizierer der beiden Implementierungen gleich sind.
+\end{itemize}
 
-%\subsubsection{Die Vorlagen-\emph{Management CDI-Utility}}
+\subsection{Die Implementierungen für JSF}
+Folgender Abschnitt behandelt die Implementierung des Variablenmanagements für die \emph{View}-Technologie \emph{JSF}. In diesem Abschnitt wird sich nur dem implementierten \emph{FacesConverter} und die \emph{CKEditor}-Integration, bereitgestellt von \emph{primefaces-extensions}, beschäftigen.
 
+\subsubsection{Der Vorlagen \emph{FacesConverter}}
+Der \emph{FacesConverter} wurde als abstrakte Klasse \emph{AbstractTemplateConverter} implementiert, die die Schnittstelle \emph{javax.faces.Converter} implementiert. Diese abstrakte Klasse wurde implementiert, da die Konvertierungslogik über alle \emph{Template-Engines} dieselbe ist und lediglich sich die Implementierung der Schnittstelle \emph{TemplateProcessor} unterschiedet. Das Objekt der Schnittstelle \emph{TemplateProcessor} und das Objekt der Klasse \emph{CdiTemplateUtil} werden vom \emph{CDI-Container} bereitgestellt, wobei diese Objekte manuell geholt werden müssen, da keine Injektion innerhalb eines \emph{FacesCovnerters} möglich ist. Die Objekte werden über die Klasse \emph{BeanProvider} der Bibliothek \emph{Deltaspike} geholt. \emph{Deltaspike} ist eine Bibliothek, die portable \emph{CDI-Exntensions} bereitstellt. Die konkrete Implementierung \emph{FreemarkerTemplateConverter}, die von der abstrakten Klasse \emph{AbstractTemplateConverter} ableitet, setzt über einen Konstruktor in der Basisklasse den korrespondierenden Qualifizierer für die verwendete \emph{Template-Engine}, um mit diesem Qualifizierer die korrekte Implementierung der Schnittstelle \emph{TemplateProcessor} aus dem \emph{CDI-Container} zu holden.
+\newpage
+\begin{program}
+\caption{FreemarkerTemplateConverter.java}
+\label{prog:freemarkerTemplateConverter}
+\begin{JavaCode}
+@FacesConverter("template.converter.freemarker")
+public class FreemarkerTemplateConverter extends AbstractTemplateConverter {
 
-%\subsection{Die Implementierungen für JSF}
-
-%\subsubsection{Der Vorlagen \emph{FacesConverter}}
+    public FreemarkerTemplateConverter() {
+        super(new FreemarkerTemplateLiteral());
+    }
+}
+\end{JavaCode}
+\end{program}
+\ \newline
+Der Quelltext in \ref{prog:freemarkerTemplateConverter} ist die implementierte Klasse für die \emph{Template-Engine Freemarker}. Die Annotation \emph{@FacesConverter("template.converter.freemarker")} definiert einen eindeutigen Namen für diesen Konverter, der in \emph{xhtml} Dateien als Konverter definiert werden kann. Das \emph{JSF-Framework} erstellt dann ein Objekt dieser Klasse für die \emph{JSF}-Komponente, die diesen Konverter verwendet. 
 
 %\subsubsection{Die \emph{Primefaces-Extension} für den \emph{CKEditor}}
 
