@@ -18,6 +18,7 @@ Folgendes Kapitel befasst sich mit der Implementierung, der im Kapitel \ref{cha:
 .2 testsuite.
 .3 cdi.
 .2 demo.
+.3 logic.
 .3 web.
 .2 data.
 .3 api.
@@ -309,10 +310,165 @@ public class FreemarkerTemplateConverter extends AbstractTemplateConverter {
 \end{program}
 \ \newline
 Der Quelltext in \ref{prog:freemarkerTemplateConverter} ist die implementierte Klasse für die \emph{Template-Engine Freemarker}. Die Annotation \emph{@FacesConverter("template.converter.freemarker")} definiert einen eindeutigen Namen für diesen Konverter, der in \emph{xhtml} Dateien als Konverter definiert werden kann. Das \emph{JSF-Framework} erstellt dann ein Objekt dieser Klasse für die \emph{JSF}-Komponente, die diesen Konverter verwendet. 
+\newline
+\newline
+Die abstrakte Klasse \emph{AbstractTemplateConverter} definiert reguläre Ausdrücke, um die Variablen einer Vorlage in Form von \emph{HTML-Tags} zu finden und zu konvertieren.
+\begin{JavaCode}
+String tagRegex = "(<span[^,>]*class=\"variable\"[^,>]*>[^,<]*</span>)";
+String idRegex = "data-variable-id=\"(\\S+)\"";
+\end{JavaCode}
+\ \begin{itemize}
+	\item\emph{tagRegex} ist der reguläre Ausdruck, um die Variablen in ihrer \emph{HTML}-Repräsentation in einer Vorlage zu finden.
+	\item\emph{idRegex} ist der reguläre Ausdruck, um die \emph{Id} einer Variable, aus deren \emph{HTML}-Repräsentation zu bekommen und wird auf den gefundenen \emph{HTML-Tag} einer Variable angewendet.
+\end{itemize}
+\ \newline
+Die abstrakte Klasse \emph{AbstractTemplateConverter} definiert auch eine \emph{String}-Vorlage, um die Variablen in ihre \emph{HTML}-Repräsentation zu konvertieren, wobei diese Vorlage unabhängig von der verwendeten \emph{Template-Engine} ist und auf alle Variablen gleich angewendet wird.
+\begin{JavaCode}
+String template = "<span class=\"variable\" contentEditable=\"false\" "
+                + "data-variable-id=\"{0}\" title=\"{1}\">{2}</span>";
+\end{JavaCode}
+Die Vorlage \emph{template} wird mit \emph{java.text.MessageFormat(String, Object...)} verarbeitet.
 
-%\subsubsection{Die \emph{Primefaces-Extension} für den \emph{CKEditor}}
+\subsubsection{Die \emph{Primefaces-Extension} für den \emph{CKEditor}}
+Der \emph{Rich-Editor CKEditor} ist eine \emph{Javascript} basierte Anwendung, die nur am \emph{Browser} der BenutzerInnen läuft. Es wird aber eine \emph{JSF}-Integration benötigt, damit man
+\begin{itemize}
+	\item auf \emph{AJAX-Events} reagieren kann,
+	\item\emph{FacesConverter} verwenden kann und
+	\item Parameterbindungen definieren kann.
+\end{itemize}
+\ \newline
+Da es nicht trivial ist eine vollwertige \emph{JSF}-Komponente zu implementieren, und das Implementieren einer solchen Komponente auch viel Zeit in Anspruch nimmt, wurde auf die Implementierung von \emph{primefaces-extensions} zurückgegriffen, die bereits eine vollwertige \emph{JSF}-Integration bereitstellt. 
+\newline
+\emph{Primefaces-extensions} ist eine quelloffene Bibliothek, die die quelloffene Bibliothek \emph{Primefaces} erweitert. \emph{Primefaces} ist zurzeit eine der bekanntesten \emph{JSF}-Komponenten Bibliothek im \emph{Java}-Umfeld.
+\newline
+\newline
+Die Ressourcen für den \emph{CKEDitor} bewegen sich in der Größenordnung von 1,5 Megabyte, daher werden die Ressourcen in einem separaten Artefakt zur Verfügung gestellt. Man kann auch eine eigene Implementierung zur verfügung stellen, sofern diese Implementierung in derselben Version ist. Der \emph{CKEditor} ist ein sehr umfangreicher \emph{Rich-Editor}, den man sich auch seinen Wünschen gemäß selbst zusammenstellen kann. Diese Zusammenstellung des \emph{CKEditors} kann man heranziehen, um die Standardimplementierung zu ersetzen.
+\newline
+\newline
+Folgender Quelltest illustriert die Verwendung des \emph{CKEditors} in Form der zur Verfügung gestellten \emph{JSF}-Komponente.
+\label{prog:freemarkerTemplateConverter}
+\begin{HtmlCode}
+<pe:ckEditor id="template_content_editor"
+             wdgetVar="pfEditor"
+             value="#{templateEditModel.content}"
+             converter="template.converter.freemarker" 
+             contentsCss="resources/css/myStyle.css"
+             customConfig="./ckeditor-config.js">
+</pe:ckEditor>
+\end{HtmlCode}
+\ \begin{itemize}
+	\item\emph{id} ist das Attribute, um die eindeutige \emph{Id} innerhalb des Namensraums der Komponente zu definieren.
+	\item\emph{widgetVar} ist das Attribut, um einen eindeutigen Name des \emph{Javascript}-Objekts, das den Zugriff auf den \emph{CKEditor} in \emph{Javascript} erlaubt, zu definieren.
+	\item\emph{value} ist das Attribut, um die Parameterbindung der Vorlage zu einem \emph{Java}-Objekt zu definieren.
+	\item\emph{converter} ist das Attribut, um den verwendeten Konverter, der die Vorlagen konvertiert, zu setzen.
+	\item\emph{contentCss} ist das Attribut, um eine eigene \emph{CSS}-Datei für den Inhalt der Vorlage zu definieren. Die Vorlage wird innerhalb des \emph{Editors} als eigenständige \emph{HMTL}-Datei behandelt, das in einer \emph{Iframe}-Komponente gehalten wird.
+	\item\emph{customConfig} ist das Attribut, um die eigene Konfiguration des \emph{Editors} in Form von einer eigenen \emph{Javascript}-Datei zu definieren. 
+\end{itemize}
 
+\section{Die Vorlagenmanagement Beispielanwendung}
+Der folgende Abschnitt beschäftigt sich mit der implementierten Beispielanwendung, für das Vorlagenmanagement, die die Verwendung des Vorlagenmanagement im Bezug auf 
+\begin{itemize}
+	\item die \emph{Business-Logik},
+	\item die Webseite und
+	\item die Persistenz einer \emph{E-Mail}  
+\end{itemize}
+illustrieren soll. Dazu wurde eine Demowebanwendung implementiert, die die webseitige Verwaltung der Vorlagen implementiert. Es wurde auch \emph{Business-Service} implementiert, der illustrieren soll, wie eine \emph{E-Mail} basierend auf einer Vorlage, aus einem \emph{Business-Service} heraus erstellt werden kann. 
 
-%\section{Die Vorlagen-\emph{Management} Beispielanwendung}
-%\subsection{Die Verwendung in einem \emph{Business}-Service}
+\subsection{Die Verwendung in einem \emph{Business}-Service}
+Folgender Quelltext \ref{prog:emailServiceCdiEventImpl} illustriert die indirekte Verwendung einer Vorlage über die implementierte Klasse \emph{EmailServiceImpl} der Schnittstelle \emph{EmailService}, die im Projekt \emph{mailing-template-integration-clevercure-web} liegt und für die Verwendung für der Anwendung \emph{CleverWeb} implementiert wurde. Diese Implementierung der Schnittstelle \emph{EmailService} benutzt \emph{CDI-Events} um die \emph{E-Mails} anzulegen. Die Persistenz wird innerhalb der \emph{Mail-Service}-Projekte behandelt. Es werden über diese Implementierung mehrere Möglichkeiten angeboten, wie \emph{E-Mails} aus einem \emph{Business-Service} heraus erstellt werden können.
+\begin{itemize}
+	\item\emph{public void create(EmailDTO dto)}
+	\newline
+	ist die Methode, mit der eine \emph{E-Mail} sofort erstellt werden können.
+	\item\emph{public void create(List<EmailDTO> dtos)}
+	\newline
+	ist die Methode, mit der mehrere \emph{E-Mails} sofort erstellt werden können.
+	\item\emph{public void createAfterSuccess(EmailDTO dto)}
+	\newline
+	ist die Methode, mit der eine \emph{E-Mail} nach dem erfolgreichem Beenden einer Transaktion erstellt werden kann.
+	\item\emph{public void createAfterSuccess(List<EmailDTO> dto)}
+	\newline
+	ist die Methode, mit der mehrere \emph{E-Mails} nach dem erfolgreichem Beenden einer Transaktion erstellt.
+ werden kann.    
+\end{itemize} 
+\ \newpage
+\begin{program}[h]
+\caption{EmailServiceCdiEventImpl.java}
+\label{prog:emailServiceCdiEventImpl}
+\begin{JavaCode}
+@RequestScoped
+@Transactional(Transactional.TxType.SUPPORTS)
+public class EmailServiceCdiEventImpl implements EmailService {
+    @Inject
+    private Event<CreateEmailsEvent<CreateEmailsEvent.CreateImmediate>> createImmediateEvent;
+    @Inject
+    private Event<CreateEmailsEvent<CreateEmailsEvent.CreateAfterSuccess>> createAfterSuccessEvent;
+    @Inject
+    private Event<CreateEmailsEvent<CreateEmailsEvent.CreateAfter>> createAfterEvent;
+
+    @Override
+    @Transactional(Transactional.TxType.REQUIRED)
+    public void create(EmailDTO dto) {
+        createImmediateEvent.fire(new CreateEmailsEvent<>(dto));
+    }
+
+    @Override
+    @Transactional(Transactional.TxType.REQUIRED)
+    public void create(List<EmailDTO> dtos) {
+        createImmediateEvent.fire(new CreateEmailsEvent<>(dtos));
+    }
+
+    @Override
+    public void createAfterSuccess(EmailDTO dto) {
+        createAfterSuccessEvent.fire(new CreateEmailsEvent<>(dto));
+    }
+
+    @Override
+    public void createAfterSuccess(List<EmailDTO> dtos) {
+        createAfterSuccessEvent.fire(new CreateEmailsEvent<>(dtos));
+    }
+}
+\end{JavaCode}
+\end{program}
+\ \newline 
+Der Quelltext aus \ref{prog:businessServiceImpl} illustriert einen \emph{Business-Service}, der über die Schnittstelle \emph{EmailService} \emph{E-Mails} erstellt.
+\newpage
+
+\begin{program}[h]
+\caption{BusinessServiceImpl.java}
+\label{prog:businessServiceImpl}
+\begin{JavaCode}
+@RequestScoped
+@Transactional(Transactional.TxType.REQUIRED)
+public class BusinessServiceImpl implements BusinesService {
+
+    @Inject
+    private EmailService emailService;
+
+    @Override
+    public void doBusinessEmailImmediate() {
+        emailService.create(createEmailDto());
+    }
+
+    @Override
+    public void doBusinessEmailAfterSuccess() {
+        emailService.createAfterSuccess(createEmailDto());
+    }
+
+    private EmailDTO createEmailDto() {
+        final String email = "herzog.thomas8@gmail.com";
+        final Locale locale = Locale.US;
+        final ZoneId zone = ZoneId.systemDefault();
+        return new EmailDTO(email, locale, zone, 0L, 
+        	new HashMap<Object, Object>() {{
+            	put(TemplateVariable.SENDER_USER, "Thomas Herzog");
+           		put(TemplateVariable.RECIPIENT_USER, "Hugo Maier");
+            	put(TemplateVariable.TOPIC, "User status changed");
+            	put(TemplateVariable.STATUS, "Inactive");
+        }}, Collections.singletonList(0L));
+    }
+}
+\end{JavaCode}
+\end{program}
+
 %\subsection{Die Verwendung in der \emph{Web}-Oberfläche}
