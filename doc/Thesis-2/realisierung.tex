@@ -430,10 +430,7 @@ public class EmailServiceCdiEventImpl implements EmailService {
 }
 \end{JavaCode}
 \end{program}
-\ \newline 
-Der Quelltext aus \ref{prog:businessServiceImpl} illustriert einen \emph{Business-Service}, der über die Schnittstelle \emph{EmailService} \emph{E-Mails} erstellt.
-\newpage
-
+\ \newpage
 \begin{program}[h]
 \caption{BusinessServiceImpl.java}
 \label{prog:businessServiceImpl}
@@ -457,18 +454,88 @@ public class BusinessServiceImpl implements BusinesService {
 
     private EmailDTO createEmailDto() {
         final String email = "herzog.thomas8@gmail.com";
+        final Long mailUserId = 1L;
+        final List<Long> mailTypeIds = Collections.singletonList(1L);
         final Locale locale = Locale.US;
         final ZoneId zone = ZoneId.systemDefault();
-        return new EmailDTO(email, locale, zone, 0L, 
+        final Map<Object, Object> userData = 
         	new HashMap<Object, Object>() {{
-            	put(TemplateVariable.SENDER_USER, "Thomas Herzog");
-           		put(TemplateVariable.RECIPIENT_USER, "Hugo Maier");
-            	put(TemplateVariable.TOPIC, "User status changed");
-            	put(TemplateVariable.STATUS, "Inactive");
-        }}, Collections.singletonList(0L));
+                put(TemplateVariable.SENDER_USER, "Thomas Herzog");
+                put(TemplateVariable.RECIPIENT_USER, "Hugo Maier");
+                put(TemplateVariable.TOPIC, "User status changed");
+                put(TemplateVariable.STATUS, "Inactive");
+            }};
+        return new EmailDTO(email, 
+        					locale, 
+        					zone, 
+        					mailUserId, 
+        					userData, 
+        					mailTypeIds);
     }
 }
 \end{JavaCode}
 \end{program}
+\ \newline
+Der Quelltext aus \ref{prog:businessServiceImpl} illustriert einen \emph{Business-Service}, der über die Schnittstelle \emph{EmailService} \emph{E-Mails} erstellt. Die zu erstellende \emph{E-Mail} wird durch ein Objekt der Klasse \emph{EmailDTO} repräsentiert, das alle benötigten Informationen für das Erstellen einer \emph{E-Mail} enthält.
+\begin{itemize}
+	\item\emph{email} ist die Zeichenkette, die die \emph{E-Mail}-Adresse definiert.
+	\item\emph{mailUserId} ist die \emph{Id} des virtuellen Benutzers, der die \emph{E-Mail} auf der Datenbank erstellt.
+	\item\emph{mailTypeIds} ist die Menge von \emph{Ids}, die die \emph{Mail}-Typen repräsentieren. Jedem \emph{Mail}-Typ ist eine Voralge zugeordnet.
+	\item\emph{locale} ist das Objekt der Klasse \emph{java.util.Locale} , das die Sprache definiert.
+	\item\emph{zone} ist das Objekt der Klasse \emph{java.time.ZoneId}, das die Zone für die Datumsformatierung definiert.
+	\item\emph{userData} ist der assoziative Behälter, der die Benutzerdaten enthält, die bei der Evaluierung verwendet werden.
+\end{itemize}
 
-%\subsection{Die Verwendung in der \emph{Web}-Oberfläche}
+\subsection{Die Verwendung in der \emph{Web}-Oberfläche}
+Die Abbildung \ref{fig:demo_web_app_empty_view_part_1} zeigt die Weboberfläche, die für die Beispielanwendung implementiert wurde. Über dieses Formular können die Voralgen sprachspezifisch verwaltet werden.
+\ \begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{demo_web_app_empty_view_part_1}
+\caption{Formular für die Verwaltung der Vorlagen}
+\label{fig:demo_web_app_empty_view_part_1}
+\end{figure}
+\ \newline
+Die Abbildung \ref{fig:demo_web_app_empty_view_part_2} zeigt, den Teil der Webseite, der die relevanten Daten einer Vorlage anzeigt.
+\begin{itemize}
+	\item\emph{Decorator Template} ist die \emph{Freemarker}-Voralge, die von jeder Vorlage dekoriert wird.
+	\item\emph{User Template} ist die Vorlage, die von einem BenutzerIn erstellt wurde.
+	\item\emph{Template JSON Data} ist die \emph{JSON}-Zeichenkette, die erstellt wird, wenn die Daten für eine Vorlage serialisiert werden.
+	\item\emph{Parsed Template} ist die Vorlage, in der die Variablen durch die serialisierten Werte ersetzt wurden.
+	\item\emph{Template Metadata} sind die Metadaten der Vorlage, wie z.B. die Anzahl der enthalten Variablen.
+\end{itemize}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{demo_web_app_empty_view_part_2}
+\caption{Anzeige der aller relevanten Daten einer Vorlage}
+\label{fig:demo_web_app_empty_view_part_2}
+\end{figure}
+\ \newline
+Die folgende Abbildung \ref{cha:Realisierung} zeigt eine Vorlage im Formular. Sie verwendet, die zur Verfügung gestellten Variablen und ist zwei Sprachen verfügbar. Eine Vorlage muss immer eine Standardsprache definieren, für die es immer einen Eintrag geben muss.
+\newline
+\textbf{TODO: Add image with template}
+\newline
+\subsubsection{Die Dekoriervorlage}
+Die dekorierbare Vorlage aus Abbildung \ref{fig:demo_web_app_data_decorator} ist die \emph{Freemarker}-Vorlage, die alle Vorlagen dekorieren. Sie stellt den \emph{HTML-Body} zur Verfügung.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{demo_web_app_data_decorator}
+\caption{Das \emph{Decorator Template}}
+\label{fig:demo_web_app_data_decorator}
+\end{figure}
+\subsubsection{Die Benutzervorlage}
+Die Benutzervorlage aus Abbildung \ref{fig:demo_web_app_data_template} ist die \emph{Freemarker}-Vorlage, die von der BenutzerIn erstellt wurde. Die Vorlage enthält zwar \emph{HTML}, aber nur den Inhalt der Vorlage in Form von \emph{HTML}, stellt aber kein vollständiges \emph{HTML}-Dokument dar.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{demo_web_app_data_template}
+\caption{Die \emph{Benutzervorlage} als \emph{Freemarker Template}}
+\label{fig:demo_web_app_data_template}
+\end{figure}
+\subsubsection{Die Vorlagenmetadaten}
+Die Vorlagenmetadaten aus Abbildung \ref{fig:demo_web_app_data_metadata} zeigt die Metadaten der Benutzervorlage. Die Metadaten sind nur für die Entwicklung relevant.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{demo_web_app_data_metadata}
+\caption{Die Metadaten der Vorlage}
+\label{fig:demo_web_app_data_metadata}
+\end{figure}
+
