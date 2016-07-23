@@ -37,7 +37,7 @@ Die vorgestellte Konvention der Tests wurde so umgesetzt sofern es möglich war.
 \subsection{Die Tests der \emph{CDI}-Erweiterung}
 Die Tests aus Abbildung \ref{fig:tests-template-cdi} testen die Implementierungen des Artefakts \emph{mailing-moule-template-cdi} wie
 \begin{itemize}
-	\item den Klasse \emph{TemplateCdiExtension},
+	\item die Klasse \emph{TemplateCdiExtension},
 	\item die Klasse \emph{CdiTemplateUtils} und
 	\item die Klasse \emph{TemplateResourceProducer}.
 \end{itemize}
@@ -47,14 +47,25 @@ Die Tests aus Abbildung \ref{fig:tests-template-cdi} testen die Implementierunge
 \caption{Testdurchlauf der Tests der \emph{CDI}-Erweiterung}
 \label{fig:tests-template-cdi}
 \end{figure}
-\ \newpage
+\ \newline
+Diese Tests sind nur lauffähig in einer \emph{CDI}-Umgebung, die aber Dank \emph{Deltaspike} auch im Klassenpfad ohne Anwendungsserver gestartet werden kann. Im Klassenpfad der Tests wurde Variablen über eine \emph{Enumeration}, die die Schnittstelle \emph{VariableContract} implementiert, definiert, sowie eine Implementierung der Klasse \emph{VariableResolverFactory}.
 
-\subsection{Die Tests der \emph{Web}-Oberfläche}
-
+\subsection{Die Tests des Vorlagenmanagements}
+Die Tests aus Abbildung \ref{fig:tests-template-cdi} testen die Implementierungen des Artefakts \emph{mailing-moule-template-logic-impl} wie
+\begin{itemize}
+	\item die Klasse \emph{VariableConfigurationImpl} und
+	\item die Klasse \emph{FreemarkerTemplateDataJsonBuilder}.
+\end{itemize}
+\ \newline
+\emph{TODO: Add image of running tests}
+\newline
+Diese Tests sind nicht angewiesen auf eine \emph{CDI}-Umgebung und sind ohne zusätzliche Bibliotheken und \emph{Framwork} lauffähig. Sie Testen die implementierten Methoden und vor allem bezüglich derer Fehlerbehandlung.
 
 \section{Die erreichten Ziele}
+Dieser Abschnitt beschäftigt sich mit der Betrachtung der erreichten Ziele des Vorlagenmanagements. Es wurden alle Anforderung aus dem Kapitel \ref{cha:Zielsetzung} erfüllt, somit gilt das Vorlagenmanagement als abgeschlossen. Die Integrationen in die Anwendungen \emph{CleverWeb} und \emph{CleverInterface} wurde noch nicht realisiert, obwohl begonnen wurde eine Integration für die Anwendung in \emph{CleverWeb} zu implementieren. Die Integration in die Anwendung \emph{CleverInterface} wird erst realisiert werden können, wenn diese Anwendung \emph{Java} in Version 8 unterstützt. Zurzeit wird nur \emph{Java} in version 7 unterstützt. 
 
-\subsection{Das Vorlagen-\emph{Management über \emph{CKEditor}}}
+\subsection{Das Vorlagenmanagement \emph{CKEditor-Plugin}}
+Es wurde erfolgreich ein \emph{Plugin} in \emph{Typescript} für den \emph{CKEditor} implementiert, dass das Variablenmanagement erfolgreich in diesen \emph{Editor} integriert. Dies war vor allem möglich, da von \emph{DefinitelyType} Typinformationen zur Verfügung gestellt werden, obwohl diese ein paar Fehler beinhalteten, die aber leicht ausgebessert wurden. Die implementierten Typescrript Quelltexte befinden sich zurzeit noch in der Demowebanwendung, da die Entwicklung in einem eigenen Projekt nicht möglich war, da das \emph{Hot-Code-Deployment} für \emph{Java}-Ressourcen (src/main/resources) nicht unterstützt wird. Diese Quelltextdateien, können aber einfach verschoben werden. Die Entwicklung des 
 
 \subsection{Das Vorlagen-\emph{Management} in einer \emph{CDI}-Umgebung}
 
