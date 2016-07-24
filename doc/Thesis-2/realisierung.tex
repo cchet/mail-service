@@ -220,6 +220,7 @@ public class VariableJson extends AbstractJsonModel {
 \ \newpage
 
 \subsection{Die Implementierungen für \emph{CDI}}
+\label{sec:sub-impl-integartion-cdi}
 Folgender Abschnitt behandelt die Implementierungen für die Integration in eine \emph{CDI}-Umgebung. Wie in Abschnitt \ref{sec:sub-template-management-cdi} beschrieben, sollen die Variablen beim Start der Anwendung, die in einer \emph{CDI}-Umgebung läuft, automatisch  registriert werden. Das Vorlagenmanagement stellt Ressourcen die folgend aufgelisteten Ressourcen kontextabhängig über einen implementierten \emph{CDI}-Erzeuger zur Verfügung. 
 \begin{itemize}
  \item Objekte der Schnittstelle \emph{VariableConfiguration} sind Objekte, die die registrierten Variablen verwalten.
@@ -378,6 +379,7 @@ public class CdiTemplateUtil implements Serializable {
 \end{program}
 \newpage
 \subsection{Die Implementierungen für \emph{JSF}}
+\label{sec:sub-impl-integartion-jsf}
 Folgender Abschnitt behandelt die Implementierung des Variablenmanagements für die \emph{View}-Technologie \emph{JSF}. In diesem Abschnitt wird sich nur dem implementierten \emph{FacesConverter} und der \emph{CKEditor}-Integration, bereitgestellt von \emph{primefaces-extensions}, beschäftigen.
 
 \subsubsection{Der Vorlagen \emph{FacesConverter}}
