@@ -70,9 +70,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.1}Das Vorlagenmanagement in \emph {Typescript}}{18}{subsection.3.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.2}Das Vorlagenmanagement in \emph {CDI 1.1 (JSR 346)}}{19}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.2}Das Vorlagenmanagement in \emph {CDI}}{19}{subsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.3}Das Vorlagenmanagement in \emph {JSF 2.2 (JSR 344)}}{19}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.3}Das Vorlagenmanagement in \emph {JSF}}{19}{subsection.3.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.4}Das Vorlagenmanagement in \emph {Mail}-DB-Schema}{20}{subsection.3.2.4}
 \defcounter {refsection}{0}\relax 
@@ -136,4 +136,6 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.2.4}Das Vorlagenmanagement in \emph {Mail}-DB-Schema}{48}{subsection.5.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Quellenverzeichnis}{49}{appendix*.20}
+\contentsline {chapter}{\numberline {6}Die Zusammenfassung}{49}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Quellenverzeichnis}{50}{appendix*.20}

@@ -318,9 +318,9 @@ Die abstrakte Klasse \emph{AbstractTemplateDataJsonBuilder} implementiert die ge
 \emph{TODO: Add source as appendix, because to long ?}
 
 \section{Die Spezifikation der Vorlagenintegration}
-Die im Abschnitt \ref{sec:specification-template-management} vorgestellte Spezifikation des Vorlagenmanagements, spezifiziert die Kernfunktionalität des Vorlagenmanagements, dass in der Lage ist die Vorlagen sowie deren enthaltene Variablen zu behandeln. Das Vorlagenmanagement benötigt jedoch Integrationen in verschiedene Umgebungen und Sprachen, um die benötigte Funktionalitäten wie
+Die im Abschnitt \ref{sec:specification-template-management} vorgestellte Spezifikation des Vorlagenmanagements, spezifiziert die Kernfunktionalität des Vorlagenmanagements, dass in der Lage ist die Vorlagen sowie deren enthaltene Variablen zu behandeln. Das Vorlagenmanagement benötigt auch Integrationen in verschiedene Umgebungen und Sprachen, um die benötigte Funktionalitäten wie
 \begin{itemize}
-	\item die Verwaltung der Variablen in einem \emph{Javascript} basierten \emph{Rich-Editor},
+	\item die Verwaltung der Variablen in einem \emph{Javascript} basierten \emph{CKEditor},
 	\item die automatische Registrierung der Variablen in einer \emph{CDI}-Umgebung,
 	\item die Verwaltung der Vorlagen in einer Webseite und
 	\item die Persistenz der Vorlagen realisieren zu können. 
@@ -329,23 +329,24 @@ Folgender Abschnitt behandelt die Spezifikationen der Integrationen wie in Absch
  
 \subsection{Das Vorlagenmanagement in \emph{Typescript}}
 \label{sec:sub-typescript-javascript}
-Es wird ein \emph{Rich-Editor} benötigt mit dem \emph{HTML} basierte Vorlagen in einer Webseite verwaltet werden können. Dieser \emph{Rich-Editor} muss angepasst werden, damit die definierten Variablen in einer Vorlage verwendet werden können. Wie in Abschnitt \ref{sec:sub-template-management-website} vorgegeben wird der \emph{Rich-Editor CKEDitor} verwendet, für den es bereits eine Integration in \emph{JSF} in Form einer \emph{JSF}-Komponente gibt, die von \emph{primefaces-extensions} bereitgestellt wird. Es wird ein \emph{CKEditor-Plugin} in \emph{Typescript} entwickelt, das es erlaubt die definierten Variablen innerhalb des \emph{Rich-Editors} und dessen enthaltener Vorlage zu verwalten. Es wird die Skriptsprache \emph{Typescript} verwendet, da es mit dieser Skriptsprache möglich ist typsicher zu entwickeln, was in \emph{Javascript} nicht möglich ist. Ebenfalls kann \emph{Typescript} in mehrere \emph{ECMA}-Standars übersetzt werden.
+Es muss der \emph{Rich-Editor CKEditor} verwendet werden, mit dem \emph{HTML} basierte Vorlagen in einer Webseite verwaltet werden können. Der \emph{CKEditor} muss angepasst werden, damit die definierten Variablen in einer Vorlage verwendet werden können. Wie in Abschnitt \ref{sec:sub-template-management-website} vorgegeben, wird der \emph{CKEDitor} verwendet, für den es bereits eine Integration in \emph{JSF} in Form einer \emph{JSF}-Komponente gibt, die von \emph{primefaces-extensions} zur Verfügung gestellt wird. Es wird ein \emph{CKEditor-Plugin} in \emph{Typescript} entwickelt, das es erlaubt, die definierten Variablen innerhalb des \emph{CKEditors} und dessen enthaltener Vorlage zu verwalten. Es wird die Skriptsprache \emph{Typescript} verwendet, da es mit dieser Skriptsprache möglich ist typsicher zu entwickeln, was in \emph{Javascript} nicht möglich ist. Ebenfalls kann \emph{Typescript} in mehrere \emph{ECMA}-Standards übersetzt werden.
 \newline
 \newline
 Innerhalb des \emph{CKEditor-Plguins} werden Variablen verwendet, dessen Management in einer eigenen Quelltextdatei implementiert wird, da es unabhängig von \emph{CKEditor-Plguin} ist und daher auch anderweitig verwendet werden kann. Damit wird das Variablenmanagement entkoppelt vom \emph{CKEditor-Plugin}.
 
-\subsection{Das Vorlagenmanagement in \emph{CDI 1.1 (JSR 346)}}
+\subsection{Das Vorlagenmanagement in \emph{CDI}}
 \label{sec:sub-template-management-cdi}
-Das Vorlagenmanagement wird in einem \emph{JEE-7}-Anwendungsserver verwendet, der \emph{CDI} bereitstellt. Im \emph{CDI}-Standard sind portable \emph{Extensions} spezifiziert, die es erlauben, dass sich Softwarekomponenten in den \emph{CDI-Container} integrieren. Es soll eine \emph{CDI-Extension} implementiert werden, die beim Start des \emph{CDI-Containers}, die definierten Variablen automatisch registriert und über den Lebenszyklus des \emph{CDI-Containers} persistent. Es sollen Ressourcen des Vorlagenmanagements wie z.B
+Das Vorlagenmanagement wird in einem \emph{JEE-7}-Anwendungsserver verwendet, der eine \emph{CDI}-Umgebung bereitstellt. Im \emph{CDI}-Standard sind portable Erweiterungen  spezifiziert, die es erlauben, dass sich Softwarekomponenten in einer \emph{CDI}-Umgebung integrieren. Es wird eine \emph{CDI}-Erweiterung implementiert, die beim Start der \emph{CDI}-Erweiterung, die definierten Variablen automatisch registriert und über den Lebenszyklus der Anwendung persistent hält. Es sollen Ressourcen des Vorlagenmanagements wie z.B
 \begin{itemize}
-	\item Objekte der Schnittstelle \emph{VariableResolver}
+	\item Objekte der Schnittstelle \emph{VariableResolver},
 	\item Objekte der Schnittstelle \emph{VariableResolverFactory} oder
-	\item Objekte der Schnittstelle \emph{TemplateDataJsonBuilder}
+	\item Objekte der Schnittstelle \emph{TemplateDataJsonBuilder} kontextabhängig zur Verfügung gestellt werden.
 \end{itemize}
-kontextabhängig zur Verfügung gestellt werden. Dadurch können die Implementierungen der Schnittstelle \emph{VariableResolver} kontextabhängige Ressourcen nutzen. Damit das Variablenmanagement auf diese Objekte zugreifen kann wurde die Schnittstelle \emph{VariableResolverFactoryProvider} spezifiziert, die die Verbindung des Variablenmanagements zu \emph{CDI} herstellt und kontextabhängige Objekte der Schnittstelle \emph{VariableResolverFactory} bereitstellen kann.
+\ \newline
+Durch die Verwaltung der Objekte von einer \emph{CDI}-Umgebung, können Implementierungen der Schnittstelle \emph{VariableResolver} kontextabhängige Ressourcen injizieren und nutzen. Damit das Variablenmanagement auf diese Objekte zugreifen kann, wurde die Schnittstelle \emph{VariableResolverFactoryProvider} spezifiziert, die die Verbindung des Variablenmanagements zu einer \emph{CDI}-Umgebung herstellt und kontextabhängige Objekte der Schnittstelle \emph{VariableResolverFactory} bereitstellen kann.
 
-\subsection{Das Vorlagenmanagement in \emph{JSF 2.2 (JSR 344)}}
-Für die Verwaltung der Vorlagen soll eine \emph{JSF}-Webseite implementiert werden. Über diese Webseite sollen variablen erstellt, modifiziert, gelöscht und freigegeben werden können. Für die Verwaltung der Vorlagen soll die von \emph{primefaces-extension} bereitgestellte \emph{JSF}-Komponente für den \emph{Rich-Editor CKEDitor} verwendet werden. Diese Komponente integriert den \emph{Javascript} basierten \emph{CKEDitor} in den \emph{JSF}-Lebenszyklus. Um die Vorlage in die korrespondierende \emph{Template-Engine} spezifische Repräsentation zu überführen, soll ein \emph{FacesConverter} implementiert werden, der die Konvertierung der Vorlage von seiner Repräsentation für die Webseite in die Repräsentation der \emph{Template-Engine} überführt und visa versa.
+\subsection{Das Vorlagenmanagement in \emph{JSF}}
+Für die Verwaltung der Vorlagen wird eine \emph{JSF}-Webseite implementiert werden. Über diese Webseite sollen Variablen erstellt, modifiziert und gelöscht werden können. Für die Verwaltung der Vorlagen wird die von \emph{primefaces-extension} bereitgestellte \emph{JSF}-Komponente für den \emph{Rich-Editor CKEditor} verwendet. Diese Komponente integriert den \emph{Javascript} basierten \emph{CKEDitor} in den \emph{JSF}-Lebenszyklus. Um die Vorlage in die korrespondierende \emph{Template-Engine} spezifische Repräsentation zu überführen, wird ein \emph{FacesConverter} implementiert, der die Konvertierung der Vorlage von seiner \emph{HTML}-Repräsentation in die \emph{Template-Engine} spezifische Repräsentation und visa versa realisieren kann.
 
 \subsection{Das Vorlagenmanagement in \emph{Mail}-DB-Schema}
-Eine Vorlage wird durch einen \emph{String} repräsentiert, der innerhalb des \emph{Mail}-DB-Schema sprachspezifisch  persistent gehalten wird. Es ist ist nicht erforderlich eine eigene Tabellenstruktur für die Vorlagen zu definieren um es von den \emph{Mail}-Tabellen zu abstrahieren, da die Vorlagen einen essentiellen Teil des \emph{Mail}-Service darstellen und daher auch die Vorlagen bzw. deren persistente Repräsentation voll in das \emph{Mail}-DB-Schema  integriert werden sollen.
+Eine Vorlage wird durch eine Zeichenkette repräsentiert, die innerhalb des \emph{Mail}-DB-Schema sprachspezifisch  persistent gehalten wird. Es ist ist nicht erforderlich eine eigene Tabellenstruktur für die Vorlagen zu definieren um es von den \emph{Mail}-Tabellen zu abstrahieren, da die Vorlagen einen essentiellen Teil des \emph{Mail}-Service darstellen und daher auch die Vorlagen bzw. deren persistente Repräsentation voll in das \emph{Mail}-DB-Schema  integriert werden müssen.
