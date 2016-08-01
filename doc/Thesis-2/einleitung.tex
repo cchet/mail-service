@@ -1,12 +1,12 @@
 \chapter{Einleitung}
 \label{cha:Einleitung}
-Die vorliegende Sachlage beschäftigt sich mit der Konzeption und Implementierung eines Vorlagenmanagement für den, in der theoretischen Bachelorarbeit konzipierten, \emph{Mail-Service} namens \emph{CleverMail}. Das Vorlagenmanagement stellt einen essentiellen Teil von \emph{CleverMail} dar, mit dem sich parametrisierte \emph{E-Mail}-Vorlagen erstellen lassen. Das Vorlagenmanagement soll es den BenutzerInnen ermöglichen einfach eigene parametrisierte \emph{E-Mail}-Vorlagen zu erstellen, die in einer Anwendung, die \emph{CleverMail} nutzen, verwendet werden können, um benutzerdefinierte \emph{E-Mail}-Nachrichten zu versenden. Mit dem Vorlagenmanagement ist es nicht mehr erforderlich die \emph{E-Mail}-Vorlagen statisch zu definieren und die \emph{E-Mail}-Vorlagen können von den BenutzerInnen nach ihren Wünschen angepasst werden.
+Die vorliegende Bachelorarbeit beschäftigt sich mit der Konzeption und Implementierung eines Vorlagenmanagements für den, in der theoretischen Bachelorarbeit konzipierten, \emph{Mail-Service} namens \emph{CleverMail}. Das Vorlagenmanagement stellt einen essentiellen Teil von \emph{CleverMail} dar, mit dem sich parametrisierte \emph{E-Mail}-Vorlagen erstellen lassen. Das Vorlagenmanagement soll es den BenutzerInnen ermöglichen, einfach eigene parametrisierte \emph{E-Mail}-Vorlagen zu erstellen, die in Anwendungen, die \emph{CleverMail} nutzen, verwendet werden können, um benutzerdefinierte \emph{E-Mail}-Nachrichten zu versenden. Mit dem Vorlagenmanagement ist es nicht mehr erforderlich, die \emph{E-Mail}-Vorlagen statisch zu definieren und die \emph{E-Mail}-Vorlagen können von den BenutzerInnen nach ihren Wünschen angepasst werden.
 \newline
 \newline
-Aufgrund des Umfangs des konzipierten \emph{Mail-Service} \emph{CleverMail} wurde entschieden sich vorerst auf das Vorlagenmanagement zu konzentrieren. Das Vorlagenmanagement wird für \emph{CleverMail} entwickelt, könnte jedoch ohne weiteres auch in anderen Anwendungen verwendet werden, sofern diese Anwendungen die technischen Voraussetzungen erfüllen. Das Vorlagenmanagement wird als eigene Softwarekomponente entwickelt und wird keine Abhängigkeiten auf Ressourcen des \emph{Mail-Service} aufweisen.
+Aufgrund des Umfangs des konzipierten \emph{Mail-Service} \emph{CleverMail} wurde entschieden,  sich vorerst auf das Vorlagenmanagement zu konzentrieren. Das Vorlagenmanagement wird für \emph{CleverMail} entwickelt, könnte jedoch ohne weiteres auch in anderen Anwendungen verwendet werden, sofern diese Anwendungen die technischen Voraussetzungen erfüllen. Das Vorlagenmanagement wird als eigene Softwarekomponente entwickelt und wird keine Abhängigkeiten auf Ressourcen des \emph{Mail-Service} haben.
 
-\section{Das Unternehmen curecomp Software Service GmbH}
-Das Vorlagenmanagement wird in Zusammenarbeit mit dem Unternehmen \emph{curecomp Software Service GembH} erstellt. Das Unternehmen \emph{curecomp} ist ein ein Dienstleister im \emph{Supplier-Relationship-Management (SRM)} und betreibt eine eigene Softwarelösung namens \emph{clevercure}. Die Softwarelösung \emph{clevercure} besteht aus den folgenden Anwendungen.
+\section{Das Unternehmen curecomp Software Services GmbH}
+Das Vorlagenmanagement wird in Zusammenarbeit mit dem Unternehmen \emph{curecomp Software Services GembH} erstellt. Das Unternehmen \emph{curecomp} ist ein Dienstleister im Bereich des \emph{Supplier-Relationship-Managements (SRM)} und betreibt eine eigene Softwarelösung namens \emph{clevercure}. Die Softwarelösung \emph{clevercure} besteht aus den folgenden Anwendungen.
 \newline
 \begin{itemize}
 	\item\emph{CleverWeb} 
@@ -14,7 +14,7 @@ Das Vorlagenmanagement wird in Zusammenarbeit mit dem Unternehmen \emph{curecomp
 	ist eine \emph{Web}-Anwendung für den webbasierten Zugriff auf \emph{clevercure}.
 	\item\emph{CleverInterface} 
 	\newline
-	ist eine Schnittstellenanwendung für den XML-basierten Datenimport und Datenexport zwischen \emph{clevercure} und den \emph{ERP}-Systemen der Kunden und Lieferanten.
+	ist eine Schnittstellenanwendung für den \emph{XML}-basierten Datenimport und Datenexport zwischen \emph{clevercure} und den \emph{ERP}-Systemen der Kunden und Lieferanten.
 	\item\emph{CleverSupport} 
 	\newline
 	ist eine unternehmensinterne \emph{Web}-Anwendung zur Unterstützung für die Abwicklung von \emph{Support}-Prozessen.
@@ -23,27 +23,28 @@ Das Vorlagenmanagement wird in Zusammenarbeit mit dem Unternehmen \emph{curecomp
 	ist ein Dokumentenmanagementsystem für die Verwaltung aller anfallender Dokumente innerhalb von \emph{clevercure}.
 	\item\emph{CCMail} 
 	\newline
-	ist die bestehende \emph{Mail}-Anwendung für den Versand der \emph{E-Mail}-Nachrichten innerhalb von \emph{clevercure}, die durch \emph{CleverMail} abgelöst werden soll.
+	ist die bestehende \emph{Mail}-Anwendung für den Versand der \emph{E-Mails} innerhalb von \emph{clevercure}, die durch \emph{CleverMail} abgelöst werden soll.
 \end{itemize}
 \ \newline
 Das Vorlagenmanagement wird von den Anwendungen innerhalb von \emph{clevercure} verwendet werden, bevor \emph{CleverMail} fertiggestellt wird, da es bereits Softwarekomponenten innerhalb der Anwendungen von \emph{clevercure} gibt, die auf parametrierbare Vorlagen angewiesen sind.
 
 \section{Das Vorlagenmanagement für \emph{CleverMail}}
-Mit dem Vorlagenmanagement können Vorlagen einerseits von den EntwicklerInnen und BenutzerInnen benutzerdefiniert und parametrierbar erstellt werden. Damit können Vorlagen dynamisch auch zur Laufzeit erstellt, modifiziert und gelöscht werden. Es sind keine statischen Vorlagen für die \emph{E-Mail}-Nachrichten mehr nötig und alle damit verbunden Nachteile wie z.B. 
+Mit dem Vorlagenmanagement können Vorlagen von den EntwicklerInnen und BenutzerInnen benutzerdefiniert und parametrierbar erstellt werden. Damit können Vorlagen dynamisch zur Laufzeit erstellt, modifiziert und gelöscht werden. Es sind keine statischen Vorlagen für die \emph{E-Mail}-Nachrichten mehr nötig und alle damit verbunden Nachteile wie z.B. 
 \begin{itemize}
-	\item das neu Kompilieren und Einspielen bei Änderungen der \emph{E-Mail}-Vorlagen,
+	\item das neu Kompilieren und Einspielen bei Änderungen der Vorlagen,
 	\item keine Möglichkeit für benutzerdefinierten Vorlagen oder
-	\item keine Möglichkeit der Nutzung von dynamischen Parametern in den \emph{E-Mail}-Vorlagen
+	\item keine Möglichkeit der Nutzung von dynamischen Parametern in den Vorlagen eliminiert werden.
 \end{itemize}
-eliminiert werden. Das Vorlagenmanagement kann auch in einem anderen Kontext verwendet werden, wobei sich die vorliegende Sachlage ausschließlich mit der Verwendung des Vorlagenmanagement für \emph{CleverMail} beschäftigen wird. Obwohl das Vorlagenmanagement als eigene Softwarekomponente implementiert wird, wird die vorliegende Sachlage aufzeigen, wie sich das Vorlagenmanagement in Anwendungen im Kontext von \emph{E-Mail}-Vorlagen verwendet lässt. 
+\ \newline
+Das Vorlagenmanagement kann auch in einem anderen Kontext verwendet werden, wobei sich die vorliegende Bachelorarbeit ausschließlich mit der Verwendung des Vorlagenmanagements für \emph{CleverMail} beschäftigen wird. Obwohl das Vorlagenmanagement als eigene Softwarekomponente implementiert wird, wird die vorliegende Bachelorarbeit aufzeigen, wie sich das Vorlagenmanagement in Anwendungen im Kontext von \emph{E-Mail}-Vorlagen verwendet lässt. 
 \newpage
 
 \section{Die Rahmenbedingungen}
-Das Vorlagenmanagement muss in Java in der Version 8 implementiert und muss die Plattform \emph{Java-Enterprise-Edition 7 (JEE-7)} verwenden, wobei folgende Spezifikationen Anwendung finden müssen.
+Das Vorlagenmanagement muss in Java in der Version 8 implementiert werden und muss die Plattform \emph{Java-Enterprise-Edition 7 (JEE-7)} verwenden, wobei folgende Spezifikationen Anwendung finden müssen.
 \begin{itemize}
 	\item \emph{Java-Persistence-API 2.1 (JPA) (JSR 338)}
 	\newline
-	ist die Spezifikation für die Persistenz.
+	ist die Spezifikation für die Persistenz in Java.
 	\item \emph{Context and Dependency Injection 1.1 (CDI) (JSR 346)}
 	\newline
 	ist die Spezifikation für kontextabhängige Injektion innerhalb der Plattform \emph{JEE-7}.
@@ -59,4 +60,4 @@ Damit wird das Vorlagenmanagement mit den aktuellsten Standards und Spezifikatio
 	\item die Integration in \emph{Typescript}.
 \end{itemize} 
 \ \newline
-Als Entwicklungsumgebung wird die \emph{IDE Intellij} verwendet, die eine bekannte Entwicklungsumgebung im \emph{Java}-Umfeld ist und ein Produkt des Unternehmens \emph{Jetbrains} mit Sitz in Tschechien ist. Als Applikationsserver wird \emph{Wildfly 10.0.0}, vormals \emph{JbossAS} genannt, des Unternehmens \emph{Redhat} verwendet, der ein zertifizierter \emph{JEE-7}-Server ist und somit alle benötigten Spezifikationen unterstützt. Es soll so weit wie möglich vermieden Bibliotheken von Drittanbietern zu verwenden, außer sie sind für die Funktionalitäten des Vorlagenmanagements unerlässlich oder bieten einen essentiellen Vorteil.
+Als Entwicklungsumgebung wird \emph{Intellij} verwendet, die eine bekannte Entwicklungsumgebung im \emph{Java}-Umfeld ist und ein Produkt des Unternehmens \emph{Jetbrains} mit Sitz in Tschechien ist. Als Applikationsserver wird \emph{Wildfly 10.0.0}, vormals \emph{JbossAS} genannt, des Unternehmens \emph{Redhat} verwendet, der ein zertifizierter \emph{JEE-7}-Server ist und somit alle benötigten Spezifikationen unterstützt. Es soll so weit wie möglich vermieden werden Bibliotheken von Drittanbietern zu verwenden, außer sie sind für die Funktionalitäten des Vorlagenmanagements unerlässlich oder bieten einen essentiellen Vorteil.

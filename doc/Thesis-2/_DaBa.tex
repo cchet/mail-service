@@ -11,45 +11,16 @@
 \graphicspath{{images/}}    % name of directory containing the images
 \logofile{logo}							% name of logo-PDF in images/ (or use \logofile{} for no logo)
 \AddBibFile{literatur}  	% name of the BibTeX (.bib) file
-
+\usepackage{pdfpages}
 
 %%%----------------------------------------------------------
 \begin{document}
 %%%----------------------------------------------------------
-
-% Einträge für ALLE Arbeiten: --------------------------------
-\title{Vorlagenmanagement für \emph{Mail}-Service}
-\author{Ing. Thomas Herzog}
-\studiengang{Software Engineering}
-\studienort{Hagenberg}
-\abgabedatum{2015}{07}{14}	% {YYYY}{MM}{DD}
-
-%%% zusätzlich für eine Bachelorarbeit: ---------------------
-\nummer{S1310307011-A}   % XX...X = Stud-ID, z.B. 0310238045-A  
-                        % (A = 1. Bachelorarbeit)
-%\semester{Sommersemester 2015} 
-%\gegenstand{Einführung in die Tiefere Problematik 1} 
-\betreuer{FH-Prof. DI Dr. Dobler} % oder \betreuerin{..}
-
-%%% zusätzlich für einen Praktikumsbericht: -----------------
-%\nummer{XXXXXXXXXX-B}   % XX...X = Stud-ID, z.B. 0310238045-B  
-                        % (B = 2. Bachelorarbeit)
-%\betreuer{Mag.~Pjotr I.~Czar\\Creative Director}  % \betreuerin{..}
-\firma{%
-   curecomp Software Services GmbH\\
-   4020 Linz, Neue Werft, Industriezeile 35
-}
-\firmenTel{+43 (732) 9015-5565}
-\firmenUrl{www.curecomp.com}
-
-%\strictlicense  % erzeugt restriktive Lizenzformel
-
+\includepdf[pages={1,2}]{../Titelblatt_BAC_2.pdf}
 %%%----------------------------------------------------------
 \frontmatter
-\maketitle
 \tableofcontents
 %%%----------------------------------------------------------
-
 \include{kurzfassung}		
 \include{abstract}			
 
