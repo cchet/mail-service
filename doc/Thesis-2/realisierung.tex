@@ -1,6 +1,6 @@
 \chapter{Die Realisierung}
 \label{cha:Realisierung}
-Folgendes Kapitel befasst sich mit der Implementierung, der im Kapitel \ref{cha:Lösungskonzept} vorgestellten Spezifikation des Vorlagenmanagements. Die Implementierung wurde in \emph{Java 8} mit dem \emph{Buildtool Maven} realisiert, wobei die Implementierungen in der folgenden Projektstruktur organisiert wurden.
+Dieses Kapitel befasst sich mit der Implementierung der Spezifikation des Vorlagenmanagements, die im Kapitel \ref{cha:Lösungskonzept} vorgestellt wurde. Die Implementierung wurde in \emph{Java 8} mit dem \emph{Buildtool-Maven} realisiert, wobei die Implementierungen in der folgenden Projektstruktur organisiert wurden.
 \begin{figure}[h]
 \dirtree{%
 .1 mailing.
@@ -30,23 +30,23 @@ Folgendes Kapitel befasst sich mit der Implementierung, der im Kapitel \ref{cha:
 \label{fig:minimal-example:frame-dirtree}
 \end{figure}
 \ \newline
-Das \emph{Maven} Wurzelprojekt \emph{mailing} organisiert alle Abhängigkeiten für die Unterprojekte, sowie die auf alle Unterprojekte anwendbare \emph{Build}-Konfiguration. Das Wurzelprojekt \emph{mailing} definiert auch die Metadaten, wie die EntwicklerInnen, die an diesem Projekt mitwirken. Dar Wurzelprojekt \emph{mailing} ist vom Typ \emph{pom}, was bedeutet, dass aus diesem Projekt kein Artefakt erstellt werden kann und es existiert um tiefer liegende Projekte zu bündeln. Projekte unterhalb von \emph{mailing}, die ebenfalls als \emph{pom} definiert wurden, sind aus der Sicht ihrer Kinder das Wurzelprojekt und könnten für diese Projekte Abhängigkeiten, oder \emph{Build}-Konfigurationen organisieren. Die gesamte Organisation der Abhängigkeiten findet im Wurzelprojekt \emph{mailing} statt. Diese Projektstruktur wurde gewählt, da in diesem Projekt auch die Implementierungen der anderen Softwarekomponenten des \emph{Mail-Service} organisiert werden. Die konkreten Artefakte wurden jeweils in ein Artefakt \emph{*-api} und \emph{*-impl} aufgeteilt, somit sind die Schnittstellen (Spezifikation) vollständig getrennt von deren Implementierungen. Folgende Auflistung beschreibt alle konkreten Artefakte (Java)-Archiv, die aus dem Projekt \emph{mailing} erstellt werden können.
+Das \emph{Maven}-Wurzelprojekt \emph{mailing} organisiert die Metadaten wie die EntwicklerInnen, die an diesem Projekt mitwirken, alle benötigten Abhängigkeiten, sowie die auf alle Unterprojekte anwendbare \emph{Build}-Konfigurationen. Die übergeordneten Projekte sind vom Typ \emph{pom}, was bedeutet, dass aus diesen Projekten keine Artefakte erstellt werden und die übergeordneten Projekte die tiefer liegenden Projekte bündeln. Die gesamte Organisation der Abhängigkeiten findet im Wurzelprojekt \emph{mailing} statt. Diese Projektstruktur wurde gewählt, da in diesem Projekt auch die Implementierungen der anderen Softwarekomponenten von \emph{CleverMail} organisiert werden. Die konkreten Artefakte wurden jeweils in ein Artefakt \emph{*-api} und \emph{*-impl} aufgeteilt, somit sind die Schnittstellen (Spezifikationen) vollständig getrennt von deren Implementierungen. Folgende Auflistung beschreibt alle konkreten Artefakte \emph{(Java-Archive)}, die aus dem Wurzelprojekt \emph{mailing} erstellt werden können:
 \begin{itemize}
 	\item\emph{\textbf{mailing-model-jpa}} 
 	\newline
-	ist das Artefakt, das die \emph{JPA 2.1 (JSR 338)} Klassen enthält, die die Datenbank in \emph{Java} abbilden.
+	ist das Artefakt, das die Klassen mit den \emph{JPA-}-Entitäten enthält, die die Datenbank in \emph{Java} abbilden.
 	\item\emph{\textbf{mailing-module-template-cdi}} 
 	\newline
-	ist das Artefakt, das die Implementierung für die Integration in eine \emph{CDI 1.1 (JSR 346)} Umgebung  enthält.
+	ist das Artefakt, das die Implementierung der \emph{CDI}-Erweiterung für die Integration in eine \emph{CDI}-Umgebung  enthält.
 	\item\emph{\textbf{mailing-module-template-jsf}}
 	\newline
-	ist das Artefakt, das die Implementierung für die Integration in \emph{JSF 2.2 (JSR 344)} enthält.
+	ist das Artefakt, das die Implementierung für die Integration in \emph{JSF} enthält.
 	\item\emph{\textbf{mailing-module-template-model-json}}
 	\newline
-	ist das Artefakt, das die Implementierung der \emph{JSON}-Spezifikation in Form von \emph{Java}-Klassen enthält.	
+	ist das Artefakt, das die Implementierung der \emph{JSON}-Datenobjekte in Form von \emph{Java}-Klassen enthält.	
 	\item\emph{\textbf{mailing-module-template-logic-api}} 
 	\newline
-	ist das Artefakt, das die Spezifikation des Vorlagenmanagement enthält.
+	ist das Artefakt, das die Spezifikation des Vorlagenmanagements enthält.
 	\item\emph{\textbf{mailing-module-template-logic-impl}} 
 	\newline
 	ist das Artefakt, das die Implementierung der Spezifikation des Vorlagenmanagements enthält.
@@ -55,32 +55,33 @@ Das \emph{Maven} Wurzelprojekt \emph{mailing} organisiert alle Abhängigkeiten f
 	ist das Artefakt, das die Implementierung der Integration für die Anwendung \emph{CleverWeb} enthält.
 	\item\emph{\textbf{mailing-testsuite-cdi}},
 	\newline
-	ist das Artefakt, das die Ressourcen aller Tests, die in einer \emph{CDI}-Umgebung lauffähig sein müssen, bereitgestellt.
+	ist das Artefakt, das die Ressourcen aller Tests, die in einer \emph{CDI}-Umgebung lauffähig sein müssen, enthält.
 	\item\emph{\textbf{mailing-demo-logic}}
 	\newline
-	ist das Artefakt, das den \emph{Service}-Schicht der Beispielanwendung darstellt.
+	ist das Artefakt, das die Schicht der Geschäftslogik der Beispielanwendung enthält.
 	\item\emph{\textbf{mailing-demo-web}}
 	\newline
-	ist das Artefakt, das die Demowebanwendung darstellt.
+	ist das Artefakt, das die \emph{Web}-Anwendung der Beispielanwendung enthält.
 	\item\emph{\textbf{mailing-data-api}}
 	\newline
-	ist das Artefakt, dass die Spezifikation der \emph{Services} enthält, die die Persistenz der \emph{E-Mail} behandeln. Es enthält auch die Datenbankzugriffsklassen in Form von \emph{Data-Repository}-Schnittstellen.
+	ist das Artefakt, dass die Spezifikation der Geschäftslogik enthält, die die Persistenz der \emph{E-Mail}-Vorlagen behandeln. Es enthält auch die Datenbankzugriffsklassen in Form von \emph{Data-Repository}-Schnittstellen.
 	\item\emph{\textbf{mailing-data-impl}}
 	\newline
-	ist das Artefakt, das die Implementierung der \emph{Service}-Spezifikation enthält.
+	ist das Artefakt, das die Implementierung der Geschäftslogik enthält.
 \end{itemize} 
 
 \section{Die Implementierung der Spezifikationen}
-Der folgende Abschnitt behandelt die Implementierungen der im Kapitel \ref{cha:Lösungskonzept} vorgestellten Spezifikation. Es werden alle Implementierung der Spezifikationen bezüglich des Vorlagenmanagements behandelt und nicht für die Spezifikationen für die Persistenz, des Datenmodels und der Datenzugriffsschicht. Die nicht behandelten Softwarekomponenten wurden im Zuge der Entwicklung des Vorlagenmanagements, implementiert und stellen bereits einen Teil der Implementierung des \emph{Mail-Service} dar.
+Dieser Abschnitt behandelt die Implementierungen der Spezifikationen, die im Kapitel \ref{cha:Lösungskonzept} vorgestellt wurden. 
 
 \subsection{Die Implementierung für \emph{CKEditor}}
-\emph{Editor CKEditor} ist ein \emph{Javascript} basierter \emph{Editor}, mit dem die Vorlagen bearbeitet werden können. Er stellt Funktionalitäten wie z.B. Schriftarten und Schriftformen
-zur Verfügung, was das Erstellen einer Vorlage auf Basis von \emph{HTML} erleichtert. Wie im Abschnitt \ref{sec:sub-typescript-javascript} vorgegeben, wird ein \emph{Plugin} benötigt, dass innerhalb des \emph{CKEDitors} die Variablen verwalten kann. Diese \emph{Plugin} wurde in \emph{Typescript} implementiert, mit dem im Gegenzug zu Javascript Typsicherheit gewährleistet werden kann. Die Implementierung des \emph{Plugins} in \emph{Typescript} war möglich, da für den \emph{CKEditor} vom dem \emph{Open-Source} Projekt \emph{DefinitelyTyped} Typinformationen für \emph{Typescript} bereitgestellt werden, die die \emph{Javascript}-Schnittstellen als \emph{Typescript}-Schnittstellen definieren, damit in \emph{Typescript} die Typsicherheit gewährleistet werden kann. Würden keine Typinformationen zur Verfügung stehen, hätte man sie selber implementieren müssen, was einen erheblichen Mehraufwand bedeutet hätte.
+Wie im Abschnitt \ref{sec:sub-typescript-javascript} vorgegeben, wurde ein \emph{Plugin} in \emph{TypeScript} implementiert, dass innerhalb des \emph{CKEDitors} die Variablen verwaltet. Die Implementierung des \emph{Plugins} in \emph{TypeScript} war möglich, da für den \emph{Editor CKEditor} vom dem, von \emph{Microsoft} verwalteten, \emph{Open-Source} Projekt \emph{DefinitelyTyped} Typinformationen für \emph{TypeScript} bereitgestellt werden, die die \emph{JavaScript}-Schnittstellen als \emph{TypeScript}-Schnittstellen definieren. Hätten keine Typinformationen zur Verfügung gestanden, hätte man die Typinformationen selber implementieren müssen, was einen erheblichen Mehraufwand bedeutet hätte.
  
-\subsubsection{Das \emph{CKEDitor-Plugin} in \emph{Typescript}}
-Da das Variablenmanagement unabhängig vom verwendeten \emph{CKEditor} sein soll, wurde die Verwaltung der Variablen von dem \emph{CKEditor-Plugin} logisch und physisch getrennt, wobei das Variablenmanagement im \emph{Typescript}-Modul \emph{cc.variables} und das \emph{CKEDitor-Plugin} im \emph{Typescript}-Modul \emph{cc.ckeditor.plugins} organisiert wurden. Beide \emph{Typescript}-Quelltexte wurden in ihren eigenen Quelltextdateien implementiert und werden beim Kompilieren in eine einzige \emph{Javascript} zusammengeführt. Mit der Organisation in eigenen \emph{Typescript}-Modulen wird sichergestellt, dass nur explizit nach außen sichtbar gemachte \emph{(export MyType \{...\})} Funktionen oder Typen außerhalb des Moduls zur Verfügung stehen. Das \emph{Typescript}-Modul wird in ein korrespondierendes \emph{Javascript}-Modul übersetzt. Die folgenden Abbildungen \ref{prog:example-typescript-modul} und \ref{prog:example-javascript-modul} zeigen ein \emph{Typescipt}-Modul und das daraus resultierende \emph{Javascript}-Modul.
+\subsubsection{Das \emph{CKEditor-Plugin} in \emph{Typescript}}
+Das Variablenmanagement ist unabhängig vom verwendeten \emph{Editor} und wurde daher vom \emph{CKEditor-Plugin} logisch und physisch getrennt, wobei das Variablenmanagement im \emph{TypeScript}-Modul \emph{cc.variables} und das \emph{CKEDitor-Plugin} im \emph{TypeScript}-Modul \emph{cc.ckeditor.plugins} implementiert wurden. Die voneinander getrennten \emph{TypeScript}-Quelltextdateien werden beim Kompilieren in eine einzige \emph{JavaScript}-Quelltextdatei zusammengeführt. Mit der Organisation in eigenen \emph{TypeScript}-Modulen wird sichergestellt, dass nur explizit nach außen sichtbar gemachte \emph{(export MyType \{...\})} Funktionen oder Typen außerhalb des Moduls referenziert werden können. Ein \emph{TypeScript}-Modul wird in ein korrespondierendes \emph{JavaScript}-Modul übersetzt. Die Verwendung von Modulen bring auch den Vorteil, dass am \emph{Window}-Objekt nur das Objekt der Wurzel des Namensraums \emph{cc} gebunden ist, wodurch das \emph{Window}-Objekt nicht mit den eigenen\emph{JavaScript}-Objekten verschmutzt wird. Die Quelltexte aus den Abbildungen \ref{prog:example-typescript-modul} und \ref{prog:example-javascript-modul} zeigen ein \emph{TypeScipt}-Modul und das daraus resultierende \emph{JavaScript}-Modul.
+\newpage
+
 \begin{program}[h]
-\caption{Das \emph{Typescript}-Modul}
+\caption{Das \emph{TypeScript}-Modul}
 \label{prog:example-typescript-modul}
 \begin{JsCode}[numbers=none]
 module cc.ckeditor.plugins {
@@ -92,74 +93,75 @@ module cc.ckeditor.plugins {
 }                  
 \end{JsCode}
 \end{program}
+
 \begin{program}[h]
-\caption{Das resultierende \emph{Javascript}-Modul}
+\caption{Das \emph{JavaScript}-Modul}
 \label{prog:example-javascript-modul}
 \begin{JsCode}[numbers=none]
 var cc;
 (function (cc) {
     var variables;
     (function (variables_1) {
-    // VariableMapping is not present in javascript
+    // VariableMapping nicht Teil des generierten JavaScripts
     })(variables = cc.variables || (cc.variables = {}));
 })(cc || (cc = {}));                 
 \end{JsCode}
 \end{program}
 \ \newline
-Die \emph{Typescript}-Schnittstelle \emph{VariableMapping} aus Quelltext \ref{prog:example-typescript-modul} ist nicht Teil des resultierenden \emph{Javascript}-Moduls, da diese Schnittstelle nur eine Typinformation für \emph{Typescript} darstellt und daher nicht Teil des resultierenden \emph{Javascript} ist. Wäre die Schnittstelle \emph{VariableMapping} eine \emph{Typescript}-Klasse, dann wäre sie auch Teil des resultierenden \emph{Javascripts} und würde als \emph{Javascript}-Funktion abgebildet werden.
+Die \emph{TypeScript}-Schnittstelle \emph{VariableMapping} aus dem Quelltext aus Abbildung \ref{prog:example-typescript-modul} ist nicht Teil des generierten \emph{JavaScript}-Moduls, da diese Schnittstelle nur eine Typinformation für \emph{TypeScript} darstellt. Wäre die Schnittstelle \emph{VariableMapping} eine \emph{TypeScript}-Klasse, dann wäre diese Klasse auch Teil des generierten \emph{JavaScript}-Moduls und würde als \emph{JavaScript}-Funktion abgebildet werden.
 \newline
 \newline
-Das Variablenmanagement in \emph{Typescript} ist verantwortlich für die \emph{Browser} seitige Registrierung der Variablen und stellt Hilfsmethoden zur Verfügung, mit denen Variablen gefunden und konvertiert werden können. Der Quelltext aus \ref{prog:example-typescript-convert-variable} zeigt wie eine Variable in \emph{Typescript} konvertiert werden kann.
+Das Variablenmanagement in \emph{TypeScript} ist verantwortlich für die \emph{Browser}-seitige Registrierung der Variablen und stellt Hilfsmethoden zur Verfügung, mit denen Variablen in der \emph{HTML}-Vorlage gefunden und konvertiert werden können. Der Quelltext aus Abbildung \ref{prog:example-typescript-convert-variable} zeigt mehrere Möglichkeiten, wie eine Variable in \emph{TypeScript} konvertiert werden kann.
 \newpage
-\begin{program}[h]
-\caption{\emph{Typescript}-Funktion für die Variablenkonvertierung}
-\label{prog:example-typescript-convert-variable}
-\begin{JsCode}[numbers=none]
-// Signature of the converter function
-public convertVariables(converter:(item:VariableMapping) => any 
-                        = (item:VariableMapping)=> item):any[]
 
-// Convert to the variable's set displayName
-variablesHandler.convertVariables(
-	function (variable) {
-		return variable.displayName;
-	}
-)                        
+\begin{program}[h]
+\caption{Beispiele für Variablenkonvertierungen in \emph{TypeScript}}
+\label{prog:example-typescript-convert-variable}
+\begin{JsCode}
+// Hilfsklasse für die Konvertierung der Variablen
+class VariableUtils {
+    private variables:VariableMapping[] = [];
+	
+    // Öffentliche Funktion für die Konvertierung der Variablen
+    public convert(converter:(item:VariableMapping) => any 
+    	                    = (item:VariableMapping)=> item):any[] {
+        var converted:any[] = [];
+        for (var i = 0; i < this.variables.length; i++) {
+            converted[i] = converter(this.variables[i]);
+        }
+        return converted;	            
+    }
+}
+
+// Eigene Klasse für die Konvertierung
+class MyConverter {
+    // Öffentliche Funktion für die Konvertierung der Variablen
+    public convert(v:VariableMapping): any {
+        return v.displayName;
+    }
+}
+
+// Erstellen der Objekte aus den definierten Klassen
+var util     :VariableUtils = new VariableUtils();
+var converter:MyConverter   = new MyConverter();
+
+// Konvertierung mit einer \emph{Arrow}-Funktion
+util.convert((v:VariableMapping) => v.displayName);
+
+// Konvertierung mit einer anonymen Funktion
+util.convert(function (v:VariableMapping) {
+    return v.displayName;
+});
+
+// Konvertierung mit einer Referenz auf eine Funktion
+util.convert(converter.convert);
 \end{JsCode} 
 \end{program}
 \ \newline
-Die Funktion \emph{convertVariables} aus dem Quelltext \ref{prog:example-typescript-convert-variable} definiert den Formalparameter \emph{converter} als eine sogenannte \emph{Arrow}-Funktion, die einer \emph{Lambda}-Funktion in \emph{Java} ähnelt. Mit der \emph{Arrow}-Funktion wird die Signatur der Funktion für die Konvertierung definiert. In dem Quelltext aus \ref{prog:example-typescript-convert-variable} wird für den Formalparameter \emph{converter} eine Standardimplementierung bereitgestellt, die verwendet wird, sollte bei der Aktivierung der Funktion \emph{convertVariables} für den Formalparameter \emph{converter} kein Aktualparameter bereitgestellt werden. Der Typ \emph{any[]} ist vergleichbar mit dem Datentyp \emph{var} aus \emph{.NET} und gibt an das jeder Datentyp als Typ des zurückgelieferten \emph{Arrays} erlaubt ist.
-\newline
-\newline
-Das \emph{CKEditor-Plugin} ist für die Integration der Variablen in den \emph{Editor} verantwortlich, wobei die zur Verfügung stehenden Variablen über einen Dialog ausgewählt werden können. Ausgewählte Variablen werden an die aktuelle Position des Cursors im \emph{HTML}-Dokuments des \emph{Editors} in Form eines \emph{HTML-Tags} platziert. Die \emph{HTML}-Repräsentation der Variable ist gekoppelt an den \emph{FacesConverter}, da der Konverter die Variable von dessen \emph{HTML}-Repräsentation in die \emph{Template-Engine} spezifische Repräsentation der Variablen  konvertieren muss. Die verwendete \emph{Template-Engine} ist für dieses \emph{Plugin} und das \emph{Javascript} seitige Variablenmanagement irrelevant, da die Variablen im \emph{Javascript} seitigen Variablenmanagement immer in der gleichen Objektrepräsentation vorhanden sind und im \emph{CKEditor-Plugin} immer der gleichen \emph{HTML}-Repräsentation verwendet werden. Lediglich der \emph{FacesConverter} ist gekoppelt and die verwendete \emph{Template-Engine}.
-\newline
-\newline
-Die Abbildung \ref{fig:ckeditor-toolbar-opne-dialog} zeigt die Funktionsleiste des \emph{CKEditors}, in die der rot markierte \emph{Button} eingefügt wurde, über den ein Dialog geöffnet werden kann, über den die Variablen ausgewählt werden können. Dieser Dialog enthält alle Variablen, die im \emph{Javascript} seitigen Variablenmanagement registriert wurden und somit dem \emph{CKEDitor-Plugin} zur Verfügung stehen.
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.7]{ckeditor-toolbar-open-dialog}
-\caption{\emph{CKEditor Toolbar Button} zum Öffnen des Dialogs}
-\label{fig:ckeditor-toolbar-opne-dialog}
-\end{figure}
-\ \newline
-Die Abbildung \ref{fig:ckeditor-dialog-insert-variable} zeigt den Dialog der vom \emph{CKEditor-Plugin} bereitgestellt wird. In diesem Dialog stehen alle registrierten Variablen zur Auswahl. Der Titel der Variable ist der Text in der Auswahlkomponente und die Beschreibung der ausgewählten Variable wird unterhalb der Auswahlkomponente angezeigt, wenn eine Variable ausgewählt wurde. Durch den Klick auf den \emph{Button OK} wird die Variable in die Vorlage eingefügt und der Dialog wird geschlossen.
-\begin{figure}[h]
-\centering
-\includegraphics[scale=1]{ckeditor-dialog-insert-variable}
-\caption{\emph{CKEditor} Dialog für die Variablenauswahl}
-\label{fig:ckeditor-dialog-insert-variable}
-\end{figure}
-\ \newline
-Die Abbildung \ref{fig:ckeditor-example-template} zeigt eine Vorlage innerhalb des \emph{CKEditors}, wobei die eingefügten Variablen besonders hervorgehoben werden. Der Titel der Variable stellt den Namen für den \emph{HTML-Tag} bereit und die Beschreibung dessen Titel. Die eingefügten \emph{HTML-Tags} dürfen nicht verändert werden, daher ist das \emph{Drag and Drop} und das Selektieren dieses eingefügten Texts nicht erlaubt, da dadurch die \emph{HTML}-Repräsentation der Variablen zerstört werden könnte und die Variablen nicht mehr vom \emph{FacesConverter} gefunden werden können.
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.8]{ckeditor-example-template}
-\caption{Beispiel einer Vorlage im \emph{CKEditor}}
-\label{fig:ckeditor-example-template}
-\end{figure}
+Die Funktion \emph{convert} der Klasse \emph{VariableUtil} aus dem Quelltext aus Abbildung \ref{prog:example-typescript-convert-variable} definiert den Formalparameter \emph{converter} als eine \emph{Arrow}-Funktion, die die Signatur der Funktion für die Konvertierung definiert und eine Standardimplementierung definiert, die verwendet wird, wenn bei der Aktivierung der Funktion \emph{convert} für den Formalparameter \emph{converter} kein Aktualparameter bereitgestellt wird.   Eine \emph{Arrow}-Funktion ähnelt einer \emph{Lambda}-Funktion in \emph{Java}. Der Typ \emph{any[]} ist vergleichbar mit dem Datentyp \emph{var} aus \emph{.NET} und gibt an, dass jeder Datentyp als Typ des zurückgelieferten \emph{Arrays} erlaubt ist.
 \newpage
 
-\subsubsection{Die Variablenrepräsentation in \emph{JSON}}
+\subsubsection{Die Variablenrepräsentation in \emph{TypeScript}}
 Die Variablen werden \emph{Java} seitig als Objekte der Schnittstelle \emph{VariableContract} abgebildet, und müssen für das \emph{Javascript} seitige Variablenmanagement in eine \emph{JSON}-Zeichenkette überführt werden, die als \emph{Javascript}-Objekt innerhalb des \emph{Javascript} seitige Variablenmanagements verwendet werden. Dafür wurde in \emph{Typescript} die Schnittstelle \emph{VariableMapping} aus dem Quelltext \ref{prog:example-typescript-variable-mapping} definiert, die die Struktur einer Variable innerhalb von \emph{Typescript} spezifiziert.
 \begin{program}[h]
 \caption{\emph{Typescript}-Funktion für die Variablenkonvertierung}
@@ -174,8 +176,8 @@ interface VariableMapping {
 \end{program}
 \ \newline
 Die Schnittstelle \emph{VariableMapping} ist Teil des Moduls \emph{cc.variables} und wird mit dem Schlüsselwort \emph{export} nach außen offengelegt und kann über den vollständigen Pfad \emph{cc.variables.VariableMapping} innerhalb von \emph{Typescript} verwendet werden. Mit der Schnittstelle \emph{VariableMapping} werden Typinformationen für der Variablenpräsentation in \emph{Typescript} bereitgestellt, damit innerhalb von \emph{Typescript} die Typsicherheit der Variablenrepräsentation sichergestellt werden kann.
-\newline
-\newline
+
+\subsubsection{Die Variablenrepräsentation in \emph{Java}}
 Der Quelltext aus \ref{prog:variableJson} zeigt die korrespondierende Implementierung der \emph{JSON}-Spezifikation in \emph{Java} mit der Klasse \emph{VariableJson}. Mit der Klasse \emph{VariableJson} wird sichergestellt, das die Variablenrepräsentation in \emph{Java} korrespondierend zur Variablenrepräsentation in \emph{Typescript} ist. Als \emph{JSON-Provider} wird die Bibliothek \emph{fasterxml-jackson-json}, vormals \emph{jackson-json}, verwendet, die es erlaubt mit Annotationen deklarativ Attribute und/oder Methoden einer Klasse auf \emph{JSON}-Attribute abzubilden. Durch diesen deklarativen Ansatz sind die Attribute und/oder die Methoden einer Klasse entkoppelt von der \emph{JSON}-Spezifikation und können daher abgeändert werden. Nur ein Ändern des Datentyps eines Attributes kann zu Problemen führen. 
 \begin{program}[h]
 \caption{VariableJson.java}
@@ -218,6 +220,60 @@ public class VariableJson extends AbstractJsonModel {
 \end{JsCode}
 \end{program}
 \ \newpage
+
+\subsubsection{Registrierung des \emph{Plugins} im \emph{CKEditor}}
+Das \emph{Plugin} wird über eine \emph{JavaScript}-Datei im \emph{CKEditor} registriert, wobei folgende Konventionen eingehalten werden müssen.
+\begin{itemize}
+	\item\emph{ckeditor/plugins}
+	\newline
+	ist das Verzeichnis, in dem das \emph{Plugin} enthalten sein muss.
+	\item\emph{variables}
+	\newline
+	ist das Verzeichnis unterhalb des Verzeichnisses \emph{ckeditor/plugins}, in dem die \emph{Plugin}-Ressourcen enthalten sein müssen und das dem Namen des \emph{Plugins} entspricht.
+	\item\emph{plugin.js}
+	\newline
+	ist die \emph{JavaScript}-Datei, die im Verzeichnis \emph{ckeditor/plugins/variables} liegen muss und das implementierte \emph{Plugin} darstellt. 
+\end{itemize}
+\ \newline
+Der Quelltext aus Abbildung \ref{prog:example-ckeditor-config-js} zeigt einen Auszug aus der \emph{JavaScript}-Datei mit dem das \emph{Plugin} registriert wird und auch Einstellungen am \emph{CKEditor} vorgenommen werden können. Das \emph{Plguin} wird vom \emph{CKEditor} nach dessen Initialisierung geladen und registriert.
+
+\begin{program}[h]
+\caption{Registrierung des \emph{CKEditor-Plugins}}
+\label{prog:example-ckeditor-config-js}
+\begin{JsCode}
+CKEDITOR.editorConfig = function (config) {
+    config.extraPlugins = "variables";
+}
+\end{JsCode} 
+\end{program}
+
+\subsubsection{Integration des \emph{Plugins} im \emph{CKEditor}}
+Die Abbildung \ref{fig:ckeditor-toolbar-opne-dialog} zeigt die Funktionsleiste des \emph{CKEditors}, in die der rot markierte \emph{Button} über das \emph{Plugin} eingefügt wurde. Durch einen Klick auf diesen \emph{Button} wird ein Dialog geöffnet, über den die zur Verfügung stehenden Variablen ausgewählt werden können.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{ckeditor-toolbar-open-dialog}
+\caption{Die \emph{CKEditor}-Funktionsleiste}
+\label{fig:ckeditor-toolbar-opne-dialog}
+\end{figure}
+\ \newline
+Die Abbildung \ref{fig:ckeditor-dialog-insert-variable} zeigt den Dialog, der vom \emph{CKEditor-Plugin} definiert und erstellt wurde. In diesem Dialog stehen alle registrierten Variablen zur Auswahl. Die Bezeichnung der Variable ist der Text in der Auswahlkomponente und die Beschreibung der ausgewählten Variable wird unterhalb der Auswahlkomponente angezeigt. Durch den Klick auf den \emph{Button OK} wird die Variable in die Vorlage eingefügt und der Dialog wird geschlossen.
+\newpage
+\begin{figure}[h]
+\centering
+\includegraphics[scale=1]{ckeditor-dialog-insert-variable}
+\caption{\emph{CKEditor} Dialog für die Variablenauswahl}
+\label{fig:ckeditor-dialog-insert-variable}
+\end{figure}
+\ \newline
+Die Abbildung \ref{fig:ckeditor-example-template} zeigt eine Vorlage innerhalb des \emph{CKEditors}, wobei die eingefügten Variablen besonders hervorgehoben werden. Die Bezeichnung  der Variable stellt den Namen für den \emph{HTML-Tag} bereit und die Beschreibung dessen Titel. Die eingefügten \emph{HTML-Tags} dürfen nicht verändert werden, daher ist das \emph{Drag} und \emph{Drop} und das Selektieren des eingefügten \emph{HTML-Tags} nicht erlaubt, da dadurch der eingefügte \emph{HTML-Tag} zerstört werden könnte und die Variablen nicht mehr gefunden werden können.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.8]{ckeditor-example-template}
+\caption{Beispiel einer Vorlage im \emph{CKEditor}}
+\label{fig:ckeditor-example-template}
+\end{figure}
+\newpage
+
 
 \subsection{Die Implementierungen für \emph{CDI}}
 \label{sec:sub-impl-integartion-cdi}

@@ -72,60 +72,66 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.1.1}Die Implementierung f\IeC {\"u}r \emph {CKEditor}}{24}{subsection.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Das \emph {CKEDitor-Plugin} in \emph {Typescript}}{24}{subsection.4.1.1}
+\contentsline {subsubsection}{Das \emph {CKEditor-Plugin} in \emph {Typescript}}{24}{subsection.4.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Variablenrepr\IeC {\"a}sentation in \emph {JSON}}{28}{figure.caption.8}
+\contentsline {subsubsection}{Die Variablenrepr\IeC {\"a}sentation in \emph {TypeScript}}{27}{lstnumber.-14.37}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.2}Die Implementierungen f\IeC {\"u}r \emph {CDI}}{30}{subsection.4.1.2}
+\contentsline {subsubsection}{Die Variablenrepr\IeC {\"a}sentation in Java}{27}{lstnumber.-15.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Vorlagenmanagement \emph {CDI}-Erweiterung}{30}{subsection.4.1.2}
+\contentsline {subsubsection}{Registrierung des \emph {Plugins} im \emph {CKEditor}}{28}{lstnumber.-16.34}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Der Vorlagenmanagement \emph {CDI}-Erzeuger}{32}{lstnumber.-17.25}
+\contentsline {subsubsection}{Integration des \emph {Plugins} im \emph {CKEditor}}{29}{lstnumber.-17.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Vorlagenmanagement \emph {CDI}-Hilfsklasse}{34}{Item.8}
+\contentsline {subsection}{\numberline {4.1.2}Die Implementierungen f\IeC {\"u}r \emph {CDI}}{31}{subsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1.3}Die Implementierungen f\IeC {\"u}r \emph {JSF}}{35}{subsection.4.1.3}
+\contentsline {subsubsection}{Die Vorlagenmanagement \emph {CDI}-Erweiterung}{31}{subsection.4.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Der Vorlagen \emph {FacesConverter}}{35}{subsection.4.1.3}
+\contentsline {subsubsection}{Der Vorlagenmanagement \emph {CDI}-Erzeuger}{33}{lstnumber.-18.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die \emph {Primefaces-Extension} f\IeC {\"u}r den \emph {CKEditor}}{36}{lstnumber.-22.2}
+\contentsline {subsubsection}{Die Vorlagenmanagement \emph {CDI}-Hilfsklasse}{35}{Item.8}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Die Vorlagenmanagement Beispielanwendung}{38}{section.4.2}
+\contentsline {subsection}{\numberline {4.1.3}Die Implementierungen f\IeC {\"u}r \emph {JSF}}{36}{subsection.4.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.1}Die Verwendung in einem \emph {Business}-Service}{38}{subsection.4.2.1}
+\contentsline {subsubsection}{Der Vorlagen \emph {FacesConverter}}{36}{subsection.4.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2.2}Die Verwendung \IeC {\"u}ber eine \emph {Web}-Oberfl\IeC {\"a}che}{41}{subsection.4.2.2}
+\contentsline {subsubsection}{Die \emph {Primefaces-Extension} f\IeC {\"u}r den \emph {CKEditor}}{37}{lstnumber.-23.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die dekorierbare Vorlage}{42}{figure.caption.10}
+\contentsline {section}{\numberline {4.2}Die Vorlagenmanagement Beispielanwendung}{39}{section.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Benutzervorlage}{43}{figure.caption.11}
+\contentsline {subsection}{\numberline {4.2.1}Die Verwendung in einem \emph {Business}-Service}{39}{subsection.4.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die serialisierte \emph {JSON}-Zeichenkette}{43}{figure.caption.12}
+\contentsline {subsection}{\numberline {4.2.2}Die Verwendung \IeC {\"u}ber eine \emph {Web}-Oberfl\IeC {\"a}che}{42}{subsection.4.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Vorlagenmetadaten}{44}{figure.caption.13}
+\contentsline {subsubsection}{Die dekorierbare Vorlage}{43}{figure.caption.10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Der erstellte \emph {E-Mail}-Inhalt}{44}{figure.caption.14}
+\contentsline {subsubsection}{Die Benutzervorlage}{44}{figure.caption.11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {5}Die Analyse und Tests}{45}{chapter.5}
+\contentsline {subsubsection}{Die serialisierte \emph {JSON}-Zeichenkette}{44}{figure.caption.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Die Tests}{45}{section.5.1}
+\contentsline {subsubsection}{Die Vorlagenmetadaten}{45}{figure.caption.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.1}Die Tests der \emph {CDI}-Erweiterung}{46}{subsection.5.1.1}
+\contentsline {subsubsection}{Der erstellte \emph {E-Mail}-Inhalt}{45}{figure.caption.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.2}Die Tests des implementierten \emph {FacesConverters}}{47}{subsection.5.1.2}
+\contentsline {chapter}{\numberline {5}Die Analyse und Tests}{46}{chapter.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1.3}Die Tests des implementierten Vorlagenmanagements}{47}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.1}Die Tests}{46}{section.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Die erreichten Ziele}{48}{section.5.2}
+\contentsline {subsection}{\numberline {5.1.1}Die Tests der \emph {CDI}-Erweiterung}{47}{subsection.5.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.1}Das Vorlagenmanagement \IeC {\"u}ber das \emph {CKEditor-Plugin}}{48}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.1.2}Die Tests des implementierten \emph {FacesConverters}}{48}{subsection.5.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.2}Das Vorlagenmanagements in \emph {CDI}}{49}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.1.3}Die Tests des implementierten Vorlagenmanagements}{48}{subsection.5.1.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.3}Das Vorlagenmanagement in \emph {JSF}}{49}{subsection.5.2.3}
+\contentsline {section}{\numberline {5.2}Die erreichten Ziele}{49}{section.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2.4}Das Vorlagenmanagement in \emph {Mail}-DB-Schema}{49}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.1}Das Vorlagenmanagement \IeC {\"u}ber das \emph {CKEditor-Plugin}}{49}{subsection.5.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {6}Die Zusammenfassung}{50}{chapter.6}
+\contentsline {subsection}{\numberline {5.2.2}Das Vorlagenmanagements in \emph {CDI}}{50}{subsection.5.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Quellenverzeichnis}{51}{appendix*.19}
+\contentsline {subsection}{\numberline {5.2.3}Das Vorlagenmanagement in \emph {JSF}}{50}{subsection.5.2.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2.4}Das Vorlagenmanagement in \emph {Mail}-DB-Schema}{50}{subsection.5.2.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {6}Die Zusammenfassung}{51}{chapter.6}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Quellenverzeichnis}{52}{appendix*.19}
