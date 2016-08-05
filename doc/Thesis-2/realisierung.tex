@@ -469,13 +469,31 @@ public class CdiTemplateUtil implements Serializable {
 
 \subsection{Die Implementierungen für \emph{JSF}}
 \label{sec:sub-impl-integartion-jsf}
-Dieser Abschnitt behandelt die Implementierung des Variablenmanagements für die \emph{View}-Technologie \emph{JSF}. In diesem Abschnitt wird sich nur dem implementierten \emph{FacesConverter} und der \emph{CKEditor}-Integration, bereitgestellt von \emph{primefaces-extensions}, beschäftigen.
+Dieser Abschnitt beschäftigt sich mit der Implementierung der Integration des Variablenmanagements in die \emph{View}-Technologie \emph{JSF}, wie im Abschnitt \ref{sec-sub-specification-jsf} vorgegeben. Es werden der implementierte \emph{FacesConverter} und die \emph{CKEditor}-Integration in \emph{JSF} behandelt.
 
 \subsubsection{Der Vorlagen \emph{FacesConverter}}
-Es wurde der Konverter \emph{AbstractTemplateConverter} als abstrakte Klasse implementiert, die die Schnittstelle \emph{javax.faces.Converter} implementiert. Diese abstrakte Klasse wurde implementiert, da die Logik für die Konvertierung0 über alle \emph{Template-Engines} dieselbe ist und sich lediglich die Implementierung der Schnittstelle \emph{TemplateProcessor} unterschiedet. Das Objekt der Schnittstelle \emph{TemplateProcessor} und das Objekt der Klasse \emph{CdiTemplateUtil} werden manuell von der \emph{CDI}-Umgebung geholt, da keine Injektion innerhalb von \emph{JSF}-Artfakten in \emph{JSF 2.2} möglich ist. Die Injektion in \emph{JSF}-Artefakte wird erst ab \emph{JSF 2.3} unterstützt werden. Die Objekte werden über die Klasse \emph{BeanProvider} der Bibliothek \emph{Deltaspike} geholt, die Hilfsmethoden zur Verfügung stellt, mit denen man zur Laufzeit manuell mit der \emph{CDI}-Umgebung interagieren kann. \emph{Deltaspike} ist eine Bibliothek, die eine portable \emph{CDI}-Erweiterung darstellt. 
-\newline
-\newline
-Die konkrete Implementierung \emph{FreemarkerTemplateConverter} für die \emph{Template-Engine Freemarker}, die von der abstrakten Klasse \emph{AbstractTemplateConverter} ableitet, setzt über einen Konstruktor in der Basisklasse den korrespondierenden Qualifizierer für die verwendete \emph{Template-Engine} und das zu verwendende Objekt der Klasse \emph{java.util.Locale}. Mit diesem Qualifizierer wird die korrekte Implementierung der Schnittstelle \emph{TemplateProcessor} aus dem \emph{CDI-Container} geholt. Da der Konverter eine Abhängigkeit auf ein \emph{Locale} Objekt besitzt, muss ein Objekt des Konverters im \emph{Quelltext} erzeugt und über Parameterbindung an eine \emph{JSF}-Komponente gebunden werden. Das Binden des Konverters an eine \emph{JSF}-Komponente über dessen Namen definierbar über die Annotation \emph{@FacesConverter("converterName")} ist nicht möglich. 
+Ein \emph{FacesConverter} ist eine Klasse für die Konvertierung in \emph{JSF}, welche die Schnittstelle \emph{javax.faces.convert.Converter} implementiert, wobei diese Schnittstelle die folgenden beiden Methoden definiert.
+\begin{itemize}
+	\item\emph{getAsObject}
+	\newline
+	ist die Methode, die den Wert des Parameters, in Form von einer Zeichenkette, in das korrespondierende \emph{Java}-Objekt konvertiert und
+	\item\emph{getAsString}
+	\newline
+	ist die Methode, die ein \emph{Java}-Objekt in eine Zeichenkette konvertiert.
+\end{itemize}
+\ \newline
+Ein \emph{FacesConverter} wird im \emph{JSF-Framework} über die Annotation \emph{FacesConverter("converterName")} oder einen Eintrag in der der Konfigurationsdatei \emph{faces-config.xml} registriert. Einer \emph{JSF}-Komponente kann in \emph{XHTML} über das Attribut \emph{converter} ein Konverter, entweder 
+\begin{itemize}
+	\item über dessen registrierten Namen oder 
+	\item durch Parameterbindung auf ein Objekt des Konverters, zugewiesen werden.
+\end{itemize}
+Die gemeinsame Logik wurde in einer abstrakten Klasse \emph{AbstractTemplateConverter} zusammengefasst, da sich lediglich die konkrete Implementierungen der Schnittstelle \emph{TemplateProcessor} für die verschiedenen \emph{Template-Enginges} unterscheidet. Da keine Injektion in \emph{JSF}-Artefakte \emph{JSF 2.2} wie z.B.
+\begin{itemize}
+	\item\emph{FacesConverter},
+	\item\emph{FacesValidator} order
+	\item\emph{Component}
+\end{itemize}
+möglich ist, wurde die abstrakte Klasse \emph{AbstractTemplateConverter} implementiert und eine konkrete Implementierung für die \emph{Template-Engine Freemarker}. Ab \emph{JSF 2.3} wird in \emph{JSF}-Artefakten Injektion zur Verfügung stehen. Die Implementierung der Klasse \emph{FreemarkerTemplateConverter}, die von der Klasse \emph{AbstractTemplateConverter} ableitet, setzt über den Konstruktor statisch den zu verwendenden Qualifizierer, mit dem über die Hilfsklasse \emph{BeanProvider} der Bibliothek \emph{DeltaSpike} dynamisch die benötigten \emph{CDI-Beans} von der \emph{CDI}-Umgebung geholt werden. Beim Erstellen eines Objekts der Klasse \emph{FreemarkerTemplateConverter} muss ein Objekt der Klasse \emph{java.util.Locale} übergeben werden, damit die Bezeichnung und die Beschreibung einer Variable in einer Vorlage sprachspezifisch konvertiert werden kann. Die definierte Sprache sollte die Sprache sein, für die die Vorlage erstellt wurde.
 
 \begin{program}[h]
 \caption{Die Klasse \emph{FreemarkerTemplateConverter}}
@@ -490,139 +508,359 @@ public class FreemarkerTemplateConverter
 }
 \end{JavaCode}
 \end{program}
-\ \newline
-Die abstrakte Klasse \emph{AbstractTemplateConverter} definiert reguläre Ausdrücke, um die Variablen einer Vorlage in Form von \emph{HTML-Tags} zu finden und zu konvertieren.
+\ 
+\newline
+Die abstrakte Klasse \emph{AbstractTemplateConverter} definiert reguläre Ausdrücke, um die Variablen in einer Vorlage in Form von \emph{HTML-Tags} zu finden und zu konvertieren.
 \begin{JavaCode}[numbers=none]
-String tagRegex = "(<span[^,>]*class=\"variable\"[^,>]*>[^,<]*</span>)";
+String tagRegex = "(<span[^>]*class=\"variable\"[^>]*>[^<]*</span>)";
 String idRegex  = "data-variable-id=\"(\\S+)\"";
 \end{JavaCode}
 \ \begin{itemize}
-	\item\emph{tagRegex} ist der reguläre Ausdruck, um die Variablen in ihrer \emph{HTML}-Repräsentation in einer Vorlage zu finden.
-	\item\emph{idRegex} ist der reguläre Ausdruck, um die \emph{Id} einer Variable, aus deren \emph{HTML}-Repräsentation zu bekommen und wird auf den gefundenen \emph{HTML-Tag} einer Variable angewendet, die mit dem regulären Ausdruck \emph{tagRegex} gefunden wurde.
+	\item\emph{tagRegex}
+	\newline
+	ist der reguläre Ausdruck, um die Variablen in ihrer \emph{HTML}-Repräsentation in einer Vorlage zu finden.
+	\item\emph{idRegex}
+	\newline
+	ist der reguläre Ausdruck, um die \emph{Id} einer Variable, aus deren \emph{HTML}-Repräsentation zu bekommen und wird auf den gefundenen \emph{HTML-Tag} einer Variable angewendet, die mit dem regulären Ausdruck \emph{tagRegex} gefunden wurde.
 \end{itemize}
 \ \newline
-Die abstrakte Klasse \emph{AbstractTemplateConverter} definiert auch eine Vorlage in Form einer Zeichenkette, mit der die Variablen in ihre \emph{HTML-Tag}-Repräsentation konvertiert werden können, wobei diese Vorlage unabhängig von der verwendeten \emph{Template-Engine} ist und auf alle Variablen gleich angewendet werden kann.
+Die abstrakte Klasse \emph{AbstractTemplateConverter} definiert auch eine Vorlage in Form einer Zeichenkette, mit der die Variablen in ihre \emph{HTML-Tag}-Repräsentation konvertiert werden können, wobei diese Vorlage unabhängig von der verwendeten \emph{Template-Engine} ist.
 \begin{JavaCode}
 String template = "<span class=\"variable\" contentEditable=\"false\" "
                 + "data-variable-id=\"{0}\" title=\"{1}\">{2}</span>";
 \end{JavaCode}
-Die Vorlage \emph{template} wird mit \emph{java.text.MessageFormat(String, Object...)} verarbeitet, wobei der Formalparameter \emph{Object...}, der eine variable Argumentliste repräsentiert, über den die dynamischen Werte für die Vorlage bereitgestellt werden können. 
+Die Vorlage \emph{template} wird mit \emph{java.text.MessageFormat(String, Object...)} verarbeitet, wobei der Formalparameter \emph{Object...} eine variable Argumentliste ist, über welche die dynamischen Werte für die Vorlage bereitgestellt werden können. 
 
 \subsubsection{Die \emph{Primefaces-Extension} für den \emph{CKEditor}}
-Der \emph{Rich-Editor CKEditor} ist eine \emph{Javascript} basierte Anwendung, die nur am \emph{Browser} der BenutzerInnen läuft. Es wird aber eine \emph{JSF}-Integration benötigt, damit man
+Der \emph{Editor CKEditor} ist eine \emph{JavaScript} basierte Anwendung, die nur am \emph{Browser} der BenutzerInnen läuft. Es wird eine Integration in \emph{JSF} benötigt, damit man
 \begin{itemize}
 	\item auf \emph{AJAX-Events} reagieren kann,
 	\item\emph{FacesConverter} verwenden kann und
 	\item Parameterbindungen definieren kann.
 \end{itemize}
 \ \newline
-Da es nicht trivial ist eine vollwertige \emph{JSF}-Komponente zu implementieren und das Implementieren einer solchen Komponente auch viel Zeit in Anspruch nimmt, wurde auf die Implementierung von \emph{Primefaces-Extensions} zurückgegriffen, die bereits eine vollwertige \emph{JSF}-Integration für den \emph{CKEditor} bereitstellt. \emph{Primefaces-Extensions} ist eine quelloffene Bibliothek, die die quelloffene Bibliothek \emph{Primefaces} erweitert. \emph{Primefaces} ist zurzeit eine der bekanntesten \emph{JSF}-Komponenten Bibliothek im \emph{Java}-Umfeld.
+Es ist nicht trivial ist eine vollwertige \emph{JSF}-Komponente zu implementieren und das Implementieren einer solchen Komponente nimmt auch viel Zeit in Anspruch. Daher wurde auf die Implementierung von \emph{PrimeFaces-Extensions} zurückgegriffen, die bereits eine vollwertige \emph{JSF}-Integration in Form einer \emph{JSF}-Komponente für den \emph{CKEditor} bereitstellt.
 \newline
 \newline
-Die Ressourcen für den \emph{CKEDitor} bewegen sich in der Größenordnung von 1,5 Megabyte, daher werden die Ressourcen in einem separaten Artefakt zur Verfügung gestellt. Man kann auch eine eigene Implementierung zur Verfügung stellen, sofern diese Implementierung in derselben  Version vorhanden ist, wie von \emph{Primefaces-Extensions} unterstützt wird. Der \emph{CKEditor} ist ein sehr umfangreicher \emph{Editor}, den man sich auch seinen Wünschen entsprechend selbst zusammenstellen kann. Eine solche benutzerdefinierte Zusammenstellung des \emph{CKEditors} kann man heranziehen, um die Standardimplementierung zu ersetzen.
+Die Ressourcen für den \emph{CKEDitor} bewegen sich in der Größenordnung von 1,5 \emph{Megabyte}, daher werden die Ressourcen in einem separaten Artefakt zur Verfügung gestellt. Man kann auch eine eigene Implementierung des \emph{CKEditors} zur Verfügung stellen, sofern diese Implementierung in derselben Version vorhanden ist, wie von \emph{PrimeFaces-Extensions} unterstützt wird. Der \emph{CKEditor} ist ein sehr umfangreicher \emph{Editor}, den man sich auch seinen Wünschen entsprechend über die Webseite \url{http://ckeditor.com/builder} selbst zusammenstellen kann.
 \newline
 \newline
-Der Quelltest aus Abbildung \ref{prog:example-ckeditor-xhtml} illustriert die Verwendung des \emph{CKEditors} in Form der zur Verfügung gestellten \emph{JSF}-Komponente.
+Der Quelltest aus Abbildung \ref{prog:example-ckeditor-xhtml} zeigt die Verwendung der \emph{JSF}-Komponente für den \emph{CKEditor}.
 \begin{program}[h]
-\caption{\emph{XHTML-Markup} für \emph{CKEditor}}
+\caption{Verwendung der \emph{JSF}-Komponente für den \emph{CKEditor}}
 \label{prog:example-ckeditor-xhtml}
 \begin{HtmlCode}
-<pe:ckEditor id="template_content_editor"
+<pe:ckEditor id="view_id"
              wdgetVar="pfEditor"
-             value="#{templateEditModel.content}"
-             converter="#{ckeditorBean.converter}" 
+             value="#{model.content}"
+             converter="#{viewBean.converter}" 
              contentsCss="resources/css/myStyle.css"
              customConfig="./ckeditor-config.js">
 </pe:ckEditor>
 \end{HtmlCode}
 \end{program}
 \ \begin{itemize}
-	\item\emph{id} ist das Attribute, um die eindeutige \emph{Id} innerhalb des Namensraums der Komponente zu definieren.
-	\item\emph{widgetVar} ist das Attribut, um einen eindeutigen Name des \emph{Javascript}-Objekts, das den Zugriff auf den \emph{CKEditor} in \emph{Javascript} erlaubt, zu definieren.
-	\item\emph{value} ist das Attribut, um die Parameterbindung der Vorlage zu einem \emph{Java}-Objekt zu definieren.
-	\item\emph{converter} ist das Attribut, um den verwendeten Konverter, der die Vorlagen konvertiert, über Parameterbindung zu setzen.
-	\item\emph{contentCss} ist das Attribut, um eine eigene \emph{CSS}-Datei für den Inhalt der Vorlage zu definieren. Die Vorlage wird innerhalb des \emph{Editors} als eigenständige \emph{HMTL}-Datei behandelt, das in einer \emph{Iframe}-Komponente gehalten wird.
-	\item\emph{customConfig} ist das Attribut, um die eigene Konfiguration des \emph{Editors} in Form von einer eigenen \emph{Javascript}-Datei zu definieren. 
+	\item\emph{id} 
+	\newline
+	ist das Attribut, um die eindeutige \emph{Id} innerhalb des Namensraums, in dem sich die Komponente befindet, zu definieren.
+	\item\emph{widgetVar}
+	\newline
+	ist das Attribut, um einen global eindeutigen Namen des \emph{JavaScript}-Objekts \emph{Widget} zu definieren, das den Zugriff auf den \emph{CKEditor} innerhalb von \emph{JavaScript} ermöglicht.
+	\item\emph{value}
+	\newline
+	ist das Attribut, um die Parameterbindung des Inhalts des \emph{CKEditors} zu einem \emph{Java}-Model zu definieren.
+	\item\emph{converter}
+	\newline
+	ist das Attribut, um den zu verwendeten Konverter über seinen eindeutigen Namen oder einer Parameterbindung zu setzen.
+	\item\emph{contentCss}
+	\newline
+	ist das Attribut, um eine eigene \emph{CSS}-Datei für den Inhalt der Vorlage zu definieren. Die Vorlage wird innerhalb des \emph{Editors} als eigenständige \emph{HMTL}-Datei behandelt, das in einer \emph{HTML-IFrame}-Komponente gehalten wird.
+	\item\emph{customConfig}
+	\newline
+	ist das Attribut, um die eine eigene Konfiguration des \emph{Editors} in Form von einer \emph{JavaScript}-Datei zu definieren. 
 \end{itemize}
 
 \section{Die Vorlagenmanagement Beispielanwendung}
-Der folgende Abschnitt beschäftigt sich mit der implementierten Beispielanwendung, für das Vorlagenmanagement, die die Verwendung des Vorlagenmanagement im Bezug auf 
+Dieser Abschnitt beschäftigt sich mit der implementierten Beispielanwendung für das Vorlagenmanagement, welche die Verwendung des Vorlagenmanagement im Bezug auf 
 \begin{itemize}
 	\item die Verwendung in der Geschäftslogik,
 	\item die Verwendung über eine Webseite und
-	\item die Verwendung zum Erstellen einer \emph{E-Mail}  
+	\item die Verwendung zum Erstellen einer \emph{E-Mail} aufzeigen soll. 
 \end{itemize}
-aufzeigen soll. Dazu wurde eine Demowebanwendung implementiert, die die Web seitige  Verwaltung der Vorlagen implementiert. Es wurde auch eine Klasse implementiert, die aufzeigen soll, wie eine \emph{E-Mail} basierend auf einer Vorlage, aus einer Geschäftslogik heraus erstellt werden kann. 
 
-\subsection{Die Verwendung in einem \emph{Business}-Service}
-Der folgende Quelltext aus Abbildung \ref{prog:emailServiceCdiEventImpl} zeigt wie eine \emph{E-Mail} über die die implementierte Klasse \emph{EmailServiceImpl} der Schnittstelle \emph{EmailService} erstellt werden kann. Das Objekt der Schnittstelle \emph{EmailService} wird über die \emph{CDI}-Umgebung zur Verfügung gestellt und mittels Injektion in die Geschäftslogik injiziert. Die Schnittstelle \emph{EmailService} und dessen Implementierung \emph{EmailServiceCdiEventImpl} befinden sich im Artefakt \emph{mailing-template-integration-clevercure-web}. Dieses Artefakt stellt die Integration in die Anwendung \emph{CleverWeb}  dar. Die \emph{E-Mails} werden in der Implementierung \emph{EmailServiceCdiEventImpl} über \emph{CDI-Events} erstellt, damit ist die Logik für das Erstellen der \emph{E-Mail} vollständig entkoppelt von dieser Implementierung. Im folgenden sind die zur Verfügung gestellten Methoden der Schnittstelle \emph{EmailService} angeführt, die der Geschäftslogik zur Verfügung stehen.
+\subsection{Die Verwendung über eine \emph{Web}-Oberfläche}
+Die Abbildung \ref{fig:demo_web_app_empty_view_part_1} zeigt die Weboberfläche, die für die Beispielanwendung implementiert wurde. Über dieses Formular können die Voralgen sprachspezifisch verwaltet werden.
+\ \begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{demo_web_app_empty_view_part_1}
+\caption{Formular für die Verwaltung der Vorlagen}
+\label{fig:demo_web_app_empty_view_part_1}
+\end{figure}
+\ \newline
+Die Abbildung \ref{fig:demo_web_app_empty_view_part_2} zeigt, den Teil der Webseite, der die relevanten Daten einer Vorlage anzeigt.
 \begin{itemize}
-	\item\emph{public void create(EmailDTO dto)}
-	\newline
-	ist die Methode, mit der eine \emph{E-Mail} sofort erstellt werden können.
-	\item\emph{public void create(List<EmailDTO> dtos)}
-	\newline
-	ist die Methode, mit der mehrere \emph{E-Mails} sofort erstellt werden können.
-	\item\emph{public void createAfterSuccess(EmailDTO dto)}
-	\newline
-	ist die Methode, mit der eine \emph{E-Mail} nach dem erfolgreichem Beenden einer Transaktion erstellt werden kann.
-	\item\emph{public void createAfterSuccess(List<EmailDTO> dto)}
-	\newline
-	ist die Methode, mit der mehrere \emph{E-Mails} nach dem erfolgreichem Beenden einer Transaktion erstellt.
- werden kann.    
-\end{itemize} 
+	\item\emph{Decorator Template} ist die \emph{Freemarker}-Voralge, die von jeder Vorlage dekoriert wird.
+	\item\emph{User Template} ist die Vorlage, die von einem BenutzerIn erstellt wurde.
+	\item\emph{Template JSON Data} ist die \emph{JSON}-Zeichenkette, die erstellt wird, wenn die Daten für eine Vorlage serialisiert werden.
+	\item\emph{Parsed Template} ist die Vorlage, in der die Variablen durch die serialisierten Werte ersetzt wurden.
+	\item\emph{Template Metadata} sind die Metadaten der Vorlage, wie z.B. die Anzahl der enthalten Variablen.
+\end{itemize}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{demo_web_app_empty_view_part_2}
+\caption{Anzeige der aller relevanten Daten einer Vorlage}
+\label{fig:demo_web_app_empty_view_part_2}
+\end{figure}
+
+\subsubsection{Die Dekoriervorlage}
+Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_decorator} zeigt die dekorierbare \emph{Freemarker}-Vorlage, die alle Vorlagen dekorieren. Sie stellt den \emph{HTML-Body} zur Verfügung, da die Benutzervoralgen nur den Inhalt innerhalb des \emph{HTML-Tags Body} bereitstellen.
 \begin{program}[h]
-\caption{EmailServiceCdiEventImpl.java}
+\caption{Die dekorierbare \emph{Freemarker}-Vorlage}
+\label{prog:demo_web_app_data_decorator}
+\begin{HtmlCode}
+<#-- This macro is used to add decorated template dynamically -->
+<#macro includeMacro templateName>
+    <#include "${templateName}" encoding="UTF-8">
+</#macro>
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<body>
+<div style="margin: 10px;">
+    <div style="padding: 5px;">
+    <@includeMacro templateName="${TEMPLATE_NAME}" />
+    </div>
+    <div style="padding: 5px;">
+    <@includeMacro templateName="${FOOTER_TEMPLATE}" />
+    </div>
+</div>
+</body>
+</html>
+\end{HtmlCode}
+\end{program}
+\ \newpage
+%$ : otherwise everything afterwards is marked green
+
+\subsubsection{Die Benutzervorlage}
+Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_template} zeigt die \emph{Freemarker}-Vorlage, die von der BenutzerInnen erstellt wird. Die Vorlage enthält zwar \emph{HTML-Markup}, aber nur den Inhalt unterhalb des \emph{HTML-Tags Body}. Sie stellt daher kein vollständiges \emph{HTML}-Dokument zur Verfügung, wofür die Dekoriervorlage aus Abbildung \ref{prog:demo_web_app_data_decorator} implementiert wurde.
+\begin{program}[h]
+\caption{Die BenutzerIn \emph{Freemarker}-Vorlage}
+\label{prog:demo_web_app_data_template}
+\begin{HtmlCode}
+<p>Sehr geehrte(r) Frau/Herr&nbsp;
+${(cc.module.di["RECIPIENT_USER"])!("variable: 'RECIPIENT_USER' not found")}
+,</p>
+
+<p>Hiermit informieren wir Sie &uuml;ber die Status&auml;nderung 
+bez&uuml;glich&nbsp;
+<strong>
+${(cc.module.di["TOPIC"])!("variable: 'TOPIC' not found")}.
+</strong>
+</p>
+
+<p>Status: &nbsp;
+${(cc.module.di["STATUS"])!("variable: 'STATUS' not found")}
+</p>
+
+<p>Sender:&nbsp;
+${(cc.module.di["SENDER_USER"])!("variable: 'SENDER_USER' not found")}
+</p>
+
+<p>&nbsp;</p>
+\end{HtmlCode}
+\end{program}
+\ \newpage
+
+\subsubsection{Das serialisierte \emph{JSON}-Datenobjekt}
+Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_json} zeigt die serialisierte \emph{JSON}-Zeichenkette, die beim Erstellen einer \emph{E-Mail} erstellt wird und in der Datenbank persistent gehalten wird. Mit diesen Daten kann eine \emph{E-Mail} auf Basis dieser Vorlage jederzeit wiederhergestellt werden.
+
+\begin{program}[h]
+\caption{Das \emph{JSON}-Datenobjekt}
+\label{prog:demo_web_app_data_json}
+\begin{JsCode}
+{
+  "@type" : "template-data-json",
+  "unknownProperties" : { },
+  "template_metadata" : {
+    "@type" : "template-metadata-json",
+    "unknownProperties" : { },
+    "id" : 1,
+    "version" : 1,
+    "locale" : "de",
+    "zoneId" : "Europe/London",
+    "variableCount" : 4
+  },
+  "data" : {
+    "cc" : {
+      "module" : {
+        "di" : {
+          "STATUS" : "Inatkiv",
+          "RECIPIENT_USER" : "Hugo Maier",
+          "TOPIC" : "BenutzerIn Status geändert",
+          "SENDER_USER" : "Thomas Herzog"
+        }
+      }
+    }
+  }
+}
+\end{JsCode}
+\end{program}
+\ \newpage
+
+\subsubsection{Die geparste Benutzervorlage}
+Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_parsed_template} zeigt die geparste Vorlage. Die Variablen der Vorlage aus dem Quelltext aus Abbildung \ref{prog:demo_web_app_data_template} wurden durch den serialisierten Wert des \emph{JSON}-Datenobjekts aus dem Quelltext aus Abbildung \ref{prog:demo_web_app_data_json} ersetzt.
+
+\begin{program}[h]
+\caption{Das \emph{JSON}-Datenobjekt}
+\label{prog:demo_web_app_data_parsed_template}
+\begin{HtmlCode}
+<!DOCTYPE html>
+<html lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<body>
+<div style="margin: 10px;">
+    <div style="padding: 5px;">
+        <p>Sehr geehrte(r) Frau/Herr&nbsp;Hugo Maier,</p>
+
+        <p>
+            Hiermit informieren wir Sie &uuml;ber die 
+            Status&auml;nderung bez&uuml;glich&nbsp;
+            <strong>BenutzerIn Status geändert.</strong>
+        </p>
+
+        <p>Status: &nbsp;Inatkiv</p>
+
+        <p>Sender:&nbsp;Thomas Herzog</p>
+
+        <p>&nbsp;</p>
+    </div>
+    <div style="padding: 5px;">
+    </div>
+</div>
+</body>
+</html>
+\end{HtmlCode}
+\end{program}
+\ \newpage
+
+\subsubsection{Die Vorlagenmetadaten}
+Der folgende Text zeigt die Zeichenkette, welchen die in Abschnitt \ref{sec:abstractTemplateMetadata} vorgestellte Klasse \emph{AbstractTemplateMetadata} produziert. Diese Ausgabe ist nur für Entwicklungszwecke interessant und zeigt die aktuellen Metadaten der Vorlage aus dem Quelltext aus Abbildung \ref{prog:demo_web_app_data_template}.
+
+\begingroup
+    \fontsize{9pt}{11pt}\selectfont
+    \begin{verbatim}  
+===============================================================
+FreemarkerTemplateMetadata
+===============================================================
+id                  : 1
+version             : 1
+length              : 482
+variables (valid)   : 4
+contract  : com.clevercure.mailing.demo.logic.variable.TemplateVariable
+id        : cc.module.di.SENDER_USER
+name      : SENDER_USER
+label-key : SENDER_USER
+info-key  : SENDER_USER
+
+
+contract  : com.clevercure.mailing.demo.logic.variable.TemplateVariable
+id        : cc.module.di.STATUS
+name      : STATUS
+label-key : STATUS
+info-key  : STATUS
+
+
+contract  : com.clevercure.mailing.demo.logic.variable.TemplateVariable
+id        : cc.module.di.RECIPIENT_USER
+name      : RECIPIENT_USER
+label-key : RECIPIENT_USER
+info-key  : RECIPIENT_USER
+
+
+contract  : com.clevercure.mailing.demo.logic.variable.TemplateVariable
+id        : cc.module.di.TOPIC
+name      : TOPIC
+label-key : TOPIC
+info-key  : TOPIC
+
+variables (invalid) : 0
+    \end{verbatim}  
+\endgroup
+\newpage
+
+\subsection{Die Verwendung in einer Geschäftslogik}
+Der Quelltext aus Abbildung \ref{prog:emailServiceCdiEventImpl} zeigt die implementierte Klasse \emph{EmailServiceCdiEventImpl} der Schnittstelle \emph{EmailService}, die spezifiziert wie über eine Geschäftslogik \emph{E-Mails} erstellt werden können. Die Implementierung \emph{EmailServiceCdiEventImpl} verwendet die implementierte Klasse \emph{CreateEmailsEvent}, die ein \emph{Event}-Objekt darstellt, das über den \emph{CDI-Event-Bus} verarbeitet wird. Es wir ein Objekt der Schnittstelle \emph{javax.enterprise.Event} injiziert, das mit dem \emph{Event}-Objekt typisiert ist. Die Injektionspunkte der \emph{Events} wurden qualifiziert, damit verschiedene Beobachtermethoden aufgerufen werden können.
+
+\begin{program}[h]
+\caption{Die Klasse \emph{EmailServiceCdiEventImpl}}
 \label{prog:emailServiceCdiEventImpl}
 \begin{JavaCode}
 @RequestScoped
 @Transactional(Transactional.TxType.SUPPORTS)
 public class EmailServiceCdiEventImpl implements EmailService {
     @Inject
-    private Event<CreateEmailsEvent<CreateEmailsEvent.CreateImmediate>> createImmediateEvent;
+    @Immediate
+    private Event<CreateEmailsEvent> createImmediateEvent;
     @Inject
-    private Event<CreateEmailsEvent<CreateEmailsEvent.CreateAfterSuccess>> createAfterSuccessEvent;
-    @Inject
-    private Event<CreateEmailsEvent<CreateEmailsEvent.CreateAfter>> createAfterEvent;
+    @AfterSuccess
+    private Event<CreateEmailsEvent> createAfterSuccessEvent;
 
     @Override
     @Transactional(Transactional.TxType.REQUIRED)
     public void create(EmailDTO dto) {
-        createImmediateEvent.fire(new CreateEmailsEvent<>(dto));
+        createImmediateEvent.fire(new CreateEmailsEvent(dto));
     }
 
     @Override
     @Transactional(Transactional.TxType.REQUIRED)
     public void create(List<EmailDTO> dtos) {
-        createImmediateEvent.fire(new CreateEmailsEvent<>(dtos));
+        createImmediateEvent.fire(new CreateEmailsEvent(dtos));
     }
 
     @Override
     public void createAfterSuccess(EmailDTO dto) {
-        createAfterSuccessEvent.fire(new CreateEmailsEvent<>(dto));
+        createAfterSuccessEvent.fire(new CreateEmailsEvent(dto));
     }
 
     @Override
     public void createAfterSuccess(List<EmailDTO> dtos) {
-        createAfterSuccessEvent.fire(new CreateEmailsEvent<>(dtos));
+        createAfterSuccessEvent.fire(new CreateEmailsEvent(dtos));
     }
 }
 \end{JavaCode}
 \end{program}
+\ \newpage
+Folgende Auflistung erklärt die implementierten Methoden der Klasse \emph{EmailServiceCdiEventImpl} der Schnittstelle \emph{EmailService}, über die von einer Geschäftslogik aus \emph{E-Mails} erstellt werden können.
+\begin{itemize}
+	\item\emph{create(EmailDTO dto)}
+	\newline
+	ist die Methode, mit der eine \emph{E-Mail} sofort erstellt werden kann, wobei beim Feuern des \emph{Events} die aktuelle Ausführung der Methode unterbrochen und synchron die Beobachtermethode aufgerufen wird.
+	\item\emph{create(List<EmailDTO> dtos)}
+	\newline
+	ist die Methode, mit der mehrere \emph{E-Mails} sofort erstellt werden können. Das Verhalten ist gleich wie bei der Methode \emph{create(EmailDTO dto)}.
+	\item\emph{createAfterSuccess(EmailDTO dto)}
+	\newline
+	ist die Methode, mit der eine \emph{E-Mail}, nach dem erfolgreichem Beenden einer Transaktion, erstellt werden kann, wobei die Beobachtermethode trotzdem noch in der Komplettierungsphase der Transaktion aufgerufen wird.
+	\item\emph{createAfterSuccess(List<EmailDTO> dto)}
+	\newline
+	ist die Methode, mit der mehrere \emph{E-Mails}, nach dem erfolgreichem Beenden einer Transaktion, erstellt werden können. Das Verhalten ist gleich wie in der Methode \emph{createAfterSuccess(EmailDTO dto)}.
+ werden kann.    
+\end{itemize} 
 \ \newline
-Der Quelltext aus Abbildung \ref{prog:businessServiceImpl} zeigt das Beispiel der Geschäftslogik, die über die Schnittstelle \emph{EmailService} \emph{E-Mails} erstellt. Die zu erstellende \emph{E-Mail} wird durch ein Objekt der Klasse \emph{EmailDTO} repräsentiert, das alle benötigten Informationen für das Erstellen einer \emph{E-Mail} enthält.
+Der Quelltext aus Abbildung \ref{prog:businessServiceImpl} zeigt die implementierte Klasse \emph{BusinessServiceImpl}, welche die Geschäftslogik simuliert, die über die Schnittstelle \emph{EmailService} \emph{E-Mails} erstellt. Die zu erstellende \emph{E-Mail} wird durch ein Objekt der Klasse \emph{EmailDTO} repräsentiert, welche alle benötigten Informationen für das Erstellen einer \emph{E-Mail} enthält. Das Objekt der Schnittstelle \emph{Emailservice} wird über Injektion von der \emph{CDI}-Umgebung bereitgestellt. Wie im Kapitel \ref{cha:Zielsetzung} vorgegeben dürfen die Anwendungen nicht wissen, wie \emph{E-Mails} erstellt werden, was über die Schnittstelle \emph{EmailService} realisiert wurde. Dieser Geschäftslogik ist die konkrete Implementierung der Schnittstelle \emph{EmailService} nicht bekannt und daher auch nicht dass die \emph{E-Mails} über \emph{CDI-Events} bzw. deren Beobachtermethoden erstellt werden.
+\newline
+\newline
+Die \emph{E-Mails} werden innerhalb, der von der Klasse \emph{BusinessServiceImpl} geöffneten Transaktion, erstellt. Es ist nicht möglich eine Transaktion in einer Beobachtermethode zu öffnen, da die \emph{Events} immer in der Komplettierungsphase der geöffneten Transaktion behandelt werden und es keine Möglichkeit, dies zu umgehen.
 \newpage
 \begin{program}[h]
-\caption{BusinessServiceImpl.java}
+\caption{Die Klasse \emph{BusinessServiceImpl}}
 \label{prog:businessServiceImpl}
 \begin{JavaCode}
 @RequestScoped
 @Transactional(Transactional.TxType.REQUIRED)
 public class BusinessServiceImpl implements BusinesService {
-
     @Inject
     private EmailService emailService;
-
     @Override
     public void doBusinessEmailImmediate() {
         emailService.create(createEmailDto());
@@ -657,83 +895,24 @@ public class BusinessServiceImpl implements BusinesService {
 \end{JavaCode}
 \end{program}
 \ \newline
-Folgende Auflistung erklärt die Attribute, die beim Erstellen eine Objekts der Klasse \emph{EmailDto} angegeben werden müssen.
+Folgende Auflistung erklärt die Attribute, die beim Erstellen eines Objekts der Klasse \emph{EmailDto} angegeben werden müssen.
 \begin{itemize}
-	\item\emph{email} ist die Zeichenkette, die die \emph{E-Mail}-Adresse definiert.
-	\item\emph{mailUserId} ist die \emph{Id} des virtuellen Benutzers, der die \emph{E-Mail} auf der Datenbank erstellt.
-	\item\emph{mailTypeIds} ist die Menge von \emph{Ids}, die die \emph{Mail}-Typen repräsentieren. Jedem \emph{Mail}-Typ ist eine Voralge zugeordnet.
-	\item\emph{locale} ist das Objekt der Klasse \emph{java.util.Locale} , das die Sprache definiert.
-	\item\emph{zone} ist das Objekt der Klasse \emph{java.time.ZoneId}, das die Zone für die Datumsformatierung definiert.
-	\item\emph{userData} ist der assoziative Behälter, der die Benutzerdaten enthält, die bei der Evaluierung verwendet werden.
+	\item\emph{email}
+	\newline
+	ist die Zeichenkette, welche die \emph{E-Mail}-Adresse definiert.
+	\item\emph{mailUserId}
+	\newline
+	ist die \emph{Id} des internen \emph{Mail}-Benutzers, welcher die \emph{E-Mail} auf der Datenbank erstellt.
+	\item\emph{mailTypeIds}
+	\newline
+	ist die Menge von \emph{Ids}, welche die \emph{Mail}-Typen repräsentieren. Jedem \emph{Mail}-Typ ist eine Voralge zugeordnet.
+	\item\emph{locale}
+	\newline
+	ist das Objekt der Klasse \emph{java.util.Locale}, das die Sprache definiert.
+	\item\emph{zone} 
+	\newline
+	ist das Objekt der Klasse \emph{java.time.ZoneId}, das die Zone für die Datumsformatierung definiert.
+	\item\emph{userData} 
+	\newline
+	ist der assoziative Behälter, der die Benutzerdaten enthält, die bei der Ermittlung der aktuellen Werte der Variablen verwendet werden können.
 \end{itemize}
-
-\subsection{Die Verwendung über eine \emph{Web}-Oberfläche}
-Die Abbildung \ref{fig:demo_web_app_empty_view_part_1} zeigt die Weboberfläche, die für die Beispielanwendung implementiert wurde. Über dieses Formular können die Voralgen sprachspezifisch verwaltet werden.
-\ \begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{demo_web_app_empty_view_part_1}
-\caption{Formular für die Verwaltung der Vorlagen}
-\label{fig:demo_web_app_empty_view_part_1}
-\end{figure}
-\ \newline
-Die Abbildung \ref{fig:demo_web_app_empty_view_part_2} zeigt, den Teil der Webseite, der die relevanten Daten einer Vorlage anzeigt.
-\begin{itemize}
-	\item\emph{Decorator Template} ist die \emph{Freemarker}-Voralge, die von jeder Vorlage dekoriert wird.
-	\item\emph{User Template} ist die Vorlage, die von einem BenutzerIn erstellt wurde.
-	\item\emph{Template JSON Data} ist die \emph{JSON}-Zeichenkette, die erstellt wird, wenn die Daten für eine Vorlage serialisiert werden.
-	\item\emph{Parsed Template} ist die Vorlage, in der die Variablen durch die serialisierten Werte ersetzt wurden.
-	\item\emph{Template Metadata} sind die Metadaten der Vorlage, wie z.B. die Anzahl der enthalten Variablen.
-\end{itemize}
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{demo_web_app_empty_view_part_2}
-\caption{Anzeige der aller relevanten Daten einer Vorlage}
-\label{fig:demo_web_app_empty_view_part_2}
-\end{figure}
-
-\subsubsection{Die dekorierbare Vorlage}
-Die Abbildung \ref{fig:demo_web_app_data_decorator} zeigt die dekorierbare \emph{Freemarker}-Vorlage, die alle Vorlagen dekorieren. Sie stellt den \emph{HTML-Body} zur Verfügung, da die Benutzervoralgen nur den Inhalt innerhalb des \emph{HTML-Tags body} bereitstellen.
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{demo_web_app_data_decorator}
-\caption{Das \emph{Decorator Template}}
-\label{fig:demo_web_app_data_decorator}
-\end{figure}
-\ \newpage
-
-\subsubsection{Die Benutzervorlage}
-Die Abbildung \ref{fig:demo_web_app_data_template} zeigt die \emph{Freemarker}-Vorlage, die von der BenutzerInnen erstellt wird. Die Vorlage enthält zwar \emph{HTML-Markup}, aber nur den Inhalt unterhalb des \emph{HTML-Tags body}. Sie stellt aber kein vollständiges \emph{HTML}-Dokument zur Verfügung.
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{demo_web_app_data_template}
-\caption{Die \emph{Benutzervorlage} als \emph{Freemarker Template}}
-\label{fig:demo_web_app_data_template}
-\end{figure}
-
-\subsubsection{Die serialisierte \emph{JSON}-Zeichenkette}
-Die Abbildung \ref{fig:demo_web_app_data_json} zeigt die serialisierte \emph{JSON}-Zeichenkette, die beim Erstellen einer \emph{E-Mail} erstellt wird und in der Datenbank persistent gehalten wird. Mit diesen Daten kann eine \emph{E-Mail} auf Basis dieser Vorlage jederzeit wiederhergestellt werden.
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{demo_web_app_data_json}
-\caption{Der serialisierte \emph{JSON}-String}
-\label{fig:demo_web_app_data_json}
-\end{figure}
-\ \newpage
-
-\subsubsection{Die Vorlagenmetadaten}
-Die Abbildung \ref{fig:demo_web_app_data_metadata} zeigt die Metadaten der Benutzervorlage. Die Metadaten sind nur für die Entwicklung relevant.
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{demo_web_app_data_metadata}
-\caption{Die Metadaten der Vorlage}
-\label{fig:demo_web_app_data_metadata}
-\end{figure}
-
-\subsubsection{Der erstellte \emph{E-Mail}-Inhalt}
-Die Vorlage mit den aufgelösten Variablen aus Abbildung \ref{fig:demo_web_app_data_parsed} zeigt die Metadaten der Benutzervorlage. 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{demo_web_app_data_parsed}
-\caption{Die Metadaten der Vorlage}
-\label{fig:demo_web_app_data_parsed}
-\end{figure}

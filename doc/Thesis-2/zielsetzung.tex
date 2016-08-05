@@ -47,7 +47,7 @@ Die Vorlagen müssen in mehreren Sprachen erstellt und verwaltet werden können,
 
 \subsection{Die Persistenz der Vorlagen}
 \label{sec:sub-template-variable-persistenz}
-Die Vorlagen müssen innerhalb einer Datenbank persistent gehalten werden. Da das Vorlagenmanagement vorerst exklusiv für \emph{CleverMail} verwendet wird, muss die Persistenz der Vorlagen innerhalb des \emph{Mail}-DB-Schema von \emph{CleverMail} realisiert werden. Die persistenten Vorlagen müssen versionierbar sein, damit diese von anderen Entitäten referenziert werden können, ohne dass die Gefahr besteht, dass die referenzierte Vorlage verändert wurde.    Die Versionierung soll die Konsistenz der Vorlagen sicherstellen, sodass serialisierte Daten für eine Vorlage konsistent mit den enthaltenen Variablen der Vorlage sind. Vorlagen müssen explizit freigegeben werden, bevor diese verwendet dürfen. Nach einer Freigabe darf die Vorlage nicht mehr geändert werden.
+Die Vorlagen müssen innerhalb einer Datenbank persistent gehalten werden. Da das Vorlagenmanagement vorerst exklusiv für \emph{CleverMail} verwendet wird, muss die Persistenz der Vorlagen innerhalb des \emph{Mail}-DB-Schema von \emph{CleverMail} realisiert werden. Die persistenten Vorlagen müssen versionierbar sein, damit diese von anderen Entitäten referenziert werden können, ohne dass die Gefahr besteht, dass die referenzierte Vorlage verändert wurde. Die Versionierung soll die Konsistenz der Vorlagen sicherstellen, sodass serialisierte Daten für eine Vorlage konsistent mit den enthaltenen Variablen der Vorlage sind. Vorlagen müssen explizit freigegeben werden, bevor diese verwendet dürfen. Nach einer Freigabe darf die Vorlage nicht mehr geändert werden.
 
 \subsection{Die Verwaltung der Vorlagen über eine Webseite}
 \label{sec:sub-template-management-website}
@@ -79,6 +79,7 @@ Der Quelltext aus Abbildung \ref{prog:freemarker-markup-vorlage} zeigt das konve
 	\end{GenericCode}
 \end{program}
 \ \newline
+%$
 Auf der Webseite muss der \emph{JavaScript} basierte \emph{Editor CKEditor} verwendet werden, weil für diesen \emph{Editor} von \emph{PrimeFaces-Extensions} eine \emph{JSF}-Integartion, in Form einer \emph{JSF}-Komponente, zur Verfügung gestellt wird. Es muss der \emph{Editor CKEditor} verwendet werden, weil eine Integration in den Lebenszyklus von \emph{JSF} notwendig ist, damit z.B. auf \emph{AJAX-Reqeust} reagiert werden kann, wie es in \emph{JSF} üblich ist.
 
 \section{Die technischen Ziele}

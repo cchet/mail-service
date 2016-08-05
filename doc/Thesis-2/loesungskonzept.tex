@@ -348,6 +348,7 @@ Das Vorlagenmanagement wird in einem \emph{JEE-7}-Anwendungsserver verwendet, de
 Durch die Verwaltung der Objekte von einer \emph{CDI}-Umgebung, können Implementierungen der Schnittstelle \emph{VariableResolver} kontextabhängige Ressourcen sich injizieren lassen. Damit das Variablenmanagement auf diese Objekte zugreifen kann, wurde die Schnittstelle \emph{VariableResolverFactoryProvider} spezifiziert, die die Verbindung des Variablenmanagements zu einer \emph{CDI}-Umgebung herstellt und kontextabhängige Objekte der Schnittstelle \emph{VariableResolverFactory} bereitstellen kann.
 
 \subsection{Das Vorlagenmanagement in \emph{JSF}}
+\label{sec-sub-specification-jsf}
 Für die Verwaltung der Vorlagen wird eine \emph{JSF}-Webseite implementiert. Über diese Webseite können Vorlagen erstellt, modifiziert und gelöscht werden können. Für die Verwaltung der Vorlagen wird die von \emph{PrimeFaces-Extension} bereitgestellte \emph{JSF}-Komponente für den \emph{Editor CKEditor} verwendet. Diese Komponente integriert den \emph{Javascript}-basierten \emph{CKEDitor} in den \emph{JSF}-Lebenszyklus. Um die Vorlage in die korrespondierende \emph{Template-Engine} spezifische Repräsentation zu überführen, wird ein \emph{FacesConverter} implementiert, der die Konvertierung der Vorlage von seiner \emph{HTML}-Repräsentation in die \emph{Template-Engine} spezifische Repräsentation und visa versa übernimmt.
 
 \subsection{Das Vorlagenmanagement in \emph{Mail}-DB-Schema}
