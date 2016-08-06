@@ -1,3 +1,28 @@
 \chapter{Die Zusammenfassung}
 \label{cha:Zusammenfassung}
-\emph{TODO: Add sumary about development, experiences and further work}
+Dieses Kapitel beschäftigt sich mit der Zusammenfassung der Bachelorarbeit, der realisierten Implementierung des Vorlagenmanagements und den gemachten Erfahrungen während der Entwicklung. Das implementierte Vorlagenmanagement ist fertiggestellt, wobei sich sicherlich noch neue Anforderung ergeben werden, die sich aber auf neue Funktionalitäten und Erweiterungen beschränken werden. Die Grundfunktionalität und die Integration in die verschiedenen Umgebungen ist fertiggestellt und kann bei Bedarf jederzeit erweitert werden. Ein Problem könnte die Integration in die Anwendung \emph{CleverInterface} darstellen, da es hier Einschränkungen bezüglich den verwendeten Technologien gibt und man hier sehr stark von der Laufzeitumgebung \emph{IIB} und von der \emph{IBM} abhängig ist. 
+\newline
+\newline
+Es wahr sehr interessant zu sehen, wie leicht sich ein Softwaremodul in die verschiedensten Umgebungen integrieren lässt und wie die Interaktion zwischen den verschiedenen Umgebungen funktioniert. Die Trennung der Schichten über eigene Modellklassen, wie bei der Schnittstelle \emph{VariableContract}, die 
+\begin{itemize}
+	\item über die Klasse \emph{VariableJson} für \emph{JSON} in \emph{Java} und
+	\item über die Schnittstelle \emph{VariablenMapping} für \emph{JavaScript} in \emph{TypeScript}
+\end{itemize}
+repräsentiert wird, um die Schichten und auch verschiedenen Technologien voneinander zu trennen, hat mir aufgezeigt wie unabdingbar die Schichtentrennung ist. Das Vermeiden von Schichtentrennung wird aus meiner Erfahrung heraus oft mit 
+\begin{itemize}
+	\item Optimierung,
+	\item Kostengründen und
+	\item Ressourcenknappheit begründet.
+\end{itemize}
+\ \newline
+Die Schichtentrennung wird von vielen unterschätzt, aber wenn Umstrukturierungen an Modellen vorgenommen werden müssen, dann merkt man erst wie sich die fehlende Schichtentrennungen negativ auswirkt. Meistens hat man den Fall, dass bei einer Änderung eines Modells einer höheren Schicht der gesamte Quelltext über alle Schichten hinweg Syntaxfehler aufweist.
+\newline
+\newline
+Die Entwicklung des \emph{CKEditor-Plugins} in \emph{TypeScript} hat mir aufgezeigt, dass \emph{TypeScript}, trotz aller Kritik, durchaus Zukunft hat, obwohl es auch einige Probleme mit \emph{TypeScript} gibt wie z.B.
+\begin{itemize}
+	\item die Versionierung der Typinformationen für \emph{JavaScript}-Bibliotheken, die nicht die Versionen der \emph{JavaScript}-Bibliotheken widerspiegeln,
+	\item die Organisation des \emph{Github-Repositories} von \emph{DefinitelyTyped}, das in einem einzigen \emph{Repository} alle Typinformationen für alle \emph{JavaScript}-Bibliotheken enthält und
+	\item die rasante Weiterentwicklung von \emph{TypeScript}, mit der man schwer mithalten kann.
+\end{itemize}
+\ \newline
+Trotz aller Probleme ist es sehr angenehm in \emph{TypeScript} zu entwickeln und es ähnelt immer mehr der Entwicklung in einer höheren Programmiersprache wie z.B. \emph{Java} oder \emph{.NET}.
