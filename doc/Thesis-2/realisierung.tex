@@ -289,7 +289,7 @@ Die Abbildung \ref{fig:ckeditor-example-template} zeigt eine Vorlage innerhalb d
 
 \subsection{Die Implementierungen für \emph{CDI}}
 \label{sec:sub-impl-integartion-cdi}
-Dieser Abschnitt behandelt die Implementierungen für die Integration in eine \emph{CDI}-Umgebung, wie in Abschnitt \ref{sec:sub-template-management-cdi} beschrieben. Die Variablen werden über eine \emph{CDI}-Erweiterung gefunden und registriert und es werden die folgenden aufgelisteten Ressourcen kontextabhängig über einen implementierten \emph{CDI}-Erzeuger zur Verfügung gestellt: 
+Dieser Abschnitt behandelt die Implementierungen für die Integration in eine \emph{CDI}-Umgebung, wie in Abschnitt \ref{sec:sub-template-management-cdi} beschrieben. Die Variablen und Typen der Schnittstelle \emph{VariableResolverFactory} werden über eine \emph{CDI}-Erweiterung gefunden,  registriert und es werden die folgenden Ressourcen kontextabhängig über einen implementierten \emph{CDI}-Erzeuger zur Verfügung gestellt: 
 \begin{itemize}
  \item Das Objekt der Schnittstelle \emph{VariableConfiguration} 
  \newline
@@ -300,20 +300,23 @@ Dieser Abschnitt behandelt die Implementierungen für die Integration in eine \e
  \item Die Objekte der Schnittstelle \emph{TemplateProcessor}
  \newline
  sind Objekte, mit denen Variablen in Vorlagen verwaltet werden können.
+ \item Objekte der abstrakten Klasse \emph{AbstractTemplateMetadata}
+ \newline
+ sind Objekte, welche die Metadaten für Vorlagen halten und spezifisch für eine \emph{Template-Engine} erstellt werden.
  \item Das Objekt der Klasse \emph{CdiTemplateUtil}
  \newline
  ist das Objekt mit dem die registrierten Variablen, die Objekte der Schnittstelle \emph{VariableContract} sind, in Objekte der Klasse \emph{VariableJson} konvertieren kann, wobei die Bezeichnung und die Beschreibung sprachspezifisch ermittelt werden.
 \end{itemize}
 
 \subsubsection{Die Vorlagenmanagement \emph{CDI}-Erweiterung}
-Die implementierte \emph{CDI}-Erweiterung \emph{TemplateCdiExtension} findet beim Start der \emph{CDI}-Erweiterung die verfügbaren Variablen und hält die Variablen über die Lebensdauer der \emph{CDI}-Umgebung persistent. Eine \emph{CDI}-Erweiterung für eine muss folgende Voraussetzungen erfüllen, um geladen und verwendet werden zu können. 
+Die implementierte \emph{CDI}-Erweiterung \emph{TemplateCdiExtension} hält die auffindbaren Ressourcen über die Lebensdauer der \emph{CDI}-Umgebung persistent. Eine \emph{CDI}-Erweiterung für eine muss folgende Voraussetzungen erfüllen, um geladen und verwendet werden zu können. 
 \begin{enumerate}
 	\item Sie muss die Schnittstelle \emph{javax.enterprise.inject.spi.Extension} implementieren,
 	\item in einer Datei namens \emph{javax.enterprise.inject.spi.Extension}, die im Verzeichnis \emph{META-INF/services} liegen muss, mit ihren voll qualifizierten Namen registriert werden und
-	\item das Artefakt, dass die \emph{CDI}-Erweiterung enthält muss eine Datei namens \emph{beans.xml} im Verzeichnis \emph{META-INF} enthalten.
+	\item das Artefakt, dass die \emph{CDI}-Erweiterung enthält, muss eine Datei namens \emph{beans.xml} im Verzeichnis \emph{META-INF} enthalten.
 \end{enumerate}
 \ \newline
-Die \emph{CDI}-Erweiterung wird beim Start der \emph{CDI}-Umgebung über den Mechanismus \emph{Service-Provider-Interface (SPI)} geladen und ein Objekt der Klasse der \emph{CDI}-Erweiterung erstellt. Dann kann das Objekt der \emph{CDI}-Erweiterung auf Ereignisse des Lebenszyklus der \emph{CDI}-Umgebung reagieren, in dem die \emph{CDI}-Erweiterung Beobachtermethoden für die einzelnen Ereignisse implementiert wie z.B.:
+Die \emph{CDI}-Erweiterung wird beim Start der \emph{CDI}-Umgebung über den Mechanismus \emph{Service-Provider-Interface (SPI)} geladen und ein Objekt der Klasse der \emph{CDI}-Erweiterung erstellt. Dann kann das Objekt der \emph{CDI}-Erweiterung auf Ereignisse des Lebenszyklus der \emph{CDI}-Umgebung reagieren, in dem die \emph{CDI}-Erweiterung Beobachtermethoden für die einzelnen Ereignisse implementiert, wie z.B.:
 \begin{itemize}
 	\item\emph{BeforeBeanDiscovery}
 	\newline
@@ -329,18 +332,19 @@ Die \emph{CDI}-Erweiterung wird beim Start der \emph{CDI}-Umgebung über den Mec
 Das erstellte Objekt der \emph{CDI}-Erweiterung ist an sich kein \emph{CDI-Bean}, da das Objekt der \emph{CDI}-Erweiterung bereits existiert bevor die \emph{CDI}-Umgebung vollständig gestartet wurde, ist aber trotzdem in andere \emph{CDI-Beans} injizierbar. Alle anderen \emph{CDI-Beans} können erst nachdem erfolgreichen Start der \emph{CDI}-Erweiterung injiziert werden.
 \newline
 \newline
-Der Quelltext aus Abbildung \ref{prog:templateCdiExtension} ist ein Auszug aus der implementierten \emph{CDI}-Erweiterung \emph{TemplateCdiExtension} und zeigt die Beobachtermethoden, die auf Lebenszyklus Ereignisse der \emph{CDI}-Umgebung reagieren. Die  \emph{CDI}-Erweiterung \emph{TemplateCdiExtension} findet die Typen
+Der Quelltext aus Abbildung \ref{prog:templateCdiExtension} zeigt einen Auszug aus der implementierten Klasse \emph{TemplateCdiExtension} und zeigt die Beobachtermethoden, die auf Lebenszyklus Ereignisse der \emph{CDI}-Umgebung reagieren. Die  \emph{CDI}-Erweiterung \emph{TemplateCdiExtension} findet
 \begin{itemize}
 	\item alle implementierten Typen der Schnittstelle \emph{VariableContract}, die mit der Annotation \emph{CdiVariableContract} annotiert sind und
 	\item alle implementierten Typen der Schnittstelle \emph{VariableResolverFactory}, die mit der Annotation \emph{CdiVariableResolverFactory} annotiert sind.
 \end{itemize}
 \ \newline
-Die gefunden Typen werden in der \emph{CDI}-Erweiterung registriert und über die Lebensdauer der \emph{CDI}-Umgebung verwaltet. Bezüglich der Typen der Schnittstelle \emph{VariableContract} sei angemerkt, dass zur Zeit nur implementierte Typen vom Typ \emph{Enum} gefunden werden können. Alle Typen der Schnittstelle \emph{VariableContract}, die nicht vom Typ \emph{Enum} sind verursachen einen schweren Fehler und verhindern einen erfolgreichen Start der \emph{CDI}-Umgebung. Die Variablen könnten auch über implementierte Klassen der Schnittstelle \emph{VariableContract} implementiert werden und bei ihrer Verwendung dynamisch aus der \emph{CDI}-Umgebung geholt werden, was zur Zeit nicht benötigt wird.
+Die gefunden Typen werden in der \emph{CDI}-Erweiterung registriert und über die Lebensdauer der \emph{CDI}-Umgebung verwaltet. Bezüglich der Typen der Schnittstelle \emph{VariableContract} sei angemerkt, dass zur Zeit nur implementierte Typen vom Typ \emph{Enum} gefunden werden können. Alle Typen der Schnittstelle \emph{VariableContract}, die nicht vom Typ \emph{Enum} sind verursachen einen schweren Fehler und verhindern einen erfolgreichen Start der \emph{CDI}-Umgebung. Die Variablen könnten auch über implementierte Klassen der Schnittstelle \emph{VariableContract} definiert werden und bei ihrer Verwendung dynamisch aus der \emph{CDI}-Umgebung geholt werden, was zur Zeit nicht benötigt wird.
 \newline
 \newline
 Eine \emph{CDI}-Erweiterung ist eine injizierbare Ressource, die in jedes \emph{CDI-Bean} injiziert werden könnte, obwohl nur das Variablenmanagement sich das Objekt der \emph{CDI}-Erweiterung injizieren sollte. Es kann nicht verhindert werden, dass sich andere \emph{CDI-Beans} das Objekt der \emph{CDI}-Erweiterung injizieren lassen, da eine \emph{CDI}-Erweiterung öffentlich deklariert werden muss.
+\newpage
 
-\begin{program}[h]
+\begin{program}
 \caption{Auszug aus der \emph{CDI}-Erweiterung \emph{TemplateCdiExtension}}
 \label{prog:templateCdiExtension}
 \begin{JavaCode}
@@ -358,13 +362,14 @@ public class TemplateCdiExtension implements Extension {
                                           CdiVariableContract.class}) 
              ProcessAnnotatedType<T> pat) { ... }
 
-    <T> void processVariableResolverFactoryFactories
+    <T> void processVariableResolverFactories
         (@Observes @WithAnnotations(CdiVariableResolverFactory.class) 
         ProcessAnnotatedType<T> pat) { ... }
 }
 \end{JavaCode}
 \end{program}
-\ \newpage
+%\ \newline
+Mit der folgenden Auflistung werden die implementierten Beobachtermethoden und deren Funktionsweise erklärt.
 \begin{itemize}
 	\item\emph{beforeBeanDiscovery} 
 	\newline
@@ -372,16 +377,16 @@ public class TemplateCdiExtension implements Extension {
 	\item\emph{processCdiVariableContracts} 
 	\newline
 	ist die Beobachtermethode, die die gefundenen Typen der Schnittstelle \emph{VariableContract} behandelt.
-	\item\emph{processVariableResolverFactoryFactories} 
+	\item\emph{processVariableResolverFactories} 
 	\newline
 	ist die Beobachtermethode, die die gefundenen Typen der Schnittstelle \emph{VariableResolverFactory} behandelt.
 \end{itemize}
 
 \subsubsection{Der Vorlagenmanagement \emph{CDI}-Erzeuger}
-Der implementierte \emph{CDI}-Erzeuger \emph{TemplateResourceProducer} produziert die kontextabhängigen Ressourcen des Vorlagenmanagements. Die Klasse \emph{TemplateResourceProducer} ist die einzige Klasse, in die das Objekt der \emph{CDI}-Erweiterung \emph{TemplateCdiExtension} injiziert wird. Im Kapitel \ref{cha:Lösungskonzept} wurde vorgegeben, dass mehrere \emph{Template-Engines} unterstützt werden müssen, daher wurde die Annotation \emph{@FreemarkerTemplate} eingeführt, die einen Injektionspunkt für die \emph{Template-Engine Freemarker} qualifiziert. In einer \emph{CDI}-Umgebung wird ein Qualifizierer benötigt, wenn für eine Schnittstelle mehrere Implementierungen zur Verfügung stehen, da ansonsten nicht entschieden werden kann welche Implementierung verwendet werden soll. Im Fall, dass es mehrere Implementierungen für eine Schnittstelle gibt, wird die Ausnahme \emph{AmbiguousResolutionException} geworfen und die \emph{CDI}-Umgebung kann nicht gestartet werden. 
+Der implementierte \emph{CDI}-Erzeuger \emph{TemplateResourceProducer} produziert die kontextabhängigen Ressourcen des Vorlagenmanagements. Die Klasse \emph{TemplateResourceProducer} ist die einzige Klasse, in die das Objekt der \emph{CDI}-Erweiterung \emph{TemplateCdiExtension} injiziert wird. Im Kapitel \ref{cha:Lösungskonzept} wurde vorgegeben, dass mehrere \emph{Template-Engines} unterstützt werden müssen, daher wurde die Annotation \emph{@FreemarkerTemplate} eingeführt, die einen Injektionspunkt für die \emph{Template-Engine Freemarker} qualifiziert. In einer \emph{CDI}-Umgebung wird ein Qualifizierer benötigt, wenn für eine Schnittstelle mehrere Implementierungen zur Verfügung stehen, da ansonsten nicht entschieden werden kann welche Implementierung verwendet werden soll. Im Fall, dass es mehrere Implementierungen für eine Schnittstelle und nicht qualifizierte Injektionspunkte für diese Schnittstelle gibt, wird die Ausnahme \emph{AmbiguousResolutionException} geworfen und die \emph{CDI}-Umgebung kann nicht gestartet werden. 
 \newline
 \newline
-Es wurden jeweils eine Erzeugermethode für den Qualifizierer \emph{@Default} und den Qualifizierer \emph{@FreemarkerTemplate} implementiert, womit nicht qualifizierte sowie qualifizierte Injektionspunkte versorgt werden können. Für die Erzeugermethode für den Qualifizierer \emph{@Default} wird die Implementierung für den Qualifizierer \emph{FreemarkerTemplate} verwendet, wodurch diese Implementierung als die Standardimplementierungen fungiert. Damit setzt man sich jedoch der Gefahr aus, dass die produzierte Standardimplementierung nicht die gewollte Implementierung ist, daher ist Vorsicht geboten, wenn diese Verhalten geändert werden sollte. 
+Es wurden jeweils eine Erzeugermethode für den Qualifizierer \emph{@Default} und den Qualifizierer \emph{@FreemarkerTemplate} implementiert, womit nicht qualifizierte sowie qualifizierte Injektionspunkte versorgt werden können. Für die Erzeugermethode für den Qualifizierer \emph{@Default} wird die Implementierung für den Qualifizierer \emph{FreemarkerTemplate} verwendet, wodurch diese Implementierung als die Standardimplementierungen fungiert. Damit setzt man sich jedoch der Gefahr aus, dass die produzierte Standardimplementierung nicht die gewollte Implementierung ist, daher ist Vorsicht geboten, wenn dieses Verhalten geändert werden sollte. 
 \newline
 \newline
 Der Quelltext aus Abbildung \ref{prog:templateResourceProducer} ist ein Auszug aus der Klasse \emph{TemplateResourceProducer} und zeigt einige der implementierten Erzeugermethoden. 
@@ -419,18 +424,18 @@ public class TemplateResourceProducer implements Serializable {
 \end{JavaCode}
 \end{program}
 \ \newline
-Diese beiden Methoden \emph{produceDefaultTemplateBuilder} und \emph{produceFreeMarkerTemplateBuilder} produzieren Objekte der Schnittstelle \emph{TemplateDataJsonBuilder} für den sogenannten Pseudo-\emph{Scope (@Dependent)}, wobei für jeden Injektionspunkt ein neues Objekt erstellt wird. Der Lebenszyklus von \emph{CDI-Beans} im Pseudo-\emph{Scope} wird nicht von der \emph{CDI}-Umgebung verwaltet und die Lebensdauer eines \emph{CDI-Bean} im Pseudo-\emph{Scope} ist gebunden and das \emph{CDI-Bean}, das sich das Pseudo-\emph{Scoped} \emph{CDI-Bean} injiziert hat. Die Erzeugermethoden \emph{produceDefaultTemplateBuilder} und \emph{produceFreeMarkerTemplateBuilder} lassen sich als Argument ein Objekt der Schnittstelle \emph{VariableResolverFactoryProvider} injizieren, dessen Geltungsbereich für diese Methoden nicht bekannt ist.
+Die beiden Methoden \emph{produceDefaultTemplateBuilder} und \emph{produceFreeMarkerTemplateBuilder} produzieren Objekte der Schnittstelle \emph{TemplateDataJsonBuilder} für den sogenannten Pseudo-Geltungsbereich\emph{(@Dependent)}, wobei für jeden Injektionspunkt ein neues Objekt erstellt wird. Der Lebenszyklus von \emph{CDI-Beans}, die sich im Pseudo-Geltungsbereich befinden, wird nicht von der \emph{CDI}-Umgebung verwaltet und die Lebensdauer eines \emph{CDI-Bean}, das sich im Pseudo-Geltungsbereich befindet, ist gebunden and das \emph{CDI-Bean}, das sich das \emph{CDI-Bean} im Pseudo-Geltungsbereich injiziert hat. Die Erzeugermethoden \emph{produceDefaultTemplateBuilder} und \emph{produceFreeMarkerTemplateBuilder} lassen sich als Argument ein Objekt der Schnittstelle \emph{VariableResolverFactoryProvider} injizieren, dessen Geltungsbereich für diese Methoden nicht bekannt und auch irrelevant ist.
 \newline
 \newline
 Die Methode \emph{produceConfiguration} produziert ein Objekt der Schnittstelle  \emph{VariableConfiguration}, das die registrierten Variablen enthält und von der \emph{CDI}-Erweiterung bereitgestellt wird. Nachdem die Schnittstelle  \emph{VariableConfiguration} nur lesenden Zugriff erlaubt, wird dieses Objekt für den Gültigkeitsbereich der Anwendung produziert, also einmalig für die gesamte Lebensdauer der \emph{CDI}-Umgebung.
 \newline
 \newline
-Alle injizierbaren Objekte werden erst beim ersten Zugriff auf eine ihrer öffentlichen Methoden erzeugt und im korrespondierenden Geltungsbereich registriert. Sollte ein injizierbares Objekt niemals verwendet werden, so wird es auch niemals erzeugt. Dieses Verhalten ist möglich, da alle Injektionspunkte von \emph{Proxies} verwaltet werden, die beim Starten der \emph{CDI}-Umgebung in die Injektionspunkte injiziert werden und ein abgeleiteter Typ des injizierten Typs sind. Bei einem Zugriff auf eine öffentliche Methode des injizierten Objekts, wird das korrespondierende Objekt aus den aktuellen Geltungsbereich geholt und der Aufruf an dieses Objekt weiter delegiert.  
+Alle injizierbaren Objekte, die sich im einem normalen Geltungsbereich befinden,  werden erst beim ersten Zugriff auf eine ihrer öffentlichen Methoden erzeugt und im korrespondierenden Geltungsbereich registriert. Sollte ein injizierbares Objekt niemals verwendet werden, so wird es auch niemals erzeugt. Dieses Verhalten ist möglich, da alle Injektionspunkte von \emph{Proxies}, außer Injektionspunkte von \emph{CDI-Beans} im Pseudo-Geltungsbereich, verwaltet werden, die beim Erstellen eines \emph{CDI-Beans} in die Injektionspunkte injiziert werden und ein abgeleiteter Typ des injizierten Typs sind. Bei einem Zugriff auf eine öffentliche Methode des injizierten Objekts, wird das korrespondierende Objekt aus den aktuellen Geltungsbereich geholt, oder vorherig erstellt und im Geltungsbereich abgelegt und der Aufruf an dieses Objekt weiter delegiert.  
 
 \subsubsection{Die Vorlagenmanagement \emph{CDI}-Hilfsklasse}
-Die Klasse \emph{CdiTemplateUtil} aus dem Quelltext aus Abbildung \ref{prog:cdiTemplateUtil} wurde implementiert, um ein injizierbares \emph{CDI-Bean} zur Verfügung zu stellen, das Hilfsmethoden für die Konvertierung der Variablen von Objekten der Schnittstelle \emph{VariableContract} in Objekte der Klasse \emph{VariableJson} und visa versa zur Verfügung stellt. Diese Implementierung hält keinen Status, daher kann dieses \emph{CDI-Bean} in den Geltungsbereich der Anwendung registriert werden. Die Verwendung des Objekts der Klasse \emph{CdiTemplateUtil} ist \emph{Thread-Safe}
+Die Klasse \emph{CdiTemplateUtil} aus dem Quelltext aus Abbildung \ref{prog:cdiTemplateUtil} wurde implementiert, um ein injizierbares \emph{CDI-Bean} zur Verfügung zu stellen, das Hilfsmethoden für die Konvertierung der Variablen von Objekten der Schnittstelle \emph{VariableContract} in Objekte der Klasse \emph{VariableJson} und visa versa zur Verfügung stellt. Diese Implementierung hält keinen Status, daher kann dieses \emph{CDI-Bean} in den Geltungsbereich der Anwendung registriert werden. Die Verwendung des Objekts der Klasse \emph{CdiTemplateUtil} ist \emph{Thread-Safe} weil
 \begin{itemize}
-	\item da kein Status in diesem Objekt gehalten wird und
+	\item das Objekt keinen Status hält und
 	\item das verwendete Objekt der Klasse \emph{TemplateConfiguration} nur lesenden Zugriff erlaubt.
 \end{itemize}
 \ \newline
@@ -443,59 +448,60 @@ Die Annotation \emph{@Typed(CdiTemplateUtil.class)} bewirkt dass dieses \emph{CD
 @ApplicationScoped
 @Typed(CdiTemplateUtil.class)
 public class CdiTemplateUtil implements Serializable {
-
     @Inject
     private VariableConfiguration config;
 
     public List<VariableJson> convertContractToJsonModel
-    						  (final Locale locale) { }
+                                    (final Locale locale) { }
 
     public List<VariableJson> convertContractToJsonModel
-    		(final Collection<VariableContract> contracts,
-             final Locale locale) { }
+           (final Collection<VariableContract> contracts,
+            final Locale                          locale) { }
 
     public VariableJson convertContractToJsonModel
-           (final VariableContract contract,
-            final Locale locale) { }
+                  (final VariableContract contract,
+                   final Locale             locale) { }
 	
     public List<VariableContract> convertJsonModelToContract
-    							 (final Collection<VariableJson> jsonModels) { }
+                  (final Collection<VariableJson> jsonModels) { }
 
     public VariableContract convertJsonModelToContract
-                            (final VariableJson jsonModel) { }
+                        (final VariableJson jsonModel) { }
 }
 \end{JavaCode}
 \end{program}
 
 \subsection{Die Implementierungen für \emph{JSF}}
 \label{sec:sub-impl-integartion-jsf}
-Dieser Abschnitt beschäftigt sich mit der Implementierung der Integration des Variablenmanagements in die \emph{View}-Technologie \emph{JSF}, wie im Abschnitt \ref{sec-sub-specification-jsf} vorgegeben. Es werden der implementierte \emph{FacesConverter} und die \emph{CKEditor}-Integration in \emph{JSF} behandelt.
+Dieser Abschnitt beschäftigt sich mit der Implementierung der Integration des Variablenmanagements in die \emph{View}-Technologie \emph{JSF}, wie im Abschnitt \ref{sec-sub-specification-jsf} vorgegeben. Es werden der implementierte \emph{FacesConverter} und die \emph{CKEditor}-Integration, bereitgestellt von \emph{PrimeFaces-Extensions} in \emph{JSF} behandelt.
 
 \subsubsection{Der Vorlagen \emph{FacesConverter}}
-Ein \emph{FacesConverter} ist eine Klasse für die Konvertierung in \emph{JSF}, welche die Schnittstelle \emph{javax.faces.convert.Converter} implementiert, wobei diese Schnittstelle die folgenden beiden Methoden definiert.
+Ein \emph{FacesConverter} ist eine Klasse für die Konvertierung in \emph{JSF}, welche die Schnittstelle \emph{javax.faces.convert.Converter} implementieren muss, wobei diese Schnittstelle die folgenden beiden Methoden definiert.
 \begin{itemize}
 	\item\emph{getAsObject}
 	\newline
-	ist die Methode, die den Wert des Parameters, in Form von einer Zeichenkette, in das korrespondierende \emph{Java}-Objekt konvertiert und
+	ist die Methode, die den Wert des Parameters, in Form von einer Zeichenkette, in das korrespondierende \emph{Java}-Objekt konvertiert.
 	\item\emph{getAsString}
 	\newline
 	ist die Methode, die ein \emph{Java}-Objekt in eine Zeichenkette konvertiert.
 \end{itemize}
 \ \newline
-Ein \emph{FacesConverter} wird im \emph{JSF-Framework} über die Annotation \emph{FacesConverter("converterName")} oder einen Eintrag in der der Konfigurationsdatei \emph{faces-config.xml} registriert. Einer \emph{JSF}-Komponente kann in \emph{XHTML} über das Attribut \emph{converter} ein Konverter, entweder 
+Ein \emph{FacesConverter} wird im \emph{JSF-Framework} über die Annotation \emph{FacesConverter("converterName")} oder einen Eintrag in der  Konfigurationsdatei \emph{faces-config.xml} registriert. Einer \emph{JSF}-Komponente kann in \emph{XHTML} über das Attribut \emph{converter} ein Konverter, entweder 
 \begin{itemize}
-	\item über dessen registrierten Namen oder 
-	\item durch Parameterbindung auf ein Objekt des Konverters, zugewiesen werden.
+	\item über registrierten Namen des Konverters oder 
+	\item durch Parameterbindung auf ein Attribut eines Objekts, das ein Objekt der Schnittstelle \emph{javax.faces.convert.Converter} zur Verfügung stellt, zugewiesen werden.
 \end{itemize}
-Die gemeinsame Logik wurde in einer abstrakten Klasse \emph{AbstractTemplateConverter} zusammengefasst, da sich lediglich die konkrete Implementierungen der Schnittstelle \emph{TemplateProcessor} für die verschiedenen \emph{Template-Enginges} unterscheidet. Da keine Injektion in \emph{JSF}-Artefakte \emph{JSF 2.2} wie z.B.
+\ \newline
+Die gemeinsame Logik des Konverters wurde in einer abstrakten Klasse \emph{AbstractTemplateConverter} zusammengefasst, da sich nur die konkrete Implementierung der Schnittstelle \emph{TemplateProcessor} für die verschiedenen \emph{Template-Enginges} unterscheidet. Da keine Injektion in \emph{JSF}-Artefakte (\emph{JSF 2.2}) wie z.B.
 \begin{itemize}
 	\item\emph{FacesConverter},
 	\item\emph{FacesValidator} order
 	\item\emph{Component}
 \end{itemize}
-möglich ist, wurde die abstrakte Klasse \emph{AbstractTemplateConverter} implementiert und eine konkrete Implementierung für die \emph{Template-Engine Freemarker}. Ab \emph{JSF 2.3} wird in \emph{JSF}-Artefakten Injektion zur Verfügung stehen. Die Implementierung der Klasse \emph{FreemarkerTemplateConverter}, die von der Klasse \emph{AbstractTemplateConverter} ableitet, setzt über den Konstruktor statisch den zu verwendenden Qualifizierer, mit dem über die Hilfsklasse \emph{BeanProvider} der Bibliothek \emph{DeltaSpike} dynamisch die benötigten \emph{CDI-Beans} von der \emph{CDI}-Umgebung geholt werden. Beim Erstellen eines Objekts der Klasse \emph{FreemarkerTemplateConverter} muss ein Objekt der Klasse \emph{java.util.Locale} übergeben werden, damit die Bezeichnung und die Beschreibung einer Variable in einer Vorlage sprachspezifisch konvertiert werden kann. Die definierte Sprache sollte die Sprache sein, für die die Vorlage erstellt wurde.
+möglich ist, wurde die abstrakte Klasse \emph{AbstractTemplateConverter} implementiert und die Klasse \emph{FreemarkerTemplateConverter}, die der Konverter für die \emph{Template-Engine Freemarker} ist. Ab \emph{JSF 2.3} wird in \emph{JSF}-Artefakten Injektion zur Verfügung stehen und man könnte dann einen anderen Ansatz wählen. Die Implementierung der Klasse \emph{FreemarkerTemplateConverter} aus dem Quelltext aus Abbildung \ref{prog:freemarkerTemplateConverter}, die von der Klasse \emph{AbstractTemplateConverter} ableitet, setzt über den Konstruktor statisch den zu verwendenden Qualifizierer in Form eines Annotationsliterals, mit dem über die Hilfsklasse \emph{BeanProvider} der Bibliothek \emph{DeltaSpike} dynamisch das benötigte \emph{CDI-Beans} von der \emph{CDI}-Umgebung geholt wird. Beim Erstellen eines Objekts der Klasse \emph{FreemarkerTemplateConverter} muss ein Objekt der Klasse \emph{java.util.Locale} übergeben werden, damit die Bezeichnung und die Beschreibung einer Variable in einer Vorlage sprachspezifisch konvertiert werden kann. Die definierte Sprache sollte die Sprache sein, für die die Vorlage erstellt wurde.
+\newpage
 
-\begin{program}[h]
+\begin{program}
 \caption{Die Klasse \emph{FreemarkerTemplateConverter}}
 \label{prog:freemarkerTemplateConverter}
 \begin{JavaCode}
@@ -508,8 +514,7 @@ public class FreemarkerTemplateConverter
 }
 \end{JavaCode}
 \end{program}
-\ 
-\newline
+\ \newline
 Die abstrakte Klasse \emph{AbstractTemplateConverter} definiert reguläre Ausdrücke, um die Variablen in einer Vorlage in Form von \emph{HTML-Tags} zu finden und zu konvertieren.
 \begin{JavaCode}[numbers=none]
 String tagRegex = "(<span[^>]*class=\"variable\"[^>]*>[^<]*</span>)";
@@ -518,10 +523,10 @@ String idRegex  = "data-variable-id=\"(\\S+)\"";
 \ \begin{itemize}
 	\item\emph{tagRegex}
 	\newline
-	ist der reguläre Ausdruck, um die Variablen in ihrer \emph{HTML}-Repräsentation in einer Vorlage zu finden.
+	ist der reguläre Ausdruck, mit dem die Variablen in ihrer \emph{HTML}-Repräsentation in einer Vorlage gefunden werden können.
 	\item\emph{idRegex}
 	\newline
-	ist der reguläre Ausdruck, um die \emph{Id} einer Variable, aus deren \emph{HTML}-Repräsentation zu bekommen und wird auf den gefundenen \emph{HTML-Tag} einer Variable angewendet, die mit dem regulären Ausdruck \emph{tagRegex} gefunden wurde.
+	ist der reguläre Ausdruck, mit dem die \emph{Id} einer Variable, in ihrer \emph{HTML}-Repräsentation gefunden werden kann und der reguläre Ausdruck wird auf den gefundenen \emph{HTML-Tag} einer Variable angewendet, der mit dem regulären Ausdruck \emph{tagRegex} gefunden wurde.
 \end{itemize}
 \ \newline
 Die abstrakte Klasse \emph{AbstractTemplateConverter} definiert auch eine Vorlage in Form einer Zeichenkette, mit der die Variablen in ihre \emph{HTML-Tag}-Repräsentation konvertiert werden können, wobei diese Vorlage unabhängig von der verwendeten \emph{Template-Engine} ist.
@@ -529,7 +534,8 @@ Die abstrakte Klasse \emph{AbstractTemplateConverter} definiert auch eine Vorlag
 String template = "<span class=\"variable\" contentEditable=\"false\" "
                 + "data-variable-id=\"{0}\" title=\"{1}\">{2}</span>";
 \end{JavaCode}
-Die Vorlage \emph{template} wird mit \emph{java.text.MessageFormat(String, Object...)} verarbeitet, wobei der Formalparameter \emph{Object...} eine variable Argumentliste ist, über welche die dynamischen Werte für die Vorlage bereitgestellt werden können. 
+Die Vorlage \emph{template} wird mit \emph{java.text.MessageFormat(String, Object...)} verarbeitet, wobei der Formalparameter \emph{Object...} eine variable Argumentliste ist, über welche die Werte für die enthaltenen Parameter der Vorlage \emph{template} bereitgestellt werden können. 
+\newpage
 
 \subsubsection{Die \emph{Primefaces-Extension} für den \emph{CKEditor}}
 Der \emph{Editor CKEditor} ist eine \emph{JavaScript} basierte Anwendung, die nur am \emph{Browser} der BenutzerInnen läuft. Es wird eine Integration in \emph{JSF} benötigt, damit man
@@ -542,12 +548,12 @@ Der \emph{Editor CKEditor} ist eine \emph{JavaScript} basierte Anwendung, die nu
 Es ist nicht trivial ist eine vollwertige \emph{JSF}-Komponente zu implementieren und das Implementieren einer solchen Komponente nimmt auch viel Zeit in Anspruch. Daher wurde auf die Implementierung von \emph{PrimeFaces-Extensions} zurückgegriffen, die bereits eine vollwertige \emph{JSF}-Integration in Form einer \emph{JSF}-Komponente für den \emph{CKEditor} bereitstellt.
 \newline
 \newline
-Die Ressourcen für den \emph{CKEDitor} bewegen sich in der Größenordnung von 1,5 \emph{Megabyte}, daher werden die Ressourcen in einem separaten Artefakt zur Verfügung gestellt. Man kann auch eine eigene Implementierung des \emph{CKEditors} zur Verfügung stellen, sofern diese Implementierung in derselben Version vorhanden ist, wie von \emph{PrimeFaces-Extensions} unterstützt wird. Der \emph{CKEditor} ist ein sehr umfangreicher \emph{Editor}, den man sich auch seinen Wünschen entsprechend über die Webseite \url{http://ckeditor.com/builder} selbst zusammenstellen kann.
+Die Ressourcen für den \emph{CKEDitor} bewegen sich in der Größenordnung von 1,5 \emph{Megabyte}, daher werden die Ressourcen in einem separaten Artefakt zur Verfügung gestellt. Man kann auch eine eigene Implementierung des \emph{CKEditors} zur Verfügung stellen, sofern diese Implementierung in derselben Version vorhanden ist, die von \emph{PrimeFaces-Extensions} unterstützt wird. Der \emph{CKEditor} ist ein sehr umfangreicher \emph{Editor}, den man sich auch seinen Wünschen entsprechend über die Webseite \url{http://ckeditor.com/builder} selbst zusammenstellen kann.
 \newline
 \newline
 Der Quelltest aus Abbildung \ref{prog:example-ckeditor-xhtml} zeigt die Verwendung der \emph{JSF}-Komponente für den \emph{CKEditor}.
 \begin{program}[h]
-\caption{Verwendung der \emph{JSF}-Komponente für den \emph{CKEditor}}
+\caption{Die Verwendung der \emph{JSF}-Komponente für den \emph{CKEditor}}
 \label{prog:example-ckeditor-xhtml}
 \begin{HtmlCode}
 <pe:ckEditor id="view_id"
@@ -559,37 +565,44 @@ Der Quelltest aus Abbildung \ref{prog:example-ckeditor-xhtml} zeigt die Verwendu
 </pe:ckEditor>
 \end{HtmlCode}
 \end{program}
-\ \begin{itemize}
+\ \newline
+Die folgende Auflistung erklärt die definierten Attribute, der \emph{JSF}-Komponente für den \emph{CKEditor}.
+\begin{itemize}
 	\item\emph{id} 
 	\newline
-	ist das Attribut, um die eindeutige \emph{Id} innerhalb des Namensraums, in dem sich die Komponente befindet, zu definieren.
+	ist das Attribut, das die eindeutige \emph{Id} innerhalb des Namensraums, in dem sich die Komponente befindet, definiert.
 	\item\emph{widgetVar}
 	\newline
-	ist das Attribut, um einen global eindeutigen Namen des \emph{JavaScript}-Objekts \emph{Widget} zu definieren, das den Zugriff auf den \emph{CKEditor} innerhalb von \emph{JavaScript} ermöglicht.
+	ist das Attribut, das einen global eindeutigen Namen des \emph{JavaScript}-Objekts \emph{(Widget)} definiert, das den Zugriff auf den \emph{CKEditor} innerhalb von \emph{JavaScript} ermöglicht.
 	\item\emph{value}
 	\newline
-	ist das Attribut, um die Parameterbindung des Inhalts des \emph{CKEditors} zu einem \emph{Java}-Model zu definieren.
+	ist das Attribut, das die Parameterbindung des Inhalts des \emph{CKEditors} zu einem \emph{Java}-Model definiert.
 	\item\emph{converter}
 	\newline
-	ist das Attribut, um den zu verwendeten Konverter über seinen eindeutigen Namen oder einer Parameterbindung zu setzen.
+	ist das Attribut, das den zu verwendeten Konverter über seinen eindeutigen Namen oder eine Parameterbindung definiert.
 	\item\emph{contentCss}
 	\newline
-	ist das Attribut, um eine eigene \emph{CSS}-Datei für den Inhalt der Vorlage zu definieren. Die Vorlage wird innerhalb des \emph{Editors} als eigenständige \emph{HMTL}-Datei behandelt, das in einer \emph{HTML-IFrame}-Komponente gehalten wird.
+	ist das Attribut, das den Pfad für eine eigene \emph{CSS}-Datei für den Inhalt der Vorlage innerhalb des \emph{CKEditors} definiert. Die Vorlage wird innerhalb des \emph{Editors} als eigenständige \emph{HMTL}-Datei behandelt, das in einer \emph{HTML-IFrame}-Komponente gehalten wird.
 	\item\emph{customConfig}
 	\newline
-	ist das Attribut, um die eine eigene Konfiguration des \emph{Editors} in Form von einer \emph{JavaScript}-Datei zu definieren. 
+	ist das Attribut, das den Pfad zu einer eigenen Konfigurationsdatei, in Form von einer \emph{JavaScript}-Datei, für den \emph{CKEditor} definiert.
 \end{itemize}
 
 \section{Die Vorlagenmanagement Beispielanwendung}
 Dieser Abschnitt beschäftigt sich mit der implementierten Beispielanwendung für das Vorlagenmanagement, welche die Verwendung des Vorlagenmanagement im Bezug auf 
 \begin{itemize}
-	\item die Verwendung in der Geschäftslogik,
+	\item die Verwendung in einer Geschäftslogik,
 	\item die Verwendung über eine Webseite und
-	\item die Verwendung zum Erstellen einer \emph{E-Mail} aufzeigen soll. 
+	\item die Verwendung zum Erstellen einer \emph{E-Mail} aufzeigen wird. 
 \end{itemize}
 
 \subsection{Die Verwendung über eine \emph{Web}-Oberfläche}
-Die Abbildung \ref{fig:demo_web_app_empty_view_part_1} zeigt die Weboberfläche, die für die Beispielanwendung implementiert wurde. Über dieses Formular können die Voralgen sprachspezifisch verwaltet werden.
+Die Abbildung \ref{fig:demo_web_app_empty_view_part_1} zeigt die Weboberfläche, die für die Beispielanwendung implementiert wurde. Über dieses Formular können die Voralgen sprachspezifisch verwaltet werden. Diese Webseite kann einfach in jeder Webanwendung erstellt werden, daher wurde keine Implementierung zur Verfügung gestellt. Prinzipiell kann das Vorlagenmanagement in jeder \emph{View}-Technologie wie z.B.
+\begin{itemize}
+	\item\emph{JSF} oder
+	\item\emph{Java-Server-Pages (JSP)} verwendet werden.
+\end{itemize}
+\newpage
 \ \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{demo_web_app_empty_view_part_1}
@@ -598,22 +611,17 @@ Die Abbildung \ref{fig:demo_web_app_empty_view_part_1} zeigt die Weboberfläche,
 \end{figure}
 \ \newline
 Die Abbildung \ref{fig:demo_web_app_empty_view_part_2} zeigt, den Teil der Webseite, der die relevanten Daten einer Vorlage anzeigt.
-\begin{itemize}
-	\item\emph{Decorator Template} ist die \emph{Freemarker}-Voralge, die von jeder Vorlage dekoriert wird.
-	\item\emph{User Template} ist die Vorlage, die von einem BenutzerIn erstellt wurde.
-	\item\emph{Template JSON Data} ist die \emph{JSON}-Zeichenkette, die erstellt wird, wenn die Daten für eine Vorlage serialisiert werden.
-	\item\emph{Parsed Template} ist die Vorlage, in der die Variablen durch die serialisierten Werte ersetzt wurden.
-	\item\emph{Template Metadata} sind die Metadaten der Vorlage, wie z.B. die Anzahl der enthalten Variablen.
-\end{itemize}
+
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{demo_web_app_empty_view_part_2}
 \caption{Anzeige der aller relevanten Daten einer Vorlage}
 \label{fig:demo_web_app_empty_view_part_2}
 \end{figure}
+\ \newpage
 
 \subsubsection{Die Dekoriervorlage}
-Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_decorator} zeigt die dekorierbare \emph{Freemarker}-Vorlage, die alle Vorlagen dekorieren. Sie stellt den \emph{HTML-Body} zur Verfügung, da die Benutzervoralgen nur den Inhalt innerhalb des \emph{HTML-Tags Body} bereitstellen.
+Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_decorator} zeigt die dekorierbare \emph{Freemarker}-Vorlage, die alle Vorlagen dekorieren. Sie stellt den \emph{HTML-Body} zur Verfügung, da die Benutzervorlagen nur den Inhalt innerhalb des \emph{HTML-Tags Body} bereitstellen.
 \begin{program}[h]
 \caption{Die dekorierbare \emph{Freemarker}-Vorlage}
 \label{prog:demo_web_app_data_decorator}
@@ -638,38 +646,38 @@ Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_decorator} zeigt die dek
 </html>
 \end{HtmlCode}
 \end{program}
-\ \newpage
 %$ : otherwise everything afterwards is marked green
+\ \newline
+Die enthaltenen Variablen werden von der \emph{Template-Engine Freemarker} durch die Vorlagen ersetzt.
+\begin{itemize}
+	\item\emph{TEMPLATE\_NAME}
+	\newline
+	ist die Variable, die den Namen für die zu einfügende Vorlage definiert und
+	\item\emph{FOOTER\_TEMPLATE}
+	\newline
+	ist die Variable, die den Namen für die zu einfügende Vorlage für die Fußnote des \emph{HTML}-Dokuments definiert.
+\end{itemize}
 
 \subsubsection{Die Benutzervorlage}
-Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_template} zeigt die \emph{Freemarker}-Vorlage, die von der BenutzerInnen erstellt wird. Die Vorlage enthält zwar \emph{HTML-Markup}, aber nur den Inhalt unterhalb des \emph{HTML-Tags Body}. Sie stellt daher kein vollständiges \emph{HTML}-Dokument zur Verfügung, wofür die Dekoriervorlage aus Abbildung \ref{prog:demo_web_app_data_decorator} implementiert wurde.
+Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_template} zeigt die \emph{Freemarker}-Vorlage, die von der BenutzerInnen erstellt wird. Die Vorlage enthält zwar \emph{HTML-Markup}, aber nur den Inhalt unterhalb des \emph{HTML-Tags Body}. Sie stellt daher kein vollständiges \emph{HTML}-Dokument dar, wofür die Dekoriervorlage aus Abbildung \ref{prog:demo_web_app_data_decorator} implementiert wurde, die diese Vorlage dekoriert.
 \begin{program}[h]
-\caption{Die BenutzerIn \emph{Freemarker}-Vorlage}
+\caption{Die \emph{Freemarker}-Vorlage der BenutzerIn}
 \label{prog:demo_web_app_data_template}
 \begin{HtmlCode}
 <p>Sehr geehrte(r) Frau/Herr&nbsp;
-${(cc.module.di["RECIPIENT_USER"])!("variable: 'RECIPIENT_USER' not found")}
-,</p>
-
+${(cc.module.di["RECIPIENT_USER"])
+!("variable: 'RECIPIENT_USER' not found")},</p>
 <p>Hiermit informieren wir Sie &uuml;ber die Status&auml;nderung 
-bez&uuml;glich&nbsp;
-<strong>
-${(cc.module.di["TOPIC"])!("variable: 'TOPIC' not found")}.
-</strong>
-</p>
-
+bez&uuml;glich&nbsp;<strong>
+${(cc.module.di["TOPIC"])!("variable: 'TOPIC' not found")}.</strong></p>
 <p>Status: &nbsp;
-${(cc.module.di["STATUS"])!("variable: 'STATUS' not found")}
-</p>
-
+${(cc.module.di["STATUS"])!("variable: 'STATUS' not found")}</p>
 <p>Sender:&nbsp;
 ${(cc.module.di["SENDER_USER"])!("variable: 'SENDER_USER' not found")}
 </p>
-
 <p>&nbsp;</p>
 \end{HtmlCode}
 \end{program}
-\ \newpage
 
 \subsubsection{Das serialisierte \emph{JSON}-Datenobjekt}
 Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_json} zeigt die serialisierte \emph{JSON}-Zeichenkette, die beim Erstellen einer \emph{E-Mail} erstellt wird und in der Datenbank persistent gehalten wird. Mit diesen Daten kann eine \emph{E-Mail} auf Basis dieser Vorlage jederzeit wiederhergestellt werden.
@@ -680,10 +688,8 @@ Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_json} zeigt die serialis
 \begin{JsCode}
 {
   "@type" : "template-data-json",
-  "unknownProperties" : { },
   "template_metadata" : {
     "@type" : "template-metadata-json",
-    "unknownProperties" : { },
     "id" : 1,
     "version" : 1,
     "locale" : "de",
@@ -705,7 +711,6 @@ Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_json} zeigt die serialis
 }
 \end{JsCode}
 \end{program}
-\ \newpage
 
 \subsubsection{Die geparste Benutzervorlage}
 Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_parsed_template} zeigt die geparste Vorlage. Die Variablen der Vorlage aus dem Quelltext aus Abbildung \ref{prog:demo_web_app_data_template} wurden durch den serialisierten Wert des \emph{JSON}-Datenobjekts aus dem Quelltext aus Abbildung \ref{prog:demo_web_app_data_json} ersetzt.
@@ -741,7 +746,6 @@ Der Quelltext aus Abbildung \ref{prog:demo_web_app_data_parsed_template} zeigt d
 </html>
 \end{HtmlCode}
 \end{program}
-\ \newpage
 
 \subsubsection{Die Vorlagenmetadaten}
 Der folgende Text zeigt die Zeichenkette, welchen die in Abschnitt \ref{sec:abstractTemplateMetadata} vorgestellte Klasse \emph{AbstractTemplateMetadata} produziert. Diese Ausgabe ist nur für Entwicklungszwecke interessant und zeigt die aktuellen Metadaten der Vorlage aus dem Quelltext aus Abbildung \ref{prog:demo_web_app_data_template}.
@@ -786,12 +790,20 @@ info-key  : TOPIC
 variables (invalid) : 0
     \end{verbatim}  
 \endgroup
-\newpage
 
 \subsection{Die Verwendung in einer Geschäftslogik}
 Der Quelltext aus Abbildung \ref{prog:emailServiceCdiEventImpl} zeigt die implementierte Klasse \emph{EmailServiceCdiEventImpl} der Schnittstelle \emph{EmailService}, die spezifiziert wie über eine Geschäftslogik \emph{E-Mails} erstellt werden können. Die Implementierung \emph{EmailServiceCdiEventImpl} verwendet die implementierte Klasse \emph{CreateEmailsEvent}, die ein \emph{Event}-Objekt darstellt, das über den \emph{CDI-Event-Bus} verarbeitet wird. Es wir ein Objekt der Schnittstelle \emph{javax.enterprise.Event} injiziert, das mit dem \emph{Event}-Objekt typisiert ist. Die Injektionspunkte der \emph{Events} wurden qualifiziert, damit verschiedene Beobachtermethoden aufgerufen werden können.
+\begin{itemize}
+	\item\emph{@Immediate}
+	\newline
+	ist die Annotation, die den injizierten \emph{Event} für die sofortige Ausführung qualifiziert.
+	\item\emph{@AfterSuccess}
+	\newline
+	ist die Annotation, die den injizierten \emph{Event} für die Ausführung nach dem erfolgreichen Abschluss der Transaktion qualifiziert.
+\end{itemize}
+\ \newpage
 
-\begin{program}[h]
+\begin{program}
 \caption{Die Klasse \emph{EmailServiceCdiEventImpl}}
 \label{prog:emailServiceCdiEventImpl}
 \begin{JavaCode}
@@ -829,7 +841,7 @@ public class EmailServiceCdiEventImpl implements EmailService {
 }
 \end{JavaCode}
 \end{program}
-\ \newpage
+\ \newline
 Folgende Auflistung erklärt die implementierten Methoden der Klasse \emph{EmailServiceCdiEventImpl} der Schnittstelle \emph{EmailService}, über die von einer Geschäftslogik aus \emph{E-Mails} erstellt werden können.
 \begin{itemize}
 	\item\emph{create(EmailDTO dto)}
@@ -837,20 +849,20 @@ Folgende Auflistung erklärt die implementierten Methoden der Klasse \emph{Email
 	ist die Methode, mit der eine \emph{E-Mail} sofort erstellt werden kann, wobei beim Feuern des \emph{Events} die aktuelle Ausführung der Methode unterbrochen und synchron die Beobachtermethode aufgerufen wird.
 	\item\emph{create(List<EmailDTO> dtos)}
 	\newline
-	ist die Methode, mit der mehrere \emph{E-Mails} sofort erstellt werden können. Das Verhalten ist gleich wie bei der Methode \emph{create(EmailDTO dto)}.
+	ist die Methode, mit der mehrere \emph{E-Mails} sofort erstellt werden können. Das Verhalten der Ausführung ist gleich wie bei der Methode \emph{create(EmailDTO dto)}.
 	\item\emph{createAfterSuccess(EmailDTO dto)}
 	\newline
 	ist die Methode, mit der eine \emph{E-Mail}, nach dem erfolgreichem Beenden einer Transaktion, erstellt werden kann, wobei die Beobachtermethode trotzdem noch in der Komplettierungsphase der Transaktion aufgerufen wird.
 	\item\emph{createAfterSuccess(List<EmailDTO> dto)}
 	\newline
-	ist die Methode, mit der mehrere \emph{E-Mails}, nach dem erfolgreichem Beenden einer Transaktion, erstellt werden können. Das Verhalten ist gleich wie in der Methode \emph{createAfterSuccess(EmailDTO dto)}.
+	ist die Methode, mit der mehrere \emph{E-Mails}, nach dem erfolgreichem Beenden einer Transaktion, erstellt werden können. Das Verhalten der Ausführung ist gleich wie in der Methode \emph{createAfterSuccess(EmailDTO dto)}.
  werden kann.    
 \end{itemize} 
 \ \newline
 Der Quelltext aus Abbildung \ref{prog:businessServiceImpl} zeigt die implementierte Klasse \emph{BusinessServiceImpl}, welche die Geschäftslogik simuliert, die über die Schnittstelle \emph{EmailService} \emph{E-Mails} erstellt. Die zu erstellende \emph{E-Mail} wird durch ein Objekt der Klasse \emph{EmailDTO} repräsentiert, welche alle benötigten Informationen für das Erstellen einer \emph{E-Mail} enthält. Das Objekt der Schnittstelle \emph{Emailservice} wird über Injektion von der \emph{CDI}-Umgebung bereitgestellt. Wie im Kapitel \ref{cha:Zielsetzung} vorgegeben dürfen die Anwendungen nicht wissen, wie \emph{E-Mails} erstellt werden, was über die Schnittstelle \emph{EmailService} realisiert wurde. Dieser Geschäftslogik ist die konkrete Implementierung der Schnittstelle \emph{EmailService} nicht bekannt und daher auch nicht dass die \emph{E-Mails} über \emph{CDI-Events} bzw. deren Beobachtermethoden erstellt werden.
 \newline
 \newline
-Die \emph{E-Mails} werden innerhalb, der von der Klasse \emph{BusinessServiceImpl} geöffneten Transaktion, erstellt. Es ist nicht möglich eine Transaktion in einer Beobachtermethode zu öffnen, da die \emph{Events} immer in der Komplettierungsphase der geöffneten Transaktion behandelt werden und es keine Möglichkeit, dies zu umgehen.
+Die \emph{E-Mails} werden innerhalb, der von der Klasse \emph{BusinessServiceImpl} geöffneten Transaktion, erstellt. Es ist nicht möglich eine Transaktion in einer Beobachtermethode zu öffnen, da die \emph{Events} immer in der Komplettierungsphase der geöffneten Transaktion behandelt werden und es keine Möglichkeit gibt dies zu umgehen.
 \newpage
 \begin{program}[h]
 \caption{Die Klasse \emph{BusinessServiceImpl}}
