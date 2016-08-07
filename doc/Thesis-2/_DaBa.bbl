@@ -1,0 +1,90 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.5 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{designPatterns}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Erich{\ }Gamma{,\ }Richard{\ }Helm{,\ }Ralph{\ }Johnson{,\ }John{\
+  }Vlissides}{E.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Addison-Wesley Professional}%
+  }
+  \strng{namehash}{E1}
+  \strng{fullhash}{E1}
+  \field{labelyear}{1994}
+  \field{sortinit}{E}
+  \field{title}{Design Patterns}
+  \field{langid}{german}
+  \list{location}{1}{%
+    {USA}%
+  }
+  \field{year}{1994}
+\endentry
+
+\entry{strubergBlog}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Mark{\ }Struberg}{M.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{M1}
+  \strng{fullhash}{M1}
+  \field{labelyear}{2012}
+  \field{sortinit}{M}
+  \field{title}{Control CDI Containers in SE and EE}
+  \verb{url}
+  \verb https://struberg.wordpress.com/2012/03/17/controlling-cdi-containers-in
+  \verb -se-and-ee/
+  \endverb
+  \field{year}{2012}
+  \warn{\item Invalid format of field 'urldate'}
+\endentry
+
+\entry{java8InAction}{book}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Raoul-Gabriel{\ }Urma{,\ }Mario{\ }Fusco{,\ }Alan{\ }Mycroft}{R.-G.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Wiley India}%
+  }
+  \strng{namehash}{RG1}
+  \strng{fullhash}{RG1}
+  \field{labelyear}{2014}
+  \field{sortinit}{R}
+  \field{title}{Java 8 In Action}
+  \field{langid}{german}
+  \list{location}{1}{%
+    {India}%
+  }
+  \field{year}{2014}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput

@@ -6,9 +6,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Abstract}{v}{chapter*.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.1}
+\contentsline {chapter}{\numberline {1}Die Einleitung}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}Das Unternehmen curecomp Software Services GmbH}{1}{section.1.1}
+\contentsline {section}{\numberline {1.1}Das Unternehmen \emph {curecomp Software Services GmbH}}{1}{section.1.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.2}Das Vorlagenmanagement f\IeC {\"u}r \emph {CleverMail}}{2}{section.1.2}
 \defcounter {refsection}{0}\relax 
@@ -46,23 +46,23 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Die Schnittstelle \emph {VariableResolverFactoryProvider}}{14}{lstnumber.-5.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die Schnittstelle \emph {VariableContractResolverCtx}}{14}{lstnumber.-6.6}
+\contentsline {subsubsection}{Die Schnittstelle \emph {VariableContractResolverCtx}}{15}{lstnumber.-6.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Die Schnittstelle \emph {TemplateProcessor}}{15}{lstnumber.-7.11}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Die Schnittstelle \emph {TemplateDataJsonBuilder}}{16}{lstnumber.-9.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateMetadata}}{18}{lstnumber.-11.34}
+\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateMetadata}}{19}{lstnumber.-11.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateDataJsonBuilder}}{19}{lstnumber.-11.34}
+\contentsline {subsubsection}{Die abstrakte Klasse \emph {AbstractTemplateDataJsonBuilder}}{19}{lstnumber.-11.6}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Die Spezifikation der Vorlagenintegration}{19}{section.3.2}
+\contentsline {section}{\numberline {3.2}Die Spezifikation der Vorlagenintegration}{20}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.1}Das Vorlagenmanagement in \emph {TypeScript}}{19}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.1}Das Vorlagenmanagement in \emph {TypeScript}}{20}{subsection.3.2.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.2}Das Vorlagenmanagement in \emph {CDI}}{20}{subsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2.3}Das Vorlagenmanagement in \emph {JSF}}{20}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.3}Das Vorlagenmanagement in \emph {JSF}}{21}{subsection.3.2.3}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.4}Das Vorlagenmanagement in \emph {Mail}-DB-Schema}{21}{subsection.3.2.4}
 \defcounter {refsection}{0}\relax 
@@ -135,3 +135,7 @@
 \contentsline {chapter}{\numberline {6}Die Zusammenfassung}{57}{chapter.6}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{Quellenverzeichnis}{59}{appendix*.14}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Literatur}{59}{section*.15}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{Online-Quellen}{59}{section*.15}

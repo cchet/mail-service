@@ -1,4 +1,5 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: _DaBa.aux
+The style file: biblatex.bst
 A level-1 auxiliary file: kurzfassung.aux
 A level-1 auxiliary file: abstract.aux
 A level-1 auxiliary file: einleitung.aux
@@ -6,9 +7,7 @@ A level-1 auxiliary file: zielsetzung.aux
 A level-1 auxiliary file: loesungskonzept.aux
 A level-1 auxiliary file: realisierung.aux
 A level-1 auxiliary file: analyse.aux
-A level-1 auxiliary file: anhang_a.aux
-A level-1 auxiliary file: messbox.aux
-I found no \citation commands---while reading file _DaBa.aux
-I found no \bibdata command---while reading file _DaBa.aux
-I found no \bibstyle command---while reading file _DaBa.aux
-(There were 3 error messages)
+A level-1 auxiliary file: schluss.aux
+Database file #1: _DaBa-blx.bib
+Database file #2: literatur.bib
+Biblatex version: 3.0

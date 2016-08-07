@@ -32,7 +32,7 @@ Dieser Abschnitt behandelt die definierten Schnittstellen und abstrakten Klassen
 
 \subsubsection{Die Schnittstelle \emph{VariableContract}}
 \label{sec:variableContract}
-Die Schnittstelle \emph{VariableContract} aus Abbildung \ref{prog:variableContract} spezifiziert eine Variable, die in einer Vorlage verwendet werden kann. Objekte dieser Schnittstelle werden beim Anwendungsstart registriert und können grundsätzlich in allen Vorlagen verwendet werden. Eine Variable ist einem Modul zugeordnet, wobei die Variable bezüglich ihres Namens innerhalb des Moduls eindeutig sein muss. Das Modul wird über eine Zeichenkette definiert. Die Mehrsprachigkeit einer Variable wird über Enumerationen realisiert, wobei jede Variable jeweils einen Schlüssel für die Bezeichnung und die Beschreibung bereit stellen muss.
+Die Schnittstelle \emph{VariableContract} aus dem Quelltext aus Abbildung \ref{prog:variableContract} spezifiziert eine Variable, die in einer Vorlage verwendet werden kann. Objekte dieser Schnittstelle werden beim Anwendungsstart registriert und können grundsätzlich in allen Vorlagen verwendet werden. Eine Variable ist einem Modul zugeordnet, wobei die Variable bezüglich ihres Namens innerhalb des Moduls eindeutig sein muss. Das Modul wird über eine Zeichenkette definiert. Die Mehrsprachigkeit einer Variable wird über Enumerationen realisiert, wobei jede Variable jeweils einen Schlüssel für die Bezeichnung und die Beschreibung bereit stellen muss.
 \newline
 \newline
 Da es sich bei einer Variable um statische Daten handelt, also die Variablen sind schon zur Kompilierungszeit bekannt, ist angedacht, dass die Variablen als \emph{Enum} implementiert werden, das die Schnittstelle \emph{VariableContract} implementiert. Durch die Abbildung der Variablen mit einer \emph{Enum} können mehrere Variablen in einer Klasse definiert werden, wobei eine einzelne Enumeration der \emph{Enum} ein Objekt der Schnittstelle \emph{VariableContract} darstellt. Alle Variablen, die mit einer \emph{Enum} abgebildet werden, sollten demselben Modul zugeordnet sein, obwohl dies nicht zwingend erforderlich ist. Die Variablen, die mit einer \emph{Enum} definiert wurden, werden innerhalb des Vorlagenmanagements trotzdem als einzelne Objekte der Schnittstelle \emph{VariableContract} betrachtet. Die Tatsache dass die Variablen mit einer \emph{Enum} abgebildet wurden, ist für das Vorlagenmanagement nur beim Registrieren der Variablen von belang und nicht bei deren weiterer Verwendung.
@@ -84,7 +84,7 @@ public interface VariableContract extends Serializable {
 
 \subsubsection{Die Schnittstelle \emph{VariableResolver}}
 \label{sec:variableResolver}
-Die Schnittstelle \emph{VariableResolver} aus Abbildung \ref{prog:variableResolver} spezifiziert wie der aktuelle Wert der Variablen ermittelt wird. Beim Erstellen einer \emph{E-Mail}-Nachricht auf Basis einer Vorlage müssen die aktuellen Werte der Variablen der Vorlage ermittelt werden. 
+Die Schnittstelle \emph{VariableResolver} aus dem Quelltext aus Abbildung \ref{prog:variableResolver} spezifiziert wie der aktuelle Wert der Variablen ermittelt wird. Beim Erstellen einer \emph{E-Mail}-Nachricht auf Basis einer Vorlage müssen die aktuellen Werte der Variablen der Vorlage ermittelt werden. 
 Da der aktuelle Wert einer Variable kontextabhängig ist, wird beim Ermitteln des aktuellen Werts einer Variable ein Kontextobjekt bereitgestellt, über das kontextabhängige Daten von den  EntwicklerInnen bereitgestellt werden können. Durch dieses Kontextobjekt kann eine Variable in mehreren Kontexten verwendet werden und auch der aktuelle Wert einer Variable kontextabhängig ermittelt werden.
 \begin{program}[h]
 \caption{Die Schnittstelle \emph{VariableResolver}}
@@ -99,13 +99,17 @@ public interface VariableResolver {
 \end{JavaCode}
 \end{program}
 \ \newline
-Die Schnittstelle \emph{VariableResolver} wurde als \emph{FunctionalInterface} implementiert. Ein \emph{FunctionalInterface} ist eine Schnittstelle, die nur eine abstrakte Methode definiert, die implementiert werden muss. Eine Implementierung eines \emph{FunctionalInterface} kann über eine \emph{Lambda}-Funktion oder Methodenreferenz bereitgestellt werden, wodurch die Notwendigkeit einer anonymen Implementierung oder der Implementierung einer Klasse für diese Schnittstelle entfällt. Die Verwendung von \emph{Lambda}-Funktionen und Methodenreferenzen macht den Quelltext lesbarer, obwohl angemerkt sei, dass dieser Ansatz sich negativ auf das Laufzeitverhalten auswirkt, was in der Art und Weise der Ausführung einer \emph{Lambda}-Funktion oder Methodenreferenz begründet ist. Die negativen Auswirkungen auf das Laufzeitverhalten können, im Bezug auf das Vorlagenmanagement, vernachlässigt werden.
+Die Schnittstelle \emph{VariableResolver} wurde als \emph{Functional-Interface} implementiert. Ein \emph{Functional-Interface} ist eine Schnittstelle, die nur eine abstrakte Methode definiert, die implementiert werden muss. Eine Implementierung eines \emph{Functional-Interface} kann über eine \emph{Lambda}-Funktion oder Methodenreferenz bereitgestellt werden, wodurch die Notwendigkeit einer anonymen Implementierung oder der Implementierung einer Klasse für diese Schnittstelle entfällt. Die Verwendung von \emph{Lambda}-Funktionen und Methodenreferenzen macht den Quelltext lesbarer, obwohl angemerkt sei, dass dieser Ansatz sich negativ auf das Laufzeitverhalten auswirkt, was in der Art und Weise der Ausführung einer \emph{Lambda}-Funktion oder Methodenreferenz begründet ist. Die negativen Auswirkungen auf das Laufzeitverhalten können, im Bezug auf das Vorlagenmanagement, vernachlässigt werden. \cite[50]{java8InAction} beschreiben den Nutzen eines \emph{Functional-Interfaces} wie folgt:
+\begin{quote}
+\emph{Functional interfaces are useful because the signature of the abstract method can describe the signature of a lambda expression. The signature of the abstract method of a functional interface is called a function descriptor.}
+\end{quote}
 
 \subsubsection{Die Schnittstelle \emph{VariableResolverFactory}}
 \label{sec:variableResolverFactory}
-Die Schnittstelle \emph{VariableResolverFactory} aus Abbildung \ref{prog:variableResolverFactory}  spezifiziert wie Objekte der Schnittstelle \emph{VariableResolver} produziert werden. Objekte dieser Schnittstelle können Objekte der Schnittstelle \emph{VariableResolver} für jede Implementierung der Schnittstelle \emph{VariableContract} produzieren. Es wird aber empfohlen, dass es je eine Implementierung der Schnittstelle \emph{VariableResolverFactory} je Modul gibt.
+Die Schnittstelle \emph{VariableResolverFactory} aus dem Quelltext aus Abbildung \ref{prog:variableResolverFactory}  spezifiziert wie Objekte der Schnittstelle \emph{VariableResolver} produziert werden. Objekte dieser Schnittstelle können Objekte der Schnittstelle \emph{VariableResolver} für jede Implementierung der Schnittstelle \emph{VariableContract} produzieren. Es wird aber empfohlen, dass es je eine Implementierung der Schnittstelle \emph{VariableResolverFactory} je Modul gibt.
+\newpage
 
-\begin{program}[h]
+\begin{program}
 \caption{Die Schnittstelle \emph{VariableResolverFactory}}
 \label{prog:variableResolverFactory}
 \begin{JavaCode}
@@ -118,11 +122,11 @@ public interface VariableResolverFactory extends Serializable {
 \end{JavaCode}
 \end{program}
 \ \newline
-Die Schnittstelle \emph{VariableResolver} wurde auch als \emph{FunctionalInterface} implementiert, damit Implementierungen über eine \emph{Lambda}-Funktion oder eine Methodenreferenz bereitgestellt werden können.
+Die Schnittstelle \emph{VariableResolver} wurde auch als \emph{Functional-Interface} implementiert, damit Implementierungen über eine \emph{Lambda}-Funktion oder eine Methodenreferenz bereitgestellt werden können.
 
 \subsubsection{Die Schnittstelle \emph{VariableResolverFactoryProvider}}
 \label{sec:VariableResolverFactoryProvider}
-Die Schnittstelle \emph{VariableContractFactoryProvider} aus Abbildung \ref{prog:variableResolverFactoryProvider} spezifiziert wie Objekte der Schnittstelle \emph{VariableResolverFacotry} produziert werden. Ein Objekt der Schnittstelle \emph{VariableResolverFactoryProvider} kann Objekte der Schnittstelle \emph{VariableResolverFactory} für die Schnittstelle \emph{VariableContract}, einer Ableitung von dieser Schnittstelle oder einer konkreten Implementierung dieser Schnittstelle zur Verfügung stellen. Die Schnittstelle \emph{VaraibleResolverFactoryProvider} wurde spezifiziert, damit in einer \emph{CDI}-Umgebung über ein Objekt dieser Schnittstelle die Objekte der Schnittstelle \emph{VariableResolverFactory} produziert werden können, die von der \emph{CDI}-Umgebung zur Verfügung gestellt werden.
+Die Schnittstelle \emph{VariableContractFactoryProvider} aus dem Quelltext aus Abbildung \ref{prog:variableResolverFactoryProvider} spezifiziert wie Objekte der Schnittstelle \emph{VariableResolverFacotry} produziert werden. Ein Objekt der Schnittstelle \emph{VariableResolverFactoryProvider} kann Objekte der Schnittstelle \emph{VariableResolverFactory} für die Schnittstelle \emph{VariableContract}, einer Ableitung von dieser Schnittstelle oder einer konkreten Implementierung dieser Schnittstelle zur Verfügung stellen. Die Schnittstelle \emph{VaraibleResolverFactoryProvider} wurde spezifiziert, damit in einer \emph{CDI}-Umgebung über ein Objekt dieser Schnittstelle die Objekte der Schnittstelle \emph{VariableResolverFactory} produziert werden können, die von der \emph{CDI}-Umgebung zur Verfügung gestellt werden.
 
 \begin{program}[h]
 \caption{Die Schnittstelle \emph{VariableResolverFactoryProvider}}
@@ -137,12 +141,11 @@ public interface VariableResolverFactoryProvider extends Serializable {
 \end{JavaCode}
 \end{program}
 \ \newline
-Die Schnittstelle \emph{VariableResolverFactoryProvider} wurde auch als \emph{FunctionalInterface} implementiert, damit Implementierungen über eine \emph{Lambda}-Funktion oder eine Methodenreferenz bereitgestellt werden kann.
+Die Schnittstelle \emph{VariableResolverFactoryProvider} wurde auch als \emph{Functional-Interface} implementiert, damit Implementierungen über eine \emph{Lambda}-Funktion oder eine Methodenreferenz bereitgestellt werden kann.
 
 \subsubsection{Die Schnittstelle \emph{VariableContractResolverCtx}}
 \label{sec:variableResolverFactoryProvider}
-Die Schnittstelle \emph{VariableContractResolverCtx} aus Abbildung \ref{prog:variableContractResolverCtx} spezifiziert den Kontext, der bei der beim Ermitteln des aktuellen Werts einer Variable zur Verfügung gestellt wird. Dieser Kontext stellt alle Daten bereit, die beim Ermitteln des aktuellen Werts einer Variable benötigt werden. Es wird auch ermöglicht, dass Benutzerdaten im Kontext definiert werden können, die bei beim Ermitteln des aktuellen Werts einer Variable verwendet werden können. Es wurde bewusst vermieden, dass beim Ermitteln eines aktuellen Werts einer Variable bekannt ist, in welcher Vorlage die Variable verwendet wird. Dadurch bleibt die Handhabung der Variablen einer Vorlage entkoppelt von der Vorlage selbst. Dadurch wäre es möglich die Variablen außerhalb vom Vorlagenmanagements zu verwenden.
-\newpage
+Die Schnittstelle \emph{VariableContractResolverCtx} aus dem Quelltext aus Abbildung \ref{prog:variableContractResolverCtx} spezifiziert den Kontext, der bei der beim Ermitteln des aktuellen Werts einer Variable zur Verfügung gestellt wird. Dieser Kontext stellt alle Daten bereit, die beim Ermitteln des aktuellen Werts einer Variable benötigt werden. Es wird auch ermöglicht, dass Benutzerdaten im Kontext definiert werden können, die bei beim Ermitteln des aktuellen Werts einer Variable verwendet werden können. Es wurde bewusst vermieden, dass beim Ermitteln eines aktuellen Werts einer Variable bekannt ist, in welcher Vorlage die Variable verwendet wird. Dadurch bleibt die Handhabung der Variablen einer Vorlage entkoppelt von der Vorlage selbst. Dadurch wäre es möglich die Variablen außerhalb vom Vorlagenmanagements zu verwenden.
 
 \begin{program}[h]
 \caption{Die Schnittstelle \emph{VariableContractResolverCtx}}
@@ -164,10 +167,12 @@ public interface VariableContractResolverCtx {
 
 \subsubsection{Die Schnittstelle \emph{TemplateProcessor}}
 \label{sec:templateProcessor}
-Die Schnittstelle \emph{TemplateProcessor} aus Abbildung \ref{prog:templateProcessor} spezifiziert wie die Variablen in einer Vorlagen behandelt werden. Objekte dieser Schnittstelle können Variablen in einer Vorlage für eine bestimmte \emph{Template-Engine} finden und konvertieren. Ein Objekt der Schnittstelle \emph{TemplateProcessor} muss in der Lage sein ungültige Variablen innerhalb einer Vorlage zu finden, wobei eine ungültige Variable eine Variable ist, die nicht registriert ist. Eine konkrete Implementierung der Schnittstelle \emph{TemplateProcessor} ist eine Implementierung für eine bestimmte \emph{Template-Engine}, da die in der Vorlage verwendeten Variablen in Form von Ausdrücken spezifisch für die verwendete \emph{Template-Engine} sind. 
+Die Schnittstelle \emph{TemplateProcessor} aus dem Quelltext aus Abbildung \ref{prog:templateProcessor} spezifiziert wie die Variablen in einer Vorlagen behandelt werden. Objekte dieser Schnittstelle können Variablen in einer Vorlage für eine bestimmte \emph{Template-Engine} finden und konvertieren. Ein Objekt der Schnittstelle \emph{TemplateProcessor} muss in der Lage sein ungültige Variablen innerhalb einer Vorlage zu finden, wobei eine ungültige Variable eine Variable ist, die nicht registriert ist. Eine konkrete Implementierung der Schnittstelle \emph{TemplateProcessor} ist eine Implementierung für eine bestimmte \emph{Template-Engine}, da die in der Vorlage verwendeten Variablen in Form von Ausdrücken spezifisch für die verwendete \emph{Template-Engine} sind. 
 \newline
 \newline
 Der Quelltext aus Abbildung \ref{prog:templateProcessor-highlighted-methods} zeigt die beiden Methoden der Schnittstelle \emph{TemplateProcessor}, die die Variablen in einer Vorlage konvertieren können.
+\newpage
+
 \begin{program}[h]
 \caption{Die Methoden für die Konvertierung}
 \label{prog:templateProcessor-highlighted-methods}
@@ -181,7 +186,7 @@ String replaceCustom(String template,
 \end{JavaCode}
 \end{program}
 \ \newline
-Diese Methoden definieren als Formalparameter für den benötigte Konverter ein \emph{FunctionalInterface} namens \emph{Function}, welches von \emph{Java 8} bereitgestellt wird. Dadurch ist das Spezifizieren einer eigenen Schnittstelle für die Konvertierung nicht mehr nötig. Der Konverter kann über eine \emph{Lambda}-Funktion oder Methodenreferenz bereitgestellt werden. Dadurch ist die Konvertierung der Variablen einer Vorlage abstrahiert von der Implementierung der Schnittstelle \emph{TemplateProcessor}, wodurch die Variablen durch eine beliebige Repräsentation ersetzt werden können.
+Diese Methoden definieren als Formalparameter für den benötigte Konverter ein \emph{Functional-Interface} namens \emph{Function}, welches von \emph{Java 8} bereitgestellt wird. Dadurch ist das Spezifizieren einer eigenen Schnittstelle für die Konvertierung nicht mehr nötig. Der Konverter kann über eine \emph{Lambda}-Funktion oder Methodenreferenz bereitgestellt werden. Dadurch ist die Konvertierung der Variablen einer Vorlage abstrahiert von der Implementierung der Schnittstelle \emph{TemplateProcessor}, wodurch die Variablen durch eine beliebige Repräsentation ersetzt werden können.
 
 \begin{program}[h]
 \caption{Die Schnittstelle \emph{TemplateProcessor}}
@@ -209,7 +214,7 @@ public interface TemplateProcessor {
 
 \subsubsection{Die Schnittstelle \emph{TemplateDataJsonBuilder}}
 \label{sec:templateDataJsonBuilder}
-Die Schnittstelle \emph{TemplateDataJsonBuilder} aus Abbildung \ref{prog:templateDataJsonBuilder} spezifiziert die Signatur eines \emph{Builders}, der das Datenobjekt erstellt, welches die Daten für das Parsen einer Vorlage enthält. Die \emph{E-Mail}-Nachrichten werden persistent gehalten, wobei nach der Erstellung einer \emph{E-Mail}-Nachricht, dessen Inhalt unveränderbar sein muss. Das Datenobjekt enthält Daten wie
+Die Schnittstelle \emph{TemplateDataJsonBuilder} aus dem Quelltext aus Abbildung \ref{prog:templateDataJsonBuilder} spezifiziert die Signatur eines \emph{Builders}, der das Datenobjekt erstellt, welches die Daten für das Parsen einer Vorlage enthält. Die \emph{E-Mail}-Nachrichten werden persistent gehalten, wobei nach der Erstellung einer \emph{E-Mail}-Nachricht, dessen Inhalt unveränderbar sein muss. Das Datenobjekt enthält Daten wie
 \begin{itemize}
 	\item die Sprache in der die \emph{E-Mail} versendet wird,
 	\item die Zone für die Konvertierung von Datums- und Zeitwerten,
@@ -238,23 +243,9 @@ Es wurde hier das \emph{Builder}-Muster angewendet, da sich die Konfiguration de
 	\newline
 	ist die Methode, die das Datenobjekt in Form eines Objekts der Klasse \emph{java.util.Map} zurückliefert.
 \end{itemize} 
-\ \newline 
-Der Quelltext aus Abbildung \ref{prog:templateDataJsonBuilder-example} illustriert, wie der \emph{Builder} verwendet wird.
+\ \newpage
 
-\begin{program}[h]
-\caption{Beispiel der Anwendung des \emph{Builders}}
-\label{prog:templateDataJsonBuilder-example}
-\begin{JavaCode}
-builder.withStrictMode() 
-       .withLocalization(localeObj, zoneIdObj)
-       .withTemplate(templateMetadataObj)
-       .withUserData(userDataMap)
-       .withVariableResolverFactoryProvider(factoryProviderObj)
-       .toJsonModel();
-\end{JavaCode}
-\end{program}
-
-\begin{program}[h]
+\begin{program}
 \caption{Die Schnittstelle \emph{TemplateDataJsonBuilder}}
 \label{prog:templateDataJsonBuilder}
 \begin{JavaCode}
@@ -294,7 +285,25 @@ public interface TemplateDataJsonBuilder<I,
 }
 \end{JavaCode}
 \end{program}
-\ \newpage
+\ \newline 
+\cite[100]{designPatterns} beschreiben die Implementierung eines \emph{Builders} wie folgt:
+\begin{quote}
+\emph{Typically there's an abstract Builder class that defines an operation for each component that a director may ask it to create. The operations do nothing by default. A ConcreteBuilder class overrides operations for components it's interested in creating.}
+\end{quote}
+\cite[96 - 106]{designPatterns} beschreiben ausführlich das Designmuster \emph{Builder}, jedoch ohne die Verwendung einer \emph{Fluent}-Schnittstelle, die heutzutage über den \emph{Builder} gelegt wird, um dessen Anwendung über Punktnotation angenehmer zu machen. Mit einer \emph{Fluent}-Schnittstelle wird die Möglichkeit geboten, einzelne Attribute des zu bauenden Objektes zu setzen, bevor es gebaut wird. Der Quelltext aus Abbildung \ref{prog:templateDataJsonBuilder-example} illustriert, wie der \emph{Builder} mit einer \emph{Fluent}-Schnittstelle verwendet wird.
+
+\begin{program}[h]
+\caption{Beispiel der Anwendung des \emph{Builders}}
+\label{prog:templateDataJsonBuilder-example}
+\begin{JavaCode}
+builder.withStrictMode() 
+       .withLocalization(localeObj, zoneIdObj)
+       .withTemplate(templateMetadataObj)
+       .withUserData(userDataMap)
+       .withVariableResolverFactoryProvider(factoryProviderObj)
+       .toJsonModel();
+\end{JavaCode}
+\end{program}
 
 \subsubsection{Die abstrakte Klasse \emph{AbstractTemplateMetadata}}
 \label{sec:abstractTemplateMetadata}
@@ -308,16 +317,10 @@ Die abstrakte Klasse \emph{AbstractTemplateMetadata} implementiert die Logik, di
 	\item die Vorlage selbst werden in dieser Klasse abgebildet. 
 \end{itemize}
 Diese Metadaten sind unabhängig der verwendeten \emph{Template-Engine} und eine konkrete Implementierung für eine spezifische \emph{Template-Engine} kann zusätzliche Metadaten definieren. Die Metadaten werden einmalig ermittelt und sind über die Lebenszeit des Objekts unveränderbar. Wird die Vorlage geändert so muss auch ein neues Objekt der Metadaten erstellt werden.
-\newline
-\newline
-\emph{TODO: Add source as appendix, because to long ?}
 
 \subsubsection{Die abstrakte Klasse \emph{AbstractTemplateDataJsonBuilder}}
 \label{sec:abstractTemplateDataJsonBuilder}
 Die abstrakte Klasse \emph{AbstractTemplateDataJsonBuilder} implementiert die gemeinsam nutzbare Logik, die von allen konkreten Implementierungen für die verschiedenen \emph{Template-Engines} verwendet werden kann. Sie stellt Hilfsmethoden bereit, die Variablen innerhalb der Vorlage finden, validieren und den aktuellen Wert von Variablen ermitteln können. Das resultierende Datenobjekt des \emph{Builders} ist spezifiziert, jedoch nicht die Abbildung der ermittelten Werte für die enthaltenen Variablen. Diese Daten sind spezifisch für die verwendete \emph{Template-Engine}.
-\newline 
-\newline  
-\emph{TODO: Add source as appendix, because to long ?}
 
 \section{Die Spezifikation der Vorlagenintegration}
 Die im Abschnitt \ref{sec:specification-template-management} vorgestellte Spezifikation des Vorlagenmanagements, spezifiziert die Kernfunktionalität des Vorlagenmanagements, das in der Lage ist die Vorlagen sowie deren enthaltene Variablen zu behandeln. Das Vorlagenmanagement benötigt auch Integrationen in verschiedene Umgebungen und Sprachen, um die benötigte Funktionalitäten wie

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  7 AUG 2016 10:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  7 AUG 2016 15:47
 entering extended mode
 **./_DaBa.tex
 (_DaBa.tex
@@ -1141,10 +1141,10 @@ File: csquotes.cfg
 sty"
 Package: biblatex 2015/12/22 v3.2 programmable bibliographies (PK/JW/AB)
 
-("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\biblatex2
+("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\biblatex1
 .sty"
-Package: biblatex2 2015/12/22 v3.2 programmable bibliographies (biber) (PK/JW/A
-B)
+Package: biblatex1 2015/12/22 v3.2 programmable bibliographies (bibtex) (PK/JW/
+AB)
 
 ("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\logreq\logreq.sty"
 Package: logreq 2010/08/04 v1.0 xml request logger
@@ -1172,118 +1172,101 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \c@uniquename=\count197
 \c@refsection=\count198
 \c@refsegment=\count199
-\c@maxextratitle=\count266
-\c@maxextratitleyear=\count267
-\c@maxextrayear=\count268
-\c@maxextraalpha=\count269
-\c@abbrvpenalty=\count270
-\c@highnamepenalty=\count271
-\c@lownamepenalty=\count272
-\c@maxparens=\count273
-\c@parenlevel=\count274
-\blx@tempcnta=\count275
-\blx@tempcntb=\count276
-\blx@tempcntc=\count277
-\blx@maxsection=\count278
-\blx@maxsegment@0=\count279
-\blx@notetype=\count280
-\blx@parenlevel@text=\count281
-\blx@parenlevel@foot=\count282
-\blx@sectionciteorder@0=\count283
+\c@maxextrayear=\count266
+\c@maxextraalpha=\count267
+\c@abbrvpenalty=\count268
+\c@highnamepenalty=\count269
+\c@lownamepenalty=\count270
+\c@maxparens=\count271
+\c@parenlevel=\count272
+\blx@tempcnta=\count273
+\blx@tempcntb=\count274
+\blx@tempcntc=\count275
+\blx@maxsection=\count276
+\blx@maxsegment=\count277
+\blx@notetype=\count278
+\blx@parenlevel@text=\count279
+\blx@parenlevel@foot=\count280
 \labelnumberwidth=\skip62
 \labelalphawidth=\skip63
-\biblabelsep=\skip64
-\bibitemsep=\skip65
-\bibnamesep=\skip66
-\bibinitsep=\skip67
-\bibparsep=\skip68
-\bibhang=\skip69
-\blx@bcfin=\read3
-\blx@bcfout=\write3
-\c@mincomprange=\count284
-\c@maxcomprange=\count285
-\c@mincompwidth=\count286
-Package biblatex Info: Trying to load biblatex default data model...
-Package biblatex Info: ... file 'blx-dm.def' found.
-
-("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\blx-dm.de
-f")
-Package biblatex Info: Trying to load biblatex style data model...
-Package biblatex Info: ... file 'numeric-comp.dbx' not found.
-Package biblatex Info: Trying to load biblatex custom data model...
-Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count287
-\c@savedafterword=\count288
-\c@annotator=\count289
-\c@savedannotator=\count290
-\c@author=\count291
-\c@savedauthor=\count292
-\c@bookauthor=\count293
-\c@savedbookauthor=\count294
-\c@commentator=\count295
-\c@savedcommentator=\count296
-\c@editor=\count297
-\c@savededitor=\count298
-\c@editora=\count299
-\c@savededitora=\count300
-\c@editorb=\count301
-\c@savededitorb=\count302
-\c@editorc=\count303
-\c@savededitorc=\count304
-\c@foreword=\count305
-\c@savedforeword=\count306
-\c@holder=\count307
-\c@savedholder=\count308
-\c@introduction=\count309
-\c@savedintroduction=\count310
-\c@namea=\count311
-\c@savednamea=\count312
-\c@nameb=\count313
-\c@savednameb=\count314
-\c@namec=\count315
-\c@savednamec=\count316
-\c@translator=\count317
-\c@savedtranslator=\count318
-\c@shortauthor=\count319
-\c@savedshortauthor=\count320
-\c@shorteditor=\count321
-\c@savedshorteditor=\count322
-\c@labelname=\count323
-\c@savedlabelname=\count324
-\c@institution=\count325
-\c@savedinstitution=\count326
-\c@lista=\count327
-\c@savedlista=\count328
-\c@listb=\count329
-\c@savedlistb=\count330
-\c@listc=\count331
-\c@savedlistc=\count332
-\c@listd=\count333
-\c@savedlistd=\count334
-\c@liste=\count335
-\c@savedliste=\count336
-\c@listf=\count337
-\c@savedlistf=\count338
-\c@location=\count339
-\c@savedlocation=\count340
-\c@organization=\count341
-\c@savedorganization=\count342
-\c@origlocation=\count343
-\c@savedoriglocation=\count344
-\c@origpublisher=\count345
-\c@savedorigpublisher=\count346
-\c@publisher=\count347
-\c@savedpublisher=\count348
-\c@language=\count349
-\c@savedlanguage=\count350
-\c@pageref=\count351
-\c@savedpageref=\count352
-\shorthandwidth=\skip70
-\shortjournalwidth=\skip71
-\shortserieswidth=\skip72
-\shorttitlewidth=\skip73
-\shortauthorwidth=\skip74
-\shorteditorwidth=\skip75
+\shorthandwidth=\skip64
+\biblabelsep=\skip65
+\bibitemsep=\skip66
+\bibnamesep=\skip67
+\bibinitsep=\skip68
+\bibparsep=\skip69
+\bibhang=\skip70
+\blx@auxin=\read3
+\blx@auxout=\write3
+\c@mincomprange=\count281
+\c@maxcomprange=\count282
+\c@mincompwidth=\count283
+\c@labelname=\count284
+\c@savedlabelname=\count285
+\c@author=\count286
+\c@savedauthor=\count287
+\c@shortauthor=\count288
+\c@savedshortauthor=\count289
+\c@editor=\count290
+\c@savededitor=\count291
+\c@editora=\count292
+\c@savededitora=\count293
+\c@editorb=\count294
+\c@savededitorb=\count295
+\c@editorc=\count296
+\c@savededitorc=\count297
+\c@shorteditor=\count298
+\c@savedshorteditor=\count299
+\c@bookauthor=\count300
+\c@savedbookauthor=\count301
+\c@translator=\count302
+\c@savedtranslator=\count303
+\c@annotator=\count304
+\c@savedannotator=\count305
+\c@commentator=\count306
+\c@savedcommentator=\count307
+\c@introduction=\count308
+\c@savedintroduction=\count309
+\c@foreword=\count310
+\c@savedforeword=\count311
+\c@afterword=\count312
+\c@savedafterword=\count313
+\c@holder=\count314
+\c@savedholder=\count315
+\c@namea=\count316
+\c@savednamea=\count317
+\c@nameb=\count318
+\c@savednameb=\count319
+\c@namec=\count320
+\c@savednamec=\count321
+\c@institution=\count322
+\c@savedinstitution=\count323
+\c@language=\count324
+\c@savedlanguage=\count325
+\c@location=\count326
+\c@savedlocation=\count327
+\c@organization=\count328
+\c@savedorganization=\count329
+\c@origlocation=\count330
+\c@savedoriglocation=\count331
+\c@origpublisher=\count332
+\c@savedorigpublisher=\count333
+\c@pageref=\count334
+\c@savedpageref=\count335
+\c@publisher=\count336
+\c@savedpublisher=\count337
+\c@lista=\count338
+\c@savedlista=\count339
+\c@listb=\count340
+\c@savedlistb=\count341
+\c@listc=\count342
+\c@savedlistc=\count343
+\c@listd=\count344
+\c@savedlistd=\count345
+\c@liste=\count346
+\c@savedliste=\count347
+\c@listf=\count348
+\c@savedlistf=\count349
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -1297,54 +1280,42 @@ Package biblatex Info: ... file 'biblatex.def' found.
 ("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\biblatex.
 def"
 File: biblatex.def 
-\c@textcitecount=\count353
-\c@textcitetotal=\count354
-\c@textcitemaxnames=\count355
-\c@biburlnumpenalty=\count356
-\c@biburlucpenalty=\count357
-\c@biburllcpenalty=\count358
-\c@smartand=\count359
+\c@textcitecount=\count350
+\c@textcitetotal=\count351
+\c@textcitemaxnames=\count352
+\c@biburlnumpenalty=\count353
+\c@biburlucpenalty=\count354
+\c@biburllcpenalty=\count355
+\c@smartand=\count356
 )
-Package biblatex Info: Trying to load bibliography style 'numeric-comp'...
-Package biblatex Info: ... file 'numeric-comp.bbx' found.
+Package biblatex Info: Trying to load bibliography style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.bbx' found.
 
-("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\bbx\numer
-ic-comp.bbx"
-File: numeric-comp.bbx 2015/12/22 v3.2 biblatex bibliography style (PK/JW/AB)
-Package biblatex Info: Trying to load bibliography style 'numeric'...
-Package biblatex Info: ... file 'numeric.bbx' found.
-
-("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\bbx\numer
-ic.bbx"
-File: numeric.bbx 2015/12/22 v3.2 biblatex bibliography style (PK/JW/AB)
+("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\bbx\autho
+ryear.bbx"
+File: authoryear.bbx 2015/12/22 v3.2 biblatex bibliography style (PK/JW/AB)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
 
 ("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\bbx\stand
 ard.bbx"
 File: standard.bbx 2015/12/22 v3.2 biblatex bibliography style (PK/JW/AB)
-\c@bbx:relatedcount=\count360
-\c@bbx:relatedtotal=\count361
-)))
-Package biblatex Info: Trying to load citation style 'numeric-comp'...
-Package biblatex Info: ... file 'numeric-comp.cbx' found.
+\c@bbx:relatedcount=\count357
+\c@bbx:relatedtotal=\count358
+))
+Package biblatex Info: Trying to load citation style 'authoryear'...
+Package biblatex Info: ... file 'authoryear.cbx' found.
 
-("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\cbx\numer
-ic-comp.cbx"
-File: numeric-comp.cbx 2015/12/22 v3.2 biblatex citation style (PK/JW/AB)
-\c@cbx@tempcnta=\count362
-\c@cbx@tempcntb=\count363
+("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\cbx\autho
+ryear.cbx"
+File: authoryear.cbx 2015/12/22 v3.2 biblatex citation style (PK/JW/AB)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
 Package biblatex Info: Redefining '\footcitetext'.
 Package biblatex Info: Redefining '\smartcite'.
-Package biblatex Info: Redefining '\supercite'.
 Package biblatex Info: Redefining '\textcite'.
 Package biblatex Info: Redefining '\textcites'.
-Package biblatex Info: Redefining '\cites'.
-Package biblatex Info: Redefining '\parencites'.
-Package biblatex Info: Redefining '\smartcites'.
 )
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
@@ -1366,10 +1337,10 @@ tex" `dirtree' v0.32, 2012/12/11 (jcc)
 \DT@rulewidth=\dimen150
 \DT@dotwidth=\dimen151
 \DTbaselineskip=\dimen152
-\DT@counti=\count364
-\DT@countii=\count365
-\DT@countiii=\count366
-\DT@countiv=\count367
+\DT@counti=\count359
+\DT@countii=\count360
+\DT@countiii=\count361
+\DT@countiv=\count362
 \DT@indent=\dimen153
 \DT@parskip=\dimen154
 \DT@baselineskip=\dimen155
@@ -1381,16 +1352,16 @@ sty"
 Package: pdfpages 2015/09/18 v0.5d Insert pages of external PDF documents (AM)
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\calc.sty"
 Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count368
-\calc@Bcount=\count369
+\calc@Acount=\count363
+\calc@Bcount=\count364
 \calc@Adimen=\dimen156
 \calc@Bdimen=\dimen157
-\calc@Askip=\skip76
-\calc@Bskip=\skip77
+\calc@Askip=\skip71
+\calc@Bskip=\skip72
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count370
-\calc@Cskip=\skip78
+\calc@Ccount=\count365
+\calc@Cskip=\skip73
 )
 ("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.st
 y"
@@ -1405,7 +1376,7 @@ File: pppdftex.def 2015/09/18 v0.5d Pdfpages driver for pdfTeX (AM)
 )
 \AM@pagebox=\box36
 \AM@toc@title=\toks37
-\c@AM@survey=\count371
+\c@AM@survey=\count366
 \AM@templatesizebox=\box37
 )
 Package csquotes Info: Checking for multilingual support...
@@ -1424,16 +1395,9 @@ Package biblatex Info: ... file 'german.lbx' found.
 ("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\lbx\germa
 n.lbx"
 File: german.lbx 2015/12/22 v3.2 biblatex localization (PK/JW/AB)
-))
-Package biblatex Info: Trying to load language 'english'...
-Package biblatex Info: ... file 'english.lbx' found.
-
-("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\lbx\engli
-sh.lbx"
-File: english.lbx 2015/12/22 v3.2 biblatex localization (PK/JW/AB)
-) (_DaBa.aux (kurzfassung.aux) (abstract.aux) (einleitung.aux)
+)) (_DaBa.aux (kurzfassung.aux) (abstract.aux) (einleitung.aux)
 (zielsetzung.aux) (loesungskonzept.aux) (realisierung.aux) (analyse.aux)
-(schluss.aux) (messbox.aux))
+(schluss.aux))
 \openout1 = `_DaBa.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
@@ -1450,8 +1414,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 17.
@@ -1467,16 +1430,16 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 ("C:\Users\herzo\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
 ii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count372
+\scratchcounter=\count367
 \scratchdimen=\dimen160
 \scratchbox=\box38
-\nofMPsegments=\count373
-\nofMParguments=\count374
+\nofMPsegments=\count368
+\nofMParguments=\count369
 \everyMPshowfont=\toks38
-\MPscratchCnt=\count375
+\MPscratchCnt=\count370
 \MPscratchDim=\dimen161
-\MPnumerator=\count376
-\makeMPintoPDFobject=\count377
+\MPnumerator=\count371
+\makeMPintoPDFobject=\count372
 \everyMPtoPDFconversion=\toks39
 )
 \AtBeginShipoutBox=\box39
@@ -1487,7 +1450,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count378
+\c@section@level=\count373
 )
 LaTeX Info: Redefining \ref on input line 17.
 LaTeX Info: Redefining \pageref on input line 17.
@@ -1500,19 +1463,29 @@ LaTeX Info: Redefining \nameref on input line 17.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count379
+\c@lstlisting=\count374
 Package biblatex Info: Input encoding 'utf8' detected.
-Package biblatex Info: Automatic encoding selection.
-(biblatex)             Assuming data encoding 'utf8'.
-\openout3 = `_DaBa.bcf'.
+Package biblatex Info: Data encoding 'utf8' specified.
+(biblatex)             No need to reencode data.
+
+
+Package biblatex Warning: Data encoding is 'utf8'.
+(biblatex)                Use backend=biber.
+
+\openout3 = `_DaBa-blx.bib'.
 
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file '_DaBa.bbl' found.
- (_DaBa.bbl)
+(_DaBa.bbl
+
+Package biblatex Warning: BibTeX reported the following issues
+(biblatex)                with 'strubergBlog':
+(biblatex)                - Invalid format of field 'urldate'.
+
+)
 Package biblatex Info: Reference section=0 on input line 17.
 Package biblatex Info: Reference segment=0 on input line 17.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\pdflscape.sty"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\oberdiek\pdflscape.sty"
 Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\lscape.sty"
@@ -1520,7 +1493,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
 )
-<../Titelblatt_BAC_2.pdf, id=176, 597.63278pt x 845.1575pt>
+<../Titelblatt_BAC_2.pdf, id=183, 597.63278pt x 845.1575pt>
 File: ../Titelblatt_BAC_2.pdf Graphic file (type pdf)
 
 <use ../Titelblatt_BAC_2.pdf>
@@ -1536,7 +1509,7 @@ File: ../Titelblatt_BAC_2.pdf Graphic file (type pdf)
 Package pdftex.def Info: ../Titelblatt_BAC_2.pdf used on input line 19.
 (pdftex.def)             Requested size: 597.63132pt x 845.15544pt.
 
-<../Titelblatt_BAC_2.pdf, id=180, page=1, 597.63278pt x 845.1575pt>
+<../Titelblatt_BAC_2.pdf, id=187, page=1, 597.63278pt x 845.1575pt>
 File: ../Titelblatt_BAC_2.pdf Graphic file (type pdf)
 
 <use ../Titelblatt_BAC_2.pdf, page 1>
@@ -1571,7 +1544,7 @@ Package pdftex.def Info: ../Titelblatt_BAC_2.pdf, page1 used on input line 19.
  [1
 
  <../Titelblatt_BAC_2.pdf>]
-<../Titelblatt_BAC_2.pdf, id=206, page=2, 597.63278pt x 845.1575pt>
+<../Titelblatt_BAC_2.pdf, id=213, page=2, 597.63278pt x 845.1575pt>
 File: ../Titelblatt_BAC_2.pdf Graphic file (type pdf)
 
 <use ../Titelblatt_BAC_2.pdf, page 2>
@@ -1959,7 +1932,7 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 ]
-<images/20160710_template-logic-api.jpg, id=350, 357.58594pt x 314.67563pt>
+<images/20160710_template-logic-api.jpg, id=358, 357.58594pt x 314.67563pt>
 File: images/20160710_template-logic-api.jpg Graphic file (type jpg)
 
 <use images/20160710_template-logic-api.jpg>
@@ -2023,154 +1996,155 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 103.
 [12]
-Package csquotes Info: Input encoding change on input line 111.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
-File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
-)
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 110.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 110.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 110.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 126.
+(babel)             in language  on input line 110.
  [13]
-Package csquotes Info: Input encoding change on input line 130.
+Package csquotes Info: Input encoding change on input line 115.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+Package csquotes Info: Input encoding change on input line 134.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 )
+Overfull \hbox (5.60158pt too wide) in paragraph at lines 143--145
+\T1/lmr/m/n/10.95 Die Schnitt-stel-le \T1/lmr/m/it/10.95 Va-ria-ble-Re-sol-ver-
+Fac-to-ry-Pro-vi-der \T1/lmr/m/n/10.95 wur-de auch als \T1/lmr/m/it/10.95 Funct
+ional-
+ []
+
+
+Overfull \hbox (10.84634pt too wide) in paragraph at lines 143--145
+\T1/lmr/m/it/10.95 Interface \T1/lmr/m/n/10.95 im-ple-men-tiert, da-mit Im-ple-
+men-tie-run-gen über ei-ne \T1/lmr/m/it/10.95 Lamb-da\T1/lmr/m/n/10.95 -Funktio
+n
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 145.
+(babel)             in language  on input line 149.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 145.
+(babel)             in language  on input line 149.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 145.
+(babel)             in language  on input line 149.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 145.
- [14]
-Package csquotes Info: Input encoding change on input line 150.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+(babel)             in language  on input line 149.
+[14]
+Package csquotes Info: Input encoding change on input line 153.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 )
-Package csquotes Info: Input encoding change on input line 174.
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
-File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
-)
-Underfull \hbox (badness 10000) in paragraph at lines 167--185
+Underfull \hbox (badness 10000) in paragraph at lines 170--174
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 185.
+(babel)             in language  on input line 174.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 185.
+(babel)             in language  on input line 174.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 185.
+(babel)             in language  on input line 174.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 185.
+(babel)             in language  on input line 174.
 [15]
-Package csquotes Info: Input encoding change on input line 189.
+Package csquotes Info: Input encoding change on input line 179.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 )
-Underfull \hbox (badness 10000) in paragraph at lines 225--231
-
- []
-
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 231.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 231.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 231.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 231.
-[16]
-Package csquotes Info: Input encoding change on input line 247.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
-File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
-)
-Package csquotes Info: Input encoding change on input line 260.
+Package csquotes Info: Input encoding change on input line 194.
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 )
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 219.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 219.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 219.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 219.
+ [16]
+Underfull \hbox (badness 10000) in paragraph at lines 230--236
 
-LaTeX Warning: `h' float specifier changed to `ht'.
+ []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 297.
+(babel)             in language  on input line 246.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 297.
+(babel)             in language  on input line 246.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 297.
+(babel)             in language  on input line 246.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 297.
+(babel)             in language  on input line 246.
 [17]
-Underfull \hbox (badness 10000) in paragraph at lines 310--314
+Package csquotes Info: Input encoding change on input line 251.
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 294.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 294.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 294.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 294.
+ [18]
+Package csquotes Info: Input encoding change on input line 298.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
+File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
+)
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 325.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 325.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 328.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 328.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 328.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 328.
+ [19]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 335.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 335.
+
+Underfull \hbox (badness 10000) in paragraph at lines 337--341
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 314.
+(babel)             in language  on input line 342.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 314.
+(babel)             in language  on input line 342.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 314.
+(babel)             in language  on input line 348.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 314.
-[18]
-Underfull \hbox (badness 10000) in paragraph at lines 317--321
-
- []
-
+(babel)             in language  on input line 348.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 322.
+(babel)             in language  on input line 348.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 322.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 332.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 332.
-
-Underfull \hbox (badness 10000) in paragraph at lines 334--338
-
- []
-
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 338.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 338.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 338.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 338.
-[19]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 339.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 339.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 350.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 350.
+(babel)             in language  on input line 348.
+[20]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 353.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 353.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 353.
+(babel)             in language  on input line 357.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 353.
- [20]
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 354.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 354.
+(babel)             in language  on input line 357.
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 33.
@@ -2306,7 +2280,7 @@ Package csquotes Info: Input encoding change on input line 258.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 )
-<images/ckeditor-toolbar-open-dialog.jpg, id=722, 465.99094pt x 66.2475pt>
+<images/ckeditor-toolbar-open-dialog.jpg, id=735, 465.99094pt x 66.2475pt>
 File: images/ckeditor-toolbar-open-dialog.jpg Graphic file (type jpg)
 
 <use images/ckeditor-toolbar-open-dialog.jpg>
@@ -2319,14 +2293,14 @@ Overfull \hbox (12.79324pt too wide) in paragraph at lines 269--270
  []
 
 
-<images/ckeditor-dialog-insert-variable.jpg, id=724, 323.70938pt x 185.94469pt>
+<images/ckeditor-dialog-insert-variable.jpg, id=737, 323.70938pt x 185.94469pt>
 File: images/ckeditor-dialog-insert-variable.jpg Graphic file (type jpg)
 <use images/ckeditor-dialog-insert-variable.jpg>
 Package pdftex.def Info: images/ckeditor-dialog-insert-variable.jpg used on inp
 ut line 277.
 (pdftex.def)             Requested size: 275.15427pt x 158.05371pt.
 
-<images/ckeditor-example-template.jpg, id=726, 353.06906pt x 95.6072pt>
+<images/ckeditor-example-template.jpg, id=739, 353.06906pt x 95.6072pt>
 File: images/ckeditor-example-template.jpg Graphic file (type jpg)
 
 <use images/ckeditor-example-template.jpg>
@@ -2563,7 +2537,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 605.
  [40]
-<images/demo_web_app_empty_view_part_1.jpg, id=897, 700.86844pt x 484.05844pt>
+<images/demo_web_app_empty_view_part_1.jpg, id=910, 700.86844pt x 484.05844pt>
 File: images/demo_web_app_empty_view_part_1.jpg Graphic file (type jpg)
 
 <use images/demo_web_app_empty_view_part_1.jpg>
@@ -2571,7 +2545,7 @@ Package pdftex.def Info: images/demo_web_app_empty_view_part_1.jpg used on inpu
 t line 608.
 (pdftex.def)             Requested size: 350.43336pt x 242.02863pt.
 
-<images/demo_web_app_empty_view_part_2.jpg, id=899, 723.45282pt x 143.03438pt>
+<images/demo_web_app_empty_view_part_2.jpg, id=912, 723.45282pt x 143.03438pt>
 File: images/demo_web_app_empty_view_part_2.jpg Graphic file (type jpg)
 
 <use images/demo_web_app_empty_view_part_2.jpg>
@@ -2747,128 +2721,128 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 9.
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--28
+Underfull \hbox (badness 10000) in paragraph at lines 22--31
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--31
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 31.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 28.
+(babel)             in language  on input line 31.
 [50
 
 
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 44.
+(babel)             in language  on input line 47.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 44.
+(babel)             in language  on input line 47.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 54.
+(babel)             in language  on input line 57.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 54.
- [51] <images/tests-template-cdi.jpg, id=1121, 280.79906pt x 377.91188pt>
+(babel)             in language  on input line 57.
+ [51] <images/tests-template-cdi.jpg, id=1136, 280.79906pt x 377.91188pt>
 File: images/tests-template-cdi.jpg Graphic file (type jpg)
 
 <use images/tests-template-cdi.jpg>
-Package pdftex.def Info: images/tests-template-cdi.jpg used on input line 58.
+Package pdftex.def Info: images/tests-template-cdi.jpg used on input line 60.
 (pdftex.def)             Requested size: 252.71681pt x 340.11754pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 63.
+(babel)             in language  on input line 65.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 63.
-
-Underfull \hbox (badness 10000) in paragraph at lines 64--68
-
- []
-
+(babel)             in language  on input line 65.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 68.
+(babel)             in language  on input line 67.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 68.
+(babel)             in language  on input line 67.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 68.
+(babel)             in language  on input line 67.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 68.
-[52 <./images/tests-template-cdi.jpg>]
-<images/tests-template-jsf.jpg, id=1129, 280.79906pt x 172.39406pt>
+(babel)             in language  on input line 67.
+ [52 <./images/tests-template-cdi.jpg>]
+<images/tests-template-jsf.jpg, id=1143, 280.79906pt x 172.39406pt>
 File: images/tests-template-jsf.jpg Graphic file (type jpg)
 
 <use images/tests-template-jsf.jpg>
-Package pdftex.def Info: images/tests-template-jsf.jpg used on input line 72.
+Package pdftex.def Info: images/tests-template-jsf.jpg used on input line 70.
 (pdftex.def)             Requested size: 252.71681pt x 155.15321pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 77.
+(babel)             in language  on input line 75.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 77.
+(babel)             in language  on input line 75.
 
-Underfull \hbox (badness 10000) in paragraph at lines 83--89
+Underfull \hbox (badness 10000) in paragraph at lines 81--87
 
  []
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 92.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 92.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 92.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 94.
+(babel)             in language  on input line 92.
 [53 <./images/tests-template-jsf.jpg>]
-<images/tests-template-impl.jpg, id=1138, 280.79906pt x 337.26pt>
+<images/tests-template-impl.jpg, id=1152, 280.79906pt x 337.26pt>
 File: images/tests-template-impl.jpg Graphic file (type jpg)
 
 <use images/tests-template-impl.jpg>
-Package pdftex.def Info: images/tests-template-impl.jpg used on input line 98.
+Package pdftex.def Info: images/tests-template-impl.jpg used on input line 96.
 (pdftex.def)             Requested size: 196.558pt x 236.08038pt.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 103.
+(babel)             in language  on input line 101.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 103.
+(babel)             in language  on input line 101.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 111.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 111.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 113.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 113.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 115.
+(babel)             in language  on input line 113.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 115.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 115.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 115.
+(babel)             in language  on input line 113.
  [54 <./images/tests-template-impl.jpg>]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 116.
+(babel)             in language  on input line 114.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 116.
+(babel)             in language  on input line 114.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 117.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 117.
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 119.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 119.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 121.
+(babel)             in language  on input line 119.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 121.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 121.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 121.
+(babel)             in language  on input line 119.
 
 [55]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 122.
+(babel)             in language  on input line 120.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 122.
+(babel)             in language  on input line 120.
 )
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 35.
@@ -2929,80 +2903,70 @@ Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 48.
 
 
-LaTeX Warning: Empty bibliography on input line 48.
+Package hyperref Warning: The anchor of a bookmark and its parent's must not
+(hyperref)                be the same. Added a new anchor on input line 48.
 
-
-LaTeX Warning: Empty bibliography on input line 48.
-
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 48.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 48.
 
 LaTeX Warning: Empty bibliography on input line 48.
 
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 48.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 48.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 52.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 52.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
+(babel)             in language  on input line 52.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 52.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 52.
 [59
 
 
 ]
-\openout2 = `messbox.aux'.
-
- (messbox.tex)
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 50.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 50.
- [60
-
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 52.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 52.
- (_DaBa.aux (kurzfassung.aux) (abstract.aux)
-(einleitung.aux) (zielsetzung.aux) (loesungskonzept.aux) (realisierung.aux)
-(analyse.aux) (schluss.aux) (messbox.aux))
+ (_DaBa.aux (kurzfassung.aux) (abstract.aux) (einleitung.aux)
+(zielsetzung.aux) (loesungskonzept.aux) (realisierung.aux) (analyse.aux)
+(schluss.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 52.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 52.
 Package rerunfilecheck Info: File `_DaBa.out' has not changed.
-(rerunfilecheck)             Checksum: 184674B4D42629E44EA94132F96B6BE9;9314.
+(rerunfilecheck)             Checksum: C747ACDDA2CBEACE7631ED3D20C5881D;9570.
 Package logreq Info: Writing requests to '_DaBa.run.xml'.
 \openout1 = `_DaBa.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25158 strings out of 493634
- 387704 string characters out of 3141315
- 1033490 words of memory out of 3000000
- 27220 multiletter control sequences out of 15000+200000
- 88700 words of font info for 68 fonts, out of 3000000 for 9000
+ 24770 strings out of 493634
+ 377101 string characters out of 3141315
+ 867196 words of memory out of 3000000
+ 26847 multiletter control sequences out of 15000+200000
+ 88079 words of font info for 67 fonts, out of 3000000 for 9000
  1029 hyphenation exceptions out of 8191
- 67i,18n,96p,1319b,1966s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc}{C:/Program F
-iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program Files (x86)/MiKT
-eX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files (x86)/MiKTeX 2.9/fonts/e
-nc/dvips/lm/lm-mathsy.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public
-/lm/lmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbx12.
-pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmbxi10.pfb><C:/Pr
-ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program Files 
-(x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr12.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/ty
-pe1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
-/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmri9.pfb>
-<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmss10.pfb><C:/Program
- Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy9.pfb><C:/Program Files (x86)
-/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/lm/lmtt9.pfb>
-Output written on _DaBa.pdf (68 pages, 1073277 bytes).
+ 67i,18n,96p,1319b,1968s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ec.enc}{C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Program Files (x86)/MiK
+TeX 2.9/fonts/enc/dvips/lm/lm-mathsy.enc}<C:/Program Files (x86)/MiKTeX 2.9/fon
+ts/type1/public/lm/lmbx10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
+blic/lm/lmbx12.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmb
+xi10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmcsc10.pfb><
+C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr10.pfb><C:/Program F
+iles (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmr8.pfb><C:/Program Files (x86)/Mi
+KTeX 2.9/fonts/type1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/lm/lmri10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pub
+lic/lm/lmri9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmss1
+0.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy9.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmtt9.pfb>
+Output written on _DaBa.pdf (67 pages, 1056129 bytes).
 PDF statistics:
- 1363 PDF objects out of 1440 (max. 8388607)
- 666 named destinations out of 1000 (max. 500000)
- 440 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1375 PDF objects out of 1440 (max. 8388607)
+ 668 named destinations out of 1000 (max. 500000)
+ 456 words of extra memory for PDF output out of 10000 (max. 10000000)
 

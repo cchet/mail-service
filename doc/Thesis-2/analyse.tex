@@ -23,6 +23,9 @@ Dieser Abschnitt beschäftigt sich mit den implementieren Tests des Vorlagenmana
 Alle implementierten Tests sind nicht auf einen Anwendungsserver angewiesen und sind in jeder Entwicklungsumgebung wie z.B \emph{Eclipse} oder \emph{Intellij} und bei einem Kompilieren über das \emph{Buildtool Maven} ausführbar.
 \newline
 \newline
+Bezüglich der Tests in einer \emph{CDI}-Umgebung sei auf folgender Blogeintrag von \cite{strubergBlog} verweisen, der die Problematik der Nutzung einer \emph{CDI}-Umgebung innerhalb der \emph{Java-Standard-Edition (JSE)} erklärt. Als Lösungsansatz wird ein Modul der Bibliothek von \emph{DeltaSpike} namens \emph{ContainerControl} vorgestellt, die eine einfache Handhabung einer \emph{CDI}-Umgebung ermöglicht und auch bei den folgenden Tests verwendet wird.
+\newline
+\newline
 Die Tests wurden wie folgt organisiert.
 \begin{itemize}
 	\item\emph{com.clevercure.mailing.test.*} 
@@ -50,8 +53,7 @@ Die Tests aus Abbildung \ref{fig:tests-template-cdi} testen die Implementierunge
 	\item die Klasse \emph{TemplateResourceProducer} getestet.
 \end{itemize}
 \ \newline
-Diese Tests sind nur lauffähig in einer \emph{CDI}-Umgebung, die mit \emph{DeltaSpike} im Klassenpfad gestartet werden kann. Im Klassenpfad der Tests wurden Variablen und eine Implementierung der Klasse \emph{VariableResolverFactory} implementiert. Mit diesen Tests wird sichergestellt, dass die \emph{CDI}-Integration des Vorlagenmanagements, aus Sicht der Implementierung, korrekt funktioniert. Diese Tests gewährleisten nicht, dass die \emph{CDI}-Integration in jeder Implementierung einer \emph{CDI}-Umgebung funktioniert, da es hier durchaus Unterschiede geben kann. Um garantieren zu können, dass das Vorlagenmanagement in der verwendeten implementierten \emph{CDI}-Umgebung funktioniert, müssten Integrationstests implementiert werden, die im verwendeten Anwendungsserver ausgeführt werden. Trotzdem gewährleisten die implementierten Tests, dass die \emph{CDI}-Integration korrekt funktioniert, da die Wahrscheinlichkeit, dass es zu Problemen kommt,  äußert gering ist.
-\newpage
+Diese Tests sind nur lauffähig in einer \emph{CDI}-Umgebung, die mit \emph{DeltaSpike} im Klassenpfad gestartet werden kann. Im Klassenpfad der Tests wurden Variablen und eine Implementierung der Klasse \emph{VariableResolverFactory} implementiert. Mit diesen Tests wird sichergestellt, dass die \emph{CDI}-Integration des Vorlagenmanagements, aus Sicht der Implementierung, korrekt funktioniert. Diese Tests gewährleisten nicht, dass die \emph{CDI}-Integration in jeder Implementierung einer \emph{CDI}-Umgebung funktioniert, da es hier durchaus Unterschiede geben kann. Um garantieren zu können, dass das Vorlagenmanagement in der verwendeten implementierten \emph{CDI}-Umgebung funktioniert, müssten Integrationstests implementiert werden, die im verwendeten Anwendungsserver ausgeführt werden. Trotzdem gewährleisten die implementierten Tests, dass die \emph{CDI}-Integration korrekt funktioniert, da die Wahrscheinlichkeit, dass es zu Problemen kommt, äußert gering ist.
 
 \begin{figure}[h]
 \centering
@@ -61,13 +63,9 @@ Diese Tests sind nur lauffähig in einer \emph{CDI}-Umgebung, die mit \emph{Delt
 \end{figure}
 
 \subsection{Die Tests der \emph{JSF}-Integration}
-Die Tests aus Abbildung \ref{fig:tests-template-jsf} testen die Implementierungen des Artefakts \emph{mailing-module-template-jsf}, das die \emph{JSF}-Integration des Variablenmanagements enthält. Es wird der implementierte \emph{FacesConverter FreemarkerTemplateConverter} getestet. Obwohl die Klasse \emph{FreemarkerTemplateConverter} innerhalb des \emph{JSF´-Framworks} verwendet wird, ist es nicht notwendig eine \emph{JSF}-Umgebung zu simulieren oder zu starten. Der Konverter greift nicht auf die Formalparameter \emph{UIComponent} und \emph{FacesContext} zu, daher ist es nicht notwendig \emph{Mocks} für diese Objekte zur Verfügung zu stellen.
-\newline
-\newline
-Diese Tests sind aber auf eine \emph{CDI}-Umgebung angewiesen, da in der Implementierung mit der \emph{CDI}-Erweiterung interagiert wird und \emph{CDI-Beans} verwendet werden.
-\newpage
+Die Tests aus Abbildung \ref{fig:tests-template-jsf} testen die Implementierungen des Artefakts \emph{mailing-module-template-jsf}, das die \emph{JSF}-Integration des Variablenmanagements enthält. Es wird der implementierte \emph{FacesConverter FreemarkerTemplateConverter} getestet. Obwohl die Klasse \emph{FreemarkerTemplateConverter} innerhalb des \emph{JSF-Framworks} verwendet wird, ist es nicht notwendig eine \emph{JSF}-Umgebung zu simulieren oder zu starten. Der Konverter greift nicht auf die Formalparameter \emph{UIComponent} und \emph{FacesContext} zu, daher ist es nicht notwendig \emph{Mocks} für diese Objekte zur Verfügung zu stellen. Diese Tests sind aber auf eine \emph{CDI}-Umgebung angewiesen, da in der Implementierung mit der \emph{CDI}-Erweiterung interagiert wird und \emph{CDI-Beans} verwendet werden.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[scale=0.9]{tests-template-jsf}
 \caption{Die Tests des Artefakts \emph{mailing-moule-template-jsf}}

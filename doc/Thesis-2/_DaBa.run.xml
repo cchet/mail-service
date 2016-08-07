@@ -44,33 +44,32 @@
   <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
-      <file>_DaBa.bcf</file>
+      <file>_DaBa.aux</file>
+      <file>_DaBa-blx.bib</file>
     </provides>
     <requires type="dynamic">
       <file>_DaBa.bbl</file>
     </requires>
     <requires type="static">
-      <file>blx-dm.def</file>
       <file>blx-compat.def</file>
       <file>biblatex.def</file>
-      <file>numeric-comp.bbx</file>
-      <file>numeric.bbx</file>
+      <file>authoryear.bbx</file>
       <file>standard.bbx</file>
-      <file>numeric-comp.cbx</file>
+      <file>authoryear.cbx</file>
       <file>biblatex.cfg</file>
       <file>ngerman.lbx</file>
       <file>german.lbx</file>
-      <file>english.lbx</file>
     </requires>
   </internal>
   <external package="biblatex" priority="5" active="0">
-    <generic>biber</generic>
+    <generic>bibtex</generic>
     <cmdline>
-      <binary>biber</binary>
+      <binary>bibtex</binary>
+      <option>-min-crossrefs 2</option>
       <infile>_DaBa</infile>
     </cmdline>
     <input>
-      <file>_DaBa.bcf</file>
+      <file>_DaBa.aux</file>
     </input>
     <output>
       <file>_DaBa.bbl</file>
@@ -79,10 +78,14 @@
       <file>_DaBa.bbl</file>
     </provides>
     <requires type="dynamic">
-      <file>_DaBa.bcf</file>
+      <file>_DaBa.aux</file>
+      <file>_DaBa-blx.bib</file>
     </requires>
     <requires type="editable">
       <file>literatur</file>
+    </requires>
+    <requires type="static">
+      <file>biblatex.bst</file>
     </requires>
   </external>
 </requests>
