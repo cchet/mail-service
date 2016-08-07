@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  6 AUG 2016 19:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  7 AUG 2016 10:38
 entering extended mode
 **./_DaBa.tex
 (_DaBa.tex
@@ -1659,20 +1659,41 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 1.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
-)
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 24.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 24.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 24.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 24.
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 4.
 
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+))
+Underfull \hbox (badness 10000) in paragraph at lines 15--24
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--24
+
+ []
+
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 24.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 24.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 24.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 24.
 [3
 
 
 ]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 24.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 24.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 24.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 24.
+ [4]
 \openout2 = `abstract.aux'.
 
  (abstract.tex
@@ -1681,6 +1702,15 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
 )
+Underfull \hbox (badness 10000) in paragraph at lines 15--25
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--25
+
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 25.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1689,11 +1719,20 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 25.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 25.
- [4
+[5
 
 
 
 ]
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 25.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 25.
+Package babel Info: Redefining ngerman shorthand "|
+(babel)             in language  on input line 25.
+Package babel Info: Redefining ngerman shorthand "~
+(babel)             in language  on input line 25.
+ [6]
 \openout2 = `einleitung.aux'.
 
  (einleitung.tex
@@ -1716,10 +1755,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--12
 
  []
 
-LaTeX Font Info:    Try loading font information for TS1+lmr on input line 12.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\lm\ts1lmr.fd"
-File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 15.
 Package babel Info: Redefining ngerman shorthand "~
@@ -1924,7 +1959,7 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 ]
-<images/20160710_template-logic-api.jpg, id=342, 357.58594pt x 314.67563pt>
+<images/20160710_template-logic-api.jpg, id=350, 357.58594pt x 314.67563pt>
 File: images/20160710_template-logic-api.jpg Graphic file (type jpg)
 
 <use images/20160710_template-logic-api.jpg>
@@ -2271,7 +2306,7 @@ Package csquotes Info: Input encoding change on input line 258.
  ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/09/07 v1.1p UTF-8 support for inputenc
 )
-<images/ckeditor-toolbar-open-dialog.jpg, id=714, 465.99094pt x 66.2475pt>
+<images/ckeditor-toolbar-open-dialog.jpg, id=722, 465.99094pt x 66.2475pt>
 File: images/ckeditor-toolbar-open-dialog.jpg Graphic file (type jpg)
 
 <use images/ckeditor-toolbar-open-dialog.jpg>
@@ -2284,14 +2319,14 @@ Overfull \hbox (12.79324pt too wide) in paragraph at lines 269--270
  []
 
 
-<images/ckeditor-dialog-insert-variable.jpg, id=716, 323.70938pt x 185.94469pt>
+<images/ckeditor-dialog-insert-variable.jpg, id=724, 323.70938pt x 185.94469pt>
 File: images/ckeditor-dialog-insert-variable.jpg Graphic file (type jpg)
 <use images/ckeditor-dialog-insert-variable.jpg>
 Package pdftex.def Info: images/ckeditor-dialog-insert-variable.jpg used on inp
 ut line 277.
 (pdftex.def)             Requested size: 275.15427pt x 158.05371pt.
 
-<images/ckeditor-example-template.jpg, id=718, 353.06906pt x 95.6072pt>
+<images/ckeditor-example-template.jpg, id=726, 353.06906pt x 95.6072pt>
 File: images/ckeditor-example-template.jpg Graphic file (type jpg)
 
 <use images/ckeditor-example-template.jpg>
@@ -2528,7 +2563,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 605.
  [40]
-<images/demo_web_app_empty_view_part_1.jpg, id=889, 700.86844pt x 484.05844pt>
+<images/demo_web_app_empty_view_part_1.jpg, id=897, 700.86844pt x 484.05844pt>
 File: images/demo_web_app_empty_view_part_1.jpg Graphic file (type jpg)
 
 <use images/demo_web_app_empty_view_part_1.jpg>
@@ -2536,7 +2571,7 @@ Package pdftex.def Info: images/demo_web_app_empty_view_part_1.jpg used on inpu
 t line 608.
 (pdftex.def)             Requested size: 350.43336pt x 242.02863pt.
 
-<images/demo_web_app_empty_view_part_2.jpg, id=891, 723.45282pt x 143.03438pt>
+<images/demo_web_app_empty_view_part_2.jpg, id=899, 723.45282pt x 143.03438pt>
 File: images/demo_web_app_empty_view_part_2.jpg Graphic file (type jpg)
 
 <use images/demo_web_app_empty_view_part_2.jpg>
@@ -2741,7 +2776,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 54.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 54.
- [51] <images/tests-template-cdi.jpg, id=1113, 280.79906pt x 377.91188pt>
+ [51] <images/tests-template-cdi.jpg, id=1121, 280.79906pt x 377.91188pt>
 File: images/tests-template-cdi.jpg Graphic file (type jpg)
 
 <use images/tests-template-cdi.jpg>
@@ -2765,7 +2800,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 68.
 [52 <./images/tests-template-cdi.jpg>]
-<images/tests-template-jsf.jpg, id=1121, 280.79906pt x 172.39406pt>
+<images/tests-template-jsf.jpg, id=1129, 280.79906pt x 172.39406pt>
 File: images/tests-template-jsf.jpg Graphic file (type jpg)
 
 <use images/tests-template-jsf.jpg>
@@ -2789,7 +2824,7 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 94.
 [53 <./images/tests-template-jsf.jpg>]
-<images/tests-template-impl.jpg, id=1129, 280.79906pt x 337.26pt>
+<images/tests-template-impl.jpg, id=1138, 280.79906pt x 337.26pt>
 File: images/tests-template-impl.jpg Graphic file (type jpg)
 
 <use images/tests-template-impl.jpg>
@@ -2875,6 +2910,10 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 ])
+Underfull \hbox (badness 10000) in paragraph at lines 27--36
+
+ []
+
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 36.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2883,7 +2922,7 @@ Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 36.
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 36.
- [58]
+[58]
 Package babel Info: Redefining ngerman shorthand "|
 (babel)             in language  on input line 48.
 Package babel Info: Redefining ngerman shorthand "~
@@ -2939,8 +2978,8 @@ Package logreq Info: Writing requests to '_DaBa.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25156 strings out of 493634
- 387691 string characters out of 3141315
+ 25158 strings out of 493634
+ 387704 string characters out of 3141315
  1033490 words of memory out of 3000000
  27220 multiletter control sequences out of 15000+200000
  88700 words of font info for 68 fonts, out of 3000000 for 9000
@@ -2961,9 +3000,9 @@ pe1/public/lm/lmr9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm
  Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmsy9.pfb><C:/Program Files (x86)
 /MiKTeX 2.9/fonts/type1/public/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /fonts/type1/public/lm/lmtt9.pfb>
-Output written on _DaBa.pdf (66 pages, 1067215 bytes).
+Output written on _DaBa.pdf (68 pages, 1073277 bytes).
 PDF statistics:
- 1354 PDF objects out of 1440 (max. 8388607)
- 664 named destinations out of 1000 (max. 500000)
+ 1363 PDF objects out of 1440 (max. 8388607)
+ 666 named destinations out of 1000 (max. 500000)
  440 words of extra memory for PDF output out of 10000 (max. 10000000)
 

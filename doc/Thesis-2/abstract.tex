@@ -1,3 +1,22 @@
 \chapter{Abstract}
-
-TODO: Add english summary here
+The implemented template management uses several technologies and languages such as 
+\begin{itemize}
+	\item\emph{CDI},
+	\item\emph{JSF} and 
+	\item\emph{TypeScript}.
+\end{itemize}
+\ \newline
+Especially the implementation in Java 8 and the possibility of the usage of the newly introduced language specific features such as
+\begin{itemize}
+	\item Lambda functions,
+	\item Method references and
+	\item the Stream API made the source more readable.
+\end{itemize}
+\ \newline
+The integration of the template management in a CDI environment was easy to realize and demonstrated, that any software module can be used in a CDI environment. The implemented CDI extension will be easy to extend and one could use more features provided by CDI. For example, producer for variables could be registered, which can dynamically produce variables during runtime, instead of registering the variables during the start of the CDI environment, which are then immutable over the lifetime of the cdi environment.
+\newline
+\newline
+During the development of the template management no noteworthy problems occurred, all of the predefined features and integration were easy to implement, whereby the simplicity of the tests within a CDI environment need to be emphasized, which can be set up easy and are executable within an development environment, without the need of an application server environment.
+\newline
+\newline
+The implementation of the CKEditor plugin was proved to be easy, because the editor is documented well and there are already type information provided for TypeScript. The editor TinyMCE, which the plugin was supposed to be implemented in the first place, is not documented well, which was the reason why we switched to the editor CKEditor. The implementation in TypeScript was a proper decision, because the source is more readable than the source of JavaScript. TypeScript will provide more language specific feature in the future, which will make the source even more easy to understand, although a migration to a newer version of TypeScript is not needed for now.

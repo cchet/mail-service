@@ -1,3 +1,22 @@
 \chapter{Kurzfassung}
-
-TODO: Add german summary here
+Das implementierte Vorlagenmanagement verwendet mehrere Technologien und Sprachen wie
+\begin{itemize}
+	\item\emph{CDI},
+	\item\emph{JSF} und
+	\item\emph{TypeScript}.
+\end{itemize}
+\ \newline
+Vor allem die Implementierung in \emph{Java 8} und die Möglichkeit der Verwendung der neuen sprachspezifischen Funktionalitäten wie
+\begin{itemize}
+	\item\emph{Lambda}-Funktionen,
+	\item Methodenreferenzen und
+	\item die \emph{Stream-API} hat den Quelltext lesbarer gemacht.
+\end{itemize}
+\ \newline
+Die Integration des Vorlagenmanagements in eine \emph{CDI}-Umgebung war einfach zu realisieren und hat aufgezeigt, dass jedes implementierte Softwaremodul in eine \emph{CDI}-Umgebung verwendet werden kann. Die implementierte \emph{CDI}-Erweiterung wird auch einfach zu erweitern sein und man könnte mehr Funktionalitäten, die in  \emph{CDI} zur Verfügung stehen, verwenden. Es könnten z.B. Erzeuger für Variablen registriert werden, die zur Laufzeit dynamisch Variablen erzeugen, anstatt dass die Variablen nur beim Start der \emph{CDI}-Umgebung registriert werden und dann über die Lebensdauer der \emph{CDI}-Umgebung  unveränderlich sind. 
+\newline
+\newline
+Während der Entwicklung des Vorlagenmanagements sind keine erwähnenswerten Probleme aufgetreten, alle Funktionalitäten und Integrationen konnten einfach implementiert und getestet werden, wobei besonders die Einfachheit der Tests in einer \emph{CDI}-Umgebung hervorgehoben muss, die mit \emph{DeltaSpike}-Bibliotheken einfach aufgesetzt werden können und innerhalb einer Entwicklungsumgebung, ohne Applikationsserver, lauffähig sind.
+\newline
+\newline
+Die Implementierung des \emph{CKEditor-Plugins} gestaltete sich als einfach, da dieser \emph{Editor} sehr gut dokumentiert ist und es bereits Typinformationen für \emph{TypeScript} gibt. Der \emph{Editor TinyMCE}, für den anfangs das \emph{Plugin} entwickelt werden sollte, ist sehr schlecht dokumentiert, daher wurde auf den \emph{Editor CKEditor} gewechselt. Die Implementierung in \emph{TypeScript} war die richtige Entscheidung, denn es hat die Entwicklung sehr vereinfacht, und der Quelltext ist lesbarer als der Quelltext in \emph{JavaScript}. Für die Zukunft wird \emph{TypeScript} noch mehr sprachspezifische Möglichkeiten bieten, die den Quelltext noch mehr vereinfachen werden, obwohl eine Migration auf eine neuere Version von \emph{TypeScript} zur Zeit nicht nötig ist.
