@@ -4,12 +4,11 @@
 
 \usepackage{csquotes}	% recommended for biblatex
 %\usepackage[babel,german=quotes]{csquotes}	% utf8-change ??
-
 %utf8-change
 %Note: biblatex with bibtex backend is frozen at version 1.7.
-\usepackage[style=authoryear,backend=bibtex,bibencoding=utf8]{biblatex}[2013/01/10] %utf8-change
+\usepackage[style=authoryear,backend=bibtex,bibencoding=utf8,maxbibnames=9,maxcitenames=2]{biblatex}[2013/01/10] %utf8-change
 
-\ExecuteBibliographyOptions{bibwarn=true,sortcites=true,defernumbers=true,isbn=false,doi=false,backref=true}
+\ExecuteBibliographyOptions{bibwarn=true,sortcites=true,defernumbers=true,isbn=false,doi=false,backref=false}
 
 %% titles of reference section + 3 categories of references:
 \newcommand{\@bibtitle}{Quellenverzeichnis}
