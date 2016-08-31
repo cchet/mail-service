@@ -13,7 +13,7 @@ Zurzeit interagieren die Anwendungen direkt mit der Datenbank, anstatt von ihr a
 \newpage
 
 \section{Funktionale Ziele}
-Für das Vorlagenmanagement wurden die folgende funktionalen Ziele definiert, die umgesetzt werden müssen.
+Für das Vorlagenmanagement wurden die folgenden funktionalen Ziele definiert, die umgesetzt werden müssen.
 
 \subsection{Variablen für die Vorlagen}
 Die Vorlagen werden für einen bestimmten \emph{Mail}-Typ definiert, wobei eine Vorlage in einem bestimmten Kontext verwendet wird wie z.B.
@@ -29,7 +29,7 @@ Für die Vorlagen, die für einen bestimmten \emph{Mail}-Typ erstellt werden, m�
 	\item Die Variable \emph{ORDER\_NUMBER} ist die Nummer der erstellten Bestellung.
 \end{itemize}
 \ \newline
-Die EntwicklerInnen müssen für einen bestimmten \emph{Mail}-Typ in der Lage sein, einfach Variablen zu definieren, die von den BenutzerInnen, beim Erstellen einer Vorlage für den korrespondierenden \emph{Mail-Typ}, frei verwendet werden können. Die Variablen müssen auch global definiert werden und prinzipiell in allen Vorlagen verwendbar sein. Die EntwicklerInnen müssen in der Lage sein, die Menge der zur Verfügung stehenden Variablen zur Laufzeit, aufgrund von bestimmten Zuständen, verändern zu können. Die Menge der Variablen könnte z.B. von Berechtigungen der BenutzerInnen abhängig sein.
+Die EntwicklerInnen müssen für einen bestimmten \emph{Mail}-Typ in der Lage sein, einfach Variablen zu definieren, die von den BenutzerInnen, beim Erstellen einer Vorlage für den korrespondierenden \emph{Mail}-Typ, frei verwendet werden können. Die Variablen müssen auch global definiert werden und prinzipiell in allen Vorlagen verwendbar sein. Die EntwicklerInnen müssen in der Lage sein, die Menge der zur Verfügung stehenden Variablen zur Laufzeit, aufgrund von bestimmten Zuständen, verändern zu können. Die Menge der Variablen könnte z.B. von Berechtigungen der BenutzerInnen abhängig sein.
 
 \subsection{Mehrsprachigkeit der Variablen}
 Die zur Verfügung stehenden Variablen werden durch die EntwicklerInnen statisch definiert und müssen jeweils einen Bezeichner, eine Bezeichnung und eine Beschreibung zur Verfügung stellen. Die Bezeichnung und die Beschreibung einer Variable müssen mehrsprachig zur Verfügung stehen, wobei als Standardsprache Englisch zu verwenden ist. Die Mehrsprachigkeit soll über \emph{Java-Properties}-Dateien abgebildet werden, wobei als Zeichenkodierung \emph{UTF8} zu verwenden ist, obwohl \emph{Java-Properties}-Dateien laut Spezifikation die Zeichenkodierung \emph{ISO 8859-1} verwenden müssen.
@@ -40,13 +40,9 @@ Innerhalb einer \emph{CDI}-Umgebung sollen die definierten Variablen beim Start 
 \subsection{Mehrsprachigkeit der Vorlagen}
 Die Vorlagen müssen in mehreren Sprachen erstellt und verwaltet werden können, wobei eine Sprache als Standardsprache zu definieren ist, und es für diese Sprache immer einen Eintrag geben muss. Auf die Standardsprache wird zurückgegriffen, wenn es für eine angeforderte Sprache keinen Eintrag gibt. Somit ist gewährleistet, dass für jede angeforderte Sprache immer eine Vorlage zur Verfügung steht. Es ist nicht erforderlich, dass die Menge und Position der Variablen in einer Vorlage über alle definierten Sprachen gleich sind. Es dürfen in einer Vorlage, die in mehreren Sprachen definiert wurde, eine unterschiedliche Anzahl von Variablen, unterschiedliche Variablen und unterschiedliche Positionen der Variablen definiert sein.
 
-\subsection{Persistenz der Vorlagen}
-\label{sec:sub-template-variable-persistenz}
-Die Vorlagen müssen in einer Datenbank persistent gehalten werden. Da das Vorlagenmanagement vorerst exklusiv für \emph{CleverMail} verwendet wird, muss die Persistenz der Vorlagen innerhalb des \emph{Mail}-DB-Schemas von \emph{CleverMail} realisiert werden. Die persistenten Vorlagen müssen versionierbar sein, damit diese von anderen Entitäten referenziert werden können, ohne dass die Gefahr besteht, dass die referenzierten Vorlagen verändert wurden. Die Versionierung muss die Konsistenz der Vorlagen sicherstellen, sodass serialisierte Daten für eine Vorlage konsistent mit den enthaltenen Variablen der Vorlage sind. Vorlagen müssen explizit freigegeben werden, bevor die Vorlagen verwendet werden dürfen. Nach der Freigabe einer Vorlage darf die Vorlage nicht mehr verändert werden.
-
 \subsection{Verwaltung der Vorlagen über eine Webseite}
 \label{sec:sub-template-management-website}
-Die Vorlagen müssen über eine Webseite verwaltet werden können. Die Webseite muss mit der \emph{View}-Technologie \emph{JSF} implementiert werden. Über einen \emph{FacesConverter} soll die Vorlage von ihrer \emph{HTML}-Repräsentation in die Repräsentation der verwendeten \emph{Template-Engine} konvertiert werden und vice versa. Der Quelltext \ref{prog:html-markup-vorlage} zeigt ein \emph{HTML-Markup} einer Vorlage, wie es in der Webseite  bzw. innerhalb des \emph{Editors CKEditor} verwendet wird. Die Variablen werden als \emph{HTML-Tags} repräsentiert, aus denen die Variablen wieder hergestellt werden können.
+Die Vorlagen müssen über eine Webseite verwaltet werden können. Die Webseite muss mit der \emph{View}-Technologie \emph{JSF} implementiert werden. Über einen \emph{FacesConverter} soll die Vorlage von ihrer \emph{HTML}-Repräsentation in die Repräsentation der verwendeten \emph{Template-Engine} konvertiert werden und vice versa. Der Quelltext \ref{prog:html-markup-vorlage} zeigt ein \emph{HTML-Markup} einer Vorlage, wie es in der Webseite  bzw. innerhalb des \emph{Editors CKEditor} verwendet wird. Die Variablen werden als \emph{HTML-Tags} repräsentiert, aus denen die Variablen wieder ermittelt werden können.
 \begin{program}[h]
 	\caption{Das \emph{HTML-Markup} einer Vorlage}
 	\label{prog:html-markup-vorlage}
@@ -61,8 +57,8 @@ Die Vorlagen müssen über eine Webseite verwaltet werden können. Die Webseite 
 	</p>
 	\end{HtmlCode}
 \end{program}
-\ \newline
-Der Quelltext \ref{prog:freemarker-markup-vorlage} zeigt das konvertierte \emph{HTML-Markup} des Quelltexts \ref{prog:html-markup-vorlage} als \emph{Freemarker}-Vorlage .
+\ \newpage
+\parindent0pt Der Quelltext \ref{prog:freemarker-markup-vorlage} zeigt das konvertierte \emph{HTML-Markup} des Quelltexts \ref{prog:html-markup-vorlage} als \emph{Freemarker}-Vorlage .
 \begin{program}[h]
 	\caption{Das konvertierte \emph{HTML-Markup} als \emph{Freemarker}-Vorlage}
 	\label{prog:freemarker-markup-vorlage}
@@ -75,16 +71,18 @@ Der Quelltext \ref{prog:freemarker-markup-vorlage} zeigt das konvertierte \emph{
 \end{program}
 \ \newline
 %$
-In der Webseite muss der \emph{JavaScript}-basierte \emph{Editor CKEditor} [\cite{ckeditor}] verwendet werden, weil für diesen \emph{Editor} durch \emph{PrimeFaces-Extensions} [\cite{primefacesExtensions}] eine \emph{JSF}-Integration, in Form einer \emph{JSF}-Komponente, zur Verfügung gestellt wird. Es muss auch deshalb der \emph{Editor CKEditor} verwendet werden, weil eine Integration in den Lebenszyklus von \emph{JSF} notwendig ist, damit z.B. auf \emph{AJAX}-Anfragen reagiert werden kann, wie es in \emph{JSF} üblich ist.
+In der Webseite muss der \emph{JavaScript}-basierte \emph{CKEditor} [\cite{ckeditor}] verwendet werden, weil für den \emph{CKEditor} durch \emph{PrimeFaces-Extensions} [\cite{primefacesExtensions}] eine \emph{JSF}-Integration, in Form einer vollständigen \emph{JSF}-Komponente, zur Verfügung gestellt wird. Es muss auch deshalb der \emph{Editor CKEditor} verwendet werden, weil eine Integration in den Lebenszyklus von \emph{JSF} notwendig ist, damit z.B. auf \emph{AJAX}-Anfragen reagiert werden kann, wie es in \emph{JSF} üblich ist.
 
 \section{Technische Ziele}
 \label{sec:technical-goals}
 Es wurden die im Folgenden aufgelisteten technischen Zeile definiert:
 \begin{itemize}
-	\item Die Entwicklung in \emph{Java 8},
+	\item Die Entwicklung in Java 8,
 	\item die Entwicklung mit der Plattform \emph{JEE-7},
 	\item die Integration in eine \emph{CDI}-Umgebung,
-	\item die Integration in \emph{JSF} und
+	\item die Integration in \emph{JSF},
+	\item die Integration in \emph{TypeScript} und
 	\item die Entwicklung als eigene Softwarekomponente.
 \end{itemize}
+\ \newline
 Das Vorlagenmanagement muss Schnittstellen definieren, welche die Funktionalität des Vorlagenmanagements nach außen offenlegen, ohne dass die Anwendungen in Berührung mit den konkreten Implementierungen kommen.
