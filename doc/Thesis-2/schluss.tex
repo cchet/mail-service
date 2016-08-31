@@ -1,38 +1,51 @@
 \chapter{Zusammenfassung, weitere Aufgaben und Erfahrungen}
 \label{cha:Zusammenfassung}
-
+Dieses Kapitel beschäftigt sich mit der Zusammenfassung, den weiteren Aufgaben und den gemachten Erfahrungen während der Entwicklung des Vorlagenmanagements. 
 \section{Zusammenfassung}
+Dieser Abschnitt befasst sich mit der Zusammenfassung dieser Bachelorarbeit.
+\newline
+\newline
+Bei der Implementierung des Vorlagenmanagements wurde darauf geachtet, dass die Implementierungen in eigenen Modulen organisiert werden, die entkoppelt voneinander sind und dass die Implementierungen erweiterbar sind, damit sich zukünftige Anforderungen leicht integrieren lassen. Die Strukturierung des Vorlagenmanagements  in eigenen Modulen ist ein Resultat der Analyse der Anwendung \emph{CCMail}, die in der theoretischen Bachelorarbeit durchgeführt wurde. \emph{CCMail} ist in einem einzigen Projekt organisiert worden und kann nicht mehr erweitert werden. Durch die Modularisierung ist das Vorlagenmanagement flexibel, wie die implementierte Integration in \emph{CDI}, \emph{JSF} und das \emph{Mail}-DB-Schema aufzeigt.
+\newline
+\newline
+Das Vorlagenmanagement ist nicht auf die Verwendung in den Anwendungen innerhalb der Softwarelösung \emph{clevercure} beschränkt, sondern kann auch in anderen Anwendungen verwendet werden, sofern die technischen Voraussetzungen erfüllt sind. Dadurch könnte das Vorlagenmanagement in Zukunft auch in Anwendungen verwendet werden, die neu für die Softwarelösung \emph{clevercure} implementiert werden. 
+\newline
+\newline
+Das Vorlagenmanagement erfüllt alle Grundvoraussetzungen um in den Anwendungen \emph{CleverInterface}, \emph{CleverWeb}, \emph{CleverSupport} und \emph{CleverDocument} integriert werden zu können. Die Integration in die Anwendungen \emph{CleverWeb}, \emph{CleverSupport} und \emph{CleverDocument} sollte leicht realisierbar sein, da diese Anwendungen alle technischen GRundvoraussetzugen erfüllen. Die Integration in die Anwendung \emph{CleverInterface} könnte ein Problem darstellen, da es bei \emph{CleverInterface} Einschränkungen bezüglich den verwendeten Technologien gibt und man hier stark von der Laufzeitumgebung \emph{IIB} und von der \emph{IBM} abhängig ist.  
+\newline
+\newline
+Das Vorlagenmanagement ist zwar fertiggestellt, es werden sich aber sicherlich noch neue Anforderung ergeben, die sich aber auf neue Funktionalitäten und Erweiterungen beschränken werden. Die Grundfunktionalität und die Integration in die verschiedenen Umgebungen ist fertiggestellt und kann bei Bedarf jederzeit erweitert werden.
 
 \section{Weitere Aufgaben}
+Dieser Abschnitt befasst sich mit den weiteren Aufgaben nach der Implementierung des Vorlagenmanagements.
+\newline
+\newline
+Nach der Implementierung des Vorlagenmanagements muss die Integration des Vorlagenmanagements in die Anwendungen \emph{CleverWeb}, \emph{CleverSupport}, \emph{CleverDocument} und \emph{CleverInterface} implementiert werden. Die Integration in die Anwendung \emph{CleverInterface} muss warten, bis die verwendete Laufzeitumgebung \emph{IIB} Java 8 unterstützt. Sollte \emph{IIB} Java 8 nicht in absehbarer Zeit unterstützen, so wird man das Vorlagenmanagement auf Java 7 migrieren müssen, was aber nicht anzuraten ist. Die Beispielwebanwendung hat aufgezeigt, wie einfach es ist, eine \emph{JSF}-Seite für die Verwaltung von Vorlagen zu implementieren, und wie einfach \emph{E-Mails} über eine Geschäftslogik erstellt werden können. Somit sollte sich die Integration in die Anwendungen \emph{CleverWeb}, \emph{CleverSupport} und \emph{CleverDocument} einfach und schnell realisieren lassen. 
+\newline
+\newline
+Nachdem die Integration für die Anwendungen der Softwarelösung \emph{clevercure} implementiert wurden, muss die Anwendung \emph{CleverMail} implementiert werden, welche die \emph{E-Mails} versendet. Diese Entwicklung kann auch parallel zur Implementierung der Integration des Vorlagenmanagements erfolgen.
 
 \section{Erfahrungen}
-
-Dieses Kapitel beschäftigt sich mit der Zusammenfassung der Bachelorarbeit, der realisierten Implementierung des Vorlagenmanagements und den gemachten Erfahrungen während der Entwicklung. Das implementierte Vorlagenmanagement ist fertiggestellt, wobei sich sicherlich noch neue Anforderung ergeben werden, die sich aber auf neue Funktionalitäten und Erweiterungen beschränken werden. Die Grundfunktionalität und die Integration in die verschiedenen Umgebungen ist fertiggestellt und kann bei Bedarf jederzeit erweitert werden. Ein Problem könnte die Integration in die Anwendung \emph{CleverInterface} darstellen, da es hier Einschränkungen bezüglich den verwendeten Technologien gibt und man hier sehr stark von der Laufzeitumgebung \emph{IIB} und von der \emph{IBM} abhängig ist. 
+Dieser Abschnitt befasst sich mit den gemachten Erfahrungen während der Entwicklung des Vorlagenmanagements.
 \newline
 \newline
-Es wahr sehr interessant zu sehen, wie leicht sich ein Softwaremodul in die verschiedensten Umgebungen integrieren lässt und wie die Interaktion zwischen den verschiedenen Umgebungen funktioniert. Die Trennung der Schichten über eigene Modellklassen, wie bei der Schnittstelle \emph{VariableContract}, die 
+Es wahr sehr interessant zu sehen, wie leicht sich ein Softwaremodul, sofern es die Voraussetzungen erfüllt, in die verschiedensten Umgebungen integrieren lässt und wie die Interaktion zwischen den verschiedenen Umgebungen funktioniert. Die Trennung der Schichten über eigene Modellklassen, wie bei der Schnittstelle \emph{VariableContract}, die 
 \begin{itemize}
 	\item über die Klasse \emph{VariableJson} für \emph{JSON} in \emph{Java} und
 	\item über die Schnittstelle \emph{VariablenMapping} für \emph{JavaScript} in \emph{TypeScript}
 \end{itemize}
 repräsentiert wird, um die Schichten und auch die verschiedenen Technologien voneinander zu trennen, hat mir aufgezeigt, wie unabdingbar die Schichtentrennung ist. Das Vermeiden von Schichtentrennung wird aus meiner Erfahrung heraus oft mit 
-\begin{itemize}
-	\item Optimierung,
-	\item Kostengründen und
-	\item Ressourcenknappheit begründet.
-\end{itemize}
-\ \newline
-Die Schichtentrennung wird von vielen unterschätzt, aber wenn Umstrukturierungen an Modellen vorgenommen werden müssen, dann merkt man erst wie sich die fehlende Schichtentrennungen negativ auswirkt. Meistens hat man den Fall, dass bei einer Änderung eines Modells einer höheren Schicht der gesamte Quelltext über alle Schichten hinweg Syntaxfehler aufweist.
+Optimierung, Kostengründen und Ressourcenknappheit begründet. Die Schichtentrennung wird von vielen unterschätzt, aber wenn Umstrukturierungen an Modellen vorgenommen werden müssen, dann merkt man erst, wie sich die fehlende Schichtentrennungen negativ auswirkt. Meistens hat man den Fall, dass bei einer Änderung eines Modells einer höheren Schicht der gesamte Quelltext über alle Schichten hinweg Fehler aufweist.
 \newline
 \newline
-Die Entwicklung des \emph{CKEditor-Plugins} in \emph{TypeScript} hat mir aufgezeigt, dass \emph{TypeScript}, trotz aller Kritik, durchaus Zukunft hat, obwohl es auch einige Probleme mit \emph{TypeScript} gibt wie z.B.
+Die Entwicklung des \emph{CKEditor-Plugins} in \emph{TypeScript} hat mir aufgezeigt, dass \emph{TypeScript}, trotz aller Kritik, durchaus Zukunft hat, obwohl es auch einige Probleme mit \emph{TypeScript} gibt, wie z.B.
 \begin{itemize}
 	\item die Versionierung der Typinformationen für \emph{JavaScript}-Bibliotheken, die nicht die Versionen der \emph{JavaScript}-Bibliotheken widerspiegeln,
 	\item die Organisation des \emph{Github-Repositories} von \emph{DefinitelyTyped}, das in einem einzigen \emph{Repository} alle Typinformationen für alle \emph{JavaScript}-Bibliotheken enthält und
 	\item die rasante Weiterentwicklung von \emph{TypeScript}, mit der man schwer mithalten kann.
 \end{itemize}
 \ \newline
-Trotz aller Probleme ist es sehr angenehm in \emph{TypeScript} zu entwickeln und es ähnelt immer mehr der Entwicklung in einer höheren Programmiersprache wie z.B. \emph{Java} oder \emph{.NET}.
+Trotz aller Probleme ist es sehr angenehm, in \emph{TypeScript} zu entwickeln und es ähnelt immer mehr der Entwicklung in einer höheren Programmiersprache wie z.B. \emph{Java} oder \emph{.NET}.
 \newline
 \newline
-Beim Verfassen dieser Bachelorarbeit viel es mir teilweise schwer, mich für einzelne Aspekte der Implementierung des Vorlagenmanagements zu entscheiden, die in dieser Bachelorarbeit behandelt wurden, da viele verschiedene Technologien, \emph{Frameworks} und Sprachen in den Implementierungen des Vorlagenmanagements verwendet werden. Im Gegensatz zur theoretischen Bachelorarbeit, viel es mir leichter die praktischen Bachelorarbeit auszuarbeiten und die theoretische Bachelorarbeit war eine gute Vorbereitung für die praktische Bachelorarbeit.
+Beim Verfassen dieser Bachelorarbeit fiel es mir teilweise schwer, mich für einzelne Aspekte der Implementierung des Vorlagenmanagements zu entscheiden, die in dieser Bachelorarbeit behandelt wurden, da viele verschiedene Technologien, \emph{Frameworks} und Sprachen in den Implementierungen des Vorlagenmanagements verwendet werden. Im Gegensatz zur theoretischen Bachelorarbeit, fiel es mir leichter, die praktischen Bachelorarbeit auszuarbeiten und die theoretische Bachelorarbeit war eine gute Vorbereitung für die praktische Bachelorarbeit.

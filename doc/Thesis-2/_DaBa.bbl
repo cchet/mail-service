@@ -35,6 +35,25 @@
   \field{year}{2016}
 \endentry
 
+\entry{fasterXml}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {FasterXML}{F.}%
+     {jackson}{j.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{Fj1}
+  \strng{fullhash}{Fj1}
+  \field{labelyear}{2016}
+  \field{sortinit}{F}
+  \field{title}{Jackson Project Home @github}
+  \verb{url}
+  \verb https://github.com/FasterXML/jackson
+  \endverb
+  \field{year}{2016}
+\endentry
+
 \entry{fowlerFluentInterface}{online}{}
   \name{author}{1}{}{%
     {{}%
@@ -92,6 +111,25 @@
   \field{year}{1994}
 \endentry
 
+\entry{h2}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {H2Database}{H.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{H1}
+  \strng{fullhash}{H1}
+  \field{labelyear}{2016}
+  \field{sortinit}{H}
+  \field{title}{H2 Database Engine}
+  \verb{url}
+  \verb http://www.h2database.com/html/main.html
+  \endverb
+  \field{year}{2016}
+\endentry
+
 \entry{intelliJ}{online}{}
   \name{author}{1}{}{%
     {{}%
@@ -107,6 +145,25 @@
   \field{title}{IntelliJ IDEA}
   \verb{url}
   \verb https://www.jetbrains.com/idea/
+  \endverb
+  \field{year}{2016}
+\endentry
+
+\entry{junit4}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {JUnit}{J.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{J2}
+  \strng{fullhash}{J2}
+  \field{labelyear}{2016}
+  \field{sortinit}{J}
+  \field{title}{About JUnit4}
+  \verb{url}
+  \verb http://junit.org/junit4/
   \endverb
   \field{year}{2016}
 \endentry
@@ -219,6 +276,25 @@
   \verb -se-and-ee/
   \endverb
   \field{year}{2012}
+\endentry
+
+\entry{deltaspike}{online}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{The Apache Software Foundation}}{T.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{T1}
+  \strng{fullhash}{T1}
+  \field{labelyear}{2016}
+  \field{sortinit}{T}
+  \field{title}{About DeltaSpike}
+  \verb{url}
+  \verb https://deltaspike.apache.org/index.html
+  \endverb
+  \field{year}{2016}
 \endentry
 
 \lossort
