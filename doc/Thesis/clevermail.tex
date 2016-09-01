@@ -26,7 +26,7 @@ Mit der Nutzung der JEE7-Plattform-Spezifikation stehen \emph{CleverMail} eine V
 Diese Bibliotheken werden es erlauben, die Anwendung \emph{CleverMail} so flexibel wie möglich zu gestalten, bringen aber auch ein erhöhtes Maß an Komplexität beim Design mit sich. 
 \newline
 \newline
-\cite[5-6]{patternsOfEnterprise} führt einige Beispiel für \emph{Enterprise}-Anwendungen an, um zu illustrieren, dass jede dieser Anwendungen seine eigenen Probleme und Komplexität mit sich bringt. Daher ist beim Erstellen einer Architektur einer \emph{Enterprise}-Anwendung die konkrete Nutzung zu berücksichtigen. Der Prozess der Konzeption einer Architektur ist ein kreativer Prozess, wobei Konzepte, \emph{Best-Practise} usw. als Unterstützung anzusehen sind und es keinen echten Leitfaden gibt, an dem man sich orientieren kann. Die Architektur wird stark von der konkreten Anwendung beeinflusst. Daher kann sich die Architektur je nach Anwendung stark unterschieden.
+[\cite[5-6]{patternsOfEnterprise}] führt einige Beispiel für \emph{Enterprise}-Anwendungen an, um zu illustrieren, dass jede dieser Anwendungen seine eigenen Probleme und Komplexität mit sich bringt. Daher ist beim Erstellen einer Architektur einer \emph{Enterprise}-Anwendung die konkrete Nutzung zu berücksichtigen. Der Prozess der Konzeption einer Architektur ist ein kreativer Prozess, wobei Konzepte, \emph{Best-Practise} usw. als Unterstützung anzusehen sind und es keinen echten Leitfaden gibt, an dem man sich orientieren kann. Die Architektur wird stark von der konkreten Anwendung beeinflusst. Daher kann sich die Architektur je nach Anwendung stark unterschieden.
 
 \section{Systemaufbau}
 Im Gegensatz zum Systemaufbau aus der Sicht von \emph{CCMail}, beschrieben in Abbildung \ref{sec:ccmail-systemaufbau}, soll die Datenbank nicht mehr als Schnittstelle zwischen den Anwendungen und \emph{CleverMail} fungieren. Die Datenbank soll weiterhin ein zentraler Bestandteil von \emph{CleverMail} sein, jedoch soll die Datenbank von den Anwendungen abstrahiert werden. Damit erreicht man, dass die Anwendungen eine einheitliche Schnittstelle nutzen und nicht ihrerseits eigene Schnittstellen zur Datenbank implementieren und warten müssen.
@@ -82,7 +82,7 @@ Mit \emph{TCC} besteht auch die Gefahr das eine \emph{Heuristic-Exception} auftr
 Diese Probleme bedeuten aber nicht, dass \emph{REST-Services} nicht in Frage kommen. Lediglich für transaktionale Operationen scheinen sie ungeeignet bzw. der Aufwand, der betrieben werden muss, zu hoch. Ein weiteres Problem kann die Erreichbarkeit des \emph{REST-Service} sein. Sollte dieser einmal ausfallen, oder im Falle einer Neuinstallation nicht erreichbar sein, so müsste man eine Rückversicherung haben und die zu erstellenden \emph{E-Mails} anderweitig zwischenspeichern, wie z.B. in Form einer Textdatei, welche die Daten in Form von JSON (Javascript-Objekt-Notation) enthält.
 \newline
 \newline
-Der Artikel von \cite{atomikosTcc} beschreibt den Prozess von \emph{TCC} mit mehreren involvierten REST-Services gut und detailliert.
+Der Artikel von [\cite{atomikosTcc}] beschreibt den Prozess von \emph{TCC} mit mehreren involvierten REST-Services gut und detailliert.
 
 \subsection{2. Möglichkeit \emph{(EJB)}}
 Sollte eine Anwendung \emph{CleverMail} via dessen zur Verfügung gestellten \emph{EJBs} verwenden, so würde eine starke Kopplung und starke Abhängigkeiten entstehen, da mehr Ressourcen benötigt werden. Ebenso könnte im Gegensatz zu einem \emph{REST-Client} keine eigene Datenbank genutzt werden, da ein Zweiphasen-\emph{Commit} erfolgen müsste. Natürlich würde die Möglichkeit von mehreren verwendeten Datenbanken bestehen, aber man wäre der Gefahr von \emph{Heursitc-Exceptions} ausgesetzt.
@@ -178,7 +178,7 @@ Die Vorlagenparameter werden über mehrere Softwarekomponenten hinweg verwendet,
 \label{fig:clevermail-template-parameter}
 \end{figure}
 \ \newline
-Wie in der Abbildung \ref{fig:clevermail-template-parameter} illustriert, werden die Vorlagenparameter in verschiedenen Verwendungskontext und Darstellungen verwendet. Dadurch stellt sich die Frage, wie diese Vorlagenparameter adressiert werden. Man könnte eine Zuordnung in jedem Verwendungskontext erstellen, also jeder Verwendungskontext bekommt sein eigenes Modell. Dadurch würde man zwar lose and die Vorlagenparameter gekoppelt sein , jedoch erhält man auch eine Modell-Klasse je Verwendungskontext, die gewartet werden muss. 
+Wie in der Abbildung \ref{fig:clevermail-template-parameter} illustriert, werden die Vorlagenparameter in verschiedenen Verwendungskontexten und Darstellungen verwendet. Dadurch stellt sich die Frage, wie diese Vorlagenparameter adressiert werden. Man könnte eine Zuordnung in jedem Verwendungskontext erstellen, also jeder Verwendungskontext bekommt sein eigenes Modell. Dadurch würde man zwar lose and die Vorlagenparameter gekoppelt sein , jedoch erhält man auch eine Modell-Klasse je Verwendungskontext, die gewartet werden muss. 
 
 \subsubsection{Verwendungskontext Webseite}
 \label{sec:template-parameter-web-view}
@@ -212,7 +212,7 @@ Im Gegensatz zum Datenbankschema von \emph{CCMail}, beschrieben im Abschnitt \re
 Dies begründet sich durch die Anwendungsfälle selbst, die nicht auf eine bestimmte Repräsentation von Inhabern von persistenten \emph{E-Mail}, \emph{E-Mail}-Typen oder Konfigurationen angewiesen sind. Mann muss sich hier die Möglichkeiten für eine zukünftige Anwendung in anderen Anwendungen offen zu halten, anstatt sich den Aufwand einer umfangreichen Umstrukturierung, beim Eintreffen eines solchen Falles, auszusetzen. 
 \newline
 \newline
-Auch wenn der Ansatz der größtmöglichen Abstraktion von \emph{Clevercure} verfolgt werden soll, ist es trotzdem möglich Referenzen auf Tabellen des Datenbankschemas von \emph{Clevercure} herzustellen, solange der Datenzugriff gekapselt und nur einer Stelle gehalten wird. Somit ist gewährleistet, dass eine Umstrukturierung keine unerwünschten Nebeneffekte hat und Änderungen nur an definierten Stellen stattfinden müssen. \cite[66]{refactoreDatabase} beschreiben es wie folgt:
+Auch wenn der Ansatz der größtmöglichen Abstraktion von \emph{Clevercure} verfolgt werden soll, ist es trotzdem möglich Referenzen auf Tabellen des Datenbankschemas von \emph{Clevercure} herzustellen, solange der Datenzugriff gekapselt und nur einer Stelle gehalten wird. Somit ist gewährleistet, dass eine Umstrukturierung keine unerwünschten Nebeneffekte hat und Änderungen nur an definierten Stellen stattfinden müssen. [\cite[66]{refactoreDatabase}] beschreiben es wie folgt:
 \begin{quote}
 \emph{You could implement the SQL logic in a consistent manner, such as having save(), delete(), retrieve(), and find() operations for each business class. Or you could implement data access objects(DAOs), classes that implement the data access logic separately from business classes.}
 \end{quote}

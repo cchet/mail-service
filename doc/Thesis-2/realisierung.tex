@@ -16,7 +16,7 @@ Dieses Kapitel befasst sich mit der Implementierung der Spezifikation des Vorlag
 .5 api.
 .5 impl.
 .3 integration.
-.4 clevercure-web.
+.4 clever-web.
 .2 testsuite.
 .3 cdi.
 .2 demo.
@@ -39,12 +39,12 @@ Die konkreten Artefakte wurden jeweils in ein Artefakt \emph{*-api} und \emph{*-
 Folgende Auflistung beschreibt alle konkreten Artefakte (\emph{Java-Archive}), die aus dem Wurzelprojekt \emph{mailing} erstellt werden können.
 \begin{itemize}
 	\item\emph{\textbf{mailing-model-jpa}} enthält die Klassen mit den \emph{JPA}-Entitäten, welche die Datenbank in \emph{Java} abbilden.
-	\item\emph{\textbf{mailing-module-template-cdi}} enthält die Implementierung der \emph{CDI}-Erweiterung für die Integration in eine \emph{CDI}-Umgebung.
+	\item\emph{\textbf{mailing-module-template-cdi}} enthält die \emph{CDI}-Erweiterung für die Integration in eine \emph{CDI}-Umgebung.
 	\item\emph{\textbf{mailing-module-template-jsf}} enthält die Implementierung für die Integration in \emph{JSF}.
 	\item\emph{\textbf{mailing-module-template-model-json}} enthält die Implementierung der \emph{JSON}-Datenobjekte in Form von \emph{Java}-Klassen.	
 	\item\emph{\textbf{mailing-module-template-logic-api}} enthält die Spezifikation des Vorlagenmanagements.
 	\item\emph{\textbf{mailing-module-template-logic-impl}} enthält die Implementierung der Spezifikation des Vorlagenmanagements.
-	\item\emph{\textbf{mailing-module-integartion-clevercure-web}} enthält die Implementierung der Integration für die Anwendung \emph{CleverWeb}.
+	\item\emph{\textbf{mailing-module-integration-clever-web}} enthält die Implementierung der Integration für die Anwendung \emph{CleverWeb}.
 	\item\emph{\textbf{mailing-testsuite-cdi}} enthält die Ressourcen aller Tests, die in einer \emph{CDI}-Umgebung lauffähig sein müssen.
 	\item\emph{\textbf{mailing-demo-logic}} enthält die Implementierung der Geschäftslogik der Beispielanwendung.
 	\item\emph{\textbf{mailing-demo-web}} enthält die Webanwendung der Beispielanwendung.
@@ -359,7 +359,7 @@ Es wurden jeweils eine Erzeugermethode für den Qualifizierer \emph{@Default} un
 Der Quelltext \ref{prog:templateResourceProducer} ist ein Auszug aus der Klasse \emph{TemplateResourceProducer} und zeigt einige der implementierten Erzeugermethoden. 
 \newline
 \newline
-Die beiden Methoden \emph{produceDefaultTemplateBuilder} und \emph{produceFreeMarkerTemplateBuilder} produzieren Objekte des Datentyps  \emph{TemplateDataJsonBuilder} für den sogenannten Pseudo-Geltungsbereich (\emph{@Dependent}), wobei für jeden Injektionspunkt ein neues Objekt erstellt wird. Der Lebenszyklus von \emph{CDI-Beans}, die sich im Pseudo-Geltungsbereich befinden, wird nicht von der \emph{CDI}-Umgebung verwaltet und die Lebensdauer eines \emph{CDI-Beans}, das sich im Pseudo-Geltungsbereich befindet, ist gebunden and das \emph{CDI-Bean}, das sich das \emph{CDI-Bean} im Pseudo-Geltungsbereich injiziert hat. Die Erzeugermethoden \emph{produceDefaultTemplateBuilder} und \emph{produceFreeMarkerTemplateBuilder} lassen sich als Argument ein Objekt des Datentyps  \emph{VariableResolverFactoryProvider} injizieren, dessen Geltungsbereich für diese Methoden nicht bekannt und auch irrelevant ist.
+Die beiden Methoden \emph{produceDefaultTemplateBuilder} und \emph{produceFreemarkerTemplateBuilder} produzieren Objekte des Datentyps  \emph{TemplateDataJsonBuilder} für den sogenannten Pseudo-Geltungsbereich (\emph{@Dependent}), wobei für jeden Injektionspunkt ein neues Objekt erstellt wird. Der Lebenszyklus von \emph{CDI-Beans}, die sich im Pseudo-Geltungsbereich befinden, wird nicht von der \emph{CDI}-Umgebung verwaltet und die Lebensdauer eines \emph{CDI-Beans}, das sich im Pseudo-Geltungsbereich befindet, ist gebunden and das \emph{CDI-Bean}, das sich das \emph{CDI-Bean} im Pseudo-Geltungsbereich injiziert hat. Die Erzeugermethoden \emph{produceDefaultTemplateBuilder} und \emph{produceFreemarkerTemplateBuilder} lassen sich als Argument ein Objekt des Datentyps  \emph{VariableResolverFactoryProvider} injizieren, dessen Geltungsbereich für diese Methoden nicht bekannt und auch irrelevant ist.
 \newline
 \newline
 Die Methode \emph{produceConfiguration} produziert ein Objekt des Datentyps  \emph{VariableConfiguration}, das die registrierten Variablen enthält und von der \emph{CDI}-Erweiterung bereitgestellt wird. Nachdem die Schnittstelle  \emph{VariableConfiguration} nur lesenden Zugriff erlaubt, wird dieses Objekt für den Gültigkeitsbereich der Anwendung produziert, also einmalig für die gesamte Lebensdauer der \emph{CDI}-Umgebung.
@@ -386,13 +386,13 @@ public class TemplateResourceProducer implements Serializable {
     @Default
     public TemplateDataJsonBuilder produceDefaultTemplateBuilder
           (final @Default VariableResolverFactoryProvider factory) {
-        return produceFreeMarkerTemplateBuilder(factory);
+        return produceFreemarkerTemplateBuilder(factory);
     }
 
     @Produces
     @Dependent
     @FreemarkerTemplate
-    public TemplateDataJsonBuilder produceFreeMarkerTemplateBuilder
+    public TemplateDataJsonBuilder produceFreemarkerTemplateBuilder
            (final @Default VariableResolverFactoryProvider factory) {
         return new FreemarkerTemplateDataJsonBuilder()
                       .withWeakMode()

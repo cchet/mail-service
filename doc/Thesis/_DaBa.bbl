@@ -19,7 +19,7 @@
 \entry{atomikosTcc}{online}{}
   \name{author}{1}{}{%
     {{}%
-     {Atomikos{\ }Corporate{\ }Headquarters}{A.}%
+     {{Atomikos Corporate Headquarters}}{A.}%
      {}{}%
      {}{}%
      {}{}}%
@@ -36,44 +36,21 @@
   \warn{\item Invalid format of field 'urldate'}
 \endentry
 
-\entry{refactoreToPatterns}{book}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Joshua{\ }Kerievsky}{J.}%
-     {}{}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {Addison-Wesley Professional}%
-  }
-  \strng{namehash}{J1}
-  \strng{fullhash}{J1}
-  \field{labelyear}{2004}
-  \field{sortinit}{J}
-  \field{title}{Refactoring to Patterns}
-  \field{langid}{german}
-  \list{location}{1}{%
-    {München}%
-  }
-  \field{year}{2004}
-\endentry
-
 \entry{patternsOfEnterprise}{book}{}
   \name{author}{1}{}{%
     {{}%
-     {Martin{\ }Fowler}{M.}%
-     {}{}%
+     {Fowler}{F.}%
+     {Martin}{M.}%
      {}{}%
      {}{}}%
   }
   \list{publisher}{1}{%
     {Addison-Wesley Professional}%
   }
-  \strng{namehash}{M1}
-  \strng{fullhash}{M1}
+  \strng{namehash}{FM1}
+  \strng{fullhash}{FM1}
   \field{labelyear}{2002}
-  \field{sortinit}{M}
+  \field{sortinit}{F}
   \field{edition}{1}
   \field{title}{Patterns of Enterprise Application Architecture}
   \field{langid}{german}
@@ -83,21 +60,49 @@
   \field{year}{2002}
 \endentry
 
-\entry{refactoreDatabase}{book}{}
+\entry{refactoreToPatterns}{book}{}
   \name{author}{1}{}{%
     {{}%
-     {Scott{\ }W.Ambler{,\ }Pramond{\ }J.Sadalage}{S.}%
-     {}{}%
+     {Kerievsky}{K.}%
+     {Joshua}{J.}%
      {}{}%
      {}{}}%
   }
   \list{publisher}{1}{%
     {Addison-Wesley Professional}%
   }
-  \strng{namehash}{S1}
-  \strng{fullhash}{S1}
+  \strng{namehash}{KJ1}
+  \strng{fullhash}{KJ1}
+  \field{labelyear}{2004}
+  \field{sortinit}{K}
+  \field{title}{Refactoring to Patterns}
+  \field{langid}{german}
+  \list{location}{1}{%
+    {München}%
+  }
+  \field{year}{2004}
+\endentry
+
+\entry{refactoreDatabase}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {W.Ambler}{W.}%
+     {Scott}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {J.Sadalage}{J.}%
+     {Pramond}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Addison-Wesley Professional}%
+  }
+  \strng{namehash}{WSJP1}
+  \strng{fullhash}{WSJP1}
   \field{labelyear}{2006}
-  \field{sortinit}{S}
+  \field{sortinit}{W}
   \field{title}{Refactoring Databases}
   \field{langid}{german}
   \list{location}{1}{%

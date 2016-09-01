@@ -2,7 +2,7 @@
 \label{cha:Lösungskonzept}
 Dieses Kapitel beschäftigt sich mit der Spezifikation des Vorlagenmanagements. Bei der Spezifikation handelt es sich um die Schnittstellen und die abstrakten Klassen, welche die Struktur des Vorlagenmanagements definieren und die gemeinsame Logik vorgeben. Diese Schnittstellen und abstrakten Klassen erlauben es, Implementierungen für verschiedene \emph{Template-Engines} zur Verfügung zu stellen wie z.B. für
 \begin{itemize}
-	\item die \emph{Template-Engine Freemakrer},
+	\item die \emph{Template-Engine Freemarker},
 	\item die \emph{Template-Engine Velocity} oder
 	\item die \emph{Template-Engine Thymeleaf}.
 \end{itemize}
@@ -189,7 +189,7 @@ Der Quelltext \ref{prog:templateProcessor-highlighted-methods} zeigt die beiden 
 \begin{program}[h]
 \caption{Die Methoden für die Konvertierung}
 \label{prog:templateProcessor-highlighted-methods}
-\begin{JavaCode}[numbers=none]
+\begin{JavaCode}
 String replaceExpressions(
                   String template,
                   Function<VariableContract, String> converter);

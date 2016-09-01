@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  1 SEP 2016 11:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.1.8)  1 SEP 2016 17:19
 entering extended mode
 **./_DaBa.tex
 (_DaBa.tex
@@ -1626,12 +1626,6 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 1.
 )
-Overfull \hbox (5.78535pt too wide) in paragraph at lines 2--24
-\T1/lmr/m/n/10.95 wird. Mit dem Vor-la-gen-ma-na-ge-ment kön-nen Vor-la-gen für
- \T1/lmr/m/it/10.95 E-Mail\T1/lmr/m/n/10.95 -Nachrichten
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 2--24
 
  []
@@ -1761,16 +1755,16 @@ been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.13 	\item\emph
-                {CleverInterface} ist eine Schnittstellenanwendung fÃ¼r den ...
+                {CleverInterface} ist die Schnittstellenanwendung fÃ¼r den \...
 [1
 
 
 
 
 ]
-Overfull \hbox (6.50563pt too wide) in paragraph at lines 13--14
-[]\T1/lmr/m/it/10.95 CleverInterface \T1/lmr/m/n/10.95 ist ei-ne Schnitt-stel-l
-enan-wen-dung für den \T1/lmr/m/it/10.95 XML\T1/lmr/m/n/10.95 -basierten
+Overfull \hbox (1.6389pt too wide) in paragraph at lines 13--14
+[]\T1/lmr/m/it/10.95 CleverInterface \T1/lmr/m/n/10.95 ist die Schnitt-stel-len
+an-wen-dung für den \T1/lmr/m/it/10.95 XML\T1/lmr/m/n/10.95 -basierten
  []
 
 Package babel Info: Redefining ngerman shorthand "|
@@ -2231,21 +2225,9 @@ Package babel Info: Redefining ngerman shorthand "~
 
 
 ]
-Overfull \hbox (4.9453pt too wide) in paragraph at lines 42--43
-[]\T1/lmr/bx/it/10.95 mailing-module-template-cdi \T1/lmr/m/n/10.95 ent-hält di
-e Im-ple-men-tie-rung der \T1/lmr/m/it/10.95 CDI\T1/lmr/m/n/10.95 -
- []
-
-
 Overfull \hbox (2.65567pt too wide) in paragraph at lines 44--45
 []\T1/lmr/bx/it/10.95 mailing-module-template-model-json \T1/lmr/m/n/10.95 ent-
 hält die Im-ple-men-tie-rung
- []
-
-
-Overfull \hbox (5.70496pt too wide) in paragraph at lines 47--48
-[]\T1/lmr/bx/it/10.95 mailing-module-integartion-clevercure-web \T1/lmr/m/n/10.
-95 ent-hält die Im-ple-men-
  []
 
 Package babel Info: Redefining ngerman shorthand "|
@@ -2921,10 +2903,10 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 86.
 
-Overfull \hbox (2.50804pt too wide) in paragraph at lines 87--88
-\T1/lmr/m/n/10.95 Pro-jekt nicht mög-lich war, da das \T1/lmr/m/it/10.95 Hot-Co
-de-Deployment \T1/lmr/m/n/10.95 für \T1/lmr/m/it/10.95 Ja-va\T1/lmr/m/n/10.95 -
-Ressourcen
+Overfull \hbox (0.26949pt too wide) in paragraph at lines 87--88
+\T1/lmr/m/n/10.95 Pro-jekt nicht mög-lich war, da das \T1/lmr/m/it/10.95 Hot Co
+-de De-ploy-ment \T1/lmr/m/n/10.95 für \T1/lmr/m/it/10.95 Ja-va\T1/lmr/m/n/10.9
+5 -Ressourcen
  []
 
 Package babel Info: Redefining ngerman shorthand "|
@@ -3144,7 +3126,7 @@ KTeX 2.9/fonts/type1/public/lm/lmri9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/type1/public/lm/lmss10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/pu
 blic/lm/lmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/lm/lmt
 t9.pfb>
-Output written on _DaBa.pdf (67 pages, 1053802 bytes).
+Output written on _DaBa.pdf (67 pages, 1053783 bytes).
 PDF statistics:
  1454 PDF objects out of 1728 (max. 8388607)
  715 named destinations out of 1000 (max. 500000)
