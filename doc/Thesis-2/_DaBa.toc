@@ -72,7 +72,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Variablenrepr\IeC {\"a}sentation in \emph {Java}}{26}{lstnumber.-15.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Registrierung des \emph {Plugins} im \emph {CKEditor}}{28}{lstnumber.-16.49}
+\contentsline {subsubsection}{Registrierung des \emph {Plugins} im \emph {CKEditor}}{28}{lstnumber.-16.47}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Integration des \emph {Plugins} im \emph {CKEditor}}{28}{lstnumber.-17.4}
 \defcounter {refsection}{0}\relax 
@@ -130,10 +130,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.2}Weitere Aufgaben}{56}{section.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Erfahrungen}{56}{section.6.3}
+\contentsline {section}{\numberline {6.3}Erfahrungen}{57}{section.6.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Quellenverzeichnis}{58}{appendix*.14}
+\contentsline {chapter}{Quellenverzeichnis}{59}{appendix*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Literatur}{58}{section*.15}
+\contentsline {section}{Literatur}{59}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{Online-Quellen}{58}{section*.15}
+\contentsline {section}{Online-Quellen}{59}{section*.15}

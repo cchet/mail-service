@@ -2,28 +2,34 @@
 \label{cha:Zusammenfassung}
 Dieses Kapitel beschäftigt sich mit der Zusammenfassung, den weiteren Aufgaben und den gemachten Erfahrungen während der Entwicklung des Vorlagenmanagements. 
 \section{Zusammenfassung}
-Dieser Abschnitt befasst sich mit der Zusammenfassung dieser Bachelorarbeit.
+Dieser Abschnitt befasst sich mit der Zusammenfassung der vorliegenden  Bachelorarbeit.
 \newline
 \newline
-Bei der Implementierung des Vorlagenmanagements wurde darauf geachtet, dass die Implementierungen in eigenen Modulen organisiert werden, die entkoppelt voneinander sind und dass die Implementierungen erweiterbar sind, damit sich zukünftige Anforderungen leicht integrieren lassen. Die Strukturierung des Vorlagenmanagements  in eigenen Modulen ist ein Resultat der Analyse der Anwendung \emph{CCMail}, die in der theoretischen Bachelorarbeit durchgeführt wurde. \emph{CCMail} ist in einem einzigen Projekt organisiert worden und kann nicht mehr erweitert werden. Durch die Modularisierung ist das Vorlagenmanagement flexibel, wie die implementierte Integration in \emph{CDI}, \emph{JSF} und das \emph{Mail}-DB-Schema aufzeigt.
+Bei der Implementierung des Vorlagenmanagements wurde darauf geachtet, dass die Spezifikation und dessen Implementierungen in separaten Modulen organisiert werden, dass die Spezifikation und dessen Implementierung erweiterbar sind, damit zukünftige Anforderungen sich leicht integrieren lassen. Die Strukturierung des Vorlagenmanagements  in eigenen Modulen ist ein Resultat der Analyse der Anwendung \emph{CCMail}, die in der theoretischen Bachelorarbeit durchgeführt wurde. \emph{CCMail} ist in einem einzigen Projekt organisiert worden und kann nicht mehr erweitert werden. Durch die Modularisierung ist das Vorlagenmanagement flexibel, wie die implementierte Integration in \emph{CDI} und \emph{JSF} aufzeigt.
 \newline
 \newline
 Das Vorlagenmanagement ist nicht auf die Verwendung in den Anwendungen innerhalb der Softwarelösung \emph{clevercure} beschränkt, sondern kann auch in anderen Anwendungen verwendet werden, sofern die technischen Voraussetzungen erfüllt sind. Dadurch könnte das Vorlagenmanagement in Zukunft auch in Anwendungen verwendet werden, die neu für die Softwarelösung \emph{clevercure} implementiert werden. 
 \newline
 \newline
-Das Vorlagenmanagement erfüllt alle Grundvoraussetzungen um in den Anwendungen \emph{CleverInterface}, \emph{CleverWeb}, \emph{CleverSupport} und \emph{CleverDocument} integriert werden zu können. Die Integration in die Anwendungen \emph{CleverWeb}, \emph{CleverSupport} und \emph{CleverDocument} sollte leicht realisierbar sein, da diese Anwendungen alle technischen GRundvoraussetzugen erfüllen. Die Integration in die Anwendung \emph{CleverInterface} könnte ein Problem darstellen, da es bei \emph{CleverInterface} Einschränkungen bezüglich den verwendeten Technologien gibt und man hier stark von der Laufzeitumgebung \emph{IIB} und von der \emph{IBM} abhängig ist.  
+Das Vorlagenmanagement erfüllt alle Grundvoraussetzungen um in den Anwendungen \emph{CleverInterface}, \emph{CleverWeb}, \emph{CleverSupport} und \emph{CleverDocument} integriert werden zu können. Die Integration in die Anwendungen \emph{CleverWeb}, \emph{CleverSupport} und \emph{CleverDocument} wird  leicht realisierbar sein, da diese Anwendungen alle technischen Voraussetzungen  erfüllen. Die Integration in die Anwendung \emph{CleverInterface} könnte ein Problem darstellen, da es bei \emph{CleverInterface} Einschränkungen bezüglich den verwendeten Technologien gibt und man hier stark von der Laufzeitumgebung \emph{IIB} und von der \emph{IBM} abhängig ist.  
 \newline
 \newline
 Das Vorlagenmanagement ist zwar fertiggestellt, es werden sich aber sicherlich noch neue Anforderung ergeben, die sich aber auf neue Funktionalitäten und Erweiterungen beschränken werden. Die Grundfunktionalität und die Integration in die verschiedenen Umgebungen ist fertiggestellt und kann bei Bedarf jederzeit erweitert werden.
 
 \section{Weitere Aufgaben}
-Dieser Abschnitt befasst sich mit den weiteren Aufgaben nach der Implementierung des Vorlagenmanagements.
+Dieser Abschnitt befasst sich mit den weiteren Aufgaben für das Vorlagenmanagement und für die Anwendung \emph{CleverMail}, für die das Vorlagenmanagement entwickelt wurde.
 \newline
 \newline
-Nach der Implementierung des Vorlagenmanagements muss die Integration des Vorlagenmanagements in die Anwendungen \emph{CleverWeb}, \emph{CleverSupport}, \emph{CleverDocument} und \emph{CleverInterface} implementiert werden. Die Integration in die Anwendung \emph{CleverInterface} muss warten, bis die verwendete Laufzeitumgebung \emph{IIB} Java 8 unterstützt. Sollte \emph{IIB} Java 8 nicht in absehbarer Zeit unterstützen, so wird man das Vorlagenmanagement auf Java 7 migrieren müssen, was aber nicht anzuraten ist. Die Beispielwebanwendung hat aufgezeigt, wie einfach es ist, eine \emph{JSF}-Seite für die Verwaltung von Vorlagen zu implementieren, und wie einfach \emph{E-Mails} über eine Geschäftslogik erstellt werden können. Somit sollte sich die Integration in die Anwendungen \emph{CleverWeb}, \emph{CleverSupport} und \emph{CleverDocument} einfach und schnell realisieren lassen. 
+Für das Vorlagenmanagement muss die Integration in die Anwendungen \emph{CleverWeb}, \emph{CleverSupport}, \emph{CleverDocument} und \emph{CleverInterface} implementiert werden. Die Integration in die Anwendung \emph{CleverInterface} muss warten, bis die verwendete Laufzeitumgebung \emph{IIB} Java 8 unterstützt. Sollte \emph{IIB} Java 8 nicht in absehbarer Zeit unterstützen, so wird man das Vorlagenmanagement auf Java 7 migrieren müssen, was aber nicht anzuraten ist. 
 \newline
 \newline
-Nachdem die Integration für die Anwendungen der Softwarelösung \emph{clevercure} implementiert wurden, muss die Anwendung \emph{CleverMail} implementiert werden, welche die \emph{E-Mails} versendet. Diese Entwicklung kann auch parallel zur Implementierung der Integration des Vorlagenmanagements erfolgen.
+Die Beispielwebanwendung hat aufgezeigt, wie einfach es ist, eine \emph{JSF}-Seite für die Verwaltung von Vorlagen zu implementieren, und wie einfach \emph{E-Mails} über eine Geschäftslogik erstellt werden können. Somit wir sich die Integration in die Anwendungen \emph{CleverWeb}, \emph{CleverSupport} und \emph{CleverDocument} einfach und schnell realisieren lassen.  
+\newline
+\newline
+Nachdem die Integration für die Anwendungen der Softwarelösung \emph{clevercure} implementiert wurden, muss die Anwendung \emph{CleverMail} implementiert werden, welche die \emph{E-Mails} versendet. Diese Entwicklung könnte auch parallel zur Implementierung der Integration des Vorlagenmanagements erfolgen.
+\newline
+\newline
+Wie in Abschnitt \ref{sec:Tests} angemerkt, müssen noch einige Tests implementiert werden, die schnellstmöglich zu implementieren sind. Ebenfalls müssen Tests für die Integration in die Anwendungen der Softwarelösung \emph{clevercure}, sowie Tests für die Anwendung \emph{CleverMail} implementiert werden. 
 
 \section{Erfahrungen}
 Dieser Abschnitt befasst sich mit den gemachten Erfahrungen während der Entwicklung des Vorlagenmanagements.
